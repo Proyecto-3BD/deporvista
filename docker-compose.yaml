@@ -1,0 +1,80 @@
+version: '2'
+services:
+  php-mvc: 
+    build:
+      context: ./phpCapas
+      dockerfile: Dockerfile
+    tty: true
+    restart: unless-stopped
+    networks:
+      aplicacion:
+        ipv4_address: 192.168.48.3 
+    ports:
+      - "80:80"
+    volumes:
+      - ./phpCapas:/var/www/html
+
+  mysql:
+    image: mysql:5.7
+    tty: true 
+    restart: unless-stopped
+    networks:
+      aplicacion:
+        ipv4_address: 192.168.48.2
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_USER=usuario
+      - MYSQL_PASSWORD=1234
+      - MYSQL_DATABASE=base
+    volumes:
+      - ./mysql:/var/lib/mysql
+  php-anuncios:
+    build:
+      context: ./appAnuncios
+      dockerfile: Dockerfile
+    tty: true
+    restart: unless-stopped
+    networks:
+      aplicacion:
+        ipv4_address: 192.168.48.5
+    ports:
+      - "8082:80"
+    volumes:
+      - ./appAnuncios:/var/www/html
+
+  php-login:
+    build:
+      context: ./appLogin
+      dockerfile: Dockerfile
+    tty: true
+    restart: unless-stopped
+    networks:
+      aplicacion:
+        ipv4_address: 192.168.48.4
+    ports:
+      - "8081:81"
+    volumes:
+      - ./appLogin:/var/www/html
+
+  php-admin:
+    build:
+      context: ./appAdmin
+      dockerfile: Dockerfile
+    tty: true
+    restart: unless-stopped
+    networks:
+      aplicacion:
+        ipv4_address: 192.168.48.6
+    ports:
+      - "8083:80"
+    volumes:
+      - ./appAdmin:/var/www/html
+
+networks:
+  aplicacion:
+    driver: bridge
+    ipam:
+     driver: default
+     config:
+       - subnet: 192.168.48.0/20
+         gateway: 192.168.48.1
