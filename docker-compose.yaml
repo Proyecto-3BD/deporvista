@@ -1,8 +1,8 @@
 version: '2'
 services:
-  mvc: 
+  public: 
     build:
-      context: ./phpCapas
+      context: ./public
       dockerfile: Dockerfile
     tty: true
     restart: unless-stopped
@@ -12,11 +12,11 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./phpCapas:/var/www/html
+      - ./public:/var/www/html
 
-  mysql:
+  db:
     build:
-      context: ./mysql
+      context: ./db
       dockerfile: Dockerfile
     tty: true 
     restart: unless-stopped
@@ -24,13 +24,13 @@ services:
       aplicacion:
         ipv4_address: 192.168.48.2
     ports:
-      - "3306:3306"
+      - "3304:3306"
     volumes:
       - ./mysql/mysql:/var/lib/mysql
   
   anuncios:
     build:
-      context: ./appAnuncios
+      context: ./anuncios
       dockerfile: Dockerfile
     tty: true
     restart: unless-stopped
@@ -40,11 +40,11 @@ services:
     ports:
       - "8081:80"
     volumes:
-      - ./appAnuncios:/var/www/html
+      - ./anuncios:/var/www/html
 
   login:
     build:
-      context: ./appLogin
+      context: ./login
       dockerfile: Dockerfile
     tty: true
     restart: unless-stopped
@@ -54,11 +54,11 @@ services:
     ports:
       - "8082:81"
     volumes:
-      - ./appLogin:/var/www/html
+      - ./login:/var/www/html
 
-  admin:
+  backoffice:
     build:
-      context: ./appAdmin
+      context: ./backoffice
       dockerfile: Dockerfile
     tty: true
     restart: unless-stopped
@@ -68,11 +68,11 @@ services:
     ports:
       - "8083:80"
     volumes:
-      - ./appAdmin:/var/www/html
+      - ./backoffice:/var/www/html
 
   resultados:
     build:
-      context: ./appResultados
+      context: ./resultados
       dockerfile: Dockerfile
     tty: true
     restart: unless-stopped
@@ -82,7 +82,7 @@ services:
     ports:
       - "8084:80"
     volumenes:
-      - ./appResultados:/var/www/html
+      - ./resultados:/var/www/html
 
 networks:
   aplicacion:
