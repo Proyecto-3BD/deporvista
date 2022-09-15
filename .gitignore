@@ -1,4 +1,4 @@
 config.php
-/mysql
+db/mysql
 *.old
 *.sql

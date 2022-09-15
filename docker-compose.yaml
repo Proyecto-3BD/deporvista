@@ -26,7 +26,7 @@ services:
     ports:
       - "3304:3306"
     volumes:
-      - ./mysql/mysql:/var/lib/mysql
+      - ./db/mysql:/var/lib/mysql
   
   anuncios:
     build:
@@ -81,7 +81,7 @@ services:
         ipv4_address: 192.168.48.7
     ports:
       - "8084:80"
-    volumenes:
+    volumes:
       - ./resultados:/var/www/html
 
 networks:
