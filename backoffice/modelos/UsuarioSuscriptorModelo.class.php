@@ -110,7 +110,7 @@
         }
 
         public function ObtenerTodos(){
-           $sql = "select * from usuarios cross join suscriptores where usuarios.idUsuario=suscriptores.idSuscriptor;";
+            $sql = "select * from usuarios cross join suscriptores where usuarios.idUsuario=suscriptores.idSuscriptor;";
             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
             $resultado = array();
             foreach($filas as $fila){

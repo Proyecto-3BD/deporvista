@@ -42,7 +42,7 @@
             $sql = "UPDATE usuarios SET
             nombreUsuario = '" . $this -> nombreUsuario . "',
             email = '" . $this -> email . "',
-            password = '" . $this -> password . "'
+            password = '" . $this -> hashearPassword($this -> password)  . "'
             WHERE idUsuario = " . $this -> idUsuario . ";";
             $this -> conexion -> query($sql);   
         }
