@@ -1,15 +1,20 @@
 <?php 
     require "../utils/autoload.php";
 
-    class SesionControlador {
+    class SesionControlador { 
         public static function IniciarSesion($context){
-            if(self::autenticar($context['post']['nombreUsuario'],$context['post']['password']) === "true"){
-                SessionCreate("autenticado",true);
-                SessionCreate("nombreUsuario", $context['post']['nombreUsuario']);
-                header("Location: /");
+            try{
+                if(self::autenticar($context['post']['nombreUsuario'],$context['post']['password']) === "true"){
+                    SessionCreate("autenticado",true);
+                    SessionCreate("nombreUsuario", $context['post']['nombreUsuario']);
+                    header("Location: /");
 
+                }
+                render("login",["error" => true]);
             }
-            render("login",["error" => true]);
+            catch (Exception $e) {
+                render("login", ["errorConexion" => true]);
+            }
         }
 
         public static function CerrarSesion($context){
@@ -23,7 +28,7 @@
                 "password" => $password
             ];
 
-            $resultado = HttpRequest(API_AUTH_URL,"post",$parametros);
+            $resultado = HttpRequest(API_AUTH_URL,"post",$parametros); 
             return $resultado['Resultado'];
             
         

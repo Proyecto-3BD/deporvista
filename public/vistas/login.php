@@ -20,6 +20,10 @@
     <?php if(isset($parametros['error']) && $parametros['error'] === true ) :?>
         <div style="color: red;">Credenciales invalidas.</div>
     <?php endif;?>
+
+    <?php if(isset($parametros['errorConexion']) && $parametros['errorConexion'] === true ) :?>
+        <div style="color: red;">Hubo un problema. Intente nuevamente más tarde</div>
+    <?php endif;?>
 </div>
 <?php
     ///ACA CARGO ANUCIO
