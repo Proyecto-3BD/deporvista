@@ -3,31 +3,24 @@
 
     class SesionControlador {
         public static function IniciarSesion($context){
-            if(self::autenticar($context['post']['nombreUsuario'],$context['post']['password']) === "true"){
-                SessionCreate("autenticado",true);
-                SessionCreate("nombreUsuario", $context['post']['nombreUsuario']);
-                header("Location: /");
-
-            }else render("loginAdmin",["error" => true]);
+            try{
+                $u = new AdministradorModelo();
+                $u -> nombreUsuario = $context['post']['nombreUsuario'];
+                $u -> password = $context['post']['password'];
+                if($u -> Autenticar($u -> nombreUsuario, $u -> password)){
+                    SessionCreate("autenticado", true);
+                    SessionCreate("nombreUsuario", $u -> nombreUsuario);
+                    header("Location: /");
+                }
+                render("login", ["error" => true]);
+            }
+            catch (Exception $e){
+                render("login", ["errorConexion" => true]);
+            }
         }
 
         public static function CerrarSesion($context){
             session_destroy();
             header("Location:/loginAdmin");
         }
-
-        private static function autenticar($nombreUsuario,$password){
-            $parametros = [
-                "nombreUsuario" => $nombreUsuario,
-                "password" => $password
-            ];
-
-            $resultado = HttpRequest(API_AUTH_ADMIN_URL, "post", $parametros);
-            return $resultado['Resultado'];
-            
-        
-            
-        }
-
-       
     }
