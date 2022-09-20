@@ -37,10 +37,10 @@
             <a class="nav-link" href="/suscriptores">Suscriptores</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contacto.php">Anuncios</a>
+            <a class="nav-link" href="/banners/gestion">Anuncios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contacto.php">Eventos</a>
+            <a class="nav-link" href="/">Eventos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/usuario/administradores">Administradores</a>

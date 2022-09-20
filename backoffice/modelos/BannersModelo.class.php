@@ -2,10 +2,10 @@
 
 	require "../utils/autoload.php";
 
-	class AnunciosModelo extends Modelo {
+	class BannersModelo extends Modelo {
 		public $idBanner;
 		public $src;
-        public $publicado
+        public $publicado;
 
 		public function __construct($id=""){
 			parent::__construct();
@@ -52,7 +52,7 @@
         }
 
         public function ObtenerTodos(){
-            $sql = "SELECT * FROM anuncios;";
+            $sql = "SELECT * FROM banners;";
             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
 
             $elementos = [];
