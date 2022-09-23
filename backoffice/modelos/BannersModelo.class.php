@@ -7,10 +7,10 @@
 		public $src;
         public $publicado;
 
-		public function __construct($id=""){
+		public function __construct($idBanner=""){
 			parent::__construct();
-			if($id !==""){
-				$this -> id = $id;
+			if($idBanner !==""){
+				$this -> idBanner = $idBanner;
 				$this -> Obtener();
 			}
 		}
@@ -23,11 +23,9 @@
 		public function Obtener(){
             $sql = "SELECT * FROM banners WHERE idBanner = " . $this -> idBanner . ";";
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
-
             $this -> idBanner = $fila['idBanner'];
             $this -> src = $fila['src'];
-            $this -> ubicacion = $fila['ubicacion'];
-            
+            $this -> ubicacion = $fila['publicado'];
         }
 
         public function Eliminar(){

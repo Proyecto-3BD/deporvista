@@ -15,7 +15,6 @@
         public static function Eliminar($context){
             $u = new AdministradorModelo();
             $u -> idUsuario = $context['post']['idUsuario'];
-
             $u -> Eliminar();
         }        
 

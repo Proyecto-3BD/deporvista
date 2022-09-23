@@ -37,7 +37,7 @@
             <a class="nav-link" href="/suscriptores">Suscriptores</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/banners/gestion">Anuncios</a>
+            <a class="nav-link" href="/gestionBanners">Anuncios</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/">Eventos</a>

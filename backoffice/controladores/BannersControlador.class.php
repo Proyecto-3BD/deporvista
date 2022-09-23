@@ -2,21 +2,32 @@
     require "../utils/autoload.php";
 
     class BannersControlador{
+
         public static function Alta($context){
-            $publicado = true;
-            $src = "/anuncios/" . $_FILES['file']['name'];
-            $file = $_SERVER['DOCUMENT_ROOT'] . $src;
-            move_uploaded_file($_FILES['file']['tmp-name'], $file); 
-            $p = new BannersModelo();
-            $p -> src = $src;
-            $p -> publicado = $publicado;
-            $p -> Guardar();
+            if($context['post']['publicado']==="Publicar"){
+                $publicado = true;
+            }else 
+                $publicado = false;
+
+            if(!empty($_FILES['file']['name'])){
+                $src = "/anuncios/" . $_FILES['file']['name'];
+                move_uploaded_file($_FILES['file']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . $src); 
+                $p = new BannersModelo();
+                $p -> src = $src;
+                $p -> publicado = $publicado;
+                $p -> Guardar();
+                render("gestionBanners", ["ingresado" => true]);
+            }
+            render("gestionBanners", ["error" => true]);
+            
         
         }
 
         public static function Eliminar($context){
-            $p = new BannersModelo();
+            
+            $p = new BannersModelo($context['post']['idBanner']);
             $p -> Eliminar();
+            render("gestionBanners", ["borrado" => true]);
         }
 
         public static function Modificar($context){
