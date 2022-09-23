@@ -69,7 +69,7 @@
                          
                     <?php if(isset($parametros['elimminado']) && $parametros['elimminado'] == 'true') :?>
                             <div style='color: darkred;'>Banner eliminado</div>
-                    <?php endif; ?>-->
+                    <?php endif; ?>
                                     
                 </table>
 
