@@ -21,6 +21,6 @@
 
         public static function CerrarSesion($context){
             session_destroy();
-            header("Location:/loginAdmin");
+            header("Location:/login");
         }
     }

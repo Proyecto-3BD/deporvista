@@ -1,7 +1,7 @@
 <?php 
     require "../utils/autoload.php";
     if(!isset($_SESSION['autenticado'])){ 
-        header("Location: /loginAdmin");
+        header("Location: /login");
     }
     require 'templates/head.php'; ?>
 
@@ -17,8 +17,8 @@
                     </div>
                     <div>
                         <select name="publicado">
-                            <option>Publicar</option>
-                            <option>No publicar</option>
+                            <option value="1">Publicar</option>
+                            <option value="0">No publicar</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -28,7 +28,30 @@
                         <?php if(isset($parametros['ingresado']) && $parametros['ingresado'] == 'true') :?>
                                 <div style='color: green;'>Anuncio ingresado</div>
                         <?php elseif (isset($parametros['error']) && $parametros['error'] == 'true')  :?>
-                                <div style='color: red;'>Error en el Ingreso</div>
+                                <div style='color: red;'>Seleccione archivo</div>
+                        <?php endif; ?>
+                </form>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Modificar</h5>
+                <form action="/modificarBanners" method="post">
+                    <div class="form-group">
+                        <small class="form-text text-muted">Agregue Id para modificar</small>
+                        <input type="text" placeholder="Id" name="idBanner">
+                    </div>
+                    <div>
+                        <select name="publicado">
+                            <option value=1>Publicar</option>
+                            <option value=0>No publicar</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cargar Archivo</button>
+                        <?php if(isset($parametros['modificado']) && $parametros['modificado'] == 'true') :?>
+                                <div style='color: green;'>Anuncio modificado</div>
+                        <?php elseif (isset($parametros['errorModificado']) && $parametros['errorModificado'] == 'true')  :?>
+                                <div style='color: red;'>Ingrese ID de Banner</div>
                         <?php endif; ?>
                 </form>
             </div>
@@ -44,7 +67,7 @@
                         <th style="">Id</th>
                         <th style="">Ruta</th>
                         <th style="">Publicado</th>
-                        <th style=""></th>
+                        <th style="">Selección</th>
                     </tr>
                   
                     <?php
@@ -55,19 +78,28 @@
                         else :?>
                         <? foreach($banner as $fila) :?>
                             <tr>
-                                <td style=""> <?= $fila['idBanner'] ?></td> 
-                                <td style=""> <?=$fila['src'] ?></td>
-                                <td style=""> <?=$fila['publicado'] ?></td>
+                                <td style="">
+                                    <?= $fila['idBanner'] ?>
+                                </td> 
+                                <td style="">
+                                    <?=$fila['src'] ?>
+                                </td>
+                                <td style="">
+                                    <?=$fila['publicado'] ?>
+                                </td>
                                 <td style=""> 
                                     <form action="/bajaBanners" method="post">
-                                        <input type="button" value="Borrar" name="<?= $fila['idBanner'] ?>" />
-                                    </form>
+                                        <input type="radio" name="idBanner" value="<?= $fila['idBanner'] ?> ">
+                                    <button type="submit">Eliminar</button>
+                                    </form>    
+                                 
                                 </td>
-                            </tr>
+                            </tr>                                          
                         <?php endforeach ;?>
+                                        
                     <?php endif ; ?>
                          
-                    <?php if(isset($parametros['elimminado']) && $parametros['elimminado'] == 'true') :?>
+                    <?php if(isset($parametros['eliminado']) && $parametros['eliminado'] == 'true') :?>
                             <div style='color: darkred;'>Banner eliminado</div>
                     <?php endif; ?>
                                     
@@ -76,3 +108,4 @@
             </div>  
         </div>
     </div>  
+    <?php require 'templates/foot.php'; ?>

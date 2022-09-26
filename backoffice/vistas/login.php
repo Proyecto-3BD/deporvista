@@ -14,7 +14,7 @@
 <body>
     <h1>Bienvenido</h1>
     
-    <form action="/loginAdmin" method="post">
+    <form action="/login" method="post">
         Usuario <input type="text" name="nombreUsuario"> <br />
         Password <input type="password" name="password"> <br />
         <input type="submit" value="Iniciar Sesión">

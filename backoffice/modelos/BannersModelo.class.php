@@ -16,7 +16,7 @@
 		}
 
         public function Guardar(){
-            if($this -> id === NULL) $this -> insertar();
+            if($this -> idBanner === NULL) $this -> insertar();
             else $this -> actualizar();
         }
 
@@ -25,7 +25,7 @@
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
             $this -> idBanner = $fila['idBanner'];
             $this -> src = $fila['src'];
-            $this -> ubicacion = $fila['publicado'];
+            $this -> publicado = $fila['publicado'];
         }
 
         public function Eliminar(){
@@ -44,9 +44,10 @@
         private function actualizar(){
             $sql = "UPDATE banners SET 
                     src = '" . $this -> src . "',
-                    publicado = '" . $this -> publicado . "', 
+                    publicado = '" . $this -> publicado . "'
                     WHERE idBanner = " . $this -> idBanner . ";";
             $this -> conexion -> query($sql);
+
         }
 
         public function ObtenerTodos(){
