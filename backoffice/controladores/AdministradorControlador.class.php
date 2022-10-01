@@ -3,29 +3,38 @@
 
     class AdministradorControlador{
         public static function Alta($context){
-            $u = new AdministradorModelo();
-            $u -> idUsuario = $context['post']['idUsuario'];
-            $u -> nombreUsuario = $context['post']['nombreUsuario'];
-            $u -> email = $context['post']['email'];
-            $u -> password = $context['post']['password'];
-            $u -> Guardar();
+            if(!empty($context['post']['nombreAdmin'])){
+                $u = new AdministradorModelo();
+                $u -> idAdmin = $context['post']['idAdmin'];
+                $u -> nombreAdmin = $context['post']['nombreAdmin'];
+                $u -> email = $context['post']['email'];
+                $u -> password = $context['post']['password'];
+                $u -> Guardar();
+                render('gestionAdministrador', ["ingresado" => true]);
+            }else
+                render('gestionAdministrador', ["error" => true]);
+            
         
         }
 
         public static function Eliminar($context){
-            $u = new AdministradorModelo();
-            $u -> idUsuario = $context['post']['idUsuario'];
+            $u = new AdministradorModelo($context['post']['idAdmin']);
             $u -> Eliminar();
+            render("gestionAdministrador" , ["eliminado" => true]);
         }        
 
         public static function Modificar($context){
 
-            $u = new AdministradorModelo();
-            $u -> idUsuario = $context['post']['idUsuario'];
-            $u -> nombreUsuario = $context['post']['nombreUsuario'];
+            $u = new AdministradorModelo($context['post']['idAdmin']);
+            $u -> idAdmin = $context['post']['idAdmin'];
+            $u -> nombreAdmin = $context['post']['nombreAdmin'];
             $u -> email = $context['post']['email'];
             $u -> password = $context['post']['password'];
-            $u -> Guardar();
+            if(!empty($context['post']['idAdmin'])){
+                $u -> Guardar();
+                render("gestionAdministrador", ['modificado' => true]);
+            }else
+                render("gestionAdministrador", ['errorModificado' => true]);
         }
 
 
@@ -36,8 +45,8 @@
             $resultado = [];
             foreach($administradores as $administrador){
                 $t = [
-                    'idUsuario' => $administrador -> idUsuario,
-                    'nombreUsuario' => $administrador -> nombreUsuario,
+                    'idAdmin' => $administrador -> idAdmin,
+                    'nombreAdmin' => $administrador -> nombreAdmin,
                     'email' => $administrador -> email
                 ];   
                 array_push($resultado,$t);

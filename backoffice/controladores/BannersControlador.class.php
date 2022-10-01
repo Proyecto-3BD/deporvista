@@ -12,12 +12,6 @@
                 $p -> publicado = $context['post']['publicado'];
                 $p -> Guardar();
                 render("gestionBanners", ["ingresado" => true]);
-            /*}elseif (isset($context['post']['idBanner']) $$   ) {
-                $p = new BannersModelo($context['post']['idBanner']);
-                $p -> src = $src;
-                $p -> publicado = $publicado;
-                $p -> Guardar();
-                render("gestionBanners", ["ingresado" => true]);*/
             }else
                 render("gestionBanners", ["error" => true]);
             

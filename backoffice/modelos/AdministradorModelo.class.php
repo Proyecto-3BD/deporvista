@@ -3,35 +3,31 @@
     require "../utils/autoload.php";
 
     class AdministradorModelo extends Modelo{
-        public $idUsuario;
-        public $nombreUsuario;
+        public $idAdmin;
+        public $nombreAdmin;
         public $email;
         public $password;
-        public $idAdmin;
         
-        public function __construct($idUsuario=""){
+        public function __construct($idAdmin=""){
             parent::__construct();
-            if($idUsuario != ""){
-                $this -> idUsuario = $idUsuario;
+            if($idAdmin != ""){
+                $this -> idAdmin = $idAdmin;
                 $this -> Obtener();
             }
         }
 
         public function Guardar(){
-            if($this -> idUsuario == NULL) $this -> insertar();
+            if($this -> idAdmin == NULL) $this -> insertar();
             else $this -> actualizar();
         }
 
         private function insertar(){
             
-            $sql1 = "INSERT INTO usuarios (nombreUsuario, email, password) 
-            VALUES ('" . $this -> nombreUsuario . "',
+            $sql1 = "INSERT INTO administradores (nombreAdmin, email, password) 
+            VALUES ('" . $this -> nombreAdmin . "',
                     '" . $this -> email . "',
                     '" . $this -> hashearPassword($this -> password) . "');";
             $this -> conexion -> query($sql1);
-            $sql2 = "INSERT INTO administradores (idAdmin) 
-                VALUES ((SELECT max(idUsuario) AS idAdmin FROM usuarios));";
-            $this -> conexion -> query($sql2);
         }
 
         private function hashearPassword($password){
@@ -39,62 +35,50 @@
         }
 
         private function actualizar(){
-            $sql = "UPDATE usuarios SET
-            nombreUsuario = '" . $this -> nombreUsuario . "',
+            $sql = "UPDATE administradores SET
+            nombreAdmin = '" . $this -> nombreAdmin . "',
             email = '" . $this -> email . "',
             password = '" . $this -> hashearPassword($this -> password)  . "'
-            WHERE idUsuario = " . $this -> idUsuario . ";";
+            WHERE idAdmin = " . $this -> idAdmin . ";";
             $this -> conexion -> query($sql);   
         }
 
         public function Obtener(){
-            $sql = "SELECT * FROM usuarios CROSS JOIN administradores WHERE usuarios.idUsuario = administradores.idAdmin AND usuarios.idUsuario = " . $this ->idUsuario . ";";
-
+            $sql = "SELECT * FROM  administradores WHERE idAdmin = " . $this -> idAdmin . ";";
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
-            $this -> idUsuario = $fila['idUsuario'];
-            $this -> nombreUsuario = $fila['nombreUsuario'];
+            $this -> idAdmin = $fila['idAdmin'];
+            $this -> nombreAdmin = $fila['nombreAdmin'];
             $this -> email = $fila['email'];
             $this -> password = $fila['password'];
-            $this -> idAdmin = $fila['idAdmin'];
         }
 
 
         public function Eliminar(){
-            $sql = "start transaction;";
-            $this -> conexion -> query($sql);
-
-            $sql = "DELETE FROM usuarios 
-                WHERE id = " . $this ->idUsuario . ";";
-            $this -> conexion -> query($sql);
-        
-            $sql = "DELETE FROM administradores
-                WHERE id = " . $this ->idUsuario . ";";
-            $this -> conexion -> query($sql);
-
-            $sql = "commit;";
+            $sql = "DELETE FROM administradores 
+                WHERE idAdmin = " . $this ->idAdmin . ";";
             $this -> conexion -> query($sql);
         }
 
         public function ObtenerTodos(){
-           $sql = "select * from usuarios cross join administradores where usuarios.idUsuario=administradores.idAdmin;";
+           $sql = "select * from administradores;";
 
             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
             $resultado = array();
             foreach($filas as $fila){
                 $a = new AdministradorModelo();
-                $a -> idUsuario  = $fila['idUsuario'];
-                $a -> nombreUsuario = $fila['nombreUsuario'];
+                $a -> idAdmin = $fila['idAdmin'];
+                $a -> nombreAdmin = $fila['nombreAdmin'];
                 $a -> email = $fila['email'];
                 $a -> password = $fila['password'];
-                $a -> idAdmin = $fila['idAdmin'];
+                
                 array_push($resultado,$a);
             }
             return $resultado;
         }
 
         public function Autenticar(){
-            $sql = "SELECT * FROM usuarios CROSS JOIN administradores WHERE usuarios.idUsuario = administradores.idAdmin AND usuarios.nombreUsuario= '" . $this -> nombreUsuario . "';";
+            $sql = "SELECT * FROM administradores WHERE nombreAdmin= '" . $this -> nombreAdmin . "';";
             $resultado = $this -> conexion -> query($sql);
             if($resultado -> num_rows == 0) {
                 return false;

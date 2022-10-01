@@ -5,11 +5,11 @@
         public static function IniciarSesion($context){
             try{
                 $u = new AdministradorModelo();
-                $u -> nombreUsuario = $context['post']['nombreUsuario'];
+                $u -> nombreAdmin = $context['post']['nombreAdmin'];
                 $u -> password = $context['post']['password'];
-                if($u -> Autenticar($u -> nombreUsuario, $u -> password)){
+                if($u -> Autenticar($u -> nombreAdmin, $u -> password)){
                     SessionCreate("autenticado", true);
-                    SessionCreate("nombreUsuario", $u -> nombreUsuario);
+                    SessionCreate("nombreAdmin", $u -> nombreAdmin);
                     header("Location: /");
                 }
                 render("login", ["error" => true]);
