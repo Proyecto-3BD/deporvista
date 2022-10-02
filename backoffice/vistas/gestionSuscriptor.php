@@ -32,8 +32,8 @@
                         else :?>
                         <? foreach($suscriptores as $fila) :?>
                             <tr>
-                                <td style=""> <?= $fila['idUsuario'] ?></td> 
-                                <td style=""> <?=$fila['nombreUsuario'] ?></td>
+                                <td style=""> <?= $fila['idSuscriptor'] ?></td> 
+                                <td style=""> <?=$fila['nombreSuscriptor'] ?></td>
                                 <td style=""> <?=$fila['email'] ?></td>
                                 <td style=""> <?=$fila['nombre'] ?></td>
                                 <td style=""> <?=$fila['apellidos'] ?></td>
