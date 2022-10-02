@@ -11,8 +11,9 @@
 
     
     Routes::Add("/login","post","SesionControlador::IniciarSesion");
-    Routes::Add("/usuario","post","SuscriptorControlador::Alta");
-    Routes::Add("/usuario/bajaSuscriptor","post","SuscriptorControlador::Baja");
+    Routes::Add("/usuario/altaSuscriptor","post","SuscriptorControlador::Alta");
+    Routes::Add("/usuario/bajaSuscriptor","post","SuscriptorControlador::Eliminar");
+    Routes::Add("/usuario/modificarSuscriptor","post","SuscriptorControlador::Modificar");
     Routes::Add("/usuario/altaAdmin", "post", "AdministradorControlador::Alta");
     Routes::Add("/usuario/bajaAdmin", "post", "AdministradorControlador::Eliminar");
     Routes::Add("/usuario/modificarAdmin", "post", "AdministradorControlador::Modificar");

@@ -32,7 +32,7 @@
             $sql = "INSERT INTO suscriptores (nombreSuscriptor, email, password, documento, nombre, apellidos, telefono, metodoPago, fechaAlta) 
             VALUES ('" . $this -> nombreSuscriptor . "',
                     '" . $this -> email . "',
-                    '" . $this -> hashearPassword($this -> password) . "'
+                    '" . $this -> hashearPassword($this -> password) . "',
                     '" . $this -> documento . "',
                     '" . $this -> nombre . "',
                     '" . $this -> apellidos . "',
@@ -49,19 +49,20 @@
         private function actualizar(){
             $sql = "UPDATE suscriptores SET
             nombreSuscriptor = '" . $this -> nombreSuscriptor . "',
-            email = '" . $this -> email . "'
-            password = '" . $this -> password . "',
+            email = '" . $this -> email . "',
+            password = '" . $this -> hashearPassword($this -> password) . "',
             documento = '" . $this -> documento . "',
             nombre = '" . $this -> nombre . "',
             apellidos = '" . $this -> apellidos . "',
             telefono = '" . $this -> telefono . "',
             metodoPago = '" . $this -> metodoPago . "',
+            fechaAlta = '" . $this ->  fechaAlta . "'
             WHERE idSuscriptor = " . $this -> idSuscriptor . ";";
             $this -> conexion -> query($sql);   
         }
 
         public function Obtener(){
-            $sql = "SELECT * FROM suscriptores CROSS JOIN suscriptores WHERE
+            $sql = "SELECT * FROM suscriptores WHERE
                 idSuscriptor = " . $this ->idSuscriptor . ";";
 
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
@@ -80,7 +81,7 @@
 
         public function Eliminar(){
             $sql = "DELETE FROM suscriptores 
-                WHERE id = " . $this ->idSuscriptor . ";";
+                WHERE idSuscriptor = " . $this ->idSuscriptor . ";";
             $this -> conexion -> query($sql);
         }
 

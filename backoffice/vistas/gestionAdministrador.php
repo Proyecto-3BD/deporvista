@@ -10,13 +10,7 @@
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Ingreso de Datos</h5>
-                
                 <form action="/usuario/altaAdmin" method="post">
-                    <!--<div class="form-group">
-                        <small class="form-text text-muted">Agregue Id para modificar</small>
-                        <input type="text" placeholder="Id" name="idAdmin">
-                    </div>-->
-                    
                     <div class="form-group">
                         <input type="text" placeholder="Nombre de Usuario" name="nombreAdmin">
                     </div>
@@ -96,7 +90,7 @@
                                 <td style=""> 
                                     <form action="/usuario/bajaAdmin" method="post">
                                         <input type="radio" name="idAdmin" value="<?= $fila['idAdmin'] ?>">
-                                        <button type="submit">Eliminar</button>
+                                        <button type="submit" class="btn btn-primary">Eliminar</button>
                                     </form>
                                 </td>
                             </tr>
