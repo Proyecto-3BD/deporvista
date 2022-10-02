@@ -10,6 +10,7 @@
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Ingreso de Datos</h5>
+                
                 <form action="/usuario/altaAdmin" method="post">
                     <!--<div class="form-group">
                         <small class="form-text text-muted">Agregue Id para modificar</small>

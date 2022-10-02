@@ -43,15 +43,16 @@
                                 <td style=""> <?=$fila['fechaAlta'] ?></td>
                                 <td style=""> 
                                     <form action="/usuario/bajaSuscriptor" method="post">
-                                        <input type="button" value="Borrar" name="<?= $fila['idUsuario'] ?>" />
+                                        <input type="radio" name="idSuscriptor" value="<?= $fila['idSuscriptor'] ?>">
+                                        <button type="submit"> Eliminar</button>
                                     </form>
                                 </td>
                             </tr>
                         <?php endforeach ;?>
                     <?php endif ; ?>
                          
-                    <?php if(isset($_GET['eliminado']) && $_GET['eliminado'] == 'true') :?>
-                            <div style='color: darkred;'>Administrador eliminado</div>
+                    <?php if(isset($parametros['eliminado']) && $parametros['eliminado'] == 'true') :?>
+                            <div style='color: darkred;'>Suscriptor eliminado</div>
                     <?php endif; ?>
                                     
                 </table>
