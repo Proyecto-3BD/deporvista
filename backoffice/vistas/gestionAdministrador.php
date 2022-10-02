@@ -11,10 +11,10 @@
             <div class="card-body">
                 <h5 class="card-title">Ingreso de Datos</h5>
                 <form action="/usuario/altaAdmin" method="post">
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <small class="form-text text-muted">Agregue Id para modificar</small>
                         <input type="text" placeholder="Id" name="idAdmin">
-                    </div>
+                    </div>-->
                     
                     <div class="form-group">
                         <input type="text" placeholder="Nombre de Usuario" name="nombreAdmin">

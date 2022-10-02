@@ -4,11 +4,11 @@
     class SuscriptorControlador{
         public static function Alta($context){
             date_default_timezone_set("America/Montevideo");
-            $u = new UsuarioSuscriptorModelo();
-            $u -> idUsuario = $idUsuario;
+            $u = new SuscriptorModelo();
+            $u -> idSuscriptor = $idSuscriptor;
+            $u -> nombreSuscriptor = $nombreSuscriptor;
             $u -> email = $email;
             $u -> password = $password;
-            $u -> idSuscriptor = $idSuscriptor;
             $u -> documento = $documento;
             $u -> nombre = $nombre;
             $u -> apellidos = $apellidos;
@@ -20,17 +20,16 @@
         }
         
         public static function Eliminar($context){
-            $u = new UsuarioModelo($idUsuario);
+            $u = new UsuarioModelo($idSuscriptor);
             $u -> Eliminar();
         }        
 
         public static function Modificar($context){
             $u = new UsuarioSuscriptorModelo();
-            $u -> idUsuario = $idUsuario; 
-            $u -> nombreUsuario = $nombreUsuario;
+            $u -> idSuscriptor = $idSuscriptor; 
+            $u -> nombreSuscriptor = $nombreSuscriptor;
             $u -> email = $email;
             $u -> password = $password;
-            $u -> idSuscriptor = $idSuscriptor;
             $u -> documento = $documento;
             $u -> nombre = $nombre;
             $u -> apellidos = $apellidos;
@@ -45,8 +44,8 @@
             $resultado = [];
             foreach($usuarios as $usuario){
                 $t = [
-                    'idUsuario' => $usuario -> idUsuario,
-                    'nombreUsuario' => $usuario -> nombreUsuario,
+                    'idSuscriptor' => $usuario -> idSuscriptor,
+                    'nombreSuscriptor' => $usuario -> nombreSuscriptor,
                     'email' => $usuario -> email,
                     'documento' => $usuario -> documento,
                     'nombre' => $usuario -> nombre,
