@@ -1,6 +1,6 @@
 <?php
 
-require $_SERVER['DOCUMENT_ROOT'] ."/utils/autoload.php";
+require "../utils/autoload.php";
 
     class Modelo {
         public $IpBaseDeDatos;
