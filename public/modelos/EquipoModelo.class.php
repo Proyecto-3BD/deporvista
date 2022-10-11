@@ -10,6 +10,10 @@
         public $dt;
 
 
+        public function guardar(){
+            if($this -> idEquipo == NULL) $this -> insertarEquipo();
+            else $this -> actualizarEquipo();
+        }
 
         private function insertarEquipo(){
             $sql = "INSERT INTO equipos (idEquipo, nombre, pais, dt) 
@@ -57,7 +61,7 @@
             $this -> conexion -> query($sql);
         }
 
-        public function ObtenerTodos(){
+        public function obtenerTodos(){
             $sql = "select * from equipos;";
  
              $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
