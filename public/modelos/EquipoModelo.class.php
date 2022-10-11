@@ -35,6 +35,15 @@
             $this -> conexion -> query($sql);   
         }
 
+        public function obtenerEquipos(){
+            $sql = "SELECT * FROM  equipos WHERE idAdmin = " . $this -> idEquipo . ";";
+            $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
+
+            $this -> idEquipo = $fila['idEquipo'];
+            $this -> nombre = $fila['nombre'];
+            $this -> pais = $fila['pais'];
+            $this -> dt = $fila['dt'];
+        }
 
         public function eliminarEquipo(){
             $sql = "start transaction;";
@@ -48,18 +57,21 @@
             $this -> conexion -> query($sql);
         }
 
-        public function obtenerEquipos(){
-            $sql = "SELECT * FROM  equipos WHERE idAdmin = " . $this -> idEquipo . ";";
-            $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
-
-            $this -> idEquipo = $fila['idEquipo'];
-            $this -> nombre = $fila['nombre'];
-            $this -> pais = $fila['pais'];
-            $this -> dt = $fila['dt'];
-        }
-
-
-
-
+        public function ObtenerTodos(){
+            $sql = "select * from equipos;";
+ 
+             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
+             $resultado = array();
+             foreach($filas as $fila){
+                 $a = new EquiposModelo();
+                 $a -> idEquipo = $fila['idEquipo'];
+                 $a -> nombre = $fila['nombre'];
+                 $a -> pais = $fila['pais'];
+                 $a -> dt = $fila['dt'];
+                 
+                 array_push($resultado,$a);
+             }
+             return $resultado;
+         }
 
     }
