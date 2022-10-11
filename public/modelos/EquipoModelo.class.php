@@ -9,6 +9,13 @@
         public $pais;
         public $dt;
 
+        public function __construct($idEquipo=""){
+            parent::__construct();
+            if($idEquipo != ""){
+                $this -> idEquipo = $idEquipo;
+                $this -> obtenerEquipos();
+            }
+        }
 
         public function guardar(){
             if($this -> idEquipo == NULL) $this -> insertarEquipo();
