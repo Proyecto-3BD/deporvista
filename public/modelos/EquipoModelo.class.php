@@ -36,7 +36,7 @@
         }
 
 
-        public function Eliminar(){
+        public function eliminarEquipo(){
             $sql = "start transaction;";
             $this -> conexion -> query($sql);
 
@@ -48,6 +48,15 @@
             $this -> conexion -> query($sql);
         }
 
+        public function obtenerEquipos(){
+            $sql = "SELECT * FROM  equipos WHERE idAdmin = " . $this -> idEquipo . ";";
+            $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
+
+            $this -> idEquipo = $fila['idEquipo'];
+            $this -> nombre = $fila['nombre'];
+            $this -> pais = $fila['pais'];
+            $this -> dt = $fila['dt'];
+        }
 
 
 
