@@ -9,6 +9,13 @@
         public $pais;
         public $dt;
 
+        public function __construct($idEquipo=""){
+            parent::__construct();
+            if($idEquipo != ""){
+                $this -> idEquipo = $idEquipo;
+                $this -> obtenerEquipos();
+            }
+        }
 
         public function guardar(){
             if($this -> idEquipo == NULL) $this -> insertarEquipo();
@@ -40,7 +47,7 @@
         }
 
         public function obtenerEquipos(){
-            $sql = "SELECT * FROM  equipos WHERE idAdmin = " . $this -> idEquipo . ";";
+            $sql = "SELECT * FROM  equipos WHERE idEquipo = " . $this -> idEquipo . ";";
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
             $this -> idEquipo = $fila['idEquipo'];
