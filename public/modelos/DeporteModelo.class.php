@@ -5,7 +5,7 @@
     class DeportesModelo extends Modelo{
         public $idDeporte;
         public $nombreDeporte ;
-        
+        public $tipoDeporte;
 
 
         public function __construct($idDeporte=""){
@@ -24,14 +24,14 @@
 
         private function insertar(){
             
-            $sql1 = "INSERT INTO deportes (nombreDeporte, tipoDeporte) 
+            $sql1 = "INSERT INTO  (nombreDeporte, tipoDeporte) 
             VALUES ('" . $this -> nombreDeporte . "',
                     '" . $this -> tipoDeporte . "');";
             $this -> conexion -> query($sql1);
         }
 
         private function actualizar(){
-            $sql = "UPDATE deportistas SET
+            $sql = "UPDATE deportes SET
             nombreDeporte = '" . $this -> nombreDeporte . "',
             tipoDeporte = '" . $this -> tipoDeporte . "'
             WHERE idDeporte = " . $this -> idDeporte . ";";
@@ -62,7 +62,7 @@
              $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
              $resultado = array();
              foreach($filas as $fila){
-                 $a = new DeportistaModelo();
+                 $a = new DeportesModelo();
                  $a -> idDeporte = $fila['idDeporte'];
                  $a -> nombreDeporte = $fila['nombreDeporte'];
                  $a -> tipoDeporte = $fila['tipoDeporte'];
@@ -71,3 +71,5 @@
              }
              return $resultado;
          }
+
+        }
