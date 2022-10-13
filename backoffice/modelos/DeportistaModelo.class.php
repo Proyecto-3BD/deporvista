@@ -5,7 +5,7 @@
     class DeportistaModelo extends Modelo{
         public $idDeportista;
         public $nombre ;
-        public $apellido ;
+        public $apellidos ;
         public $pais ;
 
 
@@ -73,8 +73,10 @@
                  $a -> pais = $fila['pais'];
                  
                  array_push($resultado,$a);
-             }
+            }
              return $resultado;
-         }
+        }
+        
+    }
 
         
