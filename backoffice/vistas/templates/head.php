@@ -49,7 +49,7 @@
           <?php if(isset($_SESSION['autenticado'])): ?>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="cerrarSesion">Salir</a>
+                    <a class="nav-link" href="/cerrarSesion">Salir</a>
                 </li>
             
           <?php endif; ?>
