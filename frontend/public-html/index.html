@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>src</th>
+				</tr>
+			</thead>
+			<tbody id="data">
+				<td></td>
+			</tbody>
+		</table>
+	</div>
+
+	<script>
+		let url = "http://192.168.48.5/dameAnuncio";
+		fetch(url)
+			.then(function(res){
+				return res.json();
+			})
+			.then(function(data){
+				let body = '';
+				data.forEach(function(d){
+					body += `<tr><td>${d.src}</td></tr>`;	
+				});
+			
+			document.getElementById('data').innerHTML = body;
+			})
+
+	</script>
+</body>
+</html>
