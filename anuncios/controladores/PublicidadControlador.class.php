@@ -1,4 +1,5 @@
 <?php
+	header("Access-Control-Allow-Origin:*");
 	require "../utils/autoload.php";
 
 	class PublicidadControlador {
@@ -14,10 +15,11 @@
                 	array_push($rutas,$t);
                 }
             }
-            $numeroRandom = random_int(0, count($rutas)-1);
-    		$anuncioAleatorio = $rutas[$numeroRandom];
-    		$data = json_encode($anuncioAleatorio);
+            //$numeroRandom = random_int(0, count($rutas)-1);
+    		//$anuncioAleatorio = $rutas[$numeroRandom];
+    		$data = json_encode($rutas);
     		echo $data;
+    		return;
 		} 
 	}
 
