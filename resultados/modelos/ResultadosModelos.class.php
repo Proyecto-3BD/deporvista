@@ -10,7 +10,7 @@
         public $infracciones;
         public $ubicacion;
 
-        
+
 
         public function ObtenerEventos(){
             $sql = "SELECT * FROM  eventos WHERE eventos = " . $this -> idEvento . ";";
@@ -62,4 +62,12 @@
             $this -> tipoDeporte = $fila['tipoDeporte'];
         }
 
+
+
+        public function ObtenerPaginaInicio() {
+            
+    
     }
+
+    
+}
