@@ -174,13 +174,17 @@ INSERT into suscriptores
 	'2020-01-01 10:10:10'
 );
 
+INSERT into deportistas
+	(nombre, apellidos, pais)
+	VALUES('Edinson', 'Cavanni', 'Uruguay')
+
 
 INSERT into equipos
 	(nombre, pais dt)
 	VALUES
-	('Javier',
-	'Garcia',
-	'Uruguay'
+	('Manchester City',
+	'Inglaterra', 
+	'Pep Guardiola'
 );
 
 INSERT into competiciones
