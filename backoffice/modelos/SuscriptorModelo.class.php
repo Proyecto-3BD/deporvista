@@ -2,12 +2,11 @@
 
     require "../utils/autoload.php";
 
-    class UsuarioSuscriptorModelo extends Modelo{
-        public $idUsuario;
-        public $nombreUsuario;
+    class SuscriptorModelo extends Modelo{
+        public $idSuscriptor;
+        public $nombreSuscriptor;
         public $email;
         public $password;
-        public $idSuscriptor;
         public $documento;
         public $nombre;
         public $apellidos;
@@ -16,35 +15,31 @@
         public $fechaAlta;
         
 
-        public function __construct($idUsuario=""){
+        public function __construct($idSuscriptor=""){
             parent::__construct();
-            if($idUsuario != ""){
-                $this -> idUsuario = $idUsuario;
+            if($idSuscriptor != ""){
+                $this -> idSuscriptor = $idSuscriptor;
                 $this -> Obtener();
             }
         }
 
         public function Guardar(){
-            if($this -> idUsuario == NULL) $this -> insertar();
+            if($this -> idSuscriptor == NULL) $this -> insertar();
             else $this -> actualizar();
         }
 
         private function insertar(){
-            $sql1 = "INSERT INTO usuarios (nombreUsuario, email, password) 
-            VALUES ('" . $this -> nombreUsuario . "',
+            $sql = "INSERT INTO suscriptores (nombreSuscriptor, email, password, documento, nombre, apellidos, telefono, metodoPago, fechaAlta) 
+            VALUES ('" . $this -> nombreSuscriptor . "',
                     '" . $this -> email . "',
-                    '" . $this -> hashearPassword($this -> password) . "');";
-            $this -> conexion -> query($sql1);
-            
-            $sql2 = "INSERT INTO suscriptores (idSuscriptor, documento, nombre, apellidos, telefono, metodoPago, fechaAlta) 
-                VALUES ((SELECT max(idUsuario) AS idSuscriptor FROM usuarios),
-                        '" . $this -> documento . "',
-                        '" . $this -> nombre . "',
-                        '" . $this -> apellidos . "',
-                        '" . $this -> telefono . "',
-                        '" . $this -> metodoPago . "',
-                        '" . $this -> fechaAlta . "');";
-            $this -> conexion -> query($sql2);
+                    '" . $this -> hashearPassword($this -> password) . "',
+                    '" . $this -> documento . "',
+                    '" . $this -> nombre . "',
+                    '" . $this -> apellidos . "',
+                    '" . $this -> telefono . "',
+                    '" . $this -> metodoPago . "',
+                    '" . $this -> fechaAlta . "');";
+            $this -> conexion -> query($sql);
         }
 
         private function hashearPassword($password){
@@ -52,38 +47,42 @@
         }
 
         private function actualizar(){
+<<<<<<< HEAD:backoffice/modelos/UsuarioSuscriptorModelo.class.php
             $sql = "start transaction;";
             $this -> conexion -> query($sql);
 
             $sql = "UPDATE usuarios SET
             nombreUsuario = '" . $this -> nombreUsuario . "',
             email = '" . $this -> email . "'
-            password = '" . $this -> password . "'
+            password = '" . $this -> hashearPassword($this -> password) . "'
             WHERE idUsuario = " . $this -> idUsuario . ";";
             $this -> conexion -> query($sql);
 
+=======
+>>>>>>> modelos:backoffice/modelos/SuscriptorModelo.class.php
             $sql = "UPDATE suscriptores SET
+            nombreSuscriptor = '" . $this -> nombreSuscriptor . "',
+            email = '" . $this -> email . "',
+            password = '" . $this -> hashearPassword($this -> password) . "',
             documento = '" . $this -> documento . "',
             nombre = '" . $this -> nombre . "',
             apellidos = '" . $this -> apellidos . "',
             telefono = '" . $this -> telefono . "',
             metodoPago = '" . $this -> metodoPago . "',
-            WHERE idSuscriptor = " . $this -> idUsuario . ";";
-            $this -> conexion -> query($sql);
-
-            $sql = "commit;";
+            fechaAlta = '" . $this ->  fechaAlta . "'
+            WHERE idSuscriptor = " . $this -> idSuscriptor . ";";
             $this -> conexion -> query($sql);   
         }
 
         public function Obtener(){
-            $sql = "SELECT * FROM usuarios CROSS JOIN suscriptores WHERE usuarios.idUsuario = suscriptores.idSuscriptor AND usuarios.idUsuario = " . $this ->idUsuario . ";";
+            $sql = "SELECT * FROM suscriptores WHERE
+                idSuscriptor = " . $this ->idSuscriptor . ";";
 
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
-            $this -> idUsuario = $fila['idUsuario'];
-            $this -> nombreUsuario = $fila['nombreUsuario'];
-            $this -> email = $fila['email'];
             $this -> idSuscriptor = $fila['idSuscriptor'];
+            $this -> nombreSuscriptor = $fila['nombreSuscriptor'];
+            $this -> email = $fila['email'];
             $this -> documento = $fila['documento'];
             $this -> nombre = $fila['nombre'];
             $this -> apellidos = $fila['apellidos'];
@@ -94,47 +93,34 @@
 
 
         public function Eliminar(){
-            $sql = "start transaction;";
-            $this -> conexion -> query($sql);
-
-            $sql = "DELETE FROM usuarios 
-                WHERE id = " . $this ->idUsuario . ";";
-            $this -> conexion -> query($sql);
-        
-            $sql = "DELETE FROM suscriptores
-                WHERE id = " . $this ->idSuscriptor . ";";
-            $this -> conexion -> query($sql);
-
-            $sql = "commit;";
+            $sql = "DELETE FROM suscriptores 
+                WHERE idSuscriptor = " . $this ->idSuscriptor . ";";
             $this -> conexion -> query($sql);
         }
 
         public function ObtenerTodos(){
-           $sql = "select * from usuarios cross join suscriptores where usuarios.idUsuario=suscriptores.idSuscriptor;";
-
+            $sql = "select * from suscriptores";
             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
             $resultado = array();
             foreach($filas as $fila){
-                $p = new UsuarioSuscriptorModelo();
-                $p -> idUsuario  = $fila['idUsuario'];
-                $p -> nombreUsuario = $fila['nombreUsuario'];
+                $p = new SuscriptorModelo();
+                $p -> idSuscriptor  = $fila['idSuscriptor'];
+                $p -> nombreSuscriptor = $fila['nombreSuscriptor'];
                 $p -> email = $fila['email'];
                 $p -> password = $fila['password'];
-                $p -> idSuscriptor = $fila['idSuscriptor'];
                 $p -> documento = $fila['documento'];
                 $p -> nombre = $fila['nombre'];
                 $p -> apellidos = $fila['apellidos'];
                 $p -> telefono = $fila['telefono'];
                 $p -> metodoPago = $fila['metodoPago'];
                 $p -> fechaAlta = $fila['fechaAlta'];
-
                 array_push($resultado,$p);
             }
             return $resultado;
         }
 
         public function Autenticar(){
-            $sql = "SELECT * FROM usuarios WHERE nombreUsuario = '" . $this -> nombreUsuario . "';";
+            $sql = "SELECT * FROM suscriptores WHERE nombreSuscriptor = '" . $this -> nombreSuscriptor . "';";
             $resultado = $this -> conexion -> query($sql);
             if($resultado -> num_rows == 0) {
                 return false;

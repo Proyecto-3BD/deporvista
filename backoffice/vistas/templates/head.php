@@ -37,10 +37,10 @@
             <a class="nav-link" href="/suscriptores">Suscriptores</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contacto.php">Anuncios</a>
+            <a class="nav-link" href="/gestionBanners">Anuncios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contacto.php">Eventos</a>
+            <a class="nav-link" href="/">Eventos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/usuario/administradores">Administradores</a>
@@ -49,7 +49,7 @@
           <?php if(isset($_SESSION['autenticado'])): ?>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="cerrarSesion">Salir</a>
+                    <a class="nav-link" href="/cerrarSesion">Salir</a>
                 </li>
             
           <?php endif; ?>

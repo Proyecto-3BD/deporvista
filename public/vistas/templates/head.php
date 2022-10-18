@@ -12,7 +12,7 @@
     <title>Deporvista</title>
 
     <link rel="canonical" href="index.html">
-
+    <link rel="stylesheet" href="css/style.css">
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
 

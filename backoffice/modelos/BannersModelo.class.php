@@ -2,32 +2,30 @@
 
 	require "../utils/autoload.php";
 
-	class AnunciosModelo extends Modelo {
+	class BannersModelo extends Modelo {
 		public $idBanner;
 		public $src;
-        public $publicado
+        public $publicado;
 
-		public function __construct($id=""){
+		public function __construct($idBanner=""){
 			parent::__construct();
-			if($id !==""){
-				$this -> id = $id;
+			if($idBanner !==""){
+				$this -> idBanner = $idBanner;
 				$this -> Obtener();
 			}
 		}
 
         public function Guardar(){
-            if($this -> id === NULL) $this -> insertar();
+            if($this -> idBanner === NULL) $this -> insertar();
             else $this -> actualizar();
         }
 
 		public function Obtener(){
             $sql = "SELECT * FROM banners WHERE idBanner = " . $this -> idBanner . ";";
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
-
             $this -> idBanner = $fila['idBanner'];
             $this -> src = $fila['src'];
-            $this -> ubicacion = $fila['ubicacion'];
-            
+            $this -> publicado = $fila['publicado'];
         }
 
         public function Eliminar(){
@@ -46,13 +44,14 @@
         private function actualizar(){
             $sql = "UPDATE banners SET 
                     src = '" . $this -> src . "',
-                    publicado = '" . $this -> publicado . "', 
+                    publicado = '" . $this -> publicado . "'
                     WHERE idBanner = " . $this -> idBanner . ";";
             $this -> conexion -> query($sql);
+
         }
 
         public function ObtenerTodos(){
-            $sql = "SELECT * FROM anuncios;";
+            $sql = "SELECT * FROM banners;";
             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
 
             $elementos = [];
