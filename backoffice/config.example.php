@@ -1,9 +1,8 @@
 <?php 
-    const IP_DB = "";
-    const USER_DB = "";
-    const PASS_DB = "";
-    const NAME_DB = "";
-    const PORT_DB = "";
-    const API_AUTH_URL = "";
-    const API_AUTH_ADMIN_URL = "";
-    const API_ADMIN_URL = "";
+    const IP_DB = "192.168.48.2";
+    const USER_DB ="root";
+    const PASS_DB = "1234";
+    const NAME_DB = "base";
+    const PORT_DB = "3306";
+    const API_AUTH_URL = "192.168.48.4";
+    const API_ADMIN_URL = "192.168.48.6";
