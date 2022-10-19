@@ -1,0 +1,369 @@
+:root {
+    --main-color: #369741;
+    --segundo-color: #205720;
+    --hover-color: #093a0d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif; 
+}
+
+.contenedor {
+    max-width: 1700px;
+    margin: 0 auto;
+}
+
+.logo img {
+    width: 7rem;
+}
+
+.nav-color {
+    background-color: var(--main-color);
+}
+
+.nav-uno {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-uno-concetar {
+    display: flex;
+    align-items: center;
+}
+
+.nav-uno-concetar input {
+    padding: 5px;
+    font-size: 12px;
+}
+
+.nav-dos {
+    background-color: var(--segundo-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lista-nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+}
+
+
+.lista-nav li {
+    list-style: none;
+    padding: 1rem 5rem;
+}
+
+.lista-nav li:hover {
+    list-style: none;
+    background-color: var(--hover-color);
+}
+
+.lista-nav li a {
+    color: rgb(255, 255, 255);
+    font: uppercase;
+    text-decoration: none;
+}
+
+/* Drop*/
+.drop a {
+    background-color: var(--segundo-color);
+    border: 1px white solid;
+}
+
+
+.drop a:hover {
+    background-color: var(--hover-color);
+    border: 1px white solid;
+}
+
+.drop ul li a {
+    background-color: white;
+}
+
+.drop ul li a:hover {
+    background-color: white;
+}
+
+
+/*Conectar */
+.iniciar-sesion {
+    padding: 0 0 0 3rem;
+}
+
+.iniciar-sesion a {
+    border: 1px black solid;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    color: black;
+    background-color: aliceblue;
+}
+
+.iniciar-sesion a:hover {
+    color: black;
+}
+
+
+/* Main */ 
+.main {
+    display: grid;
+    grid-template-columns: 15% 15% 55% 15%;
+    padding-top: 2rem;
+    background-color: rgb(240, 240, 240);
+}
+
+.publi-uno {
+    border: 1px solid black;
+}
+
+.publi-dos {
+    border: 1px solid black;
+}
+
+.sidebar {
+    margin: 0 1.5rem;
+}
+
+
+/* Aside */
+.contenido-side {
+    background-color: white;
+    border: 3px solid rgb(92, 214, 92);
+    padding: 1rem;
+    height: 80vh;
+}
+
+.contenido-side p {
+    font-size: 1.5rem;
+}
+
+
+
+
+/*Resultados */
+.resultados-div-exterior {
+    background-color: #369741;
+    padding: 0 2rem 2rem 2rem;
+}
+
+.resultados-div-exterior ul {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+}
+
+.resultados-div-exterior li a {
+    color: rgb(0, 0, 0);
+    font: uppercase;
+    text-decoration: none;
+    background-color: white;
+    padding: 0.5rem;
+}
+
+
+.resultados-div-exterior li {
+    list-style: none;
+    padding: 0.5rem;
+    background-color: white;
+    width: 8rem;
+    text-align: center;
+    margin: 1rem 0;
+    border-radius: 4px;
+
+}
+
+.resultados-div-interior {
+    background-color: #0c5815;
+    padding: 2rem;
+    height: 80vh;
+
+}
+
+.accordion-body {
+    display: grid;
+    grid-template-columns: 15% 45% 15% 25%;
+    align-items: center;
+}
+
+.accion button {
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 3px;
+    width: 5rem;
+    padding: 0.2em;
+}
+
+.accordion-button:not(.collapsed) {
+    color: black !important;
+    background-color: #ffffff !important;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+}
+
+.accordion-button:focus {
+    border-color: #000000 !important;
+}
+
+
+/*Footer */
+footer {
+    background-color: rgb(43, 43, 43);
+    padding: 5rem 0;
+}
+
+.footer-logo img {
+    width: 15rem;
+}
+
+.footer-lista {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-lista ul {
+    list-style: none;
+}
+
+.footer-lista ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-lista ul li:first-child {
+    color: white;
+    padding-bottom: 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.footer-lista ul li {
+    padding-bottom: 0.4rem;
+}
+
+/* Login */
+.modal-estatico {
+    background-color: #0c5815;
+    color: white;
+}
+
+.modal-contenido {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    
+}
+
+.modal-form {
+    height: 30rem;
+    width: 30rem;
+    background-color: white;
+}
+
+.modal-body {
+    padding: 0 !important;
+}
+
+
+.cabecera-modal {
+    background-color: #369741;
+}
+
+.cabecera-form {
+    display: flex;
+    color: rgb(0, 0, 0);
+    justify-content: center;
+    align-items: center;
+}
+
+.cabecera-form p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.cabecera-form p:first-child {
+    background-color: #093a0d;
+    color: white;
+}
+
+.conect {
+    display: block;
+}
+
+.conect form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.conect form input {
+    padding: 0.3rem;
+    margin: 0.5rem 0;
+}
+
+.conect button {
+    background-color: #093a0d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+}
+
+.registro button {
+    background-color: #093a0d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+}
+
+
+.registro {
+    display: none;
+}
+
+.registro form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+}
+
+.registro form input {
+    padding: 0.3rem;
+    margin: 0.5rem 0;
+}
+
+#inicio-p {
+    cursor: pointer;
+    padding: 0.8rem 1.5rem;
+}
+
+#registro-p {
+    cursor: pointer;
+    padding: 0.8rem 1.5rem;
+}
+
+.cerrar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.5rem;
+}
+
+.cerrar button {
+    background-color: #369741;
+    border: none;
+    margin: 0;
+    padding-right: 0.8rem;
+}
+
+.cerrar button span {
+    font-size: 2rem;
+}
