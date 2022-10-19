@@ -182,9 +182,9 @@ INSERT into deportistas
 INSERT into equipos
 	(nombre, pais dt)
 	VALUES
-	('Manchester City',
-	'Inglaterra', 
-	'Pep Guardiola'
+	('Basañez',
+	'Uruguay', 
+	'Oreja Martinez'
 );
 
 INSERT into competiciones

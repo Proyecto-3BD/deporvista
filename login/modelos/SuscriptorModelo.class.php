@@ -118,7 +118,7 @@
         }
 
         private function compararPasswords($passwordHasheado){
-            return password_verify($this -> Password, $passwordHasheado);
+            return password_verify($this -> password, $passwordHasheado);
         }
 
     }
