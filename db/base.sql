@@ -176,7 +176,7 @@ INSERT into suscriptores
 
 INSERT into deportistas
 	(nombre, apellidos, pais)
-	VALUES('Edinson', 'Cavanni', 'Uruguay')
+	VALUES('Edinson', 'Cavanni', 'Uruguay');
 
 
 INSERT into equipos
