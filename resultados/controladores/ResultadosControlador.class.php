@@ -3,7 +3,7 @@
 
 class ResultadosControlador {
 
-    public static function Listar(){
+    public static function Listar($context){
         $a = new ResultadosModelo();
         $res = $a -> ObtenerEventos();
 

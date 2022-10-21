@@ -6,7 +6,7 @@
         public $idDeportista;
         public $nombre ;
         public $apellidos ;
-        public $pais ;
+        public $pais;
 
 
         public function __construct($idDeportista=""){
@@ -46,7 +46,7 @@
             $sql = "SELECT * FROM  deportistas WHERE idDeportista = " . $this -> idDeportista . ";";
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
-            $this -> idAdmin = $fila['idDeportista'];
+            $this -> idDeportista = $fila['idDeportista'];
             $this -> nombre = $fila['nombre'];
             $this -> apellidos = $fila['apellidos'];
             $this -> pais = $fila['pais'];

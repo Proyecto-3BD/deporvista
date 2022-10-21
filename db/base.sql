@@ -180,7 +180,7 @@ INSERT into deportistas
 
 
 INSERT into equipos
-	(nombre, pais dt)
+	(nombre, pais, dt)
 	VALUES
 	('Basañez',
 	'Uruguay', 
@@ -188,9 +188,16 @@ INSERT into equipos
 );
 
 INSERT into competiciones
-	(nombre, pais anio)
+	(nombre, pais, anio)
 	VALUES
 	('LigaUruguay',
 	'Uruguay',
 	'2020-01-01'
 );
+
+INSERT into deportistaEquipo
+	(idDeportista, idEquipo, rol)
+	VALUES 
+	((SELECT max(idDeportista) AS idDeportista FROM deportistas), 
+	(SELECT max(idEquipo) AS idEquipo FROM equipos),
+	'volante');
