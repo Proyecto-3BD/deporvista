@@ -2,7 +2,7 @@
 
     require "../utils/autoload.php";
 
-    class CompeticionModelo extends Modelo {
+    class CompeticionesModelo extends Modelo {
 
         public $idCompeticion;
         public $nombre;
@@ -48,7 +48,7 @@
         }
 
         public function obtener(){
-            $sql = "SELECT * FROM  competiciones WHERE competiciones = " . $this -> idCompeticion . ";";
+            $sql = "SELECT * FROM  competiciones WHERE idCompeticion = " . $this -> idCompeticion . ";";
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
             $this -> idCompeticion = $fila['idCompeticion'];
@@ -58,14 +58,8 @@
         }
 
         public function eliminar(){
-            $sql = "start transaction;";
-            $this -> conexion -> query($sql);
-
             $sql = "DELETE FROM competiciones 
-                WHERE id = " . $this -> idCompeticion . ";";
-            $this -> conexion -> query($sql);
-        
-            $sql = "commit;";
+                WHERE idCompeticion = " . $this -> idCompeticion . ";";
             $this -> conexion -> query($sql);
         }
 
