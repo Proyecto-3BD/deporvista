@@ -57,6 +57,17 @@
             $this -> anio = $fila['anio'];
         }
 
+        public function obtenerPorPais(){
+            $sql = "SELECT * FROM  competiciones WHERE pais = " . $this -> pais . ";";
+            $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
+
+            $this -> idCompeticion = $fila['idCompeticion'];
+            $this -> nombre = $fila['nombre'];
+            $this -> pais = $fila['pais'];
+            $this -> anio = $fila['anio'];
+        }
+
+
         public function eliminar(){
             $sql = "DELETE FROM competiciones 
                 WHERE idCompeticion = " . $this -> idCompeticion . ";";
