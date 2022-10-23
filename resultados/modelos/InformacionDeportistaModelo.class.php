@@ -15,8 +15,24 @@
             parent::__construct();
             if($idDeportista != ""){
                 $this -> idDeportista = $idDeportista;
-                $this -> ObtenerEqupoQueJuega();
+                $this -> obtener();
             }
+        }
+
+        public function obtener(){
+            $sql = "SELECT * FROM  competiciones WHERE idCompeticion = " . $this -> idCompeticion . ";";
+            $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
+
+            $this -> idCompeticion = $fila['idCompeticion'];
+            $this -> nombre = $fila['nombre'];
+            $this -> apellidos = $fila['apellidos'];
+            $this -> rol = $fila['rol'];
+            $this -> equipo = $fila['equipo'];
+            $this -> paisEquipo = $fila['paisEquipo'];
+
+        public function guardar(){
+            if($this -> idCompeticion == NULL) $this -> insertar();
+            else $this -> actualizar();
         }
 
         public function ObtenerEqupoQueJuega(){

@@ -79,7 +79,7 @@ CREATE TABLE suscripcionEvento(
 
 CREATE TABLE deportistas(
 	idDeportista smallint unsigned auto_increment not null,
-	nombre VARCHAR(50) not null,
+	nombreDeportista VARCHAR(50) not null,
 	apellidos VARCHAR(50) not null,
 	pais VARCHAR(50) not null,
 	primary key(idDeportista)
@@ -87,7 +87,7 @@ CREATE TABLE deportistas(
 
 CREATE TABLE equipos(
 	idEquipo smallint unsigned auto_increment not null,
-	nombre VARCHAR(50) not null,
+	nombreEquipo VARCHAR(50) not null,
 	pais VARCHAR(50) not null,
 	dt VARCHAR(50) not null,
 	primary key(idEquipo)
@@ -137,7 +137,7 @@ CREATE TABLE deportistaEquipo(
 
 CREATE TABLE competiciones(
 	idCompeticion smallint unsigned auto_increment not null,
-	nombre VARCHAR(50) not null,
+	nombreCompeticion VARCHAR(50) not null,
 	pais VARCHAR(50) not null,
 	anio DATE,
 	primary key (idCompeticion)
