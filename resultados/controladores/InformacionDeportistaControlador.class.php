@@ -7,10 +7,12 @@
             $a = new InformacionDeportistaModelo($context['post']['idDeportista']);
             $res = $a -> ObtenerEqupoQueJuega();
             
-            //$l = new CompeticionesModelo;
+            /*$l = new CompeticionesModelo();
 
-            //$liga ->$l obtenerPorPais();   ###########VER ESTOOOOOOOOO
-            
+            $liga = CompeticionesControlador::Listar();
+
+            var_dump($liga);
+            */
             
             echo json_encode($res);          
         }

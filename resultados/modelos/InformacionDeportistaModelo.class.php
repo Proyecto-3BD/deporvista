@@ -29,4 +29,17 @@
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
             return $fila;
         }
+
+
+        /*public public function ObtenerCompeticion(){
+            $sql = "SELECT dc.idDeportista, c.nombre                 
+                    FROM deportistaCompeticion AS dc
+                    INNER JOIN deportistas AS d                  
+                    ON dc.idDeportista=d.idDeportista
+                    INNER JOIN competiciones AS c
+                    ON dc.idCompeticion=c.idCompeticion
+                    WHERE dc.idDeportista=1;" . $this -> idDeportista . ";";
+            $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
+            return $fila;
+        }*/
     }

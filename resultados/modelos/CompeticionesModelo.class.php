@@ -78,9 +78,9 @@
             $sql = "select * from competiciones;";
  
              $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
-             $resultado = array();
+             $resultado = [];
              foreach($filas as $fila){
-                 $a = new CompeticionModelo();
+                 $a = new CompeticionesModelo();
                  $a -> idCompeticion = $fila['idCompeticion'];
                  $a -> nombre = $fila['nombre'];
                  $a -> pais = $fila['pais'];
