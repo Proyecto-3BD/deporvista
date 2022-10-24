@@ -11,20 +11,19 @@
         */############
 
         public static function ListarInfoDeportista($context){
-            $d = ObtenerDeportista($context['post']['idDeportista']);
-            $c = ObtenerCompeticion($context['post']['idDeportista']);
+            $a = new InformacionDeportistaModelo($context['post']['idDeportista']);
+            $d = $a -> ObtenerDeportista();
+            $c = $a -> ObtenerCompeticion();
             var_dump($d);
             var_dump($c);
         }
 
 
         public static function ObtenerDeportista($context){
-            $a = new InformacionDeportistaModelo($context['post']['idDeportista']);
-            return $a -> ObtenerEqupoQueJuega();          
+            return $this -> ObtenerEqupoQueJuega();          
         }
 
         public static function ObtenerCompeticion($context){
-            $a = new InformacionDeportistaModelo($context['post']['idDeportista']);
-            return $a -> ObtenerCompeticion();
+            return $this -> ObtenerCompeticion();
         }
     }

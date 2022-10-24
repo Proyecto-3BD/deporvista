@@ -184,12 +184,12 @@ INSERT into suscriptores
 );
 
 INSERT into deportistas
-	(nombre, apellidos, pais)
+	(nombreDeportista, apellidos, pais)
 	VALUES('Edinson', 'Cavanni', 'Uruguay');
 
 
 INSERT into equipos
-	(nombre, pais, dt)
+	(nombreEquipo, pais, dt)
 	VALUES
 	('Basañez',
 	'Uruguay', 
@@ -197,7 +197,7 @@ INSERT into equipos
 );
 
 INSERT into competiciones
-	(nombre, pais, anio)
+	(nombreCompeticion, pais, anio)
 	VALUES
 	('LigaUruguay',
 	'Uruguay',

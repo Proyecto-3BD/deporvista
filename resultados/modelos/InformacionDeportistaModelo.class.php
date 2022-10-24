@@ -20,7 +20,8 @@
         }
 
         public function obtener(){
-            $sql = "SELECT * FROM  competiciones WHERE idCompeticion = " . $this -> idCompeticion . ";";
+            $sql = "SELECT * FROM  deportistas WHERE idDeportista = " . $this -> idDeportista  . ";";
+            var_dump($sql);
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
             $this -> idCompeticion = $fila['idCompeticion'];
@@ -29,6 +30,7 @@
             $this -> rol = $fila['rol'];
             $this -> equipo = $fila['equipo'];
             $this -> paisEquipo = $fila['paisEquipo'];
+        }
 
         public function guardar(){
             if($this -> idCompeticion == NULL) $this -> insertar();
