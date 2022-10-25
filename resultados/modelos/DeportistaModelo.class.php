@@ -4,7 +4,7 @@
 
     class DeportistaModelo extends Modelo{
         public $idDeportista;
-        public $nombre ;
+        public $nombreDeportista;
         public $apellidos ;
         public $pais;
 
@@ -25,8 +25,8 @@
 
         private function insertar(){
             
-            $sql1 = "INSERT INTO deportistas (nombre, apellidos, pais) 
-            VALUES ('" . $this -> nombre . "',
+            $sql1 = "INSERT INTO deportistas (nombreDeportista, apellidos, pais) 
+            VALUES ('" . $this -> nombreDeportista . "',
                     '" . $this -> apellidos . "',
                     '" . $this -> pais . "');";
             $this -> conexion -> query($sql1);
@@ -34,7 +34,7 @@
 
         private function actualizar(){
             $sql = "UPDATE deportistas SET
-            nombre = '" . $this -> nombre . "',
+            nombreDeportista = '" . $this -> nombreDeportista . "',
             apellidos = '" . $this -> apellidos . "',
             pais = '" . $this -> pais . "'
             WHERE idDeportista = " . $this -> idDeportista . ";";
@@ -47,7 +47,7 @@
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
             $this -> idDeportista = $fila['idDeportista'];
-            $this -> nombre = $fila['nombre'];
+            $this -> nombreDeportista = $fila['nombreDeportista'];
             $this -> apellidos = $fila['apellidos'];
             $this -> pais = $fila['pais'];
         }
@@ -68,7 +68,7 @@
              foreach($filas as $fila){
                  $a = new DeportistaModelo();
                  $a -> idDeportista = $fila['idDeportista'];
-                 $a -> nombre = $fila['nombre'];
+                 $a -> nombreDeportista = $fila['nombreDeportista'];
                  $a -> apellidos = $fila['apellidos'];
                  $a -> pais = $fila['pais'];
                  
