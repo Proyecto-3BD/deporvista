@@ -5,7 +5,7 @@
     class EquiposModelo extends Modelo {
 
         public $idEquipo;
-        public $nombre;
+        public $nombreEquipo;
         public $pais;
         public $dt;
 
@@ -23,9 +23,8 @@
         }
 
         private function insertarEquipo(){
-            $sql = "INSERT INTO equipos (idEquipo, nombre, pais, dt) 
-            VALUES ('" . $this -> idEquipo . "',
-                    '" . $this -> nombre . "',
+            $sql = "INSERT INTO equipos (nombreEquipo, pais, dt) 
+            VALUES ('" . $this -> nombreEquipo . "',
                     '" . $this -> pais . "',
                     '" . $this -> dt . "');";
             $this -> conexion -> query($sql);
@@ -36,7 +35,7 @@
             $this -> conexion -> query($sql);
 
             $sql = "UPDATE equipos SET
-            nombre = '" . $this -> nombre . "',
+            nombreEquipo = '" . $this -> nombreEquipo . "',
             pais = '" . $this -> pais . "',
             dt = '" . $this -> dt . "',
             WHERE idEquipo = " . $this -> idEquipo . ";";
@@ -51,7 +50,7 @@
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
             $this -> idEquipo = $fila['idEquipo'];
-            $this -> nombre = $fila['nombre'];
+            $this -> nombreEquipo = $fila['nombreEquipo'];
             $this -> pais = $fila['pais'];
             $this -> dt = $fila['dt'];
         }
@@ -61,7 +60,7 @@
             $this -> conexion -> query($sql);
 
             $sql = "DELETE FROM equipos 
-                WHERE id = " . $this -> idEquipo . ";";
+                WHERE idEquipo = " . $this -> idEquipo . ";";
             $this -> conexion -> query($sql);
         
             $sql = "commit;";
@@ -76,7 +75,7 @@
              foreach($filas as $fila){
                  $a = new EquiposModelo();
                  $a -> idEquipo = $fila['idEquipo'];
-                 $a -> nombre = $fila['nombre'];
+                 $a -> nombreEquipo = $fila['nombreEquipo'];
                  $a -> pais = $fila['pais'];
                  $a -> dt = $fila['dt'];
                  
