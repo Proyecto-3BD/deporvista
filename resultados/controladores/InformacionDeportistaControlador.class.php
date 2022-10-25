@@ -13,7 +13,8 @@
         public static function ListarInfoDeportista($context){
             $d = new DeportistaModelo($context['post']['idDeportista']);
             $deportistaEq = $d -> deportistaEquipo();
-            var_dump($d);
+            
+            var_dump($deportistaEq);
         }
 
 

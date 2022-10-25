@@ -10,6 +10,7 @@
         public $rolDeporEquipo;
         public $nombreEquipo;
         public $paisEquipo;
+        public $idEquipo;
 
 
         public function __construct($idDeportista=""){
@@ -22,21 +23,14 @@
 
 
         public function deportistaEquipo(){
-            $sql = "SELECT d.idDeportista, d.nombreDeportista, d.apellidos, de.rol, e.nombreEquipo, e.paisEquipo
+            $sql = "SELECT d.idDeportista, d.nombreDeportista, d.apellidos, de.rol, e.idEquipo, e.nombreEquipo, e.paisEquipo
                 FROM deportistaEquipo AS de  
                 INNER JOIN deportistas AS d 
                 ON de.idDeportista=d.idDeportista 
                 INNER JOIN equipos AS e 
                 ON de.idEquipo=e.idEquipo WHERE d.idDeportista=" . $this -> idDeportista . ";";
-            $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
-            $this -> idDeportista = $fila['idDeportista'];
-            $this -> nombreDeportista = $fila['nombreDeportista'];
-            $this -> apellidos = $fila['apellidos'];
-            $this -> paisEquipo = $fila['paisEquipo'];
-            $this -> rolDeporEquipo = $fila['rol'];
-            $this -> nombreEquipo = $fila['nombreEquipo'];
-            $this -> paisEquipo = $fila['paisEquipo'];
-
+            $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];    
+            return $fila;
         }
 
         public function Guardar(){
