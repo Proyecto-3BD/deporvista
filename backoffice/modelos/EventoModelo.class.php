@@ -24,9 +24,8 @@
         }
 
         private function insertar(){
-            $sql = "INSERT INTO eventos (idEvento, fechaHora, resultado, infracciones, ubicacion) 
-            VALUES ('" . $this -> idEvento . "',
-                    '" . $this -> fechaHora . "',
+            $sql = "INSERT INTO eventos (fechaHora, resultado, infracciones, ubicacion) 
+            VALUES ('" . $this -> fechaHora . "',
                     '" . $this -> resultado . "',
                     '" . $this -> infracciones . "',
                     '" . $this -> ubicacion . "');";
