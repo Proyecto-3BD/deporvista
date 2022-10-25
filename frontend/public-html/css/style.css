@@ -367,3 +367,39 @@ footer {
 .cerrar button span {
     font-size: 2rem;
 }
+
+
+/** info deportista **/
+.info-deportista {
+ 
+    background-color: #369741;
+    border: none;
+    margin: 0;
+    padding-right: 0.8rem;
+}
+
+.info-deportista {
+ 
+    background-color: #369741;
+    border: none;
+    margin: 0;
+    padding: 2rem;
+}
+
+.info-deportista table thead tr th {
+    padding: 1rem 5rem;
+}
+
+.info-deportista table {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+}
+
+.info-deportista table tbody tr td {
+    border-bottom: 1px solid rgb(236, 236, 236);
+    padding: 0.5rem;
+}
+
+.info-deportista table tbody tr:last-of-type td {
+    border-bottom: 1px solid #369741;
+}
