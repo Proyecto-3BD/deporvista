@@ -403,3 +403,44 @@ footer {
 .info-deportista table tbody tr:last-of-type td {
     border-bottom: 1px solid #369741;
 }
+
+
+/* Solapa directo proximo finalizado */ 
+
+#accordionPanelsStayOpenExample {
+    display: block;
+}
+
+#finalizados {
+    display: none;
+}
+
+#proximos {
+    display: none;
+}
+
+
+.info-solapas {
+ 
+    background-color: #ffffff;
+    border: none;
+    margin: 0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    height: 650px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.info-solapas table {
+    width: 100%;
+}
+
+.info-solapas table tbody tr td {
+    border-bottom: 1px solid rgb(236, 236, 236);
+    padding: 0.5rem;
+}
+
+.info-solapas table tbody tr:last-of-type td {
+    border-bottom: 1px solid #369741;
+}
