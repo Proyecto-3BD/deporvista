@@ -22,6 +22,25 @@ function inicio() {
     document.getElementById("registro-p").style.backgroundColor = "#369741";
 
     document.getElementById("registro-p").style.color = "#000000";
+}
 
 
+function directo() {
+    document.getElementById("accordionPanelsStayOpenExample").style.display = "block";
+    document.getElementById("finalizados").style.display = "none";
+    document.getElementById("proximos").style.display = "none";
+}
+
+function finalizado() {
+    document.getElementById("accordionPanelsStayOpenExample").style.display = "none";
+    document.getElementById("finalizados").style.display = "block";
+    document.getElementById("proximos").style.display = "none";
+
+}
+
+
+function proximo() {
+    document.getElementById("accordionPanelsStayOpenExample").style.display = "none";
+    document.getElementById("finalizados").style.display = "none";
+    document.getElementById("proximos").style.display = "block";
 }
