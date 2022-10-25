@@ -38,7 +38,7 @@
         }
 
         public function ObtenerEqupoQueJuega(){
-            $sql = "SELECT d.idDeportista, d.nombre, d.apellidos, de.rol, e.nombre, e.pais
+            $sql = "SELECT d.idDeportista, d.nombre, d.apellidos, de.rol, e.nombre, e.pais, e.idEquipo
                 FROM deportistaEquipo AS de  
                 INNER JOIN deportistas AS d 
                 ON de.idDeportista=d.idDeportista 

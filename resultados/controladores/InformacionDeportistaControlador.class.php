@@ -2,27 +2,13 @@
     require "../utils/autoload.php";
 
     class InformacionDeportistaControlador {
-        /*#############
-
-            arreglar variables de clase en el modelo.
-            hacer nuevo dump de la base de datos
-
-            hacer obtener en el modelo 
-        */############
-
-        public static function ListarInfoDeportista($context){
+       
+        public static function ListarDeportistaEquipo($context){
             $d = new DeportistaModelo($context['post']['idDeportista']);
             $deportistaEq = $d -> deportistaEquipo();
-            
+           
+            //return $deportistaEq;
             var_dump($deportistaEq);
-        }
-
-
-        public static function ObtenerDeportista($context){
-            return $this -> ObtenerEqupoQueJuega();          
-        }
-
-        public static function ObtenerCompeticion($context){
-            return $this -> ObtenerCompeticion();
+            //var_dump($e);
         }
     }

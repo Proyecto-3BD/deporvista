@@ -7,10 +7,12 @@
         public $nombreDeportista;
         public $apellidos ;
         public $paisDeportista;
-        public $rolDeporEquipo;
+        public $rol;
         public $nombreEquipo;
         public $paisEquipo;
         public $idEquipo;
+        public $idCompeticion;
+        public $paisCompeticion;
 
 
         public function __construct($idDeportista=""){
@@ -21,17 +23,19 @@
             }
         }
 
-
         public function deportistaEquipo(){
-            $sql = "SELECT d.idDeportista, d.nombreDeportista, d.apellidos, de.rol, e.idEquipo, e.nombreEquipo, e.paisEquipo
+            $sql = "SELECT d.idDeportista, d.nombreDeportista, d.apellidos, de.rol, e.nombreEquipo, e.paisEquipo , e.idEquipo
                 FROM deportistaEquipo AS de  
                 INNER JOIN deportistas AS d 
                 ON de.idDeportista=d.idDeportista 
                 INNER JOIN equipos AS e 
                 ON de.idEquipo=e.idEquipo WHERE d.idDeportista=" . $this -> idDeportista . ";";
-            $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];    
+            $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
             return $fila;
         }
+
+
+        ///  hacer un  metodo deportistaCompeticion como en el caso del anterior
 
         public function Guardar(){
             if($this -> idDeportista == NULL) $this -> insertar();

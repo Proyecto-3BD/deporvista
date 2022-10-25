@@ -4,7 +4,7 @@
     Routes::Add("/login","post","SesionControlador::IniciarSesion");
     Routes::Add("/usuario","post","SuscriptorControlador::Alta");
     Routes::Add("/usuario","get","SuscriptorControlador::Listar");
-    Routes::Add("/infoDeportista", "post", "InformacionDeportistaControlador::ListarInfoDeportista");
+    Routes::Add("/infoDeportista", "post", "InformacionDeportistaControlador::ListarDeportistaEquipo");
     Routes::Run();
 
        
