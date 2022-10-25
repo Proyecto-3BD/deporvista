@@ -25,6 +25,7 @@ function inicio() {
 }
 
 
+
 function directo() {
     document.getElementById("accordionPanelsStayOpenExample").style.display = "block";
     document.getElementById("finalizados").style.display = "none";
