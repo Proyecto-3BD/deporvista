@@ -81,14 +81,14 @@ CREATE TABLE deportistas(
 	idDeportista smallint unsigned auto_increment not null,
 	nombreDeportista VARCHAR(50) not null,
 	apellidos VARCHAR(50) not null,
-	pais VARCHAR(50) not null,
+	paisDeportista VARCHAR(50) not null,
 	primary key(idDeportista)
 );
 
 CREATE TABLE equipos(
 	idEquipo smallint unsigned auto_increment not null,
 	nombreEquipo VARCHAR(50) not null,
-	pais VARCHAR(50) not null,
+	paisEquipo VARCHAR(50) not null,
 	dt VARCHAR(50) not null,
 	primary key(idEquipo)
 );
@@ -96,7 +96,6 @@ CREATE TABLE equipos(
 CREATE TABLE deportistaDeporte(
 	idDeportista smallint unsigned not null,
 	idDeporte smallint unsigned not null,
-	rol VARCHAR(10) not null,
 	primary key(idDeportista, idDeporte),
 	foreign key(idDeportista) references deportistas(idDeportista),
 	foreign key(idDeporte) references deportes(idDeporte)
@@ -138,7 +137,7 @@ CREATE TABLE deportistaEquipo(
 CREATE TABLE competiciones(
 	idCompeticion smallint unsigned auto_increment not null,
 	nombreCompeticion VARCHAR(50) not null,
-	pais VARCHAR(50) not null,
+	paisCompeticion VARCHAR(50) not null,
 	anio DATE,
 	primary key (idCompeticion)
 );
@@ -184,12 +183,12 @@ INSERT into suscriptores
 );
 
 INSERT into deportistas
-	(nombreDeportista, apellidos, pais)
+	(nombreDeportista, apellidos, paisDeportista)
 	VALUES('Edinson', 'Cavanni', 'Uruguay');
 
 
 INSERT into equipos
-	(nombreEquipo, pais, dt)
+	(nombreEquipo, paisEquipo, dt)
 	VALUES
 	('Basañez',
 	'Uruguay', 
@@ -197,7 +196,7 @@ INSERT into equipos
 );
 
 INSERT into competiciones
-	(nombreCompeticion, pais, anio)
+	(nombreCompeticion, paisCompeticion, anio)
 	VALUES
 	('LigaUruguay',
 	'Uruguay',

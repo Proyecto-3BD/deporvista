@@ -11,11 +11,9 @@
         */############
 
         public static function ListarInfoDeportista($context){
-            $a = new InformacionDeportistaModelo($context['post']['idDeportista']);
-            $d = $a -> ObtenerDeportista();
-            $c = $a -> ObtenerCompeticion();
+            $d = new DeportistaModelo($context['post']['idDeportista']);
+            $deportistaEq = $d -> deportistaEquipo();
             var_dump($d);
-            var_dump($c);
         }
 
 

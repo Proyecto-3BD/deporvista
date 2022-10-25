@@ -6,7 +6,10 @@
         public $idDeportista;
         public $nombreDeportista;
         public $apellidos ;
-        public $pais;
+        public $paisDeportista;
+        public $rolDeporEquipo;
+        public $nombreEquipo;
+        public $paisEquipo;
 
 
         public function __construct($idDeportista=""){
@@ -17,18 +20,36 @@
             }
         }
 
+
+        public function deportistaEquipo(){
+            $sql = "SELECT d.idDeportista, d.nombreDeportista, d.apellidos, de.rol, e.nombreEquipo, e.paisEquipo
+                FROM deportistaEquipo AS de  
+                INNER JOIN deportistas AS d 
+                ON de.idDeportista=d.idDeportista 
+                INNER JOIN equipos AS e 
+                ON de.idEquipo=e.idEquipo WHERE d.idDeportista=" . $this -> idDeportista . ";";
+            $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
+            $this -> idDeportista = $fila['idDeportista'];
+            $this -> nombreDeportista = $fila['nombreDeportista'];
+            $this -> apellidos = $fila['apellidos'];
+            $this -> paisEquipo = $fila['paisEquipo'];
+            $this -> rolDeporEquipo = $fila['rol'];
+            $this -> nombreEquipo = $fila['nombreEquipo'];
+            $this -> paisEquipo = $fila['paisEquipo'];
+
+        }
+
         public function Guardar(){
             if($this -> idDeportista == NULL) $this -> insertar();
             else $this -> actualizar();
         }   
 
-
         private function insertar(){
             
-            $sql1 = "INSERT INTO deportistas (nombreDeportista, apellidos, pais) 
+            $sql1 = "INSERT INTO deportistas (nombreDeportista, apellidos, paisDeportista) 
             VALUES ('" . $this -> nombreDeportista . "',
                     '" . $this -> apellidos . "',
-                    '" . $this -> pais . "');";
+                    '" . $this -> paisDeportista . "');";
             $this -> conexion -> query($sql1);
         }
 
@@ -41,7 +62,6 @@
             $this -> conexion -> query($sql);   
         }
 
-
         public function Obtener(){
             $sql = "SELECT * FROM  deportistas WHERE idDeportista = " . $this -> idDeportista . ";";
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
@@ -49,16 +69,14 @@
             $this -> idDeportista = $fila['idDeportista'];
             $this -> nombreDeportista = $fila['nombreDeportista'];
             $this -> apellidos = $fila['apellidos'];
-            $this -> pais = $fila['pais'];
+            $this -> paisDeportista = $fila['paisDeportista'];
         }
-
 
         public function Eliminar(){
             $sql = "DELETE FROM deportistas 
                 WHERE idDeportista = " . $this ->idDeportista . ";";
             $this -> conexion -> query($sql);
         }
-
 
         public function ObtenerTodos(){
             $sql = "select * from deportistas;";
@@ -70,13 +88,12 @@
                  $a -> idDeportista = $fila['idDeportista'];
                  $a -> nombreDeportista = $fila['nombreDeportista'];
                  $a -> apellidos = $fila['apellidos'];
-                 $a -> pais = $fila['pais'];
+                 $a -> paisDeportista = $fila['paisDeportista'];
                  
                  array_push($resultado,$a);
             }
              return $resultado;
-        }
-        
+        }    
     }
 
         
