@@ -6,9 +6,8 @@
         public static function ListarDeportistaEquipo($context){
             $d = new DeportistaModelo($context['post']['idDeportista']);
             $deportistaEq = $d -> deportistaEquipo();
+            $deporComp = $d -> deportistaCompeticion();
            
-            //return $deportistaEq;
-            var_dump($deportistaEq);
-            //var_dump($e);
+            return array_merge($deportistaEq, $deporComp);
         }
     }

@@ -24,14 +24,26 @@
         }
 
         public function deportistaEquipo(){
+            /*$sql = "start transaction;";
+            $this -> conexion -> query($sql);*/
             $sql = "SELECT d.idDeportista, d.nombreDeportista, d.apellidos, de.rol, e.nombreEquipo, e.paisEquipo , e.idEquipo
                 FROM deportistaEquipo AS de  
                 INNER JOIN deportistas AS d 
                 ON de.idDeportista=d.idDeportista 
                 INNER JOIN equipos AS e 
                 ON de.idEquipo=e.idEquipo WHERE d.idDeportista=" . $this -> idDeportista . ";";
-            $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
             return $fila;
+        }
+
+        public function deportistaCompeticion(){
+            $sql = "SELECT dc.idCompeticion, c.nombreCompeticion 
+                FROM deportistaCompeticion AS dc  
+                INNER JOIN deportistas AS d 
+                ON dc.idDeportista=d.idDeportista 
+                INNER JOIN competiciones AS c 
+                ON dc.idCompeticion=c.idCompeticion WHERE dc.idDeportista=" . $this -> idDeportista . ";";
+            $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
+            return $fila;   
         }
 
 
