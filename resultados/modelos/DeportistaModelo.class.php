@@ -32,6 +32,7 @@
                 ON de.idDeportista=d.idDeportista 
                 INNER JOIN equipos AS e 
                 ON de.idEquipo=e.idEquipo WHERE d.idDeportista=" . $this -> idDeportista . ";";
+            $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
             return $fila;
         }
 

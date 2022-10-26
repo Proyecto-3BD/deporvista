@@ -8,6 +8,7 @@
             $deportistaEq = $d -> deportistaEquipo();
             $deporComp = $d -> deportistaCompeticion();
            
-            return array_merge($deportistaEq, $deporComp);
+            $data = array_merge($deportistaEq, $deporComp);
+            return $data;
         }
     }
