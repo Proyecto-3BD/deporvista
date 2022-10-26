@@ -6,15 +6,14 @@
             if(!empty($context['post']['nombre'])){
                 $u = new CompeticionesModelo();
                 $u -> idCompeticion = $context['post']['idCompeticion'];
-                $u -> nombre = $context['post']['nombre'];
-                $u -> pais = $context['post']['pais'];
+                $u -> nombreCompeticion = $context['post']['nombreCompeticion'];
+                $u -> paisCompeticion = $context['post']['paisCompeticion'];
                 $u -> anio = $context['post']['anio'];
                 $u -> Guardar();
                 render('gestionCompeticiones', ["ingresado" => true]);
             }else
                 render('gestionCompeticiones', ["error" => true]);
             
-        
         }
 
         public static function Eliminar($context){
@@ -27,8 +26,8 @@
 
             $u = new CompeticionesModelo($context['post']['idCompeticion']);
             $u -> idCompeticion = $context['post']['idCompeticion'];
-            $u -> nombre = $context['post']['nombre'];
-            $u -> anio = $context['post']['pais'];
+            $u -> nombreCompeticion = $context['post']['nombreCompeticion'];
+            $u -> paisCompeticion = $context['post']['paisCompeticion'];
             $u -> anio = $context['post']['anio'];
             if(!empty($context['post']['idCompeticion'])){
                 $u -> Guardar();
@@ -46,8 +45,8 @@
             foreach($competiciones as $competicion){
                 $t = [
                     'idCompeticion' => $competicion -> idCompeticion,
-                    'nombre' => $competicion -> nombre,
-                    'pais' => $competicion -> pais,
+                    'nombreCompeticion' => $competicion -> nombreCompeticion,
+                    'paisCompeticion' => $competicion -> paisCompeticion,
                     'anio' => $competicion -> anio
                 ];   
                 array_push($resultado,$t);

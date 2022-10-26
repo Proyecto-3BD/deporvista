@@ -24,9 +24,7 @@
         }
 
         public function deportistaEquipo(){
-            /*$sql = "start transaction;";
-            $this -> conexion -> query($sql);*/
-            $sql = "SELECT d.idDeportista, d.nombreDeportista, d.apellidos, de.rol, e.nombreEquipo, e.paisEquipo , e.idEquipo
+            $sql = "SELECT d.idDeportista, d.nombreDeportista, d.apellidos, de.rol, e.nombreEquipo, e.idEquipo
                 FROM deportistaEquipo AS de  
                 INNER JOIN deportistas AS d 
                 ON de.idDeportista=d.idDeportista 
@@ -46,9 +44,6 @@
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
             return $fila;   
         }
-
-
-        ///  hacer un  metodo deportistaCompeticion como en el caso del anterior
 
         public function Guardar(){
             if($this -> idDeportista == NULL) $this -> insertar();

@@ -5,6 +5,7 @@
     Routes::Add("/usuario","post","SuscriptorControlador::Alta");
     Routes::Add("/usuario","get","SuscriptorControlador::Listar");
     Routes::Add("/infoDeportista", "post", "InformacionDeportistaControlador::ListarDeportistaEquipo");
+    Routes::Add('/eventos', 'get', 'EventoControlador::Listar');
     Routes::Run();
 
        

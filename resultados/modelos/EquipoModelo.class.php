@@ -9,8 +9,6 @@
         public $paisEquipo;
         public $dt;
         
-
-
         public function __construct($idEquipo=""){
             parent::__construct();
             if($idEquipo != ""){
@@ -18,18 +16,6 @@
                 $this -> obtener();
             }
         }
-
-
-       /* public function equipoCompeticion(){
-            $sql = "SELECT e.idEquipo, c.idCompeticion, c.NombreCompetición, c.paisEquipo , 
-                FROM deportistaEquipo AS de  
-                INNER JOIN deportistas AS d 
-                ON de.idDeportista=d.idDeportista 
-                INNER JOIN equipos AS e 
-                ON de.idEquipo=e.idEquipo WHERE d.idDeportista=" . $this -> idDeportista . ";";
-            $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
-            return $fila;
-        }*/
 
         public function guardar(){
             if($this -> idEquipo == NULL) $this -> insertar();
