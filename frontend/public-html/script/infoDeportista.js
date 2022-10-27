@@ -1,4 +1,4 @@
-let url = "http://192.168.48.7/deportistas";
+let url = "https://jsonplaceholder.typicode.com/todos";
         fetch(url)
             .then(response => response.json())
             .then(data => mostrarData(data))
