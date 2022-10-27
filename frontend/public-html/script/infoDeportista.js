@@ -1,4 +1,4 @@
-let url = "http://localhost:8085/infoDeportista";
+let url = "http://192.168.48.7/deportistas";
         fetch(url)
             .then(response => response.json())
             .then(data => mostrarData(data))

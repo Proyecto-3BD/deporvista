@@ -1,36 +1,37 @@
-<?php 
-    require "../utils/autoload.php";
+<?php
+	require "../utils/autoload.php";
 
-    class CompeticionesControlador{
+    class DeporteControlador{
         public static function Alta($context){
-            if(!empty($context['post']['nombreCompeticion'])){
-                $u = new CompeticionesModelo();
-                $u -> idCompeticion = $context['post']['idCompeticion'];
-                $u -> nombreCompeticion = $context['post']['nombreCompeticion'];
-                $u -> paisCompeticion = $context['post']['paisCompeticion'];
-                $u -> anio = $context['post']['anio'];
+            if(!empty($context['post']['idDeportista'])){
+                $u = new DeportistaModelo();
+                $u -> idDeportista = $context['post']['idDeportista'];
+                $u -> nombreDeportista = $context['post']['nombreDeportista'];
+                $u -> apellidos = $context['post']['apellidos'];
+                $u -> paisDeportista = $context['post']['paisDeportista'];
+
                 $u -> Guardar();
                 $respuesta = [
                     "Resultado" => "true",
-                    "Mensaje" => "Competicion Ingresado"
+                    "Mensaje" => "Deportista Ingresado"
                 ];
                 echo json_encode($respuesta);
             }
         }
 
         public static function Eliminar($context){
-            $u = new CompeticionesModelo($context['post']['idCompeticion']);
+            $u = new DeportistaModelo($context['post']['idDeportista']);
             $u -> Eliminar();
             $respuesta = [
                 "Resultado" => "true",
-                "Mensaje" => "Competicion Eliminada"
+                "Mensaje" => "Deportista Eliminado"
             ];
             echo json_encode($respuesta);
         }        
 
         public static function Modificar($context){
 
-            $u = new CompeticionesModelo($context['post']['idCompeticion']);
+            $u = new DeportistaModelo($context['post']['idCompeticion']);
             $u -> idCompeticion = $context['post']['idCompeticion'];
             $u -> nombreCompeticion = $context['post']['nombreCompeticion'];
             $u -> paisCompeticion = $context['post']['paisCompeticion'];
@@ -47,19 +48,20 @@
 
 
         public static function Listar(){
-            $a = new CompeticionesModelo();
-            $competiciones = $a -> ObtenerTodos();
+            $a = new DeportistaModelo();
+            $deportistas = $a -> ObtenerTodos();
 
             $resultado = [];
-            foreach($competiciones as $competicion){
+            foreach($deportistas as $deportista){
                 $t = [
-                    'idCompeticion' => $competicion -> idCompeticion,
-                    'nombreCompeticion' => $competicion -> nombreCompeticion,
-                    'paisCompeticion' => $competicion -> paisCompeticion,
-                    'anio' => $competicion -> anio
+                    'idDeportista' => $deportista -> idDeportista,
+                    'nombreDeportista' => $deportista -> nombreDeportista,
+                    'apellidos' => $deportista -> apellidos,
+                    'paisDeportista' => $deportista -> paisDeportista
                 ];   
                 array_push($resultado,$t);
             }
-            return $resultado;          
+            echo json_encode($resultado);          
         }
     }
+	

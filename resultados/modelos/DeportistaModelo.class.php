@@ -87,18 +87,18 @@
         public function ObtenerTodos(){
             $sql = "select * from deportistas;";
  
-             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
-             $resultado = array();
-             foreach($filas as $fila){
-                 $a = new DeportistaModelo();
-                 $a -> idDeportista = $fila['idDeportista'];
-                 $a -> nombreDeportista = $fila['nombreDeportista'];
-                 $a -> apellidos = $fila['apellidos'];
-                 $a -> paisDeportista = $fila['paisDeportista'];
+            $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
+            $resultado = [];
+            foreach($filas as $fila){
+                $a = new DeportistaModelo();
+                $a -> idDeportista = $fila['idDeportista'];
+                $a -> nombreDeportista = $fila['nombreDeportista'];
+                $a -> apellidos = $fila['apellidos'];
+                $a -> paisDeportista = $fila['paisDeportista'];
                  
-                 array_push($resultado,$a);
+                array_push($resultado,$a);
             }
-             return $resultado;
+            return $resultado;
         }    
     }
 
