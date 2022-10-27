@@ -1,5 +1,7 @@
 <?php
 
+	header("Access-Control-Allow-Origin: *");
+
 	require "../utils/autoload.php";
 
     class DeporteControlador{
