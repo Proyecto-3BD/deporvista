@@ -215,3 +215,12 @@ INSERT into deportistaCompeticion
 	VALUES 
 	((SELECT max(idDeportista) AS idDeportista FROM deportistas), 
 	(SELECT max(idCompeticion) AS idCompeticion FROM competiciones));
+
+	INSERT INTO eventos
+	(fechaHora, resultado,infracciones, ubicacion)
+	VALUES
+	(2022-10-24 20:00:00,
+	'2-0',
+	'1rojas,2amarilla',
+	'estadio Centenario' 
+	);
