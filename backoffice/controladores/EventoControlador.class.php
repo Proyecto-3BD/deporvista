@@ -1,52 +1,60 @@
 <?php 
     require "../utils/autoload.php";
 
-class EventoControlador{
+    class EventoControlador{
         public static function Alta($context){
-            if(!empty($context['post']['ubicacion'])){
-                $u = new EventosModelo();
+            if(!empty($context['post']['nombre'])){
+                $u = new EventoModelo();
                 $u -> idEvento = $context['post']['idEvento'];
                 $u -> fechaHora = $context['post']['fechaHora'];
                 $u -> resultado = $context['post']['resultado'];
                 $u -> infracciones = $context['post']['infracciones'];
                 $u -> ubicacion = $context['post']['ubicacion'];
                 $u -> Guardar();
-                render('gestionEvento', ["ingresado" => true]);
-            }else
-                render('gestionEvento', ["error" => true]);
-            
+                $respuesta = [
+                    "Resultado" => "true",
+                    "Mensaje" => "Evento Ingresado"
+                ];
+                echo json_encode($respuesta);
+        	}
         }
 
         public static function Eliminar($context){
-            $u = new EventosModelo($context['post']['idEvento']);
+            $u = new EventoModelo($context['post']['idEvento']);
             $u -> Eliminar();
-            render("gestionDeporte" , ["eliminado" => true]);
+            $respuesta = [
+                    "Resultado" => "true",
+                    "Mensaje" => "Evento Eliminado"
+            ];
+            echo json_encode($respuesta);
         }        
 
         public static function Modificar($context){
 
-            $u = new EventosModelo($context['post']['idEvento']);
+            $u = new EventoModelo($context['post']['idEvento']);
             $u -> idEvento = $context['post']['idEvento'];
             $u -> fechaHora = $context['post']['fechaHora'];
             $u -> resultado = $context['post']['resultado'];
             $u -> infracciones = $context['post']['infracciones'];
             $u -> ubicacion = $context['post']['ubicacion'];
-            if(!empty($context['post']['idEvento'])){
+            if(!empty($context['post']['idCompeticion'])){
                 $u -> Guardar();
-                render("gestionEvento", ['modificado' => true]);
-            }else
-                render("gestionEvento", ['errorModificado' => true]);
+                $respuesta = [
+                    "Resultado" => "true",
+                    "Mensaje" => "Evento Modificado"
+            ];
+            echo json_encode($respuesta);
         }
 
 
         public static function Listar(){
-            $a = new EventosModelo();
+            $a = new EventoModelo();
             $eventos = $a -> ObtenerTodos();
 
             $resultado = [];
             foreach($eventos as $evento){
                 $t = [
-                    'idDeporte' => $evento -> idDeporte,
+                    'idEvento' => $evento -> idEvento,
                     'fechaHora' => $evento -> fechaHora,
                     'resultado' => $evento -> resultado,
                     'infracciones' => $evento -> infracciones,
@@ -54,6 +62,6 @@ class EventoControlador{
                 ];   
                 array_push($resultado,$t);
             }
-            return $resultado;          
+            echo json_encode($resultado);          
         }
     }

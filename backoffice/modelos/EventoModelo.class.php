@@ -1,8 +1,9 @@
+
 <?php 
 
     require "../utils/autoload.php";
 
-    class EventosModelo extends Modelo {
+    class EventoModelo extends Modelo {
 
         public $idEvento;
         public $fechaHora;

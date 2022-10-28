@@ -1,40 +1,49 @@
-<?php 
-    require "../utils/autoload.php";
+<?php
+	require "../utils/autoload.php";
 
-class DeportistaControlador{
+    class DeportistaControlador{
         public static function Alta($context){
-            if(!empty($context['post']['nombre'])){
+            if(!empty($context['post']['idDeportista'])){
                 $u = new DeportistaModelo();
                 $u -> idDeportista = $context['post']['idDeportista'];
-                $u -> nombre = $context['post']['nombre'];
+                $u -> nombreDeportista = $context['post']['nombreDeportista'];
                 $u -> apellidos = $context['post']['apellidos'];
-                $u -> pais = $context['post']['pais'];
+                $u -> paisDeportista = $context['post']['paisDeportista'];
+
                 $u -> Guardar();
-                render('gestionDeportista', ["ingresado" => true]);
-            }else
-                render('gestionDeportista', ["error" => true]);
-            
-        
+                $respuesta = [
+                    "Resultado" => "true",
+                    "Mensaje" => "Deportista Ingresado"
+                ];
+                echo json_encode($respuesta);
+            }
         }
 
         public static function Eliminar($context){
             $u = new DeportistaModelo($context['post']['idDeportista']);
             $u -> Eliminar();
-            render("gestionDeportista" , ["eliminado" => true]);
+            $respuesta = [
+                "Resultado" => "true",
+                "Mensaje" => "Deportista Eliminado"
+            ];
+            echo json_encode($respuesta);
         }        
 
         public static function Modificar($context){
 
-            $u = new DeportistaModelo($context['post']['idDeportista']);
-            $u -> idDeportista = $context['post']['idDeportista'];
-            $u -> nombre = $context['post']['nombre'];
-            $u -> apellidos = $context['post']['apellidos'];
-            $u -> pais = $context['post']['pais'];
-            if(!empty($context['post']['idDeportista'])){
+            $u = new DeportistaModelo($context['post']['idCompeticion']);
+            $u -> idCompeticion = $context['post']['idCompeticion'];
+            $u -> nombreCompeticion = $context['post']['nombreCompeticion'];
+            $u -> paisCompeticion = $context['post']['paisCompeticion'];
+            $u -> anio = $context['post']['anio'];
+            if(!empty($context['post']['idCompeticion'])){
                 $u -> Guardar();
-                render("gestionDeportista", ['modificado' => true]);
-            }else
-                render("gestionDeportista", ['errorModificado' => true]);
+                $respuesta = [
+                    "Resultado" => "true",
+                    "Mensaje"  => "Competencia Modificada"
+                ];
+                echo json_encode($respuesta);
+            }
         }
 
 
@@ -46,12 +55,13 @@ class DeportistaControlador{
             foreach($deportistas as $deportista){
                 $t = [
                     'idDeportista' => $deportista -> idDeportista,
-                    'nombreAdmin' => $deportista -> nombre,
+                    'nombreDeportista' => $deportista -> nombreDeportista,
                     'apellidos' => $deportista -> apellidos,
-                    'pais' => $deportista -> pais
+                    'paisDeportista' => $deportista -> paisDeportista
                 ];   
                 array_push($resultado,$t);
             }
-            return $resultado;          
+            echo json_encode($resultado);          
         }
     }
+	
