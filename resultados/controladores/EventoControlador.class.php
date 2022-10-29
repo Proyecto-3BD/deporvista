@@ -51,7 +51,7 @@
 
         public static function Listar(){
             $a = new EventoModelo();
-            $eventos = $a -> ObtenerTodos();
+            $eventos = $a -> obtenerTodos();
 
             $resultado = [];
             foreach($eventos as $evento){
