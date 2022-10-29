@@ -62,7 +62,7 @@
             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
             $resultado = array();
             foreach($filas as $fila){
-                $a = new EquiposModelo();
+                $a = new EquipoModelo();
                 $a -> idEquipo = $fila['idEquipo'];
                 $a -> nombreEquipo = $fila['nombreEquipo'];
                 $a -> pais = $fila['pais'];

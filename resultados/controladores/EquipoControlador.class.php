@@ -50,7 +50,7 @@
 
         public static function Listar(){
             $a = new EquipoModelo();
-            $eventos = $a -> ObtenerTodos();
+            $equipos = $a -> obtenerTodos();
 
             $resultado = [];
             foreach($equipos as $equipo){

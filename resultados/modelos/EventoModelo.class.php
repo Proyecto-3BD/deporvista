@@ -78,7 +78,7 @@
              $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
              $resultado = array();
              foreach($filas as $fila){
-                 $a = new EventosModelo();
+                 $a = new EventoModelo();
                  $a -> idEvento = $fila['idEvento'];
                  $a -> fechaHora = $fila['fechaHora'];
                  $a -> resultado = $fila['resultado'];

@@ -8,6 +8,7 @@
     Routes::Add('/eventos', 'get', 'EventoControlador::Listar');
     Routes::Add('/deportistas', 'get', 'DeportistaControlador::Listar');
     Routes::Add('/competiciones', 'get', 'CompeticionesControlador::Listar');
+    Routes::Add('/equipos', 'get', 'EquipoControlador::Listar');
 
     Routes::Run();
 
