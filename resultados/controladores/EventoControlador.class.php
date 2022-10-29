@@ -45,6 +45,7 @@
                     "Mensaje" => "Evento Modificado"
             ];
             echo json_encode($respuesta);
+            }
         }
 
 

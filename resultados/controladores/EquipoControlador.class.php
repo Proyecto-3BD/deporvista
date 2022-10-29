@@ -44,6 +44,7 @@
                     "Mensaje" => "Equipo Modificado"
             ];
             echo json_encode($respuesta);
+            }
         }
 
 
