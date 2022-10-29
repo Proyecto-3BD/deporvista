@@ -1,5 +1,7 @@
 <?php 
     require "../utils/autoload.php";
+    header("Access-Control-Allow-Origin:*");
+
 
 class ResultadosControlador {
 

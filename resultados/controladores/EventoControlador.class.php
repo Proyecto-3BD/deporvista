@@ -1,5 +1,6 @@
 <?php 
     require "../utils/autoload.php";
+    header("Access-Control-Allow-Origin:*");
 
     class EventoControlador{
         public static function Alta($context){

@@ -1,6 +1,8 @@
 <?php
 	require "../utils/autoload.php";
+    header("Access-Control-Allow-Origin:*");
 
+    
     class EquipoControlador{
         public static function Alta($context){
             if(!empty($context['post']['idEquipo'])){
