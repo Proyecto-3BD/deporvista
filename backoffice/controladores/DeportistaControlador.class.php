@@ -9,25 +9,17 @@
                 $u -> nombreDeportista = $context['post']['nombreDeportista'];
                 $u -> apellidos = $context['post']['apellidos'];
                 $u -> paisDeportista = $context['post']['paisDeportista'];
-
                 $u -> Guardar();
-                $respuesta = [
-                    "Resultado" => "true",
-                    "Mensaje" => "Deportista Ingresado"
-                ];
-                echo json_encode($respuesta);
-            }
+                render("gestionDeportista", ["ingresado" => true]);
+            }else
+                render("gestionDeportista", ["error" => true]);
         }
 
         public static function Eliminar($context){
             $u = new DeportistaModelo($context['post']['idDeportista']);
             $u -> Eliminar();
-            $respuesta = [
-                "Resultado" => "true",
-                "Mensaje" => "Deportista Eliminado"
-            ];
-            echo json_encode($respuesta);
-        }        
+            render("gestionDeportista", ["borrado" => true]);
+        }
 
         public static function Modificar($context){
 
@@ -38,12 +30,9 @@
             $u -> anio = $context['post']['anio'];
             if(!empty($context['post']['idCompeticion'])){
                 $u -> Guardar();
-                $respuesta = [
-                    "Resultado" => "true",
-                    "Mensaje"  => "Competencia Modificada"
-                ];
-                echo json_encode($respuesta);
-            }
+                render("gestionDeportista", ["modificado" => true]);
+            }else
+                render("gestionDeportista", ["errorModificado" => true]);
         }
 
 

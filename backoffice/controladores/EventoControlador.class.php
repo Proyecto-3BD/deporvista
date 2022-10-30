@@ -11,22 +11,16 @@
                 $u -> infracciones = $context['post']['infracciones'];
                 $u -> ubicacion = $context['post']['ubicacion'];
                 $u -> Guardar();
-                $respuesta = [
-                    "Resultado" => "true",
-                    "Mensaje" => "Evento Ingresado"
-                ];
-                echo json_encode($respuesta);
+                render("gestionEvento", ["ingresado" => true]);
+            }else
+                render("gestionEvento", ["error" => true]);
         	}
         }
 
         public static function Eliminar($context){
             $u = new EventoModelo($context['post']['idEvento']);
             $u -> Eliminar();
-            $respuesta = [
-                    "Resultado" => "true",
-                    "Mensaje" => "Evento Eliminado"
-            ];
-            echo json_encode($respuesta);
+            render("gestionEvento", ["borrado" => true]);
         }        
 
         public static function Modificar($context){
@@ -39,11 +33,9 @@
             $u -> ubicacion = $context['post']['ubicacion'];
             if(!empty($context['post']['idCompeticion'])){
                 $u -> Guardar();
-                $respuesta = [
-                    "Resultado" => "true",
-                    "Mensaje" => "Evento Modificado"
-            ];
-            echo json_encode($respuesta);
+                render("gestionEvento", ["modificado" => true]);
+            }else
+                render("gestionEvento", ["errorModificado" => true]);
         }
 
 

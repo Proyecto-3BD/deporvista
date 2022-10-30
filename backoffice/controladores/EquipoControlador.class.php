@@ -10,22 +10,15 @@
                 $u -> paisEquipo = $context['post']['paisEquipo'];
                 $u -> dt = $context['post']['dt'];
                 $u -> Guardar();
-                $respuesta = [
-                    "paisEquipo" => "true",
-                    "Mensaje" => "Equipo Ingresado"
-                ];
-                echo json_encode($respuesta);
-        	}
+                render("gestionEquipo", ["ingresado" => true]);
+            }else
+                render("gestionEquipo", ["error" => true]);
         }
 
         public static function Eliminar($context){
             $u = new EquipoModelo($context['post']['idEquipo']);
             $u -> Eliminar();
-            $respuesta = [
-                    "paisEquipo" => "true",
-                    "Mensaje" => "Equipo Eliminado"
-            ];
-            echo json_encode($respuesta);
+            render("gestionEquipo", ["borrado" => true]);
         }        
 
         public static function Modificar($context){
@@ -37,11 +30,9 @@
             $u -> dt = $context['post']['dt'];
             if(!empty($context['post']['idEquipo'])){
                 $u -> Guardar();
-                $respuesta = [
-                    "paisEquipo" => "true",
-                    "Mensaje" => "Equipo Modificado"
-            ];
-            echo json_encode($respuesta);
+                render("gestionEquipo", ["modificado" => true]);
+            }else
+                render("gestionEquipo", ["errorModificado" => true]);
         }
 
 

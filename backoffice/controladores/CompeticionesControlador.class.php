@@ -10,22 +10,16 @@
                 $u -> paisCompeticion = $context['post']['paisCompeticion'];
                 $u -> anio = $context['post']['anio'];
                 $u -> Guardar();
-                $respuesta = [
-                    "Resultado" => "true",
-                    "Mensaje" => "Competicion Ingresado"
-                ];
-                echo json_encode($respuesta);
-            }
+                render("gestionCompeticiones", ["ingresado" => true]);
+            }else
+                render("gestionCompeticiones", ["error" => true]);
+
         }
 
         public static function Eliminar($context){
             $u = new CompeticionesModelo($context['post']['idCompeticion']);
             $u -> Eliminar();
-            $respuesta = [
-                "Resultado" => "true",
-                "Mensaje" => "Competicion Eliminada"
-            ];
-            echo json_encode($respuesta);
+            render("gestionCompeticiones", ["borrado" => true]);
         }        
 
         public static function Modificar($context){
@@ -37,12 +31,9 @@
             $u -> anio = $context['post']['anio'];
             if(!empty($context['post']['idCompeticion'])){
                 $u -> Guardar();
-                $respuesta = [
-                    "Resultado" => "true",
-                    "Mensaje"  => "Competencia Modificada"
-                ];
-                echo json_encode($respuesta);
-            }
+                render("gestionCompeticiones", ["modificado" => true]);
+            }else
+                render("gestionCompeticiones", ["errorModificado" => true]);
         }
 
 
