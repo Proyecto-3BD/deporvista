@@ -214,27 +214,17 @@ INSERT INTO eventos
 	'1',
     '1rojas, 2amarilla',
     'estadio Centenariio' 
-    );
-
-INSERT INTO eventos
-    (fechaHora, resultado, idDeporte, infracciones, ubicacion)
-    VALUES
-    ('2022-10-28 21:30:00',
+    ), ('2022-10-28 21:30:00',
     '3-5',
 	'1',
     '5amarilla',
     'estadio GPC' 
-    );
-
-INSERT INTO eventos
-    (fechaHora, resultado, idDeporte, infracciones, ubicacion)
-    VALUES
-    ('2022-11-28 22:00:00',
+    ), ('2022-11-28 22:00:00',
     '',
 	'',
     '',
     'estadio GPC' 
-    );
+);
 
 INSERT into competiciones
 	(nombreCompeticion, paisCompeticion, anio)
