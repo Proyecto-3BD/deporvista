@@ -1,15 +1,15 @@
 let url = "http://localhost:8084/deportistas";
         fetch(url)
             .then(response => response.json())
-            .then(data => mostrarData(data))
+            .then(datadeportistas => mostrarData(datadeportistas))
             .catch(error => console.log(error))
 
 
-            const mostrarData = (data) => {
-                console.log(data)
+            const mostrarData = (datadeportistas) => {
+                console.log(datadeportistas)
                 let body = ''
                 for (let i = 0; i < data.length; i++) {
-                    body += `<tr><td>${data[i].idDeportista /*match llave de json*/}</td><td>${data[i].nombre}</td><td>${data[i].apellidos}</td><td>${data[i].rol}</td><td>${data[i].pais}</td></tr>`
+                    body += `<tr><td>${datadeportistas[i].idDeportista /*match llave de json*/}</td><td>${datadeportistas[i].nombre}</td><td>${datadeportistas[i].apellidos}</td><td>${datadeportistas[i].rol}</td><td>${datadeportistas[i].pais}</td></tr>`
                 }
-                document.getElementById('data-deportistas').innerHTML = body;
+                document.getElementById('datadeportistas').innerHTML = body;
 }
