@@ -1,15 +1,15 @@
 let url = "http://localhost:8084/eventos";
         fetch(url)
             .then(response => response.json())
-            .then(data => mostrarData(data))
+            .then(dataevento => mostrarData(dataevento))
             .catch(error => console.log(error))
 
 
-            const mostrarData = (data) => {
-                console.log(data)
+            const mostrarData = (dataevento) => {
+                console.log(dataevento)
                 let body = ''
-                for (let i = 0; i < data.length; i++) {
-                    body += `<tr><td>${data[i].idEvento}</td><td>${data[i].fechaHora}</td><td>${data[i].resultado}</td><td>${data[i].infracciones}</td><td>${data[i].ubicacion}</td></tr>`
+                for (let i = 0; i < dataevento.length; i++) {
+                    body += `<tr><td>${dataevento[i].idEvento}</td><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td></tr>`
                 }
-                document.getElementById('data-finalizados').innerHTML = body;
+                document.getElementById('dataevento').innerHTML = body;
 }
