@@ -219,9 +219,9 @@ INSERT INTO eventos
 	'1',
     '5amarilla',
     'estadio GPC' 
-    ), ('2022-11-28 22:00:00',
+    ), ('2022-11-19 22:00:00',
     '',
-	'',
+	'1',
     '',
     'estadio GPC' 
 );
