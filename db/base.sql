@@ -195,6 +195,23 @@ INSERT into equipos
 	'Oreja Martinez'
 );
 
+INSERT INTO deportes
+    (nombreDeporte, tipoDeporte)
+    VALUES
+    ('futbol',
+    'porPuntos'
+    );
+
+INSERT INTO eventos
+    (fechaHora, resultado, idDeporte, infracciones, ubicacion)
+    VALUES
+    ('2022-10-24 20:00:00',
+    '2-0',
+	'1',
+    '1rojas, 2amarilla',
+    'estadio Centenariio' 
+    );
+
 INSERT into competiciones
 	(nombreCompeticion, paisCompeticion, anio)
 	VALUES
@@ -214,7 +231,8 @@ INSERT into deportistaCompeticion
 	(idDeportista, idCompeticion)
 	VALUES 
 	((SELECT max(idDeportista) AS idDeportista FROM deportistas), 
-	(SELECT max(idCompeticion) AS idCompeticion FROM competiciones));
+	(SELECT max(idCompeticion) AS idCompeticion FROM competiciones)
+	);
 
 	INSERT INTO eventos
 	(fechaHora, resultado,infracciones, ubicacion)
