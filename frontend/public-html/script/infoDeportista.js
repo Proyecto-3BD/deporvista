@@ -43,6 +43,19 @@ function fetchEventoFinalizado() {
 
 
     const mostrarData = (dataevento) => {
+
+
+        dataevento = dataevento.sort((a, b) => {
+            if (a.fechaHora < b.fechaHora) {
+                return 1;
+            }
+        });
+
+        
+        console.log(dataevento);
+
+
+
         console.log(dataevento)
         let body = ''
         for (let i = 0; i < dataevento.length; i++) {
