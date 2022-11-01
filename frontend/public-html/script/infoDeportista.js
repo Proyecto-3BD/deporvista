@@ -82,10 +82,29 @@ function fetchEventoProximo() {
 
 
     const mostrarData = (dataevento) => {
-        console.log(dataevento)
+
+        let date = new Date();
+        let fecha =
+            date.getFullYear() + "-" +
+            ("00" + (date.getMonth() + 1)).slice(-2) + "-" +
+            ("00" + date.getDate()).slice(-2) + " " +
+
+            ("00" + date.getHours()).slice(-2) + ":" +
+            ("00" + date.getMinutes()).slice(-2) + ":" +
+            ("00" + date.getSeconds()).slice(-2);
+        console.log(fecha);
+
+
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        console.log(dataevento);
+
+
         let body = ''
         for (let i = 0; i < dataevento.length; i++) {
-            body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td></tr>`
+            if (dataevento[i].fechaHora >= fecha) {
+
+                body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td></tr>`
+            }
         }
         document.getElementById('dataeventoProx').innerHTML = body;
     }
