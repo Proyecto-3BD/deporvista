@@ -27,21 +27,28 @@ function inicio() {
 
 
 function directo() {
-    document.getElementById("accordionPanelsStayOpenExample").style.display = "block";
+    document.getElementById("hoy").style.display = "block";
     document.getElementById("finalizados").style.display = "none";
     document.getElementById("proximos").style.display = "none";
 }
 
+
+ /* Barrita */
 function finalizado() {
-    document.getElementById("accordionPanelsStayOpenExample").style.display = "none";
+    document.getElementById("hoy").style.display = "none";
     document.getElementById("finalizados").style.display = "block";
     document.getElementById("proximos").style.display = "none";
-
 }
 
 
 function proximo() {
-    document.getElementById("accordionPanelsStayOpenExample").style.display = "none";
+    document.getElementById("hoy").style.display = "none";
     document.getElementById("finalizados").style.display = "none";
     document.getElementById("proximos").style.display = "block";
+
+}
+
+function liga() {
+    document.getElementById("general").style.display = "none";
+    document.getElementById("porliga").style.display = "block";
 }

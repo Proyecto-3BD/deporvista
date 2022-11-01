@@ -187,8 +187,6 @@
 }
 
 .accordion-body {
-    display: grid;
-    grid-template-columns: 15% 45% 15% 25%;
     align-items: center;
 }
 
@@ -369,7 +367,6 @@ footer {
 }
 
 /** info deportista **/
-
 .info-deportista {
  
     background-color: #369741;
@@ -434,4 +431,50 @@ footer {
 
 .info-solapas table tbody tr:last-of-type td {
     border-bottom: 1px solid #369741;
+}
+
+
+/* EVENTO GENERAL */
+
+.info-general {
+ 
+    background-color: #ffffff;
+    border: none;
+    margin: 0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    height: 250px;
+
+    width: 100%;
+    
+}
+
+.accordion-body {
+    overflow: hidden;
+    overflow-y: scroll;
+
+}
+
+.info-general table {
+    width: 100%;
+}
+
+.info-general table tbody tr td {
+    border-bottom: 1px solid rgb(236, 236, 236);
+    padding: 0.5rem;
+}
+
+.info-general table tbody tr:last-of-type td {
+    border-bottom: 1px solid #369741;
+}
+
+/* Por liga */
+.por-liga {
+    background-color: white;
+    padding: 1rem;
+}
+
+#porliga {
+    padding-top: 2rem;
+    display: none;
 }
