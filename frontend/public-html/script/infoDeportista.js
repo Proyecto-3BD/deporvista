@@ -1,17 +1,17 @@
 let url = "http://localhost:8084/deportistas";
-        fetch(url)
-            .then(response => response.json())
-            .then(datadeportistas => mostrarData(datadeportistas))
-            .catch(error => console.log(error))
+fetch(url)
+    .then(response => response.json())
+    .then(datadeportistas => mostrarData(datadeportistas))
+    .catch(error => console.log(error))
 
 
-            const mostrarData = (datadeportistas) => {
-                console.log(datadeportistas)
-                let body = ''
-                for (let i = 0; i < datadeportistas.length; i++) {
-                    body += `<tr><td>${datadeportistas[i].idDeportista /*match llave de json*/}</td><td>${datadeportistas[i].nombre}</td><td>${datadeportistas[i].apellidos}</td><td>${datadeportistas[i].rol}</td><td>${datadeportistas[i].pais}</td></tr>`
-                }
-                document.getElementById('datadeportistas').innerHTML = body;
+const mostrarData = (datadeportistas) => {
+    console.log(datadeportistas)
+    let body = ''
+    for (let i = 0; i < datadeportistas.length; i++) {
+        body += `<tr><td>${datadeportistas[i].idDeportista /*match llave de json*/}</td><td>${datadeportistas[i].nombre}</td><td>${datadeportistas[i].apellidos}</td><td>${datadeportistas[i].rol}</td><td>${datadeportistas[i].pais}</td></tr>`
+    }
+    document.getElementById('datadeportistas').innerHTML = body;
 }
 
 function fetchEvento() {
@@ -45,21 +45,28 @@ function fetchEventoFinalizado() {
     const mostrarData = (dataevento) => {
 
 
-        dataevento = dataevento.sort((a, b) => {
-            if (a.fechaHora < b.fechaHora) {
-                return 1;
-            }
-        });
+        let date = new Date();
+        let fecha =
+            date.getFullYear() + "-" +
+            ("00" + (date.getMonth() + 1)).slice(-2) + "-" +
+            ("00" + date.getDate()).slice(-2) + " " +
 
-        
-        console.log(dataevento);
+            ("00" + date.getHours()).slice(-2) + ":" +
+            ("00" + date.getMinutes()).slice(-2) + ":" +
+            ("00" + date.getSeconds()).slice(-2);
+        console.log(fecha);
 
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        dataevento.reverse();
 
 
         console.log(dataevento)
         let body = ''
         for (let i = 0; i < dataevento.length; i++) {
-            body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td></tr>`
+            if (dataevento[i].fechaHora <= fecha) {
+
+                body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td></tr>`
+            }
         }
         document.getElementById('dataeventoFin').innerHTML = body;
     }
