@@ -209,7 +209,7 @@ INSERT into equipos
 	('Torque',
 	'Uruguay', 
 	'Lucas Nardi'
-	);
+);
 
 INSERT INTO deportes
     (nombreDeporte, tipoDeporte)
@@ -225,18 +225,30 @@ INSERT INTO eventos
     '2-0',
 	'1',
     '1rojas, 2amarilla',
-    'estadio Centenariio' 
+    'Estadio Centenariio' 
     ), ('2022-10-28 21:30:00',
     '3-5',
 	'1',
     '5amarilla',
-    'estadio GPC' 
+    'Estadio GPC' 
     ), ('2022-11-19 22:00:00',
     '',
 	'1',
     '',
-    'estadio GPC' 
+    'Estadio GPC' 
 );
+
+INSERT into equipoLocatarioEvento
+	(idEvento, idEquipo)
+	VALUES
+	(1, 1);
+
+
+INSERT into equipoVisitanteEvento
+	(idEvento, idEquipo)
+	VALUES
+	(1, 2);
+
 
 INSERT into competiciones
 	(nombreCompeticion, paisCompeticion, anio)
