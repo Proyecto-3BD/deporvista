@@ -25,6 +25,7 @@ function inicio() {
 }
 
 
+ /* Barrita */
 
 function directo() {
     document.getElementById("hoy").style.display = "block";
@@ -33,7 +34,6 @@ function directo() {
 }
 
 
- /* Barrita */
 function finalizado() {
     document.getElementById("hoy").style.display = "none";
     document.getElementById("finalizados").style.display = "block";
@@ -47,6 +47,32 @@ function proximo() {
     document.getElementById("proximos").style.display = "block";
 
 }
+
+
+ /* Barrita Liga */
+
+ function directoLiga() {
+    document.getElementById("hoyLiga").style.display = "block";
+    document.getElementById("finalizadosLiga").style.display = "none";
+    document.getElementById("proximosLiga").style.display = "none";
+}
+
+
+function finalizadoLiga() {
+    document.getElementById("hoyLiga").style.display = "none";
+    document.getElementById("finalizadosLiga").style.display = "block";
+    document.getElementById("proximosLiga").style.display = "none";
+}
+
+
+function proximoLiga() {
+    document.getElementById("hoyLiga").style.display = "none";
+    document.getElementById("finalizadosLiga").style.display = "none";
+    document.getElementById("proximosLiga").style.display = "block";
+
+}
+
+
 
 function liga() {
     document.getElementById("general").style.display = "none";

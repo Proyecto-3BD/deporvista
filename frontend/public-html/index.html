@@ -133,34 +133,102 @@
         <aside class="sidebar">
             <div class="contenido-side">
                 <div>
-                    <p>Ligas</p>
-                    <ul>
-                        <li><a href="">Tab 1</a></li>
-                        <li><a href="">Tab 1</a></li>
-                        <li><a href="">Tab 1</a></li>
-                    </ul>
+                    <p>Principales Ligas</p>
+                    <div class="sidetable">
+                        <p>Futbol</p>
+                        <ul>
+                            <li><a onclick="liga(); directoLiga()">LaLiga</a></li>
+                            <li><a onclick="liga(); directoLiga()">Premier League</a></li>
+                            <li><a onclick="liga(); directoLiga()">Primera de Uruguay</a></li>
+                            <li><a onclick="liga(); directoLiga()">Primera de Argentina</a></li>
+                            <li><a onclick="liga(); directoLiga()">Serie A</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidetable">
+                        <p>Basketball</p>
+                        <ul>
+                            <li><a onclick="liga(); directoLiga()">NBA Este</a></li>
+                            <li><a onclick="liga(); directoLiga()">NBA Oeste</a></li>
+                            <li><a onclick="liga(); directoLiga()">LUB</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidetable">
+                        <p>Tenis</p>
+                        <ul>
+                            <li><a onclick="liga(); directoLiga()">US Open</a></li>
+                            <li><a onclick="liga(); directoLiga()">Wimbledon</a></li>
+                            <li><a onclick="liga(); directoLiga()">Roland-Garros</a></li>
+                            <li><a onclick="liga(); directoLiga()">Austarlian Open</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <div>
                     <p>Favoritos</p>
-                    <ul>
-                        <li><a href="">Tab 1</a></li>
-                        <li><a href="">Tab 1</a></li>
-                        <li><a href="">Tab 1</a></li>
-                    </ul>
+                    <div class="sidetable">
+
+                        <ul>
+                            <li><a onclick="">Fav 1</a></li>
+
+                        </ul>
+                    </div>
                 </div>
+
                 <div>
                     <p>Paises</p>
-                    <ul>
-                        <li><a href="">Tab 1</a></li>
-                        <li><a href="">Tab 1</a></li>
-                        <li><a href="">Tab 1</a></li>
-                    </ul>
+                    <div class="sidetable">
+                        <p>América</p>
+                        <ul>
+                            <li><a onclick="">Uruguay</a></li>
+                            <li><a onclick="">Argentina</a></li>
+                            <li><a onclick="">Brasil</a></li>
+                            <li><a onclick="">Estados Unidos</a></li>
+                            <li><a onclick="">Mexico</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidetable">
+
+                        <p>Europa</p>
+                        <ul>
+                            <li><a onclick="">España</a></li>
+                            <li><a onclick="">Inglaterra</a></li>
+                            <li><a onclick="">Alemania</a></li>
+                            <li><a onclick="">Francia</a></li>
+                            <li><a onclick="">Italia</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidetable">
+
+                        <p>Asia</p>
+                        <ul>
+                            <li><a onclick="">Japón</a></li>
+                            <li><a onclick="">Corea del Sur</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidetable">
+
+                        <p>Africa</p>
+                        <ul>
+                            <li><a onclick="">Sudafrica</a></li>
+                            <li><a onclick="">Nigeria</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidetable">
+
+                        <p>Oceanía</p>
+                        <ul>
+                            <li><a onclick="">Australia</a></li>
+                            <li><a onclick="">Nueva Zelanda</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </aside>
         <div class="resultados">
 
-            <div class="resultados-div-exterior">
+            <div class="resultados-div-exterior" id="general">
                 <ul>
                     <li>
                         <a onclick="directo()" >En directo</a>
@@ -247,6 +315,104 @@
                 </div>
             </div>
 
+            <!--LIGA-->
+
+            <div class="resultados-div-exterior" id="porliga">
+                <div class="por-liga">
+                    <img src="" alt="Logo">
+                    <p>Nombre campeonato</p>
+                    <p>Año comienzo</p>
+                    <p>Año fin</p>
+                </div>
+                <ul>
+                    <li>
+                        <a onclick="directoLiga(); fetchEvento()">Hoy</a>
+                    </li>
+                    <li>
+                        <a onclick="finalizadoLiga(); fetchEventoFinalizado()">Finalizados</a>
+                    </li>
+                    <li>
+                        <a onclick="proximoLiga(); fetchEventoProximo()">Proximos</a>
+                    </li>
+                    <li>
+                        <a href="">Fecha</a>
+                    </li>
+                </ul>
+                <div class="resultados-div-interior">
+                    <!--MANIPULAR-->
+
+                    <div class="info-solapas" id="hoyLiga">
+                        <div>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Equipos</th>
+                                        <th>Resultado</th>
+                                        <th>Ubicacion</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dataeventoLiga">
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+
+
+                    <!--MANIPULAR-->
+
+
+                    <div class="finalizados" id="finalizadosLiga">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Equipos</th>
+                                            <th>Resultado</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoFinLiga">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proximos" id="proximosLiga">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Equipos</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoProxLiga">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+
+            <!--PRUEBA-->
         </div>
         <div class="publi-dos">
             <p>publi</p>
