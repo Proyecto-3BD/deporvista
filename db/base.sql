@@ -197,10 +197,19 @@ INSERT into equipos
 	('Basañez',
 	'Uruguay', 
 	'Oreja Martinez'
-), ('Nacional',
+	), 
+	('Nacional',
 	'Uruguay', 
 	'Pablo Repetto'
-);
+	), 
+	('Peñarol',
+	'Uruguay', 
+	'Leonardo Ramos'
+	), 
+	('Torque',
+	'Uruguay', 
+	'Lucas Nardi'
+	);
 
 INSERT INTO deportes
     (nombreDeporte, tipoDeporte)
