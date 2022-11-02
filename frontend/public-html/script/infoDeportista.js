@@ -9,7 +9,7 @@ const mostrarData = (dataevento) => {
     console.log(dataevento)
     let body = ''
     for (let i = 0; i < dataevento.length; i++) {
-        body += `<tr><td>${dataevento[i].idEvento}</td><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td></tr>`
+        body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td></tr>`
     }
     document.getElementById('dataevento').innerHTML = body;
 }
@@ -47,7 +47,7 @@ function fetchEventoFinalizado() {
         for (let i = 0; i < dataevento.length; i++) {
             if (dataevento[i].fechaHora <= fecha) {
 
-                body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td></tr>`
+                body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td></tr>`
             }
         }
         document.getElementById('dataeventoFin').innerHTML = body;
@@ -56,7 +56,7 @@ function fetchEventoFinalizado() {
 
 function fetchEventoProximo() {
 
-    let url = "http://localhost:8084/eventos";
+    let url = "http://localhost:8084/resultados";
     fetch(url)
         .then(response => response.json())
         .then(dataevento => mostrarData(dataevento))
@@ -85,7 +85,7 @@ function fetchEventoProximo() {
         for (let i = 0; i < dataevento.length; i++) {
             if (dataevento[i].fechaHora >= fecha) {
 
-                body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td></tr>`
+                body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td></tr>`
             }
         }
         document.getElementById('dataeventoProx').innerHTML = body;
