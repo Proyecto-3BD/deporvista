@@ -31,7 +31,7 @@
                     ON e.idEvento=le.idEvento 
                     INNER JOIN equipos AS eq  
                     ON le.idEquipo=eq.idEquipo
-                    ORDER BY eq.idEquipo DESC;";
+                    ORDER BY e.idEvento ASC;";
             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
             
             return $filas;
@@ -44,9 +44,8 @@
                     ON e.idEvento=ve.idEvento 
                     INNER JOIN equipos AS eq 
                     ON ve.idEquipo=eq.idEquipo
-                    ORDER BY eq.idEquipo DESC;";
+                    ORDER BY e.idEvento ASC;";
             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
-            
             return $filas;
         }
 

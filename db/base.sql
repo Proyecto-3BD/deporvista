@@ -197,18 +197,12 @@ INSERT into equipos
 	('Basañez',
 	'Uruguay', 
 	'Oreja Martinez'
-	), 
-	('Nacional',
+), ('Nacional',
 	'Uruguay', 
 	'Pablo Repetto'
-	), 
-	('Peñarol',
+), ('Penarol',
 	'Uruguay', 
-	'Leonardo Ramos'
-	), 
-	('Torque',
-	'Uruguay', 
-	'Lucas Nardi'
+	'Gregory Perez'
 );
 
 INSERT INTO deportes
@@ -225,29 +219,28 @@ INSERT INTO eventos
     '2-0',
 	'1',
     '1rojas, 2amarilla',
-    'Estadio Centenariio' 
+    'estadio Centenariio' 
     ), ('2022-10-28 21:30:00',
     '3-5',
 	'1',
     '5amarilla',
-    'Estadio GPC' 
+    'estadio GPC' 
     ), ('2022-11-19 22:00:00',
-    '',
+    '0-0',
 	'1',
-    '',
-    'Estadio GPC' 
+    '0',
+    'La Bombonera' 
 );
 
-INSERT into equipoLocatarioEvento
-	(idEvento, idEquipo)
-	VALUES
-	(1, 1);
+insert into equipoLocatarioEvento(idEvento, idEquipo) values (1, 1);
+insert into equipoVisitanteEvento(idEvento, idEquipo) values (1, 2);
+
+insert into equipoLocatarioEvento(idEvento, idEquipo) values (2, 2);
+insert into equipoVisitanteEvento(idEvento, idEquipo) values (2, 3);
 
 
-INSERT into equipoVisitanteEvento
-	(idEvento, idEquipo)
-	VALUES
-	(1, 2);
+insert into equipoLocatarioEvento(idEvento, idEquipo) values (3, 1);
+insert into equipoVisitanteEvento(idEvento, idEquipo) values (3, 3);
 
 
 INSERT into competiciones

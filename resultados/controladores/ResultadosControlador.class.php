@@ -11,16 +11,20 @@ class ResultadosControlador {
         $locatarios = $e -> LocatarioEvento(); 
         $visitantes = $e -> VisitanteEvento();
         $resultados = [];
-        $resultado = [];
-        foreach($locatarios as $locatario){
-            foreach($visitantes as $visitante){
-                $resultado = array_merge($locatario, $visitante);
-                array_push($resultados, $resultado);
-            }
+        $deportes = array(array());
+        for ($i=0; $i <count($locatarios) ; $i++) {
+            $deportes[$i]['deporte'] = 
+                self::ObtenerDeporte($locatarios[$i]['idDeporte']);
+            $resultados[$i]= array_merge($locatarios[$i], $visitantes[$i], $deportes[$i]);
             
         }
-        
-        echo json_encode($resultado); 
+        echo json_encode($resultados); 
+
+    }
+
+    public static function ObtenerDeporte($idDeporte){
+        $e = new  DeporteModelo($idDeporte);
+        return $e -> nombreDeporte;
 
     }
 
