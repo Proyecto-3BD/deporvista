@@ -5,6 +5,25 @@
 
 class ResultadosControlador {
 
+
+    public static function ResultadoEquipo($context){
+        $e = new  EventoModelo();
+        $locatarios = $e -> LocatarioEvento(); 
+        $visitantes = $e -> VisitanteEvento();
+        $resultados = [];
+        $resultado = [];
+        foreach($locatarios as $locatario){
+            foreach($visitantes as $visitante){
+                $resultado = array_merge($locatario, $visitante);
+                array_push($resultados, $resultado);
+            }
+            
+        }
+        
+        echo json_encode($resultado); 
+
+    }
+
     public static function Listar($context){
         $a = new ResultadosModelo();
         $res = $a -> ObtenerEventos();
@@ -23,3 +42,4 @@ class ResultadosControlador {
         return $resultado;          
     }
 }
+
