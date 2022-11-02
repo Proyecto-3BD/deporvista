@@ -8,16 +8,17 @@ class ResultadosControlador {
 
     public static function ResultadoEquipo($context){
         $e = new  EventoModelo();
-        $locatarios = $e -> LocatarioEvento(); 
+        $locatarios = $e -> LocatarioEvento();
         $visitantes = $e -> VisitanteEvento();
         $resultados = [];
-        $deportes = array(array());
+        $deportes = [];
         for ($i=0; $i <count($locatarios) ; $i++) {
-            $deportes[$i]['deporte'] = 
-                self::ObtenerDeporte($locatarios[$i]['idDeporte']);
-            $resultados[$i]= array_merge($locatarios[$i], $visitantes[$i], $deportes[$i]);
-            
+            if ($locatarios[$i]['idEvento'] === $visitantes[$i]['idEvento']) {
+                $deportes[$i]['deporte'] = self::ObtenerDeporte($locatarios[$i]['idDeporte']);
+                $resultados[$i]= array_merge($locatarios[$i], $visitantes[$i], $deportes[$i]);
+            }
         }
+        
         echo json_encode($resultados); 
 
     }
