@@ -1,4 +1,4 @@
-let url = "http://localhost:8084/eventos";
+let url = "http://localhost:8084/resultados";
 fetch(url)
     .then(response => response.json())
     .then(dataevento => mostrarData(dataevento))
@@ -17,7 +17,7 @@ const mostrarData = (dataevento) => {
 
 function fetchEventoFinalizado() {
 
-    let url = "http://localhost:8084/eventos";
+    let url = "http://localhost:8084/resultados";
     fetch(url)
         .then(response => response.json())
         .then(dataevento => mostrarData(dataevento))
@@ -47,7 +47,7 @@ function fetchEventoFinalizado() {
         for (let i = 0; i < dataevento.length; i++) {
             if (dataevento[i].fechaHora <= fecha) {
 
-                body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td></tr>`
+                body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td></tr>`
             }
         }
         document.getElementById('dataeventoFin').innerHTML = body;
