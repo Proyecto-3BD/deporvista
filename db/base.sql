@@ -197,18 +197,28 @@ INSERT into equipos
 	('Basañez',
 	'Uruguay', 
 	'Oreja Martinez'
-), ('Nacional',
+	), ('Nacional',
 	'Uruguay', 
 	'Pablo Repetto'
-), ('Penarol',
+	), ('Penarol',
 	'Uruguay', 
 	'Gregory Perez'
+	), ('Los Angeles Lakers',
+	'Estados Unidos', 
+	'Darvin Ham'
+	), ('Golden State Warriors',
+	'Estados Unidos', 
+	'Steve Kerr'
 );
 
 INSERT INTO deportes
     (nombreDeporte, tipoDeporte)
     VALUES
     ('futbol',
+    'porPuntos'
+    ), ('basketball',
+    'porPuntos'
+    ), ('tenis',
     'porPuntos'
     );
 
@@ -256,6 +266,12 @@ INSERT INTO eventos
 	'1',
     '0',
     'Estadio Centenario' 
+	), 
+	('2022-11-02 12:00:00',
+    '0-0',
+	'2',
+    '0',
+    'Staples Center' 
 );
 
 insert into equipoLocatarioEvento(idEvento, idEquipo) values (1, 1);
@@ -278,6 +294,9 @@ insert into equipoVisitanteEvento(idEvento, idEquipo) values (6, 1);
 
 insert into equipoLocatarioEvento(idEvento, idEquipo) values (7, 3);
 insert into equipoVisitanteEvento(idEvento, idEquipo) values (7, 2);
+
+insert into equipoLocatarioEvento(idEvento, idEquipo) values (8, 4);
+insert into equipoVisitanteEvento(idEvento, idEquipo) values (8, 5);
 
 
 
