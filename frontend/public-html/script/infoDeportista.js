@@ -123,12 +123,12 @@ function fetchEventoProximo() {
 
 /* probando BASKET */
 
-/* PRUEBA */
+/* PRUEBA 
 let basket = document.getElementById('barraResultados');
 let htmlCode = '<ul id="barraBasket"><li><a onclick="directo(); basket()" >Hoy</a></li><li><a onclick="finalizado()">Finalizados</a></li><li><a onclick="proximo()">Proximos</a></li></ul>';
 basket.insertAdjacentHTML('beforebegin', htmlCode);
 document.getElementById('barraResultados').style.display = "none";
-/* FIN PRUEBA */
+ FIN PRUEBA */
 
 
 function basket() {
@@ -160,11 +160,6 @@ function basket() {
         ("00" + 59).slice(-2) + ":" +
         ("00" + 59).slice(-2);
     console.log(finDia);
-
-
-
-    
-
 
     const mostrarData = (dataevento) => {
         console.log(dataevento)
