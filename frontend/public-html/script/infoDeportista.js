@@ -123,7 +123,12 @@ function fetchEventoProximo() {
 
 /* probando BASKET */
 
-
+/* PRUEBA */
+let basket = document.getElementById('barraResultados');
+let htmlCode = '<ul id="barraBasket"><li><a onclick="directo(); basket()" >Hoy</a></li><li><a onclick="finalizado()">Finalizados</a></li><li><a onclick="proximo()">Proximos</a></li></ul>';
+basket.insertAdjacentHTML('beforebegin', htmlCode);
+document.getElementById('barraResultados').style.display = "none";
+/* FIN PRUEBA */
 
 
 function basket() {
@@ -158,12 +163,7 @@ function basket() {
 
 
 
-    /* PRUEBA */
-    let basket = document.getElementById('barraResultados');
-    let htmlCode = '<ul id="barraBasket"><li><a onclick="directo(); basket()" >Hoy</a></li><li><a onclick="finalizado()">Finalizados</a></li><li><a onclick="proximo()">Proximos</a></li></ul>';
-    basket.insertAdjacentHTML('beforebegin', htmlCode);
-    document.getElementById('barraResultados').style.display = "none";
-    /* FIN PRUEBA */
+    
 
 
     const mostrarData = (dataevento) => {
