@@ -40,7 +40,7 @@ services:
     ports:
       - "3305:3306"
     volumes:
-      - /db/mysql:/var/lib/mysql
+      - $PWD/db/mysql:/var/lib/mysql
     command: [--ignore-db-dir=lost+found]  
   
   anuncios:
