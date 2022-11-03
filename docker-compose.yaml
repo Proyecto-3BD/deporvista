@@ -31,7 +31,7 @@ services:
   db:
     build:
       context: ./db
-      dockerfile: ./Dockerfile
+      dockerfile: Dockerfile
     tty: true 
     restart: unless-stopped
     networks:
