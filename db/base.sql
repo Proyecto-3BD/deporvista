@@ -219,17 +219,27 @@ INSERT INTO eventos
     '2-0',
 	'1',
     '1rojas, 2amarilla',
-    'estadio Centenariio' 
+    'Estadio Centenariio' 
     ), ('2022-10-28 21:30:00',
     '3-5',
 	'1',
     '5amarilla',
-    'estadio GPC' 
+    'Estadio GPC' 
     ), ('2022-11-19 22:00:00',
     '0-0',
 	'1',
     '0',
     'La Bombonera' 
+	), ('2022-11-02 18:00:00',
+    '1-2',
+	'1',
+    '2amarilla',
+    'Campeón Del Siglo' 
+	), ('2022-11-03 07:00:00',
+    '4-2',
+	'1',
+    '3amarilla',
+    'Estadio GPC' 
 );
 
 insert into equipoLocatarioEvento(idEvento, idEquipo) values (1, 1);
@@ -238,9 +248,15 @@ insert into equipoVisitanteEvento(idEvento, idEquipo) values (1, 2);
 insert into equipoLocatarioEvento(idEvento, idEquipo) values (2, 2);
 insert into equipoVisitanteEvento(idEvento, idEquipo) values (2, 3);
 
-
 insert into equipoLocatarioEvento(idEvento, idEquipo) values (3, 1);
 insert into equipoVisitanteEvento(idEvento, idEquipo) values (3, 3);
+
+insert into equipoLocatarioEvento(idEvento, idEquipo) values (4, 1);
+insert into equipoVisitanteEvento(idEvento, idEquipo) values (4, 3);
+
+insert into equipoLocatarioEvento(idEvento, idEquipo) values (5, 2);
+insert into equipoVisitanteEvento(idEvento, idEquipo) values (5, 3);
+
 
 
 INSERT into competiciones

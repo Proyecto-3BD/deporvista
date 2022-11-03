@@ -4,12 +4,38 @@ fetch(url)
     .then(dataevento => mostrarData(dataevento))
     .catch(error => console.log(error))
 
+let date = new Date();
+
+let principioDia =
+    date.getFullYear() + "-" +
+    ("00" + (date.getMonth() + 1)).slice(-2) + "-" +
+    ("00" + date.getDate()).slice(-2) + " " +
+
+    ("00" + 00).slice(-2) + ":" +
+    ("00" + 00).slice(-2) + ":" +
+    ("00" + 00).slice(-2);
+console.log(principioDia);
+
+
+let finDia =
+    date.getFullYear() + "-" +
+    ("00" + (date.getMonth() + 1)).slice(-2) + "-" +
+    ("00" + date.getDate()).slice(-2) + " " +
+
+    ("00" + 23).slice(-2) + ":" +
+    ("00" + 59).slice(-2) + ":" +
+    ("00" + 59).slice(-2);
+console.log(finDia);
+
 
 const mostrarData = (dataevento) => {
     console.log(dataevento)
     let body = ''
     for (let i = 0; i < dataevento.length; i++) {
-        body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td></tr>`
+        if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
+
+            body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td></tr>`
+        }
     }
     document.getElementById('dataevento').innerHTML = body;
 }
