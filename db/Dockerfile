@@ -3,4 +3,4 @@ ENV MYSQL_ROOT_PASSWORD=1234
 ENV MYSQL_USER=usuario
 ENV MYSQL_PASSWORD=1234
 ENV MYSQL_DATABASE=base
-COPY base.sql /docker-entrypoint-initdb.d/
+ADD base.sql /docker-entrypoint-initdb.d/base.sql

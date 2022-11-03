@@ -40,7 +40,7 @@ services:
     ports:
       - "3304:3306"
     volumes:
-      - /db/mysql:/var/lib/mysql
+      - ./db/mysql:/var/lib/mysql
   
   anuncios:
     build:
