@@ -122,6 +122,10 @@ function fetchEventoProximo() {
 
 
 /* probando BASKET */
+
+
+
+
 function basket() {
     let url = "http://localhost:8084/resultados";
     fetch(url)
@@ -151,6 +155,15 @@ function basket() {
         ("00" + 59).slice(-2) + ":" +
         ("00" + 59).slice(-2);
     console.log(finDia);
+
+
+
+    /* PRUEBA */
+    let basket = document.getElementById('barraResultados');
+    let htmlCode = '<ul id="barraBasket"><li><a onclick="directo(); basket()" >Hoy</a></li><li><a onclick="finalizado()">Finalizados</a></li><li><a onclick="proximo()">Proximos</a></li></ul>';
+    basket.insertAdjacentHTML('beforebegin', htmlCode);
+    document.getElementById('barraResultados').style.display = "none";
+    /* FIN PRUEBA */
 
 
     const mostrarData = (dataevento) => {
