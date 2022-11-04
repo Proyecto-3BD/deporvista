@@ -209,6 +209,18 @@ INSERT into equipos
 	), ('Golden State Warriors',
 	'Estados Unidos', 
 	'Steve Kerr'
+	), ('Barcelona',
+	'España', 
+	'Xavi'
+	), ('Real Madrid',
+	'España', 
+	'Ancelotti'
+	), ('Federer',
+	'Suiza', 
+	'-'
+	), ('Nadal',
+	'España', 
+	'-'
 );
 
 INSERT INTO deportes
@@ -220,7 +232,15 @@ INSERT INTO deportes
     'porPuntos'
     ), ('tenis',
     'porPuntos'
-    );
+    ), ('rugby',
+    'porPuntos'
+    ), ('golf',
+    'porPuntos'
+    ), ('hockey',
+    'porPuntos'
+    ), ('cricket',
+    'porPuntos'
+);
 
 INSERT INTO eventos
     (fechaHora, resultado, idDeporte, infracciones, ubicacion)
@@ -303,10 +323,43 @@ insert into equipoVisitanteEvento(idEvento, idEquipo) values (8, 5);
 INSERT into competiciones
 	(nombreCompeticion, paisCompeticion, anio)
 	VALUES
-	('LigaUruguay',
+	('Primera division de Uruguay',
 	'Uruguay',
 	'2020-01-01'
-);
+	), ('Premier League',
+	'Inglaterra',
+	'2020-01-01'
+	), ('LaLiga',
+	'España',
+	'2020-01-01'
+	), ('Primera division de Argentina',
+	'Argentina',
+	'2020-01-01'
+	), ('LUB',
+	'Uruguay',
+	'2020-01-01'
+	), ('NBA Este',
+	'Estados Unidos',
+	'2020-01-01'
+	), ('NBA Oeste',
+	'Estados Unidos',
+	'2020-01-01'
+	), ('Serie A',
+	'Italia',
+	'2020-01-01'
+	), ('US Open',
+	'Estados Unidos',
+	'2020-01-01'
+	), ('Wimbledon',
+	'Inglaterra',
+	'2020-01-01'
+	), ('Roland-Garros',
+	'Francia',
+	'2020-01-01'
+	), ('Austarlian Open',
+	'Australia',
+	'2020-01-01'
+	);
 
 INSERT into deportistaEquipo
 	(idDeportista, idEquipo, rol)
