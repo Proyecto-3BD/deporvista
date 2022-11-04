@@ -177,6 +177,11 @@ function basket() {
         .then(dataevento => mostrarData(dataevento))
         .catch(error => console.log(error))
 
+    document.getElementById("hoy").style.display = "block";
+    document.getElementById("finalizados").style.display = "none";
+    document.getElementById("proximos").style.display = "none";
+
+
     let basket = document.getElementById('barraResultados');
     let htmlCode = '<ul id="barraBasket"><li><a onclick="directo();" >Hoy</a></li><li><a onclick="finalizado(); fetchEventoFinalizadoBasket()">Finalizados</a></li><li><a onclick="proximo(); fetchEventoProximoBasket()">Proximos</a></li></ul>';
     basket.insertAdjacentHTML('beforebegin', htmlCode);
