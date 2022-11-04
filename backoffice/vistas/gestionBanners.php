@@ -3,8 +3,11 @@
     if(!isset($_SESSION['autenticado'])){ 
         header("Location: /login");
     }
-    require 'templates/head.php'; ?>
-
+    require 'templates/head.php'; 
+    require 'templates/sidebar.php';
+    ?>
+    
+<div class="content">
     <div class="row">
 
         <div class="card">

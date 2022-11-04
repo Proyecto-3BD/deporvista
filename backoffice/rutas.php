@@ -5,8 +5,9 @@
     Routes::AddView("/login","login");
     Routes::AddView("/usuario/altaUsuario","altaUsuario");
     Routes::AddView("/suscriptores", "gestionSuscriptor");
-    Routes::AddView("/usuario/administradores", "gestionAdministrador");
-    Routes::AddView("/gestionBanners", "gestionBanners"); 
+    Routes::AddView("/gestionAdministradores", "gestionAdministrador");
+    Routes::AddView("/gestionBanners", "gestionBanners");
+    Routes::AddView("/gestionCompeticiones", "gestionCompeticiones");
 
 
     
@@ -21,6 +22,8 @@
     Routes::Add("/altaBanners", "post", "BannersControlador::Alta");
     Routes::Add("/bajaBanners", "post", "BannersControlador::Eliminar");
     Routes::Add("/modificarBanners", "post", "BannersControlador::Modificar");
+    Routes::Add("/altaCompeticion", "post", "CompeticionesControlador::Alta");
+
 
     Routes::Run();
 

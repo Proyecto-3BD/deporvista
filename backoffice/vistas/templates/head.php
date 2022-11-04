@@ -15,14 +15,14 @@
 
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="css/style.css">
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css" rel="stylesheet">
   </head>
 
   <body>
-
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <div class="container">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <a class="navbar-brand" href="/">Deporvista</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,7 @@
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
+          <!--<li class="nav-item">
             <a class="nav-link" href="/">Inicio</a>
           </li>
           <li class="nav-item">
@@ -43,8 +43,8 @@
             <a class="nav-link" href="/">Eventos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/usuario/administradores">Administradores</a>
-          </li>
+            <a class="nav-link" href="/gestionAdministradores">Administradores</a>
+          </li>-->
         
           <?php if(isset($_SESSION['autenticado'])): ?>
 
@@ -55,8 +55,6 @@
           <?php endif; ?>
         </ul>
         
-      </div>
+      </div>-->
 
     </nav>
-
-    <main role="main" class="container">

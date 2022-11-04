@@ -1,52 +1,28 @@
-
-<?php 
-    require "../utils/autoload.php";
+<?php
+	    require "../utils/autoload.php";
     if(!isset($_SESSION['autenticado'])){ 
         header("Location: /login");
     }
-    require 'templates/head.php'; 
-    require 'templates/sidebar.php';?>
-
-<div class="content">
+    require 'templates/head.php';
+    require 'templates/sidebar.php'; ?>
+    <div class="content">
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Alta de Suscriptor</h5>
-                <form action="/usuario/altaSuscriptor" method="post">
+                <h5 class="card-title">Alta Competiciones</h5>
+                <form action="/altaCompeticion" method="post">
                     <div class="form-group">
-                        <input type="text" placeholder="Nombre de Usuario" name="nombreSuscriptor">
+                        <input type="text" placeholder="Competición" name="nombreCompeticion">
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="E-mail" name="email">
+                        <input type="text" placeholder="País" name="paisCompeticion">
                     </div>
                     <div class="form-group">
-                        <input type="password" placeholder="Password" name="password">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Documento" name="documento">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Nombre" name="nombre">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" placeholder="Apellidos" name="apellidos">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Teléfono" name="telefono">
-                    </div>
-                    <div class="form-group">
-                        <p>
-                        <select id="metodoPago" name="metodoPago">
-                        <option value="mercadoPago">Mercado Pago</option>
-                        <option value="tarjeta">Tarjeta</option>
-                        <option value="paypal">PayPal</option>
-                        </select>
-                        </p>
+                        <input type="text" placeholder="Año" name="anio">
                     </div>
                     <button type="submit" class="btn btn-primary">Alta</button>
                     <?php if(isset($parametros['ingresado']) && $parametros['ingresado'] == 'true') :?>
-                                <div style='color: green;'>Suscriptor Ingresado</div>
+                                <div style='color: green;'>Alta Exitosa</div>
                     <?php elseif (isset($parametros['error']) && $parametros['error'] == 'true')  :?>
                                 <div style='color: red;'>Error en el Ingreso</div>
                     <?php endif; ?>
@@ -158,6 +134,6 @@
             </div>  
         </div>
     </div>
+    </div>
 </div>
-    
-        
+

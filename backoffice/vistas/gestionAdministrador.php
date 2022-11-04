@@ -3,11 +3,14 @@
     if(!isset($_SESSION['autenticado'])){ 
         header("Location: /login");
     }
-    require 'templates/head.php'; ?>
+    require 'templates/head.php'; 
+    require 'templates/sidebar.php';
+    ?>
 
+<div class="content">
     <div class="row">
 
-        <div class="card" style="width: 18rem;">
+        <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Ingreso de Datos</h5>
                 <form action="/usuario/altaAdmin" method="post">
@@ -105,4 +108,5 @@
 
             </div>  
         </div>
-    </div>  
+    </div>
+</div>  
