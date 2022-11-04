@@ -4,9 +4,9 @@
     class SesionControlador { 
         public static function IniciarSesion($context){
             try{
-                if(self::autenticar($context['post']['nombreUsuario'],$context['post']['password']) === "true"){
+                if(self::autenticar($context['post']['nombreSuscriptor'],$context['post']['password']) === "true"){
                     SessionCreate("autenticado",true);
-                    SessionCreate("nombreUsuario", $context['post']['nombreUsuario']);
+                    SessionCreate("nombreSuscriptor", $context['post']['nombreSuscriptor']);
                     header("Location: /");
 
                 }
@@ -22,9 +22,9 @@
             header("Location:/");
         }
 
-        private static function autenticar($nombreUsuario,$password){
+        private static function autenticar($nombreSuscriptor,$password){
             $parametros = [
-                "nombreUsuario" => $nombreUsuario,
+                "nombreSuscriptor" => $nombreSuscriptor,
                 "password" => $password
             ];
 

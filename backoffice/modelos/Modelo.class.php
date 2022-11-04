@@ -1,6 +1,6 @@
 <?php
 
-    require "../utils/autoload.php";
+require "../utils/autoload.php";
 
     class Modelo {
         public $IpBaseDeDatos;

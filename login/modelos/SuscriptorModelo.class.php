@@ -47,19 +47,6 @@
         }
 
         private function actualizar(){
-<<<<<<< HEAD:backoffice/modelos/UsuarioSuscriptorModelo.class.php
-            $sql = "start transaction;";
-            $this -> conexion -> query($sql);
-
-            $sql = "UPDATE usuarios SET
-            nombreUsuario = '" . $this -> nombreUsuario . "',
-            email = '" . $this -> email . "'
-            password = '" . $this -> hashearPassword($this -> password) . "'
-            WHERE idUsuario = " . $this -> idUsuario . ";";
-            $this -> conexion -> query($sql);
-
-=======
->>>>>>> modelos:backoffice/modelos/SuscriptorModelo.class.php
             $sql = "UPDATE suscriptores SET
             nombreSuscriptor = '" . $this -> nombreSuscriptor . "',
             email = '" . $this -> email . "',

@@ -1,7 +1,6 @@
 <?php
 
 	header("Access-Control-Allow-Origin: *");
-
 	require "../utils/autoload.php";
 
     class DeporteControlador{
@@ -12,15 +11,22 @@
                 $u -> nombreDeporte = $context['post']['nombreDeporte'];
                 $u -> tipoDeporte = $context['post']['tipoDeporte'];
                 $u -> Guardar();
-                render("gestionDeporte", ["ingresado" => true]);
-            }else
-                render("gestionDeporte", ["error" => true]);
+                $respuesta = [
+                    "Resultado" => "true",
+                    "Mensaje" => "Deporte Ingresado"
+                ];
+                echo json_encode($respuesta);
+            }
         }
 
         public static function Eliminar($context){
             $u = new DeporteModelo($context['post']['idDeporte']);
             $u -> Eliminar();
-            render("gestionBanners", ["borrado" => true]);
+            $respuesta = [
+                "Resultado" => "true",
+                "Mensaje" => "Deporte Eliminado"
+            ];
+            echo json_encode($respuesta);
         }        
 
         public static function Modificar($context){
@@ -31,9 +37,12 @@
             $u -> tipoDeporte = $context['post']['tipoDeporte'];
             if(!empty($context['post']['idDeporte'])){
                 $u -> Guardar();
-                render("gestionDeporte", ["modificado" => true]);
-            }else
-                render("gestionDeporte", ["errorModificado" => true]);
+                $respuesta = [
+                    "Resultado" => "true",
+                    "Mensaje"  => "Deporte Modificada"
+                ];
+                echo json_encode($respuesta);
+            }
         }
 
 

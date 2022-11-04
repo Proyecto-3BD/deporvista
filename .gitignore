@@ -1,5 +1,4 @@
 config.php
-db/mysql
+db/mysql/*
 *.old
-*.sql
 *.png

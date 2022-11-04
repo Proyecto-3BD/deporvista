@@ -1,8 +1,9 @@
+
 <?php 
 
     require "../utils/autoload.php";
 
-    class EventosModelo extends Modelo {
+    class EventoModelo extends Modelo {
 
         public $idEvento;
         public $fechaHora;
@@ -24,9 +25,8 @@
         }
 
         private function insertar(){
-            $sql = "INSERT INTO eventos (idEvento, fechaHora, resultado, infracciones, ubicacion) 
-            VALUES ('" . $this -> idEvento . "',
-                    '" . $this -> fechaHora . "',
+            $sql = "INSERT INTO eventos (fechaHora, resultado, infracciones, ubicacion) 
+            VALUES ('" . $this -> fechaHora . "',
                     '" . $this -> resultado . "',
                     '" . $this -> infracciones . "',
                     '" . $this -> ubicacion . "');";

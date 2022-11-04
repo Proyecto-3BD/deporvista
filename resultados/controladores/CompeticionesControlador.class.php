@@ -1,5 +1,8 @@
 <?php 
     require "../utils/autoload.php";
+    header("Access-Control-Allow-Origin:*");
+
+
 
     class CompeticionesControlador{
         public static function Alta($context){
@@ -10,16 +13,22 @@
                 $u -> paisCompeticion = $context['post']['paisCompeticion'];
                 $u -> anio = $context['post']['anio'];
                 $u -> Guardar();
-                render("gestionCompeticiones", ["ingresado" => true]);
-            }else
-                render("gestionCompeticiones", ["error" => true]);
-
+                $respuesta = [
+                    "Resultado" => "true",
+                    "Mensaje" => "Competicion Ingresado"
+                ];
+                echo json_encode($respuesta);
+            }
         }
 
         public static function Eliminar($context){
             $u = new CompeticionesModelo($context['post']['idCompeticion']);
             $u -> Eliminar();
-            render("gestionCompeticiones", ["borrado" => true]);
+            $respuesta = [
+                "Resultado" => "true",
+                "Mensaje" => "Competicion Eliminada"
+            ];
+            echo json_encode($respuesta);
         }        
 
         public static function Modificar($context){
@@ -31,9 +40,12 @@
             $u -> anio = $context['post']['anio'];
             if(!empty($context['post']['idCompeticion'])){
                 $u -> Guardar();
-                render("gestionCompeticiones", ["modificado" => true]);
-            }else
-                render("gestionCompeticiones", ["errorModificado" => true]);
+                $respuesta = [
+                    "Resultado" => "true",
+                    "Mensaje"  => "Competencia Modificada"
+                ];
+                echo json_encode($respuesta);
+            }
         }
 
 

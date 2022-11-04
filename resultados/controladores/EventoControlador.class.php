@@ -1,5 +1,6 @@
 <?php 
     require "../utils/autoload.php";
+    header("Access-Control-Allow-Origin:*");
 
     class EventoControlador{
         public static function Alta($context){
@@ -11,16 +12,22 @@
                 $u -> infracciones = $context['post']['infracciones'];
                 $u -> ubicacion = $context['post']['ubicacion'];
                 $u -> Guardar();
-                render("gestionEvento", ["ingresado" => true]);
-            }else
-                render("gestionEvento", ["error" => true]);
+                $respuesta = [
+                    "Resultado" => "true",
+                    "Mensaje" => "Evento Ingresado"
+                ];
+                echo json_encode($respuesta);
         	}
         }
 
         public static function Eliminar($context){
             $u = new EventoModelo($context['post']['idEvento']);
             $u -> Eliminar();
-            render("gestionEvento", ["borrado" => true]);
+            $respuesta = [
+                    "Resultado" => "true",
+                    "Mensaje" => "Evento Eliminado"
+            ];
+            echo json_encode($respuesta);
         }        
 
         public static function Modificar($context){
@@ -33,15 +40,18 @@
             $u -> ubicacion = $context['post']['ubicacion'];
             if(!empty($context['post']['idCompeticion'])){
                 $u -> Guardar();
-                render("gestionEvento", ["modificado" => true]);
-            }else
-                render("gestionEvento", ["errorModificado" => true]);
+                $respuesta = [
+                    "Resultado" => "true",
+                    "Mensaje" => "Evento Modificado"
+            ];
+            echo json_encode($respuesta);
+            }
         }
 
 
         public static function Listar(){
             $a = new EventoModelo();
-            $eventos = $a -> ObtenerTodos();
+            $eventos = $a -> obtenerTodos();
 
             $resultado = [];
             foreach($eventos as $evento){

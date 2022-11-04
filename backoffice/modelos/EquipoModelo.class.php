@@ -2,85 +2,73 @@
 
     require "../utils/autoload.php";
 
-    class EquiposModelo extends Modelo {
+    class EquipoModelo extends Modelo {
 
         public $idEquipo;
-        public $nombre;
-        public $pais;
+        public $nombreEquipo;
+        public $paisEquipo;
         public $dt;
-
+        
         public function __construct($idEquipo=""){
             parent::__construct();
             if($idEquipo != ""){
                 $this -> idEquipo = $idEquipo;
-                $this -> obtenerEquipos();
+                $this -> obtener();
             }
         }
 
         public function guardar(){
-            if($this -> idEquipo == NULL) $this -> insertarEquipo();
-            else $this -> actualizarEquipo();
+            if($this -> idEquipo == NULL) $this -> insertar();
+            else $this -> actualizar();
         }
 
-        private function insertarEquipo(){
-            $sql = "INSERT INTO equipos (idEquipo, nombre, pais, dt) 
-            VALUES ('" . $this -> idEquipo . "',
-                    '" . $this -> nombre . "',
-                    '" . $this -> pais . "',
+        private function insertar(){
+            $sql = "INSERT INTO equipos (nombreEquipo, paisEquipo, dt) 
+            VALUES ('" . $this -> nombreEquipo . "',
+                    '" . $this -> paisEquipo . "',
                     '" . $this -> dt . "');";
             $this -> conexion -> query($sql);
         }
 
-        private function actualizarEquipo(){
-            $sql = "start transaction;";
-            $this -> conexion -> query($sql);
-
+        private function actualizar(){
             $sql = "UPDATE equipos SET
-            nombre = '" . $this -> nombre . "',
-            pais = '" . $this -> pais . "',
+            nombreEquipo = '" . $this -> nombreEquipo . "',
+            paisEquipo = '" . $this -> paisEquipo . "',
             dt = '" . $this -> dt . "',
             WHERE idEquipo = " . $this -> idEquipo . ";";
-            $this -> conexion -> query($sql);
-
-            $sql = "commit;";
             $this -> conexion -> query($sql);   
         }
 
-        public function obtenerEquipos(){
+        public function obtener(){
             $sql = "SELECT * FROM  equipos WHERE idEquipo = " . $this -> idEquipo . ";";
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
             $this -> idEquipo = $fila['idEquipo'];
-            $this -> nombre = $fila['nombre'];
-            $this -> pais = $fila['pais'];
+            $this -> nombreEquipo = $fila['nombreEquipo'];
+            $this -> paisEquipo = $fila['paisEquipo'];
             $this -> dt = $fila['dt'];
         }
 
-        public function eliminarEquipo(){
-            $sql = "start transaction;";
+        public function eliminar(){
+            $sql = "DELETE FROM equipos 
+                WHERE idEquipo = " . $this -> idEquipo . ";";
             $this -> conexion -> query($sql);
 
-            $sql = "DELETE FROM equipos 
-                WHERE id = " . $this -> idEquipo . ";";
-            $this -> conexion -> query($sql);
-        
-            $sql = "commit;";
-            $this -> conexion -> query($sql);
         }
 
         public function obtenerTodos(){
             $sql = "select * from equipos;";
  
-             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
-             $resultado = array();
-             foreach($filas as $fila){
-                 $a = new EquiposModelo();
-                 $a -> idEquipo = $fila['idEquipo'];
-                 $a -> nombre = $fila['nombre'];
-                 $a -> pais = $fila['pais'];
-                 $a -> dt = $fila['dt'];
+            $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
+            $resultado = array();
+            foreach($filas as $fila){
+                $a = new EquiposModelo();
+                $a -> idEquipo = $fila['idEquipo'];
+                $a -> nombreEquipo = $fila['nombreEquipo'];
+                $a -> pais = $fila['pais'];
+                $a -> dt = $fila['dt'];
                  
-                 array_push($resultado,$a);
+                array_push($resultado,$a);
              }
              return $resultado;
          }

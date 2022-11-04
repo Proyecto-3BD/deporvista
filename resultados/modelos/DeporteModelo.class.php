@@ -2,7 +2,7 @@
 
     require "../utils/autoload.php";
 
-    class DeportesModelo extends Modelo{
+    class DeporteModelo extends Modelo{
         public $idDeporte;
         public $nombreDeporte ;
         public $tipoDeporte;
@@ -12,7 +12,7 @@
             parent::__construct();
             if($idDeporte != ""){
                 $this -> idDeporte = $idDeporte;
-                $this -> Obtener();
+                $this -> obtener();
             }
         }
 
@@ -39,7 +39,7 @@
         }
 
 
-        public function Obtener(){
+        public function obtener(){
             $sql = "SELECT * FROM  deportes WHERE idDeporte = " . $this -> idDeporte . ";";
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
@@ -72,4 +72,4 @@
              return $resultado;
          }
 
-        }
+    }

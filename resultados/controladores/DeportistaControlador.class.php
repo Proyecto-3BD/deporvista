@@ -1,5 +1,7 @@
 <?php
 	require "../utils/autoload.php";
+    header("Access-Control-Allow-Origin:*");
+
 
     class DeportistaControlador{
         public static function Alta($context){
@@ -9,17 +11,25 @@
                 $u -> nombreDeportista = $context['post']['nombreDeportista'];
                 $u -> apellidos = $context['post']['apellidos'];
                 $u -> paisDeportista = $context['post']['paisDeportista'];
+
                 $u -> Guardar();
-                render("gestionDeportista", ["ingresado" => true]);
-            }else
-                render("gestionDeportista", ["error" => true]);
+                $respuesta = [
+                    "Resultado" => "true",
+                    "Mensaje" => "Deportista Ingresado"
+                ];
+                echo json_encode($respuesta);
+            }
         }
 
         public static function Eliminar($context){
             $u = new DeportistaModelo($context['post']['idDeportista']);
             $u -> Eliminar();
-            render("gestionDeportista", ["borrado" => true]);
-        }
+            $respuesta = [
+                "Resultado" => "true",
+                "Mensaje" => "Deportista Eliminado"
+            ];
+            echo json_encode($respuesta);
+        }        
 
         public static function Modificar($context){
 
@@ -30,9 +40,12 @@
             $u -> anio = $context['post']['anio'];
             if(!empty($context['post']['idCompeticion'])){
                 $u -> Guardar();
-                render("gestionDeportista", ["modificado" => true]);
-            }else
-                render("gestionDeportista", ["errorModificado" => true]);
+                $respuesta = [
+                    "Resultado" => "true",
+                    "Mensaje"  => "Competencia Modificada"
+                ];
+                echo json_encode($respuesta);
+            }
         }
 
 

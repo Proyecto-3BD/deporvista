@@ -3,10 +3,10 @@
 
     class SesionControlador {
         public static function IniciarSesion($context){
-            $u = new UsuarioSuscriptorModelo();
-            $u -> nombreUsuario = $context['post']['nombreUsuario'];
+            $u = new SuscriptorModelo();
+            $u -> nombreSuscriptor = $context['post']['nombreSuscriptor'];
             $u -> password = $context['post']['password'];
-            if($u -> Autenticar($u -> nombreUsuario, $u -> password)){
+            if($u -> Autenticar($u -> nombreSuscriptor, $u -> password)){
                 $respuesta = [
                     "Resultado" => "true",
                     "Mensaje" => "Credenciales validas"
