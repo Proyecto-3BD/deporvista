@@ -65,9 +65,10 @@
 }
 
 .lista-nav li a {
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255) !important;
     font: uppercase;
     text-decoration: none;
+    cursor: pointer;
 }
 
 /* Drop*/
