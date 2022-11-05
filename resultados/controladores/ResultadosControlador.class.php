@@ -10,12 +10,13 @@ class ResultadosControlador {
         $e = new  EventoModelo();
         $locatarios = $e -> LocatarioEvento();
         $visitantes = $e -> VisitanteEvento();
+        $competiciones= $e -> EventoCompeticion();
         $resultados = [];
         $deportes = [];
         for ($i=0; $i <count($locatarios) ; $i++) {
             if ($locatarios[$i]['idEvento'] === $visitantes[$i]['idEvento']) {
                 $deportes[$i]['deporte'] = self::ObtenerDeporte($locatarios[$i]['idDeporte']);
-                $resultados[$i]= array_merge($locatarios[$i], $visitantes[$i], $deportes[$i]);
+                $resultados[$i]= array_merge($locatarios[$i], $visitantes[$i], $competiciones[$i], $deportes[$i]);
             }
         }
         

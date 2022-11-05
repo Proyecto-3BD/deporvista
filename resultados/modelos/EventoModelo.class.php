@@ -22,6 +22,18 @@
             }
         }
 
+        public function EventoCompeticion(){
+            $sql = "SELECT c.nombreCompeticion AS competicion
+                    FROM eventoCompeticion AS ec 
+                    INNER JOIN competiciones AS c
+                    ON c.idCompeticion=ec.idCompeticion 
+                    INNER JOIN eventos AS e 
+                    ON ec.idEvento=e.idEvento
+                    ORDER BY e.idEvento ASC;";
+            $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
+            return $filas;
+        }
+
         public function LocatarioEvento(){
 
             $sql = "SELECT e.idEvento, e.fechaHora, e.resultado, 
