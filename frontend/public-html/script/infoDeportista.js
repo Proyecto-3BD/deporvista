@@ -308,16 +308,16 @@ function fetchEventoProximoBasket() {
 let miligaUru = document.getElementById("miligauru");
 let eventomiligaUru = miligaUru.addEventListener('click', ligauy);
 
-document.getElementById("general").style.display = "none";
-document.getElementById("porliga").style.display = "block";
-
-
 function ligauy() {
     let url = "http://localhost:8084/resultados";
     fetch(url)
         .then(response => response.json())
         .then(dataevento => mostrarData(dataevento))
         .catch(error => console.log(error))
+
+        
+    document.getElementById("general").style.display = "none";
+    document.getElementById("porliga").style.display = "block";
 
     document.getElementById("hoy").style.display = "block";
     document.getElementById("finalizados").style.display = "none";
