@@ -304,7 +304,7 @@ function fetchEventoProximoBasket() {
 
 
 /* De aca para abajo prueba */
-/* Liga */
+/* Liga  */
 let miligaUru = document.getElementById("miligauru");
 let eventomiligaUru = miligaUru.addEventListener('click', ligauy);
 
