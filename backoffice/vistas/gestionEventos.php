@@ -9,16 +9,45 @@
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Alta Competiciones</h5>
-                <form action="/altaCompeticion" method="post">
+                <h5 class="card-title">Alta Evento</h5>
+                <form action="/altaEvento" method="post">
                     <div class="form-group">
-                        <input type="text" placeholder="Competición" name="nombreCompeticion">
+                        <input type="datetime-local" id="fechaHora" name="fechaHora">
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="País" name="paisCompeticion">
+                        <input type="text" placeholder="Resultado" name="resultado">
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Año" name="anio">
+                        <input type="text" placeholder="Infracciones" name="infracciones">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Ubicación" name="ubicacion">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Locatario" name="locatario">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Visitante" name="visitante">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Deporte" name="nombreDeporte">
+                    </div>
+                    <div class="form-group">
+                    <?php
+                        $eventos = CompeticionesControlador::Listar();
+                        if($eventos == "") :?>
+                            <select name="competiciones" id="competiciones">
+                            <option value="volvo">Sin Competiciones</option>
+                            </select>
+                    <?php 
+                        else :?>
+                        <? foreach($eventos as $fila) :?>
+                            <select name="competiciones" id="competiciones">
+                                <option value="volvo">Volvo</option>
+                                <option value="saab>Saab</option>
+                                <option value="mercedes">Mercedes</option>
+                                <option value="audi">Audi</option>
+                            </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Alta</button>
                     <?php if(isset($parametros['ingresado']) && $parametros['ingresado'] == 'true') :?>
@@ -28,8 +57,9 @@
                     <?php endif; ?>
                 </form>
             </div>
-            
         </div>
+    </div>
+    <div class="row">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Modificar Competiciones</h5>
@@ -75,9 +105,7 @@
                     </tr>
                   
                     <?php
-                        $eventos = EventoControlador::ResultadoEquipo();
-                        /*echo '</pre>';
-                        var_dump($eventos);*/
+                        $eventos = ResultadosControlador::ResultadoEquipo();
                         if($eventos == "") :?>
                             No hay competiciones ingresados
                     <?php 

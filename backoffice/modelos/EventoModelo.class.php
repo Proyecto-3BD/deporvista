@@ -8,14 +8,15 @@
         public $idEvento;
         public $fechaHora;
         public $resultado;
-        public $idDeporte;      
+        public $idDeporte;
+        public $nombreDeporte;     
         public $infracciones;
         public $ubicacion;
         public $locatario;
         public $visitante;
         public $idCompeticion;
         public $nombreCompeticion;
-        public $anio;
+        public $anioCompeticion;
 
         public function __construct($idEvento=""){
             parent::__construct();
