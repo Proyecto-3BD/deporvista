@@ -2,8 +2,6 @@ DROP DATABASE IF EXISTS base;
 
 CREATE DATABASE base;
 
-CREATE USER 'root'@'localhost' IDENTIFIED BY '1234';
-GRANT ALL PRIVILEGES  ON *.*  TO 'root'@'localhost';
 CREATE USER 'superadmin'@'localhost' IDENTIFIED BY '5678';
 GRANT ALL PRIVILEGES  ON base.*  TO 'superadmin'@'localhost';
 CREATE USER 'admindata'@'localhost' IDENTIFIED BY '8910';
