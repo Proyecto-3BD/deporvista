@@ -138,7 +138,7 @@ CREATE TABLE competiciones(
 	idCompeticion smallint unsigned auto_increment not null,
 	nombreCompeticion VARCHAR(50) not null,
 	paisCompeticion VARCHAR(50) not null,
-	anio DATE,
+	anio YEAR,
 	primary key (idCompeticion)
 );
 
@@ -325,40 +325,40 @@ INSERT into competiciones
 	VALUES
 	('Primera division de Uruguay',
 	'Uruguay',
-	'2020-01-01'
+	'2020'
 	), ('Premier League',
 	'Inglaterra',
-	'2020-01-01'
+	'2020'
 	), ('LaLiga',
 	'España',
-	'2020-01-01'
+	'2020'
 	), ('Primera division de Argentina',
 	'Argentina',
-	'2020-01-01'
+	'2020'
 	), ('LUB',
 	'Uruguay',
-	'2020-01-01'
+	'2020'
 	), ('NBA Este',
 	'Estados Unidos',
-	'2020-01-01'
+	'2020'
 	), ('NBA Oeste',
 	'Estados Unidos',
-	'2020-01-01'
+	'2020'
 	), ('Serie A',
 	'Italia',
-	'2020-01-01'
+	'2020'
 	), ('US Open',
 	'Estados Unidos',
-	'2020-01-01'
+	'2020'
 	), ('Wimbledon',
 	'Inglaterra',
-	'2020-01-01'
+	'2020'
 	), ('Roland-Garros',
 	'Francia',
-	'2020-01-01'
+	'2020'
 	), ('Austarlian Open',
 	'Australia',
-	'2020-01-01'
+	'2020'
 	);
 
 insert into eventoCompeticion
