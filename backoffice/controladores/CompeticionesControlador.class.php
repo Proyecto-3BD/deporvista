@@ -9,7 +9,7 @@
                 $u -> nombreCompeticion = $context['post']['nombreCompeticion'];
                 $u -> paisCompeticion = $context['post']['paisCompeticion'];
                 $u -> anio = $context['post']['anio'];
-                $u -> Guardar();
+                $u -> guardar();
                 render("gestionCompeticiones", ["ingresado" => true]);
             }else
                 render("gestionCompeticiones", ["error" => true]);

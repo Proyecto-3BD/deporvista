@@ -14,8 +14,8 @@
                 render("gestionEvento", ["ingresado" => true]);
             }else
                 render("gestionEvento", ["error" => true]);
-        	}
-        }
+    	}
+
 
         public static function Eliminar($context){
             $u = new EventoModelo($context['post']['idEvento']);
@@ -54,6 +54,30 @@
                 ];   
                 array_push($resultado,$t);
             }
-            echo json_encode($resultado);          
+            return $resultado;          
+        }
+
+        public static function ResultadoEquipo(){
+            $e = new  EventoModelo();
+            $locatarios = $e -> LocatarioEvento();
+            $visitantes = $e -> VisitanteEvento();
+            $competiciones= $e -> EventoCompeticion();
+            $resultados = [];
+            $deportes = [];
+            for ($i=0; $i <count($locatarios) ; $i++) {
+                if ($locatarios[$i]['idEvento'] === $visitantes[$i]['idEvento']) {
+                    $deportes[$i]['deporte'] = 
+                        self::ObtenerDeporte($locatarios[$i]['idDeporte']);
+                    $resultados[$i]= array_merge($locatarios[$i], 
+                        $visitantes[$i], $competiciones[$i], $deportes[$i]);
+                }
+            }
+            return $resultados; 
+        }
+
+        public static function ObtenerDeporte($idDeporte){
+            $e = new  DeporteModelo($idDeporte);
+            return $e -> nombreDeporte;
+
         }
     }
