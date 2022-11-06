@@ -325,7 +325,7 @@ function ligauy() {
 
 
     let basket = document.getElementById('barraResultadosLiga');
-    let htmlCode = '<ul><li><a onclick="directo();" >Hoy</a></li><li><a onclick="finalizado(); fetchEventoFinalizadoligauy()">Finalizados</a></li><li><a onclick="proximo(); fetchEventoProximoligauy()">Proximos</a></li></ul>';
+    let htmlCode = '<ul id="barraResultadosLigaActiva"><li><a onclick="directoLiga();" >Hoy</a></li><li><a onclick="finalizadoLiga(); fetchEventoFinalizadoligauy()">Finalizados</a></li><li><a onclick="proximoLiga(); fetchEventoProximoligauy()">Proximos</a></li></ul>';
     basket.insertAdjacentHTML('beforebegin', htmlCode);
     document.getElementById('barraResultadosLiga').style.display = "none";
 
