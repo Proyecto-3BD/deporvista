@@ -340,7 +340,7 @@ function ligauy() {
         let body = ''
         for (let i = 0; i < dataevento.length; i++) {
 
-            if (dataevento[i].competiciones == "Primera division de Uruguay") {
+            if (dataevento[i].competicion == "Primera division de Uruguay") {
 
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
@@ -373,7 +373,7 @@ function fetchEventoFinalizadoligauy() {
         console.log(dataevento);
         let body = ''
         for (let i = 0; i < dataevento.length; i++) {
-            if (dataevento[i].competiciones == "Primera division de Uruguay") {
+            if (dataevento[i].competicion == "Primera division de Uruguay") {
 
 
                 if (dataevento[i].fechaHora <= fecha) {
@@ -406,7 +406,7 @@ function fetchEventoProximoligauy() {
 
         let body = ''
         for (let i = 0; i < dataevento.length; i++) {
-            if (dataevento[i].competiciones == "Primera division de Uruguay") {
+            if (dataevento[i].competicion == "Primera division de Uruguay") {
 
                 if (dataevento[i].fechaHora >= fecha) {
 
