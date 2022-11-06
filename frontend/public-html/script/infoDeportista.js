@@ -319,9 +319,9 @@ function ligauy() {
     document.getElementById("general").style.display = "none";
     document.getElementById("porliga").style.display = "block";
 
-    document.getElementById("hoy").style.display = "block";
-    document.getElementById("finalizados").style.display = "none";
-    document.getElementById("proximos").style.display = "none";
+    document.getElementById("hoyLiga").style.display = "block";
+    document.getElementById("finalizadosLiga").style.display = "none";
+    document.getElementById("proximosLiga").style.display = "none";
 
 
     let basket = document.getElementById('barraResultadosLiga');
@@ -348,7 +348,7 @@ function ligauy() {
                 }
             }
         }
-        document.getElementById('dataevento').innerHTML = body;
+        document.getElementById('dataeventoLiga').innerHTML = body;
     }
 }
 
@@ -384,7 +384,7 @@ function fetchEventoFinalizadoligauy() {
 
         }
 
-        document.getElementById('dataeventoFin').innerHTML = body;
+        document.getElementById('dataeventoFinLiga').innerHTML = body;
     }
 }
 
@@ -415,6 +415,6 @@ function fetchEventoProximoligauy() {
             }
 
         }
-        document.getElementById('dataeventoProx').innerHTML = body;
+        document.getElementById('dataeventoProxLiga').innerHTML = body;
     }
 }
