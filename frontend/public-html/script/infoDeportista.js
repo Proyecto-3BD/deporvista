@@ -162,9 +162,7 @@ function fetchEventoProximo() {
 }
 
 
-
-
-/* probando BASKET */
+/*  BASKET */
 
 let mibasket = document.getElementById("basket");
 let eventobasket = mibasket.addEventListener('click', basket);
@@ -301,5 +299,122 @@ function fetchEventoProximoBasket() {
 
         }
         document.getElementById('dataeventoProx').innerHTML = body;
+    }
+}
+
+
+/* De aca para abajo prueba */
+/* Liga  */
+let miligaUru = document.getElementById("miligauru");
+let eventomiligaUru = miligaUru.addEventListener('click', ligauy);
+
+function ligauy() {
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+        
+    document.getElementById("general").style.display = "none";
+    document.getElementById("porliga").style.display = "block";
+
+    document.getElementById("hoyLiga").style.display = "block";
+    document.getElementById("finalizadosLiga").style.display = "none";
+    document.getElementById("proximosLiga").style.display = "none";
+
+
+    let basket = document.getElementById('barraResultadosLiga');
+    let htmlCode = '<ul id="barraResultadosLigaActiva"><li><a onclick="directoLiga();" >Hoy</a></li><li><a onclick="finalizadoLiga(); fetchEventoFinalizadoligauy()">Finalizados</a></li><li><a onclick="proximoLiga(); fetchEventoProximoligauy()">Proximos</a></li></ul>';
+    basket.insertAdjacentHTML('beforebegin', htmlCode);
+    document.getElementById('barraResultadosLiga').style.display = "none";
+
+/*
+    let barradeporte = document.getElementById('barraDeportes');
+    let htmlCodes = '<ul id=""><li><a href="">Futbol</a></li><li><a id="">Basketball</a></li><li><a href="">Tenis</a></li><li><a href="">Rugby</a></li><li><a href="">Golf</a></li></ul>';
+    barradeporte.insertAdjacentHTML('beforebegin', htmlCodes);
+    document.getElementById('barraDeportes').style.display = "none";
+*/
+    const mostrarData = (dataevento) => {
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+
+            if (dataevento[i].competicion == "Primera division de Uruguay") {
+
+                if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoLiga').innerHTML = body;
+    }
+}
+
+
+
+
+function fetchEventoFinalizadoligauy() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        dataevento.reverse();
+
+
+        console.log(dataevento);
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "Primera division de Uruguay") {
+
+
+                if (dataevento[i].fechaHora <= fecha) {
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td></tr>`
+
+                }
+            }
+
+        }
+
+        document.getElementById('dataeventoFinLiga').innerHTML = body;
+    }
+}
+
+function fetchEventoProximoligauy() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+
+
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        console.log(dataevento);
+
+
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "Primera division de Uruguay") {
+
+                if (dataevento[i].fechaHora >= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td></tr>`
+                }
+            }
+
+        }
+        document.getElementById('dataeventoProxLiga').innerHTML = body;
     }
 }

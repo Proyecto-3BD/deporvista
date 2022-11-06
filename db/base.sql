@@ -145,7 +145,7 @@ CREATE TABLE competiciones(
 	idCompeticion smallint unsigned auto_increment not null,
 	nombreCompeticion VARCHAR(50) not null,
 	paisCompeticion VARCHAR(50) not null,
-	anio DATE,
+	anio YEAR,
 	primary key (idCompeticion)
 );
 
@@ -332,40 +332,53 @@ INSERT into competiciones
 	VALUES
 	('Primera division de Uruguay',
 	'Uruguay',
-	'2020-01-01'
+	'2020'
 	), ('Premier League',
 	'Inglaterra',
-	'2020-01-01'
+	'2020'
 	), ('LaLiga',
 	'España',
-	'2020-01-01'
+	'2020'
 	), ('Primera division de Argentina',
 	'Argentina',
-	'2020-01-01'
+	'2020'
 	), ('LUB',
 	'Uruguay',
-	'2020-01-01'
+	'2020'
 	), ('NBA Este',
 	'Estados Unidos',
-	'2020-01-01'
+	'2020'
 	), ('NBA Oeste',
 	'Estados Unidos',
-	'2020-01-01'
+	'2020'
 	), ('Serie A',
 	'Italia',
-	'2020-01-01'
+	'2020'
 	), ('US Open',
 	'Estados Unidos',
-	'2020-01-01'
+	'2020'
 	), ('Wimbledon',
 	'Inglaterra',
-	'2020-01-01'
+	'2020'
 	), ('Roland-Garros',
 	'Francia',
-	'2020-01-01'
+	'2020'
 	), ('Austarlian Open',
 	'Australia',
-	'2020-01-01'
+	'2020'
+	);
+
+insert into eventoCompeticion
+	(idCompeticion, idEvento, fechaInicio, fechaFin)
+	values
+	('1', '1', '2022-10-24 20:00:00', '2022-10-24 22:00:00'),
+	('1', '2', '2022-10-24 20:00:00', '2022-10-24 22:00:00'),
+	('1', '3', '2022-10-24 20:00:00', '2022-10-24 22:00:00'),
+	('2', '4', '2022-10-24 20:00:00', '2022-10-24 22:00:00'),
+	('2', '5', '2022-10-24 20:00:00', '2022-10-24 22:00:00'),
+	('2', '6', '2022-10-24 20:00:00', '2022-10-24 22:00:00'),
+	('2', '7', '2022-10-24 20:00:00', '2022-10-24 22:00:00'),
+	('2', '8', '2022-10-24 20:00:00', '2022-10-24 22:00:00'
 	);
 
 INSERT into deportistaEquipo

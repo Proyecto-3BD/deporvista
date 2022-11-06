@@ -32,8 +32,8 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Modificar Suscriptor</h5>
-                <form action="/usuario/modificarSuscriptor" method="post">
+                <h5 class="card-title">Modificar Competiciones</h5>
+                <form action="" method="post">
                     <div class="form-group">
                         <input type="text" placeholder="Id" name="idCompeticion">
                     </div>
@@ -61,28 +61,36 @@
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Suscriptores</h5>
+                <h5 class="card-title">Eventos</h5>
 
                 <table class="table table-striped">
                     <tr>
                         <th style="">Id</th>
-                        <th style="">Nombre</th>
-                        <th style="">País</th>
-                        <th style="">Año</th>
+                        <th style="">Locatario</th>
+                        <th style="">Resultado</th>
+                        <th style="">Visitante</th>
+                        <th style="">Infracciones</th>
+                        <th style="">Ubicacion</th>
+                        <th style="">Competicion</th>
                     </tr>
                   
                     <?php
-                        $competiciones = CompeticionesControlador::Listar();
-                        if($competiciones === "") :?>
+                        $eventos = EventoControlador::ResultadoEquipo();
+                        /*echo '</pre>';
+                        var_dump($eventos);*/
+                        if($eventos == "") :?>
                             No hay competiciones ingresados
                     <?php 
                         else :?>
-                        <? foreach($competiciones as $fila) :?>
+                        <? foreach($eventos as $fila) :?>
                             <tr>
-                                <td style=""> <?= $fila['idCompeticion'] ?></td> 
-                                <td style=""> <?=$fila['nombreCompeticion'] ?></td>
-                                <td style=""> <?=$fila['paisCompeticion'] ?></td>
-                                <td style=""> <?=$fila['anio'] ?></td>
+                                <td style=""> <?=$fila['idEvento'] ?></td> 
+                                <td style=""> <?=$fila['locatario'] ?></td>
+                                <td style=""> <?=$fila['resultado'] ?></td>
+                                <td style=""> <?=$fila['visitante'] ?></td>
+                                <td style=""> <?=$fila['infracciones'] ?></td>
+                                <td style=""> <?=$fila['ubicacion'] ?></td>
+                                <td style=""> <?=$fila['competicion'] ?></td>
                                 <td style=""> 
                                     <form action="/bajaCompeticion" method="post">
                                         <input type="radio" name="idSuscriptor" value="<?= $fila['idCompeticion'] ?>">

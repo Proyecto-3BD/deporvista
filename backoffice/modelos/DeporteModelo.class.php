@@ -2,7 +2,7 @@
 
     require "../utils/autoload.php";
 
-    class DeportesModelo extends Modelo{
+    class DeporteModelo extends Modelo{
         public $idDeporte;
         public $nombreDeporte ;
         public $tipoDeporte;
