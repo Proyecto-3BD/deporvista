@@ -418,3 +418,27 @@ function fetchEventoProximoligauy() {
         document.getElementById('dataeventoProxLiga').innerHTML = body;
     }
 }
+
+/* DETALLE DE EVENTOS */ 
+
+
+function detalleEvento(i) {
+    console.log(i);
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+
+
+        let body = ''
+            body += `<tr><td>${dataevento[i-1].locatario}</td><td>${dataevento[i-1].locatario}</td><td>${dataevento[i-1].visitante}</td><td>${dataevento[i-1].visitante}</td></tr>`
+
+        document.getElementById('detallesdeevento').innerHTML = body;
+    }
+
+}
