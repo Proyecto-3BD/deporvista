@@ -17,6 +17,11 @@
                 if ($locatarios[$i]['idEvento'] === $visitantes[$i]['idEvento']) {
                     $deportes[$i]['deporte'] = 
                         self::ObtenerDeporte($locatarios[$i]['idDeporte']);
+                    
+                    $locatarios[$i]['equipoLocatario'] = self::ObtenerEquipos($locatarios[$i]['idLocatario']);
+
+                    $visitantes[$i]['equipoVisitante'] = self::ObtenerEquipos($visitantes[$i]['idVisitante']);
+
                     $resultados[$i]= array_merge($locatarios[$i], 
                         $visitantes[$i], $competiciones[$i], $deportes[$i]);
                 }
@@ -29,6 +34,12 @@
         public static function ObtenerDeporte($idDeporte){
             $e = new  DeporteModelo($idDeporte);
             return $e -> nombreDeporte;
+
+        }
+
+        public static function ObtenerEquipos($idEquipo){
+            $e = new  EquipoModelo($idEquipo);
+            return $e -> desportistaEquipo;
 
         }
     }

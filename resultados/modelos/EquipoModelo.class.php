@@ -1,4 +1,4 @@
-<?php 
+<?php
 
     require "../utils/autoload.php";
 
@@ -56,11 +56,26 @@
 
         }
 
+        public function desportistaEquipo(){
+            $sql = "SELECT e.idEquipo, e.nombreEquipo, 
+                    e.paisEquipo, e.dt, de.rol, 
+                    d.idDeportista, d.nombreDeportista, d.apellidos
+                    FROM deportistaEquipo AS de
+                    INNER JOIN deportistas AS d
+                    ON de.idDeportista=d.idDeportista
+                    INNER JOIN equipos AS e
+                    ON de.idEquipo = e.idEquipo
+                    WHERE e.idEquipo = " . $this -> idEquipo . ";";
+            $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
+            return $filas;
+        }
+
+
         public function obtenerTodos(){
             $sql = "select * from equipos;";
  
             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
-            $resultado = array();
+            $resultado = [];
             foreach($filas as $fila){
                 $a = new EquipoModelo();
                 $a -> idEquipo = $fila['idEquipo'];

@@ -37,7 +37,7 @@
         public function LocatarioEvento(){
 
             $sql = "SELECT e.idEvento, e.fechaHora, e.resultado, 
-                    e.idDeporte, e.infracciones, e.ubicacion, eq.nombreEquipo AS locatario 
+                    e.idDeporte, e.infracciones, e.ubicacion, eq.idEquipo AS idLocatario, eq.nombreEquipo AS locatario 
                     FROM equipoLocatarioEvento AS le 
                     INNER JOIN eventos AS e  
                     ON e.idEvento=le.idEvento 
@@ -50,7 +50,7 @@
         }
 
         public function VisitanteEvento(){
-            $sql = "SELECT e.idEvento, eq.nombreEquipo AS visitante
+            $sql = "SELECT e.idEvento, eq.idEquipo AS idVisitante, eq.nombreEquipo AS visitante
                     FROM equipoVisitanteEvento AS ve 
                     INNER JOIN eventos AS e  
                     ON e.idEvento=ve.idEvento 
