@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+        crossorigin="anonymous"></script>
+    <script src="script/script.js">
+    </script>
+    <title>Entrega</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-color">
+                <div class="nav-uno contenedor">
+                    <div class="logo">
+                        <img src="img/logo.png" alt="Logo">
+                    </div>
+                    <div class="nav-uno-concetar">
+                        <div>
+                            <input type="text" placeholder="Buscar">
+                        </div>
+                        <div class="iniciar-sesion">
+                            <a data-bs-toggle="modal" data-bs-target="#exampleModalCenter"
+                                onclick="inicio()">Conectar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-dos">
+                <div class="lista-nav">
+                    <ul id="barraDeportes">
+                        <li>
+                            <a href="">Todos</a>
+                        </li>
+                        <li>
+                            <a id="futbol">Fútbol</a>
+                        </li>
+                        <li>
+                            <a id="basket">Basketball</a>
+                        </li>
+                        <li>
+                            <a id="tenis">Tenis</a>
+                        </li>
+                        <li>
+                            <a id="rugby">Rugby</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="dropdown drop">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-expanded="false" onclick="drop()">
+                        Todos los deportes
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Hockey</a></li>
+                        <li><a class="dropdown-item" href="#">Cricket</a></li>
+                        <li><a class="dropdown-item" href="#">Golf</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="modal-contenido">
+                        <div class="modal-estatico">
+                            <p>Descripcion de suscripción</p>
+                            <p>Descripcioón de precios</p>
+                        </div>
+                        <div class="modal-form">
+                            <div class="cabecera-modal">
+                                <div class="cerrar">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="cabecera-form">
+                                    <p id="inicio-p" onclick="inicio()">Ingresar</p>
+                                    <p id="registro-p" onclick="registro()">Suscripción</p>
+                                </div>
+                            </div>
+                            <div id="conect" class="conect">
+                                <form>
+                                    <input type="text" placeholder="Nombre" id="fname" name="fname"><br>
+                                    <input type="text" placeholder="Password" id="lname" name="lname">
+                                    <button>Iniciar Sesión</button>
+
+                                </form>
+                            </div>
+                            <div id="registro" class="registro">
+                                <form>
+                                    <input type="text" placeholder="Mail" id="lname" name="lname">
+                                    <input type="text" placeholder="Nombre" id="lname" name="lname">
+                                    <input type="text" placeholder="Apellido" id="lname" name="lname">
+                                    <input type="text" placeholder="Usuarios" id="lname" name="lname">
+                                    <input type="text" placeholder="Telefono" id="lname" name="lname">
+                                    <input type="text" placeholder="Metodo de pago" id="lname" name="lname">
+                                    <button>Suscribirse</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="main">
+        <div class="publi-uno">
+            <p>publi</p>
+        </div>
+        <aside class="sidebar">
+            <div class="contenido-side">
+                <div id="barraLigas">
+                    <p>Principales Ligas</p>
+                    <div class="sidetable">
+                        <p>Futbol</p>
+                        <ul>
+                            <li><a id="milaliga">LaLiga</a></li>
+                            <li><a id="mipremier">Premier League</a></li>
+                            <li><a id="miligauru">Primera de Uruguay</a></li>
+                            <li><a id="miligaarg">Primera de Argentina</a></li>
+                            <li><a id="miserieA">Serie A</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidetable">
+                        <p>Basketball</p>
+                        <ul>
+                            <li><a id="miNBAeste">NBA Este</a></li>
+                            <li><a id="miNBAoeste">NBA Oeste</a></li>
+                            <li><a id="milub">LUB</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidetable">
+                        <p>Tenis</p>
+                        <ul>
+                            <li><a id="miusopen">US Open</a></li>
+                            <li><a id="miwimble">Wimbledon</a></li>
+                            <li><a id="miroland">Roland-Garros</a></li>
+                            <li><a id="miausopen">Austarlian Open</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <p>Favoritos</p>
+                    <div class="sidetable">
+
+                        <ul>
+                            <li><a onclick="">Fav 1</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <p>Paises</p>
+                    <div class="sidetable">
+                        <p>América</p>
+                        <ul>
+                            <li><a onclick="">Uruguay</a></li>
+                            <li><a onclick="">Argentina</a></li>
+                            <li><a onclick="">Brasil</a></li>
+                            <li><a onclick="">Estados Unidos</a></li>
+                            <li><a onclick="">Mexico</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidetable">
+
+                        <p>Europa</p>
+                        <ul>
+                            <li><a onclick="">España</a></li>
+                            <li><a onclick="">Inglaterra</a></li>
+                            <li><a onclick="">Alemania</a></li>
+                            <li><a onclick="">Francia</a></li>
+                            <li><a onclick="">Italia</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidetable">
+
+                        <p>Asia</p>
+                        <ul>
+                            <li><a onclick="">Japón</a></li>
+                            <li><a onclick="">Corea del Sur</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidetable">
+
+                        <p>Africa</p>
+                        <ul>
+                            <li><a onclick="">Sudafrica</a></li>
+                            <li><a onclick="">Nigeria</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidetable">
+
+                        <p>Oceanía</p>
+                        <ul>
+                            <li><a onclick="">Australia</a></li>
+                            <li><a onclick="">Nueva Zelanda</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="resultados">
+            <!--TODOS-->
+            <div class="resultados-div-exterior" id="general">
+                <ul id="barraResultados">
+                    <li>
+                        <a onclick="directo()">Hoy</a>
+                    </li>
+                    <li>
+                        <a onclick="finalizado(); fetchEventoFinalizado()">Finalizados</a>
+                    </li>
+                    <li>
+                        <a onclick="proximo(); fetchEventoProximo()">Proximos</a>
+                    </li>
+                </ul>
+                <div class="resultados-div-interior">
+
+                    <div class="info-solapas" id="hoy">
+                        <div>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Locatario</th>
+                                        <th>Resultado</th>
+                                        <th>Visitante</th>
+                                        <th>Ubicacion</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dataevento">
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                    <div class="finalizados" id="finalizados">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Resultado</th>
+                                            <th>Visitante</th>
+                                            <th>Infracciones</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoFin">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proximos" id="proximos">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Visitante</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoProx">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--FIN TODOS-->
+
+
+            <!--FUTBOL-->
+            <div class="resultados-div-exterior" id="generalfutbol">
+                <ul id="barraResultados">
+                    <li>
+                        <a onclick="directofutbol()">Hoy</a>
+                    </li>
+                    <li>
+                        <a onclick="finalizadofutbol(); fetchEventoFinalizadoFutbol()">Finalizados</a>
+                    </li>
+                    <li>
+                        <a onclick="proximofutbol(); fetchEventoProximoFutbol()">Proximos</a>
+                    </li>
+                </ul>
+                <div class="resultados-div-interior">
+
+                    <div class="info-solapas" id="hoyfutbol">
+                        <div>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Locatario</th>
+                                        <th>Resultado</th>
+                                        <th>Visitante</th>
+                                        <th>Ubicacion</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dataeventofutbol">
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                    <div class="finalizados" id="finalizadosfutbol">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Resultado</th>
+                                            <th>Visitante</th>
+                                            <th>Infracciones</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoFinfutbol">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proximos" id="proximosfutbol">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Visitante</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoProxfutbol">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--FIN FUTBOL-->
+
+            <!--BASKET-->
+            <div class="resultados-div-exterior" id="generalbasket">
+                <ul id="barraResultados">
+                    <li>
+                        <a onclick="directobasket(); basket()">Hoy</a>
+                    </li>
+                    <li>
+                        <a onclick="finalizadobasket(); fetchEventoFinalizadobasket()">Finalizados</a>
+                    </li>
+                    <li>
+                        <a onclick="proximobasket(); fetchEventoProximobasket()">Proximos</a>
+                    </li>
+                </ul>
+                <div class="resultados-div-interior">
+
+                    <div class="info-solapas" id="hoybasket">
+                        <div>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Locatario</th>
+                                        <th>Resultado</th>
+                                        <th>Visitante</th>
+                                        <th>Ubicacion</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dataeventobasket">
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                    <div class="finalizados" id="finalizadosbasket">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Resultado</th>
+                                            <th>Visitante</th>
+                                            <th>Infracciones</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoFinbasket">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proximos" id="proximosbasket">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Visitante</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoProxbasket">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--FIN BASKET-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="resultados-div-exterior" id="porliga">
+                <div class="por-liga">
+                    <img src="" alt="Logo">
+                    <p>Nombre campeonato</p>
+                    <p>Año comienzo</p>
+                    <p>Año fin</p>
+                </div>
+                <ul id="barraResultadosLiga">
+                    <li>
+                        <a onclick="directoLiga()">Hoy</a>
+                    </li>
+                    <li>
+                        <a onclick="finalizadoLiga()">Finalizados</a>
+                    </li>
+                    <li>
+                        <a onclick="proximoLiga()">Proximos</a>
+                    </li>
+                </ul>
+                <div class="resultados-div-interior">
+                    <div class="info-solapas" id="hoyLiga">
+                        <div>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Locatario</th>
+                                        <th>Resultado</th>
+                                        <th>Visitante</th>
+                                        <th>Ubicacion</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dataeventoLiga">
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                    <div class="finalizados" id="finalizadosLiga">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Resultado</th>
+                                            <th>Visitante</th>
+                                            <th>Infracciones</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoFinLiga">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proximos" id="proximosLiga">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Visitante</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoProxLiga">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <!--PRUEBA-->
+        </div>
+        <div class="publi-dos">
+            <p>publi</p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="modal fade" id="exampleModalCenterDos" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <!--DETALLES DE EVENTO-->
+                    <div class="info-detalles">
+                        <div>
+                            <table>
+
+                                <tbody id="detallesdeevento">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-lista">
+            <div class="footer-logo">
+                <img src="img/logo.png" alt="Logo">
+            </div>
+            <ul>
+                <li>Deportes</li>
+                <li><a href="">Deporte</a></li>
+                <li><a href="">Deporte</a></li>
+                <li><a href="">Deporte</a></li>
+                <li><a href="">Deporte</a></li>
+            </ul>
+            <ul>
+                <li>Términos</li>
+                <li><a href="">Términos</a></li>
+                <li><a href="">Términos</a></li>
+                <li><a href="">Términos</a></li>
+            </ul>
+            <ul>
+                <li>Redes</li>
+                <li><a href="">Instagram</a></li>
+                <li><a href="">Facebook</a></li>
+                <li><a href="">Twitter</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="script/infoDeportista.js">
+    </script>
+</body>
+
+
+
+</html>
