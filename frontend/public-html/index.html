@@ -231,7 +231,7 @@
             <div class="resultados-div-exterior" id="general">
                 <ul id="barraResultados">
                     <li>
-                        <a onclick="directo()" >Hoy</a>
+                        <a onclick="directo()">Hoy</a>
                     </li>
                     <li>
                         <a onclick="finalizado(); fetchEventoFinalizado()">Finalizados</a>
@@ -304,7 +304,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoProx">
-                    
+
                                     </tbody>
                                 </table>
                             </div>
@@ -424,21 +424,34 @@
         </div>
 
     </div>
-    <div class="info-deportista">
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Equipo Local</th>
-                        <th>Jugadores locales</th>
-                        <th>Equipo Visitante</th>
-                        <th>Jugadores Visitantes</th>
-                    </tr>
-                </thead>
-                <tbody id="detallesdeevento">
 
-                </tbody>
-            </table>
+
+
+    <div class="modal fade" id="exampleModalCenterDos" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <!--DETALLES DE EVENTO-->
+                    <div class="info-deportista">
+                        <div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Equipo Local</th>
+                                        <th>Jugadores locales</th>
+                                        <th>Equipo Visitante</th>
+                                        <th>Jugadores Visitantes</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="detallesdeevento">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <footer>

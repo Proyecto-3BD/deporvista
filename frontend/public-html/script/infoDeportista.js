@@ -69,7 +69,7 @@ const mostrarData = (dataevento) => {
         if (dataevento[i].deporte == "futbol") {
             if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
             }
         }
     }
@@ -112,7 +112,7 @@ function fetchEventoFinalizado() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
                 }
             }
         }
@@ -153,7 +153,7 @@ function fetchEventoProximo() {
             if (dataevento[i].deporte == "futbol") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
                 }
             }
         }
@@ -227,7 +227,7 @@ console.log(finDia);
 
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
                 }
             }
         }
@@ -260,7 +260,7 @@ function fetchEventoFinalizadoBasket() {
 
 
                 if (dataevento[i].fechaHora <= fecha) {
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
 
                 }
             }
@@ -293,7 +293,7 @@ function fetchEventoProximoBasket() {
 
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
                 }
             }
 
@@ -344,7 +344,7 @@ function ligauy() {
 
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
                 }
             }
         }
@@ -377,7 +377,7 @@ function fetchEventoFinalizadoligauy() {
 
 
                 if (dataevento[i].fechaHora <= fecha) {
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
 
                 }
             }
@@ -410,7 +410,7 @@ function fetchEventoProximoligauy() {
 
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
                 }
             }
 
