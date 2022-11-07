@@ -520,6 +520,66 @@ INSERT INTO eventos
 	'2',
     '0',
     'Staples Center' 
+), 
+	('2022-11-07 23:00:00',
+    '0-0',
+	'1',
+    '0',
+    'Estadio de la Cerámica' 
+), 
+	('2022-11-07 23:15:00',
+    '0-0',
+	'1',
+    '0',
+    'Old Trafford' 
+), 
+	('2022-11-07 22:15:00',
+    '0-0',
+	'1',
+    '0',
+    'Monumental' 
+), 
+	('2022-11-07 21:15:00',
+    '0-0',
+	'2',
+    '0',
+    'Rocket Mortgage FieldHouse' 
+), 
+	('2022-11-07 21:15:00',
+    '0-0',
+	'2',
+    '0',
+    'Trouville Cancha' 
+), 
+	('2022-11-07 21:15:00',
+    '0-0',
+	'1',
+    '0',
+    'Estadio Juventus' 
+), 
+	('2022-11-07 22:15:00',
+    '0-0',
+	'3',
+    '0',
+    'US Open' 
+), 
+	('2022-11-07 22:15:00',
+    '0-0',
+	'3',
+    '0',
+    'Wimbledon' 
+), 
+	('2022-11-07 22:15:00',
+    '0-0',
+	'3',
+    '0',
+    'Roland-Garros' 
+), 
+	('2022-11-07 22:15:00',
+    '0-0',
+	'3',
+    '0',
+    'Austarlian Open' 
 );
 
 insert into equipoLocatarioEvento(idEvento, idEquipo) values (1, 1);
@@ -546,6 +606,35 @@ insert into equipoVisitanteEvento(idEvento, idEquipo) values (7, 2);
 insert into equipoLocatarioEvento(idEvento, idEquipo) values (8, 4);
 insert into equipoVisitanteEvento(idEvento, idEquipo) values (8, 5);
 
+insert into equipoLocatarioEvento(idEvento, idEquipo) values (9, 10);
+insert into equipoVisitanteEvento(idEvento, idEquipo) values (9, 11);
+
+insert into equipoLocatarioEvento(idEvento, idEquipo) values (10, 17);
+insert into equipoVisitanteEvento(idEvento, idEquipo) values (10, 18);
+
+insert into equipoLocatarioEvento(idEvento, idEquipo) values (11, 35);
+insert into equipoVisitanteEvento(idEvento, idEquipo) values (11, 34);
+
+insert into equipoLocatarioEvento(idEvento, idEquipo) values (12, 47);
+insert into equipoVisitanteEvento(idEvento, idEquipo) values (12, 48);
+
+insert into equipoLocatarioEvento(idEvento, idEquipo) values (13, 75);
+insert into equipoVisitanteEvento(idEvento, idEquipo) values (13, 70);
+
+insert into equipoLocatarioEvento(idEvento, idEquipo) values (14, 37);
+insert into equipoVisitanteEvento(idEvento, idEquipo) values (14, 39);
+
+insert into equipoLocatarioEvento(idEvento, idEquipo) values (15, 76);
+insert into equipoVisitanteEvento(idEvento, idEquipo) values (15, 77);
+
+insert into equipoLocatarioEvento(idEvento, idEquipo) values (16, 79);
+insert into equipoVisitanteEvento(idEvento, idEquipo) values (16, 80);
+
+insert into equipoLocatarioEvento(idEvento, idEquipo) values (17, 79);
+insert into equipoVisitanteEvento(idEvento, idEquipo) values (17, 76);
+
+insert into equipoLocatarioEvento(idEvento, idEquipo) values (18, 77);
+insert into equipoVisitanteEvento(idEvento, idEquipo) values (18, 78);
 
 
 INSERT into competiciones
@@ -592,15 +681,24 @@ INSERT into competiciones
 insert into eventoCompeticion
 	(idCompeticion, idEvento, fechaInicio, fechaFin)
 	values
-	('1', '1', '2022-10-24 20:00:00', '2022-10-24 22:00:00'),
-	('1', '2', '2022-10-24 20:00:00', '2022-10-24 22:00:00'),
-	('1', '3', '2022-10-24 20:00:00', '2022-10-24 22:00:00'),
-	('2', '4', '2022-10-24 20:00:00', '2022-10-24 22:00:00'),
-	('2', '5', '2022-10-24 20:00:00', '2022-10-24 22:00:00'),
-	('2', '6', '2022-10-24 20:00:00', '2022-10-24 22:00:00'),
-	('2', '7', '2022-10-24 20:00:00', '2022-10-24 22:00:00'),
-	('2', '8', '2022-10-24 20:00:00', '2022-10-24 22:00:00'
-	);
+	('1', '1', '2022-10-24', '2022-10-24'),
+	('1', '2', '2022-10-24', '2022-10-24'),
+	('1', '3', '2022-10-24', '2022-10-24'),
+	('1', '4', '2022-10-24', '2022-10-24'),
+	('1', '5', '2022-10-24', '2022-10-24'),
+	('1', '6', '2022-10-24', '2022-10-24'),
+	('1', '7', '2022-10-24', '2022-10-24'),
+	('7', '8', '2022-10-24', '2022-10-24'),
+	('3', '9', '2022-11-07', '2022-11-07'),
+	('2', '10', '2022-11-07', '2022-11-07'),
+	('4', '11', '2022-11-07', '2022-11-07'),
+	('6', '12', '2022-11-07', '2022-11-07'),
+	('5', '13', '2022-11-07', '2022-11-07'),
+	('8', '14', '2022-11-07', '2022-11-07'),
+	('9', '15', '2022-11-07', '2022-11-07'),
+	('10', '16', '2022-11-07', '2022-11-07'),
+	('11', '17', '2022-11-07', '2022-11-07'),
+	('12', '18', '2022-11-07', '2022-11-07');
 
 INSERT into deportistaEquipo
 	(idDeportista, idEquipo, rol)
