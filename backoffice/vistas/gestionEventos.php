@@ -35,7 +35,7 @@
                                     
                                     <option value="<?= $fila['idCompeticion'] ?>">
                                         <?=$fila['anio'] ." - " . $fila['nombreCompeticion'] ?> </option>
-                                <?php endforeach ;?>
+                                <? endforeach ;?>
                             <?php endif ; ?>
                             </select>
                     </div>
@@ -51,7 +51,7 @@
                                     
                                     <option value="<?= $fila['idDeporte'] ?>">
                                         <?=$fila['nombreDeporte'] ?> </option>
-                                <?php endforeach ;?>
+                                <? endforeach ;?>
                             <?php endif ; ?>
                             </select>
                     </div>
@@ -131,7 +131,7 @@
                                     </form>
                                 </td>
                             </tr>
-                        <?php endforeach ;?>
+                        <? endforeach ;?>
                     <?php endif ; ?>
                          
                     <?php if(isset($parametros['eliminado']) && $parametros['eliminado'] == 'true') :?>

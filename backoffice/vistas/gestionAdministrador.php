@@ -97,7 +97,7 @@
                                     </form>
                                 </td>
                             </tr>
-                        <?php endforeach ;?>
+                        <? endforeach ;?>
                     <?php endif ; ?>
                          
                     <?php if(isset($parametros['eliminado']) && $parametros['eliminado'] == 'true') :?>
