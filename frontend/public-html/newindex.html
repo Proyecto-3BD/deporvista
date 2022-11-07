@@ -139,28 +139,28 @@
                     <div class="sidetable">
                         <p>Futbol</p>
                         <ul>
-                            <li><a id="milaliga">LaLiga</a></li>
-                            <li><a id="mipremier">Premier League</a></li>
-                            <li><a id="miligauru">Primera de Uruguay</a></li>
-                            <li><a id="miligaarg">Primera de Argentina</a></li>
-                            <li><a id="miserieA">Serie A</a></li>
+                            <li><a id="laliga">LaLiga</a></li>
+                            <li><a id="premier">Premier League</a></li>
+                            <li><a id="primerauy">Primera de Uruguay</a></li>
+                            <li><a id="primeraarg">Primera de Argentina</a></li>
+                            <li><a id="serieA">Serie A</a></li>
                         </ul>
                     </div>
                     <div class="sidetable">
                         <p>Basketball</p>
                         <ul>
-                            <li><a id="miNBAeste">NBA Este</a></li>
-                            <li><a id="miNBAoeste">NBA Oeste</a></li>
-                            <li><a id="milub">LUB</a></li>
+                            <li><a id="NBAeste">NBA Este</a></li>
+                            <li><a id="NBAoeste">NBA Oeste</a></li>
+                            <li><a id="lub">LUB</a></li>
                         </ul>
                     </div>
                     <div class="sidetable">
                         <p>Tenis</p>
                         <ul>
-                            <li><a id="miusopen">US Open</a></li>
-                            <li><a id="miwimble">Wimbledon</a></li>
-                            <li><a id="miroland">Roland-Garros</a></li>
-                            <li><a id="miausopen">Austarlian Open</a></li>
+                            <li><a id="usopen">US Open</a></li>
+                            <li><a id="wimble">Wimbledon</a></li>
+                            <li><a id="roland">Roland-Garros</a></li>
+                            <li><a id="usopen">Austarlian Open</a></li>
                         </ul>
                     </div>
                 </div>
@@ -475,38 +475,22 @@
             <!--FIN BASKET-->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="resultados-div-exterior" id="porliga">
-                <div class="por-liga">
-                    <img src="" alt="Logo">
-                    <p>Nombre campeonato</p>
-                    <p>Año comienzo</p>
-                    <p>Año fin</p>
-                </div>
-                <ul id="barraResultadosLiga">
+            <!--LaLiga-->
+            <div class="resultados-div-exterior" id="generallaliga">
+                <ul id="barraResultados">
                     <li>
-                        <a onclick="directoLiga()">Hoy</a>
+                        <a onclick="directolaliga(); laliga()">Hoy</a>
                     </li>
                     <li>
-                        <a onclick="finalizadoLiga()">Finalizados</a>
+                        <a onclick="finalizadolaliga(); fetchEventoFinalizadolaliga()">Finalizados</a>
                     </li>
                     <li>
-                        <a onclick="proximoLiga()">Proximos</a>
+                        <a onclick="proximolaliga(); fetchEventoProximolaliga()">Proximos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
-                    <div class="info-solapas" id="hoyLiga">
+
+                    <div class="info-solapas" id="hoylaliga">
                         <div>
 
                             <table>
@@ -519,7 +503,7 @@
                                         <th>Ubicacion</th>
                                     </tr>
                                 </thead>
-                                <tbody id="dataeventoLiga">
+                                <tbody id="dataeventolaliga">
 
                                 </tbody>
                             </table>
@@ -528,7 +512,7 @@
                         </div>
                     </div>
 
-                    <div class="finalizados" id="finalizadosLiga">
+                    <div class="finalizados" id="finalizadoslaliga">
                         <div class="info-solapas">
                             <div>
                                 <table>
@@ -542,14 +526,14 @@
                                             <th>Ubicacion</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="dataeventoFinLiga">
+                                    <tbody id="dataeventoFinlaliga">
 
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                    <div class="proximos" id="proximosLiga">
+                    <div class="proximos" id="proximoslaliga">
                         <div class="info-solapas">
                             <div>
                                 <table>
@@ -561,20 +545,357 @@
                                             <th>Ubicacion</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="dataeventoProxLiga">
+                                    <tbody id="dataeventoProxlaliga">
 
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
 
-            <!--PRUEBA-->
+            <!--FIN LaLiga-->
+
+
+
+            <!--PREMIER-->
+            <div class="resultados-div-exterior" id="generalpremier">
+                <ul id="barraResultados">
+                    <li>
+                        <a onclick="directopremier(); premier()">Hoy</a>
+                    </li>
+                    <li>
+                        <a onclick="finalizadopremier(); fetchEventoFinalizadopremier()">Finalizados</a>
+                    </li>
+                    <li>
+                        <a onclick="proximopremier(); fetchEventoProximopremier()">Proximos</a>
+                    </li>
+                </ul>
+                <div class="resultados-div-interior">
+
+                    <div class="info-solapas" id="hoypremier">
+                        <div>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Locatario</th>
+                                        <th>Resultado</th>
+                                        <th>Visitante</th>
+                                        <th>Ubicacion</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dataeventopremier">
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                    <div class="finalizados" id="finalizadospremier">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Resultado</th>
+                                            <th>Visitante</th>
+                                            <th>Infracciones</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoFinpremier">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proximos" id="proximospremier">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Visitante</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoProxpremier">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--FIN PREMIER-->
+
+
+            <!--primera UY-->
+            <div class="resultados-div-exterior" id="generalprimerauy">
+                <ul id="barraResultados">
+                    <li>
+                        <a onclick="directoprimerauy(); primerauy()">Hoy</a>
+                    </li>
+                    <li>
+                        <a onclick="finalizadoprimerauy(); fetchEventoFinalizadoprimerauy()">Finalizados</a>
+                    </li>
+                    <li>
+                        <a onclick="proximoprimerauy(); fetchEventoProximoprimerauy()">Proximos</a>
+                    </li>
+                </ul>
+                <div class="resultados-div-interior">
+
+                    <div class="info-solapas" id="hoyprimerauy">
+                        <div>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Locatario</th>
+                                        <th>Resultado</th>
+                                        <th>Visitante</th>
+                                        <th>Ubicacion</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dataeventoprimerauy">
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                    <div class="finalizados" id="finalizadosprimerauyr">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Resultado</th>
+                                            <th>Visitante</th>
+                                            <th>Infracciones</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoFinprimerauy">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proximos" id="proximosprimerauy">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Visitante</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoProxprimerauy">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--FIN primera UY-->
+
+            <!--primera ARG-->
+            <div class="resultados-div-exterior" id="generalprimeraarg">
+                <ul id="barraResultados">
+                    <li>
+                        <a onclick="directoprimeraARG(); primeraARG()">Hoy</a>
+                    </li>
+                    <li>
+                        <a onclick="finalizadoprimeraARG(); fetchEventoFinalizadoprimeraARG()">Finalizados</a>
+                    </li>
+                    <li>
+                        <a onclick="proximoprimeraARG(); fetchEventoProximoprimeraARG()">Proximos</a>
+                    </li>
+                </ul>
+                <div class="resultados-div-interior">
+
+                    <div class="info-solapas" id="hoyprimeraARG">
+                        <div>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Locatario</th>
+                                        <th>Resultado</th>
+                                        <th>Visitante</th>
+                                        <th>Ubicacion</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dataeventoprimeraARG">
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                    <div class="finalizados" id="finalizadosprimeraARG">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Resultado</th>
+                                            <th>Visitante</th>
+                                            <th>Infracciones</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoFinprimeraARG">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proximos" id="proximosprimeraARG">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Visitante</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoProxprimeraARG">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--FIN primera ARG-->
+
+
+            <!--SERIE A-->
+            <div class="resultados-div-exterior" id="generalserieA">
+                <ul id="barraResultados">
+                    <li>
+                        <a onclick="directoserieA(); serieA()">Hoy</a>
+                    </li>
+                    <li>
+                        <a onclick="finalizadoserieA(); fetchEventoFinalizadoserieA()">Finalizados</a>
+                    </li>
+                    <li>
+                        <a onclick="proximoserieA(); fetchEventoProximoserieA()">Proximos</a>
+                    </li>
+                </ul>
+                <div class="resultados-div-interior">
+
+                    <div class="info-solapas" id="hoyserieA">
+                        <div>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Locatario</th>
+                                        <th>Resultado</th>
+                                        <th>Visitante</th>
+                                        <th>Ubicacion</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dataeventoserieA">
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                    <div class="finalizados" id="finalizadosserieA">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Resultado</th>
+                                            <th>Visitante</th>
+                                            <th>Infracciones</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoFinserieA">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proximos" id="proximosserieA">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Visitante</th>
+                                            <th>Ubicacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoProxserieA">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--FIN SERIE A-->
+
+
+
+
+
+
+
+
+
         </div>
         <div class="publi-dos">
             <p>publi</p>
@@ -631,7 +952,7 @@
             </ul>
         </div>
     </footer>
-    <script src="script/fetchapi.js">
+    <script src="script/infoDeportista.js">
     </script>
 </body>
 
