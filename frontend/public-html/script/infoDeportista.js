@@ -315,7 +315,7 @@ function ligauy() {
         .then(dataevento => mostrarData(dataevento))
         .catch(error => console.log(error))
 
-        
+
     document.getElementById("general").style.display = "none";
     document.getElementById("porliga").style.display = "block";
 
@@ -418,7 +418,7 @@ function fetchEventoProximoligauy() {
     }
 }
 
-/* DETALLE DE EVENTOS */ 
+/* DETALLE DE EVENTOS */
 
 
 function detalleEvento(i) {
@@ -435,7 +435,8 @@ function detalleEvento(i) {
 
 
         let body = ''
-            body += `<tr><td>${dataevento[i-1].locatario}</td><td>${dataevento[i-1].locatario}</td><td>${dataevento[i-1].visitante}</td><td>${dataevento[i-1].visitante}</td></tr>`
+        /* body += `<tr><th>Equipo Local: </th><td>${dataevento[i-1].locatario}</td></tr><tr><th>Jugadores locales: </th><td>${dataevento[i-1].locatario}</td></tr><tr><th>Equipo Visitante: </th><td>${dataevento[i-1].visitante}</td></tr><tr><th>Jugadores Visitantes: </th><td>${dataevento[i-1].visitante}</td></tr>`*/
+        body += `<tr><th>Equipo Local: </th><td>${dataevento[i-1].locatario}</td></tr><tr><th>Jugadores locales: </th><td>${dataevento[i-1].locatario}</td></tr><tr><th>Equipo Visitante: </th><td>${dataevento[i-1].visitante}</td></tr><tr><th>Jugadores Visitantes: </th><td>${dataevento[i-1].visitante}</td></tr><tr><th>Equipo Local: </th><td>${dataevento[i-1].locatario}</td></tr><tr><th>Jugadores locales: </th><td>${dataevento[i-1].locatario}</td></tr><tr><th>Equipo Visitante: </th><td>${dataevento[i-1].visitante}</td></tr><tr><th>Jugadores Visitantes: </th><td>${dataevento[i-1].visitante}</td></tr>`
 
         document.getElementById('detallesdeevento').innerHTML = body;
     }
