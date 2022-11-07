@@ -329,12 +329,11 @@ function ligauy() {
     basket.insertAdjacentHTML('beforebegin', htmlCode);
     document.getElementById('barraResultadosLiga').style.display = "none";
 
-/*
-    let barradeporte = document.getElementById('barraDeportes');
-    let htmlCodes = '<ul id=""><li><a href="">Futbol</a></li><li><a id="">Basketball</a></li><li><a href="">Tenis</a></li><li><a href="">Rugby</a></li><li><a href="">Golf</a></li></ul>';
+    let barradeporte = document.getElementById('barraLigas');
+    let htmlCodes = '<div id="barraLigasActiva"><p>Principales Ligas</p><div class="sidetable"><p>Futbol</p><ul><li><a id="milaliga">LaLiga</a></li><li><a id="mipremier">Premier League</a></li><li><a id="">Primera de Uruguay</a></li><li><a id="miligaarg">Primera de Argentina</a></li><li><a id="miserieA">Serie A</a></li></ul></div><div class="sidetable"><p>Basketball</p><ul><li><a id="miNBAeste">NBA Este</a></li><li><a id="miNBAoeste">NBA Oeste</a></li><li><a id="milub">LUB</a></li></ul></div><div class="sidetable"><p>Tenis</p><ul><li><a id="miusopen">US Open</a></li><li><a id="miwimble">Wimbledon</a></li><li><a id="miroland">Roland-Garros</a></li><li><a id="miausopen">Austarlian Open</a></li></ul></div></div>';
     barradeporte.insertAdjacentHTML('beforebegin', htmlCodes);
-    document.getElementById('barraDeportes').style.display = "none";
-*/
+    document.getElementById('barraLigas').style.display = "none";
+
     const mostrarData = (dataevento) => {
         console.log(dataevento)
         let body = ''

@@ -203,31 +203,38 @@ INSERT into equipos
 	('Basañez',
 	'Uruguay', 
 	'Oreja Martinez'
-	), ('Nacional',
+	),
+	('Nacional',
 	'Uruguay', 
 	'Pablo Repetto'
-	), ('Penarol',
+	),
+	('Penarol',
 	'Uruguay', 
 	'Gregory Perez'
-	), ('Los Angeles Lakers',
+	),
+	('Los Angeles Lakers',
 	'Estados Unidos', 
 	'Darvin Ham'
-	), ('Golden State Warriors',
+	),
+	('Golden State Warriors',
 	'Estados Unidos', 
 	'Steve Kerr'
-	), ('Barcelona',
+	),
+	('Barcelona',
 	'España', 
 	'Xavi'
 	), ('Real Madrid',
 	'España', 
 	'Ancelotti'
-	), ('Federer',
+	),
+	('Federer',
 	'Suiza', 
 	'-'
-	), ('Nadal',
+	),
+	('Nadal',
 	'España', 
 	'-'
-);
+	);
 
 INSERT INTO deportes
     (nombreDeporte, tipoDeporte)
