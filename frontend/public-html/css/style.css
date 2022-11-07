@@ -424,6 +424,30 @@ footer {
     border-bottom: 1px solid #369741;
 }
 
+/* Info detalles */
+.info-detalles {
+ 
+    background-color: #ffffff;
+    border: none;
+    margin: 0;
+    padding: 1rem;
+    width: 800px;
+    height: 400px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.info-detalles table {
+    background-color: #ffffff;
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.info-detalles table tbody tr td {
+    border-bottom: 1px solid rgb(236, 236, 236);
+    padding: 0.8rem;
+}
+
 /* Solapa directo proximo finalizado */ 
 
 #accordionPanelsStayOpenExample {
