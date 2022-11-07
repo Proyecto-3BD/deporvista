@@ -25,7 +25,7 @@ function inicio() {
 }
 
 
- /* Barrita */
+ /* todos */
 
 function directo() {
     document.getElementById("hoy").style.display = "block";
@@ -49,7 +49,57 @@ function proximo() {
 }
 
 
- /* Barrita Liga */
+
+/*  futbol */
+function directofutbol() {
+    document.getElementById("hoyfutbol").style.display = "block";
+    document.getElementById("finalizadosfutbol").style.display = "none";
+    document.getElementById("proximosfutbol").style.display = "none";
+}
+
+
+function finalizadofutbol() {
+    document.getElementById("hoyfutbol").style.display = "none";
+    document.getElementById("finalizadosfutbol").style.display = "block";
+    document.getElementById("proximosfutbol").style.display = "none";
+}
+
+
+function proximofutbol() {
+    document.getElementById("hoyfutbol").style.display = "none";
+    document.getElementById("finalizadosfutbol").style.display = "none";
+    document.getElementById("proximosfutbol").style.display = "block";
+
+}
+
+
+ /* basket */
+ function directobasket() {
+    document.getElementById("hoybasket").style.display = "block";
+    document.getElementById("finalizadosbasket").style.display = "none";
+    document.getElementById("proximosbasket").style.display = "none";
+}
+
+
+function finalizadobasket() {
+    document.getElementById("hoybasket").style.display = "none";
+    document.getElementById("finalizadosbasket").style.display = "block";
+    document.getElementById("proximosbasket").style.display = "none";
+}
+
+
+function proximobasket() {
+    document.getElementById("hoybasket").style.display = "none";
+    document.getElementById("finalizadosbasket").style.display = "none";
+    document.getElementById("proximosbasket").style.display = "block";
+
+}
+
+
+
+
+
+ /* liga */
 
  function directoLiga() {
     document.getElementById("hoyLiga").style.display = "block";
@@ -70,11 +120,4 @@ function proximoLiga() {
     document.getElementById("finalizadosLiga").style.display = "none";
     document.getElementById("proximosLiga").style.display = "block";
 
-}
-
-
-
-function liga() {
-    document.getElementById("general").style.display = "none";
-    document.getElementById("porliga").style.display = "block";
 }
