@@ -7,6 +7,7 @@ GRANT ALL PRIVILEGES  ON base.*  TO 'superadmin'@'localhost';
 CREATE USER 'admindata'@'localhost' IDENTIFIED BY '8910';
 GRANT SELECT, INSERT, UPDATE, DELETE ON base.*  TO 'admindata'@'localhost';
 FLUSH PRIVILEGES;
+
 USE base;
 
 CREATE TABLE administradores(
