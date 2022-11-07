@@ -69,7 +69,7 @@ const mostrarData = (dataevento) => {
         if (dataevento[i].deporte == "futbol") {
             if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td></tr>`
+                body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td onclick="detalleEvento(${dataevento[i].idEvento})">${dataevento[i].idEvento}</td></tr>`
             }
         }
     }
@@ -112,7 +112,7 @@ function fetchEventoFinalizado() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td onclick="detalleEvento(${dataevento[i].idEvento})">${dataevento[i].idEvento}</td></tr>`
                 }
             }
         }
@@ -153,7 +153,7 @@ function fetchEventoProximo() {
             if (dataevento[i].deporte == "futbol") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td onclick="detalleEvento(${dataevento[i].idEvento})">${dataevento[i].idEvento}</td></tr>`
                 }
             }
         }
