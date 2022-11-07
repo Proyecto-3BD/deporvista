@@ -194,8 +194,40 @@ INSERT into deportistas
 	('Edinson',
 	'Cavanni',
 	'Uruguay'
+), ('Luis',
+	'Suarez',
+	'Uruguay'
+), ('Kevin',
+	'Dawson',
+	'Uruguay'
 );
 
+INSERT into deportistaEvento
+	(idDeportista, idEvento)
+	VALUES
+	('1',
+	'2'
+	),
+	('2',
+	'2'
+	),
+	('3',
+	'2'
+);
+
+INSERT into deportistaEquipo
+	(idDeportista, idEquipo, rol)
+	VALUES
+	('1',
+	'2',
+	'-'
+), ('2',
+	'2',
+	'-'
+), ('3',
+	'3',
+	'-'
+);
 
 INSERT into equipos
 	(nombreEquipo, paisEquipo, dt)
