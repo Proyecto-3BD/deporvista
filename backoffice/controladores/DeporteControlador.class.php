@@ -50,6 +50,6 @@
                 ];   
                 array_push($resultado,$t);
             }
-            echo json_encode($resultado);          
+            return $resultado;          
         }
     }

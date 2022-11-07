@@ -32,7 +32,7 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Modificar Suscriptor</h5>
+                <h5 class="card-title">Modificar Competición</h5>
                 <form action="/usuario/modificarSuscriptor" method="post">
                     <div class="form-group">
                         <input type="text" placeholder="Id" name="idCompeticion">

@@ -8,8 +8,7 @@
         public $idEvento;
         public $fechaHora;
         public $resultado;
-        public $idDeporte;
-        public $nombreDeporte;     
+        public $idDeporte;     
         public $infracciones;
         public $ubicacion;
         public $locatario;
@@ -83,11 +82,11 @@
 
         private function actualizar(){
             $sql = "UPDATE eventos SET
-            fechaHora = '" . $this -> fechaHora . "',
-            resultado = '" . $this -> resultado . "',
-            infracciones = '" . $this -> infracciones . "',
-            ubicacion = '" . $this -> ubicacion . "',
-            WHERE idEvento = " . $this -> idEvento . ";";
+                fechaHora = '" . $this -> fechaHora . "',
+                resultado = '" . $this -> resultado . "',
+                infracciones = '" . $this -> infracciones . "',
+                ubicacion = '" . $this -> ubicacion . "',
+                WHERE idEvento = " . $this -> idEvento . ";";
             $this -> conexion -> query($sql);   
         }
 

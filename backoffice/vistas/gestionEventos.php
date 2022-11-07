@@ -1,5 +1,5 @@
 <?php
-	    require "../utils/autoload.php";
+        require "../utils/autoload.php";
     if(!isset($_SESSION['autenticado'])){ 
         header("Location: /login");
     }
@@ -9,44 +9,50 @@
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Alta Evento</h5>
+                <h5 class="card-title">Alta Eventos</h5>
                 <form action="/altaEvento" method="post">
                     <div class="form-group">
-                        <input type="datetime-local" id="fechaHora" name="fechaHora">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Resultado" name="resultado">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Infracciones" name="infracciones">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Ubicación" name="ubicacion">
+                        <input type="datetime-local" placeholder="" name="fechaHora">
                     </div>
                     <div class="form-group">
                         <input type="text" placeholder="Locatario" name="locatario">
                     </div>
                     <div class="form-group">
+                        <input type="text" placeholder="Resultado" name="resultado">
+                    </div>
+                    <div class="form-group">
                         <input type="text" placeholder="Visitante" name="visitante">
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Deporte" name="nombreDeporte">
+                            <select name="idCompeticion">
+                            <?php
+                                    $competiciones = CompeticionesControlador::Listar();
+                                    if($competiciones == "") :?>
+                                        <option value="">No hay Competiciones ingresadas</option>
+                            <?php 
+                                    else :?>
+                                <? foreach($competiciones as $fila) :?>
+                                    
+                                    <option value="<?= $fila['idCompeticion'] ?>">
+                                        <?=$fila['anio'] ." - " . $fila['nombreCompeticion'] ?> </option>
+                                <?php endforeach ;?>
+                            <?php endif ; ?>
+                            </select>
                     </div>
                     <div class="form-group">
-                    <?php
-                        $eventos = CompeticionesControlador::Listar();
-                        if($eventos == "") :?>
-                            <select name="competiciones" id="competiciones">
-                            <option value="volvo">Sin Competiciones</option>
-                            </select>
-                    <?php 
-                        else :?>
-                        <? foreach($eventos as $fila) :?>
-                            <select name="competiciones" id="competiciones">
-                                <option value="volvo">Volvo</option>
-                                <option value="saab>Saab</option>
-                                <option value="mercedes">Mercedes</option>
-                                <option value="audi">Audi</option>
+                            <select name="idDeporte">
+                            <?php
+                                    $deportes = DeporteControlador::Listar();
+                                    if($deportes == "") :?>
+                                       <option value="">No hay Deportes ingresados</option> 
+                            <?php 
+                                    else :?>
+                                <? foreach($deportes as $fila) :?>
+                                    
+                                    <option value="<?= $fila['idDeporte'] ?>">
+                                        <?=$fila['nombreDeporte'] ?> </option>
+                                <?php endforeach ;?>
+                            <?php endif ; ?>
                             </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Alta</button>
@@ -57,13 +63,12 @@
                     <?php endif; ?>
                 </form>
             </div>
+            
         </div>
-    </div>
-    <div class="row">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Modificar Competiciones</h5>
-                <form action="" method="post">
+                <h5 class="card-title">Modificar Evento</h5>
+                <form action="/usuario/modificarSuscriptor" method="post">
                     <div class="form-group">
                         <input type="text" placeholder="Id" name="idCompeticion">
                     </div>
@@ -79,7 +84,7 @@
                     
                     <button type="submit" class="btn btn-primary">Modificar</button>
                     <?php if(isset($parametros['modificado']) && $parametros['modificado'] == 'true') :?>
-                                <div style='color: green;'>Competición Actualizada</div>
+                                <div style='color: green;'>Evento Actualizado</div>
                     <?php elseif (isset($parametros['errorModificado']) && $parametros['errorModificado'] == 'true')  :?>
                                 <div style='color: red;'>Error en el Ingreso</div>
                     <?php endif; ?>
@@ -91,34 +96,34 @@
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Eventos</h5>
+                <h5 class="card-title">Suscriptores</h5>
 
                 <table class="table table-striped">
                     <tr>
                         <th style="">Id</th>
+                        <th style="">Ficha/Hora</th>
                         <th style="">Locatario</th>
                         <th style="">Resultado</th>
                         <th style="">Visitante</th>
-                        <th style="">Infracciones</th>
-                        <th style="">Ubicacion</th>
-                        <th style="">Competicion</th>
+                        <th style="">Competición</th>
+                        <th style="">Deporte</th>
                     </tr>
                   
                     <?php
-                        $eventos = ResultadosControlador::ResultadoEquipo();
-                        if($eventos == "") :?>
-                            No hay competiciones ingresados
+                        $resultados = ResultadosControlador::ResultadoEquipo();
+                        if($resultados == "") :?>
+                            No hay Eventos ingresados
                     <?php 
                         else :?>
-                        <? foreach($eventos as $fila) :?>
+                        <? foreach($resultados as $fila) :?>
                             <tr>
-                                <td style=""> <?=$fila['idEvento'] ?></td> 
+                                <td style=""> <?= $fila['idEvento'] ?></td> 
+                                <td style=""> <?=$fila['fechaHora'] ?></td>
                                 <td style=""> <?=$fila['locatario'] ?></td>
                                 <td style=""> <?=$fila['resultado'] ?></td>
                                 <td style=""> <?=$fila['visitante'] ?></td>
-                                <td style=""> <?=$fila['infracciones'] ?></td>
-                                <td style=""> <?=$fila['ubicacion'] ?></td>
                                 <td style=""> <?=$fila['competicion'] ?></td>
+                                <td style=""> <?=$fila['deporte'] ?></td>
                                 <td style=""> 
                                     <form action="/bajaCompeticion" method="post">
                                         <input type="radio" name="idSuscriptor" value="<?= $fila['idCompeticion'] ?>">
@@ -130,7 +135,7 @@
                     <?php endif ; ?>
                          
                     <?php if(isset($parametros['eliminado']) && $parametros['eliminado'] == 'true') :?>
-                            <div style='color: darkred;'>Competición eliminada</div>
+                            <div style='color: darkred;'>Evento eliminado</div>
                     <?php endif; ?>
                                     
                 </table>

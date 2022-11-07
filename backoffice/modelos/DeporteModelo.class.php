@@ -60,9 +60,9 @@
             $sql = "select * from deportes;";
  
              $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
-             $resultado = array();
+             $resultado = [];
              foreach($filas as $fila){
-                 $a = new DeportesModelo();
+                 $a = new DeporteModelo();
                  $a -> idDeporte = $fila['idDeporte'];
                  $a -> nombreDeporte = $fila['nombreDeporte'];
                  $a -> tipoDeporte = $fila['tipoDeporte'];
