@@ -121,6 +121,8 @@
 
 
 /* PUBLICIDAD */
+
+/* PUBLICIDAD */
 .publi-uno {
     border: 1px solid black;
     margin: 0 auto;
@@ -146,11 +148,6 @@
 #publi2 img {
     width: 150px;
 }
-
-.sidebar {
-    margin: 0 1.5rem;
-}
-
 
 /* Aside */
 .contenido-side {
