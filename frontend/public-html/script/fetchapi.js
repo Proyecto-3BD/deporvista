@@ -64,7 +64,7 @@ fetch(publi1)
         body += `<tr><td>http://localhost:8083${d.src}<img src="http://localhost:8083/${d.src}"></tr></td>`;	
 	});
 			
-    document.getElementById('publi1').src = body;
+    document.getElementById('publi1').innerHTML = body;
 
 })
 
