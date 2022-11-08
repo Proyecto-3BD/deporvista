@@ -15,9 +15,8 @@
                 	array_push($rutas,$t);
                 }
             }
-            $numeroRandom = random_int(0, count($rutas)-1);
-    		$anuncioAleatorio = $rutas[$numeroRandom];
-    		$data = json_encode($anuncioAleatorio);
+            
+    		$data = json_encode($rutas);
     		echo $data;
     		return;
 		} 
