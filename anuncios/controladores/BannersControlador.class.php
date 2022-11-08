@@ -5,8 +5,8 @@
 
         public static function Alta($context){            
             if(!empty($_FILES['file']['name'])){
-                $src = "/anuncios/" . $_FILES['file']['name'];
-                move_uploaded_file($_FILES['file']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . $src); 
+                $src = $_FILES['file']['name'];
+                move_uploaded_file($_FILES['file']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/anuncios/" . $src); 
                 $p = new BannersModelo();
                 $p -> src = $src;
                 $p -> publicado = $context['post']['publicado'];

@@ -15,9 +15,9 @@
                 	array_push($rutas,$t);
                 }
             }
-            //$numeroRandom = random_int(0, count($rutas)-1);
-    		//$anuncioAleatorio = $rutas[$numeroRandom];
-    		$data = json_encode($rutas);
+            $numeroRandom = random_int(0, count($rutas)-1);
+    		$anuncioAleatorio = $rutas[$numeroRandom];
+    		$data = json_encode($anuncioAleatorio);
     		echo $data;
     		return;
 		} 
