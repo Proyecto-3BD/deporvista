@@ -80,10 +80,10 @@ fetch(publi2)
     
 	let body = '';
 	data.forEach(function(d){
-	body += `${d.src}`;	
+        body += `<tr><td>${d.src}</tr></td>`;	
 	});
 			
-    document.getElementById('publi2').src = body;
+    document.getElementById('publi2').innerHTML = body;
 
 })
 
