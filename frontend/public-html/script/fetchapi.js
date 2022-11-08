@@ -51,7 +51,7 @@ const mostrarData = (dataevento) => {
 }
 
 /* PUBLI 1*/
-let publi1 = "./script/json.json";
+let publi1 = "http://localhost:8081/dameAnuncio";
 
 fetch(publi1)
 .then(function(res){
@@ -70,7 +70,7 @@ fetch(publi1)
 
 
 /* PUBLI 2 */
-let publi2 = "./script/json.json";
+let publi2 = "http://localhost:8081/dameAnuncio";
 
 fetch(publi2)
 .then(function(res){
