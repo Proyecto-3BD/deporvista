@@ -119,12 +119,32 @@
     background-color: rgb(240, 240, 240);
 }
 
+
+/* PUBLICIDAD */
 .publi-uno {
     border: 1px solid black;
+    margin: 0 auto;
 }
+
+
+#publi1 img {
+    width: 150px;
+}
+
+
 
 .publi-dos {
     border: 1px solid black;
+    margin: 0 auto;
+
+}
+
+.sidebar {
+    margin: 0 1.5rem;
+}
+
+#publi2 img {
+    width: 150px;
 }
 
 .sidebar {
