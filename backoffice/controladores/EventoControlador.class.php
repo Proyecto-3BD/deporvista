@@ -8,19 +8,50 @@
                 $u -> idEvento = $context['post']['idEvento'];
                 $u -> fechaHora = $context['post']['fechaHora'];
                 $u -> resultado = $context['post']['resultado'];
+                $u -> resultado = $context['post']['idDeporte'];
                 $u -> infracciones = $context['post']['infracciones'];
                 $u -> ubicacion = $context['post']['ubicacion'];
                 $u -> Guardar();
-                render("gestionEvento", ["ingresado" => true]);
+                render("gestionEventos", ["ingresado" => true]);
             }else
-                render("gestionEvento", ["error" => true]);
+                render("gestionEventos", ["error" => true]);
     	}
 
+        public static function AltaEvento($context){
+            if(!empty($context['post']['fechaHora'])){
+                $e = new EventoModelo();
+                $e -> fechaHora = $context['post']['fechaHora'];
+                $e -> fechaHora = $context['post']['resultado'];
+                $e -> idDeporte = $context['post']['idDeporte'];
+                $e -> infracciones = $context['post']['infracciones'];
+                $e -> ubicacion = $context['post']['ubicacion'];
+                $e -> Guardar();
+
+                $l = new EquipoLocatarioEventoModelo();
+                $l -> idEquipo = $context['post']['locatario'];
+                $l -> Guardar();
+
+                $v = new EquipoVisitanteEventoModelo();
+                $v -> idEquipo = $context['post']['visitante'];
+                $v -> Guardar();
+
+                $ec = new EventoCompeticionModelo();
+                $ec -> idCompeticion = $context['post']['idCompeticion'];
+                $ec -> Guardar();
+                render("gestionEventos", ["ingresado" => true]);
+            }else
+                render("gestionEventos", ["error" => true]);
+
+                // Guardar fechaHora, resultado, infracciones, ubicacion, idDeporte
+                // Guardar locatarioEquipo(nombreEquipo), idEquipo(Equpo) idEvento(SELECT max(idEvento))
+                // guardar VisitanteEquipo(nombreEquipo), idEquipo(Equipo) idEvento(SELECT max(idEvento))
+                // guardar EventoCompeticion idCompeticion idEvento(SELECT max(idEvento))
+        }
 
         public static function Eliminar($context){
             $u = new EventoModelo($context['post']['idEvento']);
             $u -> Eliminar();
-            render("gestionEvento", ["borrado" => true]);
+            render("gestionEventos", ["borrado" => true]);
         }        
 
         public static function Modificar($context){

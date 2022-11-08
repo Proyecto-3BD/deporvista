@@ -38,7 +38,7 @@
 
         public static function Listar(){
             $a = new EquipoModelo();
-            $eventos = $a -> ObtenerTodos();
+            $equipos = $a -> ObtenerTodos();
 
             $resultado = [];
             foreach($equipos as $equipo){
@@ -50,6 +50,6 @@
                 ];   
                 array_push($resultado,$t);
             }
-            echo json_encode($resultado);          
+            return $resultado;          
         }
     }

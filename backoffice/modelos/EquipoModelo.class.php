@@ -18,7 +18,7 @@
         }
 
         public function guardar(){
-            if($this -> idEquipo == NULL) $this -> insertar();
+            if($this -> idEquipo === NULL) $this -> insertar();
             else $this -> actualizar();
         }
 
@@ -62,15 +62,15 @@
             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
             $resultado = array();
             foreach($filas as $fila){
-                $a = new EquiposModelo();
+                $a = new EquipoModelo();
                 $a -> idEquipo = $fila['idEquipo'];
                 $a -> nombreEquipo = $fila['nombreEquipo'];
                 $a -> pais = $fila['pais'];
                 $a -> dt = $fila['dt'];
                  
                 array_push($resultado,$a);
-             }
-             return $resultado;
+            }
+            return $resultado;
          }
 
     }

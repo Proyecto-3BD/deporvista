@@ -66,7 +66,7 @@
                     INNER JOIN equipos AS e
                     ON de.idEquipo = e.idEquipo
                     WHERE e.idEquipo = " . $this -> idEquipo . ";";
-            $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
+            $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
             return $filas;
         }
 

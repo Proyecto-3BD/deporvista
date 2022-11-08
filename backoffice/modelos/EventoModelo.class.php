@@ -77,6 +77,8 @@
                     '" . $this -> resultado . "',
                     '" . $this -> infracciones . "',
                     '" . $this -> ubicacion . "');";
+            echo '</pre>';
+            var_dump($sql);
             $this -> conexion -> query($sql);
         }
 
