@@ -61,7 +61,7 @@ fetch(publi1)
     
 	let body = '';
 	data.forEach(function(d){
-        body += `<tr><td>http://localhost:8083${d.src}<img src="http://localhost:8083/${d.src}"></tr></td>`;	
+        body += `<tr><td>http://localhost:8083${d[1].src}<img src="http://localhost:8083/${d[1].src}"></tr></td>`;	
 	});
 			
     document.getElementById('publi1').innerHTML = body;
