@@ -81,7 +81,7 @@
                                     
                                     <option value="<?= $fila['idDeporte'] ?>">
                                         <?=$fila['nombreDeporte'] ?> </option>
-                                <?php endforeach ;?>
+                                <? endforeach ;?>
                             <?php endif ; ?>
                             </select>
                             <span>Deporte</span>
