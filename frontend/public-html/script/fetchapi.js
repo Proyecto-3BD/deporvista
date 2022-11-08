@@ -50,6 +50,43 @@ const mostrarData = (dataevento) => {
     document.getElementById('dataevento').innerHTML = body;
 }
 
+/* PUBLI 1*/
+let publi1 = "./script/json.json";
+
+fetch(publi1)
+.then(function(res){
+	return res.json();
+})
+.then(function(data){
+    
+	let body = '';
+	data.forEach(function(d){
+	body += `${d.imagen}`;	
+	});
+			
+    document.getElementById('publi1').src = body;
+
+})
+
+
+/* PUBLI 2 */
+let publi2 = "./script/json.json";
+
+fetch(publi2)
+.then(function(res){
+	return res.json();
+})
+.then(function(data){
+    
+	let body = '';
+	data.forEach(function(d){
+	body += `${d.imagen}`;	
+	});
+			
+    document.getElementById('publi2').src = body;
+
+})
+
 
 function fetchEventoFinalizado() {
 
