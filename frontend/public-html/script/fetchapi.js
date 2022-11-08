@@ -61,7 +61,7 @@ fetch(publi1)
     
 	let body = '';
 	data.forEach(function(d){
-	body += `${d.src}`;	
+        body += `<tr><td>http://localhost:8083${d.src}<img src="http://localhost:8083/${d.src}"></tr></td>`;	
 	});
 			
     document.getElementById('publi1').src = body;
@@ -80,7 +80,7 @@ fetch(publi2)
     
 	let body = '';
 	data.forEach(function(d){
-        body += `<tr><td>http://localhost:8083/${d.src}<img src="http://localhost:8083/${d.src}"></tr></td>`;	
+        body += `<tr><td>http://localhost:8083${d.src}<img src="http://localhost:8083/${d.src}"></tr></td>`;	
 	});
 			
     document.getElementById('publi2').innerHTML = body;
