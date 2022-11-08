@@ -342,7 +342,7 @@ function fetchEventoProximobasket() {
 
 
 
-/* LALIGA */ 
+/* LALIGA */
 
 document.getElementById('generallaliga').style.display = "none";
 let actuallaliga = document.getElementById("laliga");
@@ -444,7 +444,7 @@ function fetchEventoProximolaliga() {
     }
 }
 
-/* FIN LALIGA */ 
+/* FIN LALIGA */
 
 
 /* PREMIER */
@@ -863,5 +863,863 @@ function fetchEventoProximoprimeraARG() {
         document.getElementById('dataeventoProxserieA').innerHTML = body;
     }
 }
-
 /* FIN SERIE A*/
+
+
+
+/* TENIS */
+document.getElementById('generaltenis').style.display = "none";
+let actualtenis = document.getElementById("tenis");
+let activartenis = actualtenis.addEventListener('click', tenis);
+
+function tenis() {
+    document.getElementById('generaltenis').style.display = "block";
+    document.getElementById('generalbasket').style.display = "none";
+    document.getElementById('generalpremier').style.display = "none";
+    document.getElementById('generallaliga').style.display = "none";
+    document.getElementById('general').style.display = "none";
+    document.getElementById('generalfutbol').style.display = "none";
+    document.getElementById('generalprimerauy').style.display = "none";
+    document.getElementById('generalprimeraarg').style.display = "none";
+    document.getElementById('generalserieA').style.display = "none";
+
+    document.getElementById("hoyTenis").style.display = "block";
+    document.getElementById("finalizadosTenis").style.display = "none";
+    document.getElementById("proximosTenis").style.display = "none";
+
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].deporte == "tenis") {
+                if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventotenis').innerHTML = body;
+    }
+}
+
+function fetchEventoFinalizadotenis() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+    const mostrarData = (dataevento) => {
+
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        dataevento.reverse();
+
+
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].deporte == "tenis") {
+
+                if (dataevento[i].fechaHora <= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoFintenis').innerHTML = body;
+    }
+}
+
+function fetchEventoProximobasket() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        console.log(dataevento);
+
+
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].deporte == "tenis") {
+                if (dataevento[i].fechaHora >= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoProxtenis').innerHTML = body;
+    }
+}
+
+/* FIN TENIS */
+
+
+
+
+
+/*NBA ESTE*/
+document.getElementById('generalnbaeste').style.display = "none";
+let actualnbaeste = document.getElementById("NBAeste");
+let activarnbaeste = actualnbaeste.addEventListener('click', nbaeste);
+
+function nbaeste() {
+    document.getElementById('generalnbaeste').style.display = "block";
+    document.getElementById('generalserieA').style.display = "none";
+    document.getElementById('generalprimeraarg').style.display = "none";
+    document.getElementById('generalprimerauy').style.display = "none";
+    document.getElementById('generalpremier').style.display = "none";
+    document.getElementById('generallaliga').style.display = "none";
+    document.getElementById('generalbasket').style.display = "none";
+    document.getElementById('general').style.display = "none";
+    document.getElementById('generalfutbol').style.display = "none";
+
+    document.getElementById("hoyNBAeste").style.display = "block";
+    document.getElementById("finalizadosNBAeste").style.display = "none";
+    document.getElementById("proximosNBAeste").style.display = "none";
+
+
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "NBA Este") {
+                if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventonbaeste').innerHTML = body;
+    }
+}
+
+
+
+function fetchEventoFinalizadoNBAESTE() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+    const mostrarData = (dataevento) => {
+
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        dataevento.reverse();
+
+
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "NBA Este") {
+
+                if (dataevento[i].fechaHora <= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoFinnbaeste').innerHTML = body;
+    }
+}
+
+function fetchEventoProximoNBAESTE() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        console.log(dataevento);
+
+
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "NBA Este") {
+                if (dataevento[i].fechaHora >= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoProxnbaeste').innerHTML = body;
+    }
+}
+/*FIN NBA ESTE*/
+
+
+
+
+
+/*NBA OESTE*/
+document.getElementById('generalnbaoeste').style.display = "none";
+let actualnbaoeste = document.getElementById("NBAoeste");
+let activarnbaoeste = actualnbaoeste.addEventListener('click', nbaoeste);
+
+function nbaoeste() {
+    document.getElementById('generalnbaoeste').style.display = "block";
+    document.getElementById('generalnbaeste').style.display = "none";
+    document.getElementById('generalserieA').style.display = "none";
+    document.getElementById('generalprimeraarg').style.display = "none";
+    document.getElementById('generalprimerauy').style.display = "none";
+    document.getElementById('generalpremier').style.display = "none";
+    document.getElementById('generallaliga').style.display = "none";
+    document.getElementById('generalbasket').style.display = "none";
+    document.getElementById('general').style.display = "none";
+    document.getElementById('generalfutbol').style.display = "none";
+
+    document.getElementById("hoyNBAoeste").style.display = "block";
+    document.getElementById("finalizadosNBAoeste").style.display = "none";
+    document.getElementById("proximosNBAoeste").style.display = "none";
+
+
+
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "NBA Oeste") {
+                if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventonbaoeste').innerHTML = body;
+    }
+}
+
+
+
+function fetchEventoFinalizadoNBAoESTE() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+    const mostrarData = (dataevento) => {
+
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        dataevento.reverse();
+
+
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "NBA Oeste") {
+
+                if (dataevento[i].fechaHora <= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoFinnbaoeste').innerHTML = body;
+    }
+}
+
+function fetchEventoProximoNBAoESTE() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        console.log(dataevento);
+
+
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "NBA Oeste") {
+                if (dataevento[i].fechaHora >= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoProxnbaoeste').innerHTML = body;
+    }
+}
+
+
+
+/*FIN NBA OESTE*/
+
+/*LUB*/
+document.getElementById('generallub').style.display = "none";
+let actuallub = document.getElementById("lub");
+let activarlub = actuallub.addEventListener('click', LUB);
+
+function LUB() {
+    document.getElementById('generallub').style.display = "block";
+    document.getElementById('generalnbaoeste').style.display = "none";
+    document.getElementById('generalnbaeste').style.display = "none";
+    document.getElementById('generalserieA').style.display = "none";
+    document.getElementById('generalprimeraarg').style.display = "none";
+    document.getElementById('generalprimerauy').style.display = "none";
+    document.getElementById('generalpremier').style.display = "none";
+    document.getElementById('generallaliga').style.display = "none";
+    document.getElementById('generalbasket').style.display = "none";
+    document.getElementById('general').style.display = "none";
+    document.getElementById('generalfutbol').style.display = "none";
+
+    document.getElementById("hoyLUB").style.display = "block";
+    document.getElementById("finalizadosLUB").style.display = "none";
+    document.getElementById("proximosLUB").style.display = "none";
+
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "LUB") {
+                if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoLUB').innerHTML = body;
+    }
+}
+
+
+
+function fetchEventoFinalizadoLUB() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+    const mostrarData = (dataevento) => {
+
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        dataevento.reverse();
+
+
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "LUB") {
+
+                if (dataevento[i].fechaHora <= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoFinLUB').innerHTML = body;
+    }
+}
+
+function fetchEventoProximoLUB() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        console.log(dataevento);
+
+
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "LUB") {
+                if (dataevento[i].fechaHora >= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoProxLUB').innerHTML = body;
+    }
+}
+/*FIN LUB*/
+
+
+
+
+
+
+ 
+/*us opem*/
+document.getElementById('generalusopen').style.display = "none";
+let actualusopen = document.getElementById("usopen");
+let activarusopen = actualusopen.addEventListener('click', usopen);
+
+function usopen() {
+    document.getElementById('generalusopen').style.display = "block";
+    document.getElementById('generallub').style.display = "none";
+    document.getElementById('generalnbaoeste').style.display = "none";
+    document.getElementById('generalnbaeste').style.display = "none";
+    document.getElementById('generalserieA').style.display = "none";
+    document.getElementById('generalprimeraarg').style.display = "none";
+    document.getElementById('generalprimerauy').style.display = "none";
+    document.getElementById('generalpremier').style.display = "none";
+    document.getElementById('generallaliga').style.display = "none";
+    document.getElementById('generalbasket').style.display = "none";
+    document.getElementById('general').style.display = "none";
+    document.getElementById('generalfutbol').style.display = "none";
+
+    document.getElementById("hoyUSOPEN").style.display = "block";
+    document.getElementById("finalizadosUSOPEN").style.display = "none";
+    document.getElementById("proximosUSOPEN").style.display = "none";
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "US Open") {
+                if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventousopen').innerHTML = body;
+    }
+}
+
+
+
+function fetchEventoFinalizadousopen() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+    const mostrarData = (dataevento) => {
+
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        dataevento.reverse();
+
+
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "US Open") {
+
+                if (dataevento[i].fechaHora <= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoFinusopen').innerHTML = body;
+    }
+}
+
+function fetchEventoProximousopen() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        console.log(dataevento);
+
+
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "US Open") {
+                if (dataevento[i].fechaHora >= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoProxUSOPEN').innerHTML = body;
+    }
+}
+/*FIN us opem*/
+
+
+/*Wimbledon*/
+document.getElementById('generalwimbledon').style.display = "none";
+let actualwimbledon = document.getElementById("wimble");
+let activarwimbledon = actualwimbledon.addEventListener('click', wimbledon);
+
+function wimbledon() {
+    document.getElementById('generalusopen').style.display = "none";
+    document.getElementById('generalwimbledon').style.display = "block";
+    document.getElementById('generallub').style.display = "none";
+    document.getElementById('generalnbaoeste').style.display = "none";
+    document.getElementById('generalnbaeste').style.display = "none";
+    document.getElementById('generalserieA').style.display = "none";
+    document.getElementById('generalprimeraarg').style.display = "none";
+    document.getElementById('generalprimerauy').style.display = "none";
+    document.getElementById('generalpremier').style.display = "none";
+    document.getElementById('generallaliga').style.display = "none";
+    document.getElementById('generalbasket').style.display = "none";
+    document.getElementById('general').style.display = "none";
+    document.getElementById('generalfutbol').style.display = "none";
+
+    document.getElementById("hoyWimbledon").style.display = "block";
+    document.getElementById("finalizadosWimbledon").style.display = "none";
+    document.getElementById("proximosWimbledon").style.display = "none";
+
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "Wimbledon") {
+                if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoWIMB').innerHTML = body;
+    }
+}
+
+
+
+function fetchEventoFinalizadowimbledon() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+    const mostrarData = (dataevento) => {
+
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        dataevento.reverse();
+
+
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "Wimbledon") {
+
+                if (dataevento[i].fechaHora <= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoFinWIMB').innerHTML = body;
+    }
+}
+
+function fetchEventoProximowimbledon() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        console.log(dataevento);
+
+
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "Wimbledon") {
+                if (dataevento[i].fechaHora >= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoProxWIMB').innerHTML = body;
+    }
+}
+/*FIN Wimbledon*/
+
+/*Roland Garros*/
+document.getElementById('generalroland').style.display = "none";
+let actualroland = document.getElementById("roland");
+let activarroland = actualroland.addEventListener('click', roland);
+
+function roland() {
+    document.getElementById('generalroland').style.display = "block";
+    document.getElementById('generalusopen').style.display = "none";
+    document.getElementById('generalwimbledon').style.display = "none";
+    document.getElementById('generallub').style.display = "none";
+    document.getElementById('generalnbaoeste').style.display = "none";
+    document.getElementById('generalnbaeste').style.display = "none";
+    document.getElementById('generalserieA').style.display = "none";
+    document.getElementById('generalprimeraarg').style.display = "none";
+    document.getElementById('generalprimerauy').style.display = "none";
+    document.getElementById('generalpremier').style.display = "none";
+    document.getElementById('generallaliga').style.display = "none";
+    document.getElementById('generalbasket').style.display = "none";
+    document.getElementById('general').style.display = "none";
+    document.getElementById('generalfutbol').style.display = "none";
+
+    document.getElementById("hoyRoland").style.display = "block";
+    document.getElementById("finalizadosRoland").style.display = "none";
+    document.getElementById("proximosRoland").style.display = "none";
+
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "Roland-Garros") {
+                if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoroland').innerHTML = body;
+    }
+}
+
+
+
+function fetchEventoFinalizadoRolandGarros() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+    const mostrarData = (dataevento) => {
+
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        dataevento.reverse();
+
+
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "Roland-Garros") {
+
+                if (dataevento[i].fechaHora <= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoFinroland').innerHTML = body;
+    }
+}
+
+function fetchEventoProximoRolandGarros() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        console.log(dataevento);
+
+
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "Roland-Garros") {
+                if (dataevento[i].fechaHora >= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoProxroland').innerHTML = body;
+    }
+}
+/*FIN Roland Garros*/
+
+/*Austarlian Open*/
+document.getElementById('generalAUS').style.display = "none";
+let actualaus = document.getElementById("Ausopen");
+let activaraus = actualaus.addEventListener('click', aus);
+
+function aus() {
+    document.getElementById('generalAUS').style.display = "block";
+    document.getElementById('generalroland').style.display = "none";
+    document.getElementById('generalusopen').style.display = "none";
+    document.getElementById('generalwimbledon').style.display = "none";
+    document.getElementById('generallub').style.display = "none";
+    document.getElementById('generalnbaoeste').style.display = "none";
+    document.getElementById('generalnbaeste').style.display = "none";
+    document.getElementById('generalserieA').style.display = "none";
+    document.getElementById('generalprimeraarg').style.display = "none";
+    document.getElementById('generalprimerauy').style.display = "none";
+    document.getElementById('generalpremier').style.display = "none";
+    document.getElementById('generallaliga').style.display = "none";
+    document.getElementById('generalbasket').style.display = "none";
+    document.getElementById('general').style.display = "none";
+    document.getElementById('generalfutbol').style.display = "none";
+
+    document.getElementById("hoyAUSOPEN").style.display = "block";
+    document.getElementById("finalizadosAUSOPEN").style.display = "none";
+    document.getElementById("proximosAUSOPEN").style.display = "none";
+
+
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "Austarlian Open") {
+                if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoAUS').innerHTML = body;
+    }
+}
+
+
+
+function fetchEventoFinalizadoaus() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+    const mostrarData = (dataevento) => {
+
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        dataevento.reverse();
+
+
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "Austarlian Open") {
+
+                if (dataevento[i].fechaHora <= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoFinAUS').innerHTML = body;
+    }
+}
+
+function fetchEventoProximoaus() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        console.log(dataevento);
+
+
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].competicion == "Austarlian Open") {
+                if (dataevento[i].fechaHora >= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoProxrAUS').innerHTML = body;
+    }
+}
+/*FIN Austarlian Open*/
