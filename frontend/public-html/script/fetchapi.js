@@ -61,7 +61,7 @@ fetch(publi1)
     
 	let body = '';
 	data.forEach(function(d){
-	body += `${d.imagen}`;	
+	body += `${d.src}`;	
 	});
 			
     document.getElementById('publi1').src = body;
@@ -80,7 +80,7 @@ fetch(publi2)
     
 	let body = '';
 	data.forEach(function(d){
-	body += `${d.imagen}`;	
+	body += `${d.src}`;	
 	});
 			
     document.getElementById('publi2').src = body;
