@@ -13,15 +13,45 @@
                 <form action="/altaEvento" method="post">
                     <div class="form-group">
                         <input type="datetime-local" placeholder="" name="fechaHora">
+                        <span>Fecha, Hora</span>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Locatario" name="locatario">
+                        <input type="text"name="resultado">
+                        <span>Resultado</span>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Resultado" name="resultado">
+                        <select name="locatario">
+                            <?php
+                                $equipos = EquipoControlador::Listar();
+                                if($equipos == "") :?>
+                                    <option value="">No hay Equipos ingresadas</option>
+                            <?php 
+                                else :?>
+                                <? foreach($equipos as $fila) :?>
+                                    
+                                    <option value="<?= $fila['idEquipo'] ?>">
+                                        <?=$fila['nombreEquipo'] ?> </option>
+                                <? endforeach ;?>
+                            <?php endif ; ?>
+                        </select>
+                        <span>Locatario</span> 
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Visitante" name="visitante">
+                    <select name="visitante">
+                            <?php
+                                $equipos = EquipoControlador::Listar();
+                                if($equipos == "") :?>
+                                    <option value="">No hay Equipos ingresadas</option>
+                            <?php 
+                                else :?>
+                                <? foreach($equipos as $fila) :?>
+                                    
+                                    <option value="<?= $fila['idEquipo'] ?>">
+                                        <?=$fila['nombreEquipo'] ?> </option>
+                                <?php endforeach ;?>
+                            <?php endif ; ?>
+                        </select>
+                        <span>Visitante</span> 
                     </div>
                     <div class="form-group">
                             <select name="idCompeticion">
@@ -35,7 +65,7 @@
                                     
                                     <option value="<?= $fila['idCompeticion'] ?>">
                                         <?=$fila['anio'] ." - " . $fila['nombreCompeticion'] ?> </option>
-                                <?php endforeach ;?>
+                                <? endforeach ;?>
                             <?php endif ; ?>
                             </select>
                     </div>
@@ -54,6 +84,7 @@
                                 <?php endforeach ;?>
                             <?php endif ; ?>
                             </select>
+                            <span>Deporte</span>
                     </div>
                     <button type="submit" class="btn btn-primary">Alta</button>
                     <?php if(isset($parametros['ingresado']) && $parametros['ingresado'] == 'true') :?>
@@ -131,7 +162,7 @@
                                     </form>
                                 </td>
                             </tr>
-                        <?php endforeach ;?>
+                        <? endforeach ;?>
                     <?php endif ; ?>
                          
                     <?php if(isset($parametros['eliminado']) && $parametros['eliminado'] == 'true') :?>
