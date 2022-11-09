@@ -19,42 +19,24 @@ function fetchpost() {
 /* FIN LOGIN */
 
 /* REGISTRO */
-let formularioregistro = document.getElementById("formularioregistro");
-formularioregistro.addEventListener('submit', function (h) {
-    h.preventDefault();
-    console.log("prueba de funcion");
 
-    let datos = new FormData(formularioregistro);
+function fetchpostregistro() {
+    formularioregistro.onsubmit = async (e) => {
+    e.preventDefault();
 
-    /* objeto con los datos del formulario */
-    let objeto = {};
-    datos.forEach((value, key) => objeto[key] = value);
-    console.log(objeto);
+    let response = await fetch('http://localhost:8082/usuario', {
+      method: 'POST',
+      body: new FormData(formularioregistro)
+    });
+    let result = await response.json();
+    /*if(result.Resultado === "true") {
+        alert("entro el registro");
+    } else {
+        alert("rotisimo");
+    }*/
+};
+}
 
-    /* array del objeto anterior*/
-    var objetoArray = Object.entries(objeto);
-    console.log(objetoArray);
-
-    /* pasar a string el json de objetos */
-    let datosjson = JSON.stringify([objeto]);
-    console.log(datosjson);
-
-/*
-    fetch("post.php", {
-        method: "POST", 
-        headers: {
-            "Content-Type": "application/JSON"
-        },
-        body: datosjson
-    })
-
-    .then( res => res.json())
-    .then( data => {
-        console.log(data) 
-    })
-*/
-
-});
 
 /* FIN REGISTRO */
 
