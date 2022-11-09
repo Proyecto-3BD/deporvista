@@ -9,7 +9,6 @@ formulario.onsubmit = async (e) => {
       body: new FormData(formulario)
     });
     let result = await response.json();
-    console.log(result);
     if(result.resultado === "true") {
         alert("entro");
     } else {
