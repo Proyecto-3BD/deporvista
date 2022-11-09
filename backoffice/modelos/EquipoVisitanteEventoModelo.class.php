@@ -39,8 +39,6 @@
             $sql = "INSERT INTO equipoVisitanteEvento(idEquipo, idEvento) 
                 VALUES (
                 '" . $this -> idEquipo . "', (SELECT max(idEvento) AS idEvento FROM eventos));";
-            echo '</pre>';
-            var_dump($sql);
             $this -> conexion -> query($sql);
         }
 

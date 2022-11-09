@@ -73,10 +73,10 @@
 
                 <table class="table table-striped">
                     <tr>
-                        <th style="">Id</th>
-                        <th style="">Nombre de Usuario</th>
-                        <th style="">Correo Electrónico</th>
-                        <th style=""></th>
+                        <th>Id</th>
+                        <th>Nombre de Usuario</th>
+                        <th>Correo Electrónico</th>
+                        <th></th>
                     </tr>
                   
                     <?php
@@ -87,10 +87,10 @@
                         else :?>
                         <? foreach($administradores as $fila) :?>
                             <tr>
-                                <td style=""> <?= $fila['idAdmin'] ?></td> 
-                                <td style=""> <?=$fila['nombreAdmin'] ?></td>
-                                <td style=""> <?=$fila['email'] ?></td>
-                                <td style=""> 
+                                <td> <?= $fila['idAdmin'] ?></td> 
+                                <td> <?=$fila['nombreAdmin'] ?></td>
+                                <td> <?=$fila['email'] ?></td>
+                                <td> 
                                     <form action="/usuario/bajaAdmin" method="post">
                                         <input type="radio" name="idAdmin" value="<?= $fila['idAdmin'] ?>">
                                         <button type="submit" class="btn btn-primary">Eliminar</button>

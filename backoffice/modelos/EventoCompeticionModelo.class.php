@@ -40,8 +40,6 @@
                 VALUES (
                 '" . $this -> idCompeticion . "', 
                 (SELECT max(idEvento) AS idEvento FROM eventos));";
-            echo '</pre>';
-            var_dump($sql);
             $this -> conexion -> query($sql);
         }
 

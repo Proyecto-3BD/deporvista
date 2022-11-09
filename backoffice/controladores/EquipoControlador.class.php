@@ -39,7 +39,6 @@
         public static function Listar(){
             $a = new EquipoModelo();
             $equipos = $a -> ObtenerTodos();
-
             $resultado = [];
             foreach($equipos as $equipo){
                 $t = [

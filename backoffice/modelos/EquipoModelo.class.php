@@ -58,7 +58,7 @@
 
         public function obtenerTodos(){
             $sql = "select * from equipos;";
- 
+            var_dump($sql);
             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
             $resultado = array();
             foreach($filas as $fila){

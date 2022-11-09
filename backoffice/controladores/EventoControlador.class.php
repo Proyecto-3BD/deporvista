@@ -21,31 +21,19 @@
             if(!empty($context['post']['fechaHora'])){
                 $e = new EventoModelo();
                 $e -> fechaHora = $context['post']['fechaHora'];
-                $e -> fechaHora = $context['post']['resultado'];
+                $e -> resultado = $context['post']['resultado'];
                 $e -> idDeporte = $context['post']['idDeporte'];
                 $e -> infracciones = $context['post']['infracciones'];
                 $e -> ubicacion = $context['post']['ubicacion'];
+
+                $e -> idLocatario = $context['post']['idLocatario'];
+                $e -> idVisitante = $context['post']['idVisitante'];
+                $e -> idCompeticion = $context['post']['idCompeticion'];
                 $e -> Guardar();
-
-                $l = new EquipoLocatarioEventoModelo();
-                $l -> idEquipo = $context['post']['locatario'];
-                $l -> Guardar();
-
-                $v = new EquipoVisitanteEventoModelo();
-                $v -> idEquipo = $context['post']['visitante'];
-                $v -> Guardar();
-
-                $ec = new EventoCompeticionModelo();
-                $ec -> idCompeticion = $context['post']['idCompeticion'];
-                $ec -> Guardar();
+                
                 render("gestionEventos", ["ingresado" => true]);
             }else
                 render("gestionEventos", ["error" => true]);
-
-                // Guardar fechaHora, resultado, infracciones, ubicacion, idDeporte
-                // Guardar locatarioEquipo(nombreEquipo), idEquipo(Equpo) idEvento(SELECT max(idEvento))
-                // guardar VisitanteEquipo(nombreEquipo), idEquipo(Equipo) idEvento(SELECT max(idEvento))
-                // guardar EventoCompeticion idCompeticion idEvento(SELECT max(idEvento))
         }
 
         public static function Eliminar($context){
@@ -63,7 +51,7 @@
             $u -> infracciones = $context['post']['infracciones'];
             $u -> ubicacion = $context['post']['ubicacion'];
             if(!empty($context['post']['idCompeticion'])){
-                $u -> Guardar();
+                $u -> guardar();
                 render("gestionEvento", ["modificado" => true]);
             }else
                 render("gestionEvento", ["errorModificado" => true]);

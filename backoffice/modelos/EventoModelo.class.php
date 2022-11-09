@@ -11,11 +11,9 @@
         public $idDeporte;     
         public $infracciones;
         public $ubicacion;
-        public $locatario;
-        public $visitante;
+        public $idLocatario;
+        public $idVisitante;
         public $idCompeticion;
-        public $nombreCompeticion;
-        public $anioCompeticion;
 
         public function __construct($idEvento=""){
             parent::__construct();
@@ -41,7 +39,7 @@
         public function LocatarioEvento(){
 
             $sql = "SELECT e.idEvento, e.fechaHora, e.resultado, 
-                    e.idDeporte, e.infracciones, e.ubicacion, eq.nombreEquipo AS locatario 
+                    e.idDeporte, e.infracciones, e.ubicacion, eq.nombreEquipo AS locatario, eq.idEquipo AS idLocatario
                     FROM equipoLocatarioEvento AS le 
                     INNER JOIN eventos AS e  
                     ON e.idEvento=le.idEvento 
@@ -54,7 +52,7 @@
         }
 
         public function VisitanteEvento(){
-            $sql = "SELECT e.idEvento, eq.nombreEquipo AS visitante
+            $sql = "SELECT e.idEvento, eq.nombreEquipo AS visitante, eq.idEquipo    AS idVisitante
                     FROM equipoVisitanteEvento AS ve 
                     INNER JOIN eventos AS e  
                     ON e.idEvento=ve.idEvento 
@@ -72,14 +70,35 @@
         }
 
         private function insertar(){
-            $sql = "INSERT INTO eventos (fechaHora, resultado, infracciones, ubicacion) 
+            $sql = "start transaction";
+            $this -> conexion -> query($sql);
+
+            $sql = "INSERT INTO eventos (fechaHora, resultado, idDeporte, infracciones, ubicacion) 
             VALUES ('" . $this -> fechaHora . "',
                     '" . $this -> resultado . "',
+                    '" . $this -> idDeporte . "',
                     '" . $this -> infracciones . "',
                     '" . $this -> ubicacion . "');";
-            echo '</pre>';
-            var_dump($sql);
             $this -> conexion -> query($sql);
+            
+            $sql = "INSERT INTO equipoLocatarioEvento(idEvento, idEquipo) 
+            VALUES ((SELECT max(idEvento) FROM eventos),
+                    '" . $this -> idLocatario . "');";
+            $this -> conexion -> query($sql);
+            
+            $sql = "INSERT INTO equipoVisitanteEvento(idEvento, idEquipo) 
+            VALUES ((SELECT max(idEvento) FROM eventos),
+                    '" . $this -> idVisitante . "');";
+            $this -> conexion -> query($sql);
+            
+            $sql = "INSERT INTO eventoCompeticion(idEvento, idCompeticion) 
+            VALUES ((SELECT max(idEvento) FROM eventos),
+                    '" . $this -> idCompeticion . "');";
+            $this -> conexion -> query($sql);
+            
+            $sql = "commit";
+            $this -> conexion -> query($sql);
+            
         }
 
         private function actualizar(){
@@ -115,7 +134,7 @@
             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
             $resultado = [];
             foreach($filas as $fila){
-                $a = new EventosModelo();
+                $a = new EventoModelo();
                 $a -> idEvento = $fila['idEvento'];
                 $a -> fechaHora = $fila['fechaHora'];
                 $a -> resultado = $fila['resultado'];

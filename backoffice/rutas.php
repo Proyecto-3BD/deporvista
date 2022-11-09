@@ -24,6 +24,9 @@
     Routes::Add("/modificarBanners", "post", "BannersControlador::Modificar");
     Routes::Add("/altaCompeticion", "post", "CompeticionesControlador::Alta");
     Routes::Add("/altaEvento", "post", "EventoControlador::AltaEvento");
+    Routes::Add("/modificarEvento", "post", "EventoControlador::Modificar");
+    Routes::Add("/listarEvento", "get", "EventoControlador::Listar");
+
 
 
     Routes::Run();

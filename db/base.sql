@@ -151,8 +151,6 @@ CREATE TABLE competiciones(
 CREATE TABLE eventoCompeticion(
 	idCompeticion smallint unsigned not null,
 	idEvento smallint unsigned not null,
-	fechaInicio DATE,
-	fechaFin DATE,
 	primary key (idCompeticion, idEvento),
 	foreign key (idCompeticion) references competiciones(idCompeticion),
 	foreign key (idEvento) references eventos(idEvento)
@@ -711,33 +709,31 @@ INSERT into competiciones
 	);
 
 insert into eventoCompeticion
-	(idCompeticion, idEvento, fechaInicio, fechaFin)
+	(idCompeticion, idEvento)
 	values
-	('1', '1', '2022-10-24', '2022-10-24'),
-	('1', '2', '2022-10-24', '2022-10-24'),
-	('1', '3', '2022-10-24', '2022-10-24'),
-	('1', '4', '2022-10-24', '2022-10-24'),
-	('1', '5', '2022-10-24', '2022-10-24'),
-	('1', '6', '2022-10-24', '2022-10-24'),
-	('1', '7', '2022-10-24', '2022-10-24'),
-	('7', '8', '2022-10-24', '2022-10-24'),
-	('3', '9', '2022-11-07', '2022-11-07'),
-	('2', '10', '2022-11-07', '2022-11-07'),
-	('4', '11', '2022-11-07', '2022-11-07'),
-	('6', '12', '2022-11-07', '2022-11-07'),
-	('5', '13', '2022-11-07', '2022-11-07'),
-	('8', '14', '2022-11-07', '2022-11-07'),
-	('9', '15', '2022-11-07', '2022-11-07'),
-	('10', '16', '2022-11-07', '2022-11-07'),
-	('11', '17', '2022-11-07', '2022-11-07'),
-	('12', '18', '2022-11-07', '2022-11-07');
+	('1', '1'),
+	('1', '2'),
+	('1', '3'),
+	('1', '4'),
+	('1', '5'),
+	('1', '6'),
+	('1', '7'),
+	('7', '8'),
+	('3', '9'),
+	('2', '10'),
+	('4', '11'),
+	('6', '12'),
+	('5', '13'),
+	('8', '14'),
+	('9', '15'),
+	('10', '16'),
+	('11', '17'),
+	('12', '18');
 
 INSERT into deportistaEquipo
 	(idDeportista, idEquipo, rol)
 	VALUES 
-	((SELECT max(idDeportista) AS idDeportista FROM deportistas), 
-	(SELECT max(idEquipo) AS idEquipo FROM equipos),
-	'volante');
+	('1', '1', 'volante');
 
 INSERT into deportistaCompeticion
 	(idDeportista, idCompeticion)
