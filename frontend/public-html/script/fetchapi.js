@@ -2,20 +2,25 @@
 let formulario = document.getElementById("formularioenvio");
 formulario.addEventListener('submit', function (e) {
     e.preventDefault();
-    console.log("prueba de funcion");
 
     let datos = new FormData(formulario);
-    /*console.log(datos.get('nombre'), datos.get('pass'));
-    console.log(datos)*/
 
-    let object = {};
-    datos.forEach((value, key) => object[key] = value);
-    let datosjson = JSON.stringify([object]);
+    /* objeto con los datos del formulario */
+    let objeto = {};
+    datos.forEach((value, key) => objeto[key] = value);
+    console.log(objeto);
+
+    /* array del objeto anterior*/
+    var objetoArray = Object.entries(objeto);
+    console.log(objetoArray);
+
+    /* pasar a string el json de objetos */
+    let datosjson = JSON.stringify([objeto]);
     console.log(datosjson);
-});
 
-/*
-    fetch("url donde se procesa el inicio de sesion en php", {
+
+    /*
+    fetch("post.php", {
         method: "POST", 
         headers: {
             "Content-Type": "application/JSON"
@@ -27,6 +32,12 @@ formulario.addEventListener('submit', function (e) {
     .then( data => {
         console.log(data) 
     })
+*/
+
+
+});
+
+
 
 
 /* FIN LOGIN */
@@ -37,19 +48,23 @@ formularioregistro.addEventListener('submit', function (h) {
     h.preventDefault();
     console.log("prueba de funcion");
 
-    let datosregistro = new FormData(formularioregistro);
-    /*console.log(datos.get('nombre'), datos.get('pass'));
-    console.log(datos)*/
+    let datos = new FormData(formularioregistro);
 
-    let object = {};
-    datosregistro.forEach((value, key) => object[key] = value);
-    let datosjson = JSON.stringify([object]);
+    /* objeto con los datos del formulario */
+    let objeto = {};
+    datos.forEach((value, key) => objeto[key] = value);
+    console.log(objeto);
+
+    /* array del objeto anterior*/
+    var objetoArray = Object.entries(objeto);
+    console.log(objetoArray);
+
+    /* pasar a string el json de objetos */
+    let datosjson = JSON.stringify([objeto]);
     console.log(datosjson);
 
-});
-
 /*
-    fetch("url donde se procesa el inicio de sesion en php", {
+    fetch("post.php", {
         method: "POST", 
         headers: {
             "Content-Type": "application/JSON"
@@ -61,7 +76,9 @@ formularioregistro.addEventListener('submit', function (h) {
     .then( data => {
         console.log(data) 
     })
+*/
 
+});
 
 /* FIN REGISTRO */
 
