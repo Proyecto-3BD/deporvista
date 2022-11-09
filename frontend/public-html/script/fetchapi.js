@@ -11,10 +11,7 @@ function fetchpost() {
     let result = await response.json();
     if(result.resultado === "true") {
         alert("entro");
-    } else {
-        alert("rotisimo");
-
-    }
+    } 
 };
 }
 
