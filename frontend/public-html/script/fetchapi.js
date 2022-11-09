@@ -19,20 +19,20 @@ formulario.addEventListener('submit', function (e) {
     console.log(datosjson);
 
 
-    /*
-    fetch("post.php", {
+    
+    fetch("http://localhost:8082/login", {
         method: "POST", 
         headers: {
-            "Content-Type": "application/JSON"
         },
-        body: datosjson
+        body: datos
     })
+
 
     .then( res => res.json())
     .then( data => {
         console.log(data) 
     })
-*/
+
 
 
 });
