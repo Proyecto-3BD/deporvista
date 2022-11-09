@@ -9,6 +9,12 @@ formulario.onsubmit = async (e) => {
     });
     let result = await response.json();
     console.log(result);
+    if(result.resultado === "true") {
+        alert("entro");
+    } else {
+        alert("rotisimo");
+
+    }
 
 };
 
