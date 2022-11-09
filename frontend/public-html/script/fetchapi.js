@@ -1,12 +1,12 @@
 /* LOGIN */
 function fetchpost() {
-formulario.onsubmit = async (e) => {
+    formularioenvio.onsubmit = async (e) => {
     e.preventDefault();
 
     let response = await fetch('http://localhost:8082/login', {
       method: 'POST',
       mode: 'no-cors',
-      body: new FormData(formulario)
+      body: new FormData(formularioenvio)
     });
     let result = await response.json();
     if(result.resultado === "true") {
