@@ -8,7 +8,7 @@
             $u = new SuscriptorModelo();
             $u -> nombreSuscriptor = $context['post']['nombreSuscriptor'];
             $u -> password = $context['post']['password'];
-            if($u -> Autenticar()){
+            if($u -> Autenticar($context)){
                 $respuesta = [
                     "Resultado" => "true",
                     "Mensaje" => "Credenciales validas"
