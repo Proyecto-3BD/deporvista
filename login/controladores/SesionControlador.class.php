@@ -1,7 +1,8 @@
 <?php 
     require "../utils/autoload.php";
-
+    header("Access-Control-Allow-Origin:*");
     class SesionControlador {
+
         public static function IniciarSesion($context){
             $u = new SuscriptorModelo();
             $u -> nombreSuscriptor = $context['post']['nombreSuscriptor'];
