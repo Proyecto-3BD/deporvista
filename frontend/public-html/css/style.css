@@ -307,7 +307,7 @@ footer {
 }
 
 .modal-form {
-    height: 30rem;
+    height: 33rem;
     width: 30rem;
     background-color: white;
 }
@@ -316,6 +316,9 @@ footer {
     padding: 0 !important;
 }
 
+form select {
+    margin: .5rem 0;
+}
 
 .cabecera-modal {
     background-color: #369741;
