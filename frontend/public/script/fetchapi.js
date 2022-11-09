@@ -28,8 +28,8 @@ function fetchpostregistro() {
       method: 'POST',
       body: new FormData(formularioregistro)
     });
-    let result = await response.json();
-    /*if(result.Resultado === "true") {
+   /* let result = await response.json();
+    if(result.Resultado === "true") {
         alert("entro el registro");
     } else {
         alert("rotisimo");
