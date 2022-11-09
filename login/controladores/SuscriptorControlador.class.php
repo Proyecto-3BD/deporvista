@@ -1,4 +1,5 @@
 <?php 
+    Header("Access-Control-Allow-Origin: *");
     require "../utils/autoload.php";
 
     class SuscriptorControlador{
