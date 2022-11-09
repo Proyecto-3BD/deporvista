@@ -102,13 +102,35 @@
         }
 
         private function actualizar(){
+            $sql = "start transaction";
+            $this -> conexion -> query($sql);
+
             $sql = "UPDATE eventos SET
                 fechaHora = '" . $this -> fechaHora . "',
                 resultado = '" . $this -> resultado . "',
                 infracciones = '" . $this -> infracciones . "',
                 ubicacion = '" . $this -> ubicacion . "',
                 WHERE idEvento = " . $this -> idEvento . ";";
-            $this -> conexion -> query($sql);   
+            $this -> conexion -> query($sql);
+
+            $sql = "UPDATE equipoLocatarioEvento SET
+                idEquipo = '" . $this -> idLocatario. "',
+                WHERE idEvento = " . $this -> idEvento . ";";
+            $this -> conexion -> query($sql);
+
+            $sql = "UPDATE equipoVisitanteEvento SET
+                idEquipo = '" . $this -> idVisitante. "',
+                WHERE idEvento = " . $this -> idEvento . ";";
+            $this -> conexion -> query($sql);
+            
+            $sql = "UPDATE eventoCompeticion SET
+                idCompeticion = '" . $this -> idCompeticion. "',
+                WHERE idEvento = " . $this -> idEvento . ";";
+            $this -> conexion -> query($sql);
+
+            $sql = "commit";
+            $this -> conexion -> query($sql);
+            
         }
 
         public function obtener(){

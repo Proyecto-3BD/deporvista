@@ -108,7 +108,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Modificar Evento</h5>
-                <form action="/modificarEventos" method="post">
+                <form action="/modificarEvento" method="post">
                     <div class="form-group">
                             <select name="idEvento">
                             <?php
@@ -211,11 +211,6 @@
                             <span>Deporte</span>
                     </div>
 
-
-
-
-
-                    
                     <button type="submit" class="btn btn-primary">Modificar</button>
                     <?php if(isset($parametros['modificado']) && $parametros['modificado'] == 'true') :?>
                                 <div style='color: green;'>Evento Actualizado</div>

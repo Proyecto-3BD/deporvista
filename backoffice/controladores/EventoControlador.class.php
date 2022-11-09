@@ -43,18 +43,23 @@
         }        
 
         public static function Modificar($context){
-
-            $u = new EventoModelo($context['post']['idEvento']);
+            $u = new EventoModelo();
+            var_dump($u);
             $u -> idEvento = $context['post']['idEvento'];
             $u -> fechaHora = $context['post']['fechaHora'];
             $u -> resultado = $context['post']['resultado'];
+            $u -> resultado = $context['post']['idDeporte'];
             $u -> infracciones = $context['post']['infracciones'];
             $u -> ubicacion = $context['post']['ubicacion'];
+            $u -> idLocatario = $context['post']['idLocatario'];
+            $u -> idVisitante = $context['post']['idVisitante'];
+            $u -> idCompeticion = $context['post']['idCompeticion'];
+
             if(!empty($context['post']['idCompeticion'])){
-                $u -> guardar();
-                render("gestionEvento", ["modificado" => true]);
+                $u -> Guardar();
+                render("gestionEventos", ["modificado" => true]);
             }else
-                render("gestionEvento", ["errorModificado" => true]);
+                render("gestionEventos", ["errorModificado" => true]);
         }
 
 

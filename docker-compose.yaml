@@ -1,19 +1,9 @@
 version: '2'
 services:
-  public: 
-    build:
-      context: ./public
-      dockerfile: Dockerfile
-    tty: true
-    restart: unless-stopped
-    ports:
-      - "8080:80"
-    volumes:
-      - ./public:/var/www/html
 
   frontend: 
     build:
-      context: ./frontend
+      context: ./
       dockerfile: Dockerfile
     tty: true
     restart: unless-stopped
@@ -22,21 +12,24 @@ services:
     volumes:
       - ./frontend:/var/www/html
 
-  db:
-    build:
-      context: ./db
-      dockerfile: Dockerfile
-    tty: true 
-    restart: unless-stopped
+  bd:
+    container_name: BaseDeDatos
+    image: mysql:5.7
+    tty: true
     ports:
-      - "3305:3306"
+      - "3306:3306"
+    restart: unless-stopped 
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_USER=usuario
+      - MYSQL_PASSWORD=1234
+      - MYSQL_DATABASE=base
     volumes:
       - $PWD/db/mysql:/var/lib/mysql
-    command: [--ignore-db-dir=lost+found]  
-  
+
   anuncios:
     build:
-      context: ./anuncios
+      context: ./
       dockerfile: Dockerfile
     tty: true
     restart: unless-stopped
@@ -47,7 +40,7 @@ services:
 
   login:
     build:
-      context: ./login
+      context: ./
       dockerfile: Dockerfile
     tty: true
     restart: unless-stopped
@@ -58,7 +51,7 @@ services:
 
   backoffice:
     build:
-      context: ./backoffice
+      context: ./
       dockerfile: Dockerfile
     tty: true
     restart: unless-stopped
@@ -69,7 +62,7 @@ services:
 
   resultados:
     build:
-      context: ./resultados
+      context: ./
       dockerfile: Dockerfile
     tty: true
     restart: unless-stopped
