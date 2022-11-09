@@ -1,5 +1,5 @@
 /* LOGIN */
-let formulario = document.getElementById("formularioenvio");
+function fetchpost() {
 formulario.onsubmit = async (e) => {
     e.preventDefault();
 
@@ -15,9 +15,8 @@ formulario.onsubmit = async (e) => {
         alert("rotisimo");
 
     }
-
 };
-
+}
 
 /* FIN LOGIN */
 
