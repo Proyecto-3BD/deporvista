@@ -1,3 +1,70 @@
+/* LOGIN */
+let formulario = document.getElementById("formularioenvio");
+formulario.addEventListener('submit', function (e) {
+    e.preventDefault();
+    console.log("prueba de funcion");
+
+    let datos = new FormData(formulario);
+    /*console.log(datos.get('nombre'), datos.get('pass'));
+    console.log(datos)*/
+
+    let object = {};
+    datos.forEach((value, key) => object[key] = value);
+    let datosjson = JSON.stringify([object]);
+    console.log(datosjson);
+});
+
+/*
+    fetch("url donde se procesa el inicio de sesion en php", {
+        method: "POST", 
+        headers: {
+            "Content-Type": "application/JSON"
+        },
+        body: datosjson
+    })
+
+    .then( res => res.json())
+    .then( data => {
+        console.log(data) 
+    })
+
+
+/* FIN LOGIN */
+
+/* REGISTRO */
+let formularioregistro = document.getElementById("formularioregistro");
+formularioregistro.addEventListener('submit', function (h) {
+    h.preventDefault();
+    console.log("prueba de funcion");
+
+    let datosregistro = new FormData(formularioregistro);
+    /*console.log(datos.get('nombre'), datos.get('pass'));
+    console.log(datos)*/
+
+    let object = {};
+    datosregistro.forEach((value, key) => object[key] = value);
+    let datosjson = JSON.stringify([object]);
+    console.log(datosjson);
+
+});
+
+/*
+    fetch("url donde se procesa el inicio de sesion en php", {
+        method: "POST", 
+        headers: {
+            "Content-Type": "application/JSON"
+        },
+        body: datosjson
+    })
+
+    .then( res => res.json())
+    .then( data => {
+        console.log(data) 
+    })
+
+
+/* FIN REGISTRO */
+
 let date = new Date();
 
 let fecha =
