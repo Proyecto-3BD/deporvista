@@ -1,43 +1,16 @@
 /* LOGIN */
 let formulario = document.getElementById("formularioenvio");
-formulario.addEventListener('submit', function (e) {
+formulario.onsubmit = async (e) => {
     e.preventDefault();
 
-    let datos = new FormData(formulario);
+    let response = await fetch('http://localhost:8082/login', {
+      method: 'POST',
+      body: new FormData(formulario)
+    });
+    let result = await response.json();
+    console.log(result);
 
-    /* objeto con los datos del formulario */
-    let objeto = {};
-    datos.forEach((value, key) => objeto[key] = value);
-    console.log(objeto);
-
-    /* array del objeto anterior*/
-    var objetoArray = Object.entries(objeto);
-    console.log(objetoArray);
-
-    /* pasar a string el json de objetos */
-    let datosjson = JSON.stringify([objeto]);
-    console.log(datosjson);
-
-
-    
-    fetch("http://localhost:8082/login", {
-        method: "POST", 
-        headers: {
-        },
-        body: datos
-    })
-
-
-    .then( res => res.json())
-    .then( data => {
-        console.log(data) 
-    })
-
-
-
-});
-
-
+};
 
 
 /* FIN LOGIN */
