@@ -8,9 +8,11 @@ function fetchpost() {
       body: new FormData(formularioenvio)
     });
     let result = await response.json();
-    /*if(result.resultado === "true") {
+    if(result.resultado === "true") {
         alert("entro");
-    } */
+    } else {
+        alert("rotisimo");
+    }
 };
 }
 
