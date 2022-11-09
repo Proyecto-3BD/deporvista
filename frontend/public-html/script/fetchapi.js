@@ -5,6 +5,7 @@ formulario.onsubmit = async (e) => {
 
     let response = await fetch('http://localhost:8082/login', {
       method: 'POST',
+      mode: 'no-cors',
       body: new FormData(formulario)
     });
     let result = await response.json();
