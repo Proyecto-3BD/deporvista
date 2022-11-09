@@ -1,6 +1,7 @@
 <?php 
+    Header("Access-Control-Allow-Origin: *");
     require "../utils/autoload.php";
-    header("Access-Control-Allow-Origin:*");
+
     class SesionControlador {
 
         public static function IniciarSesion($context){
