@@ -43,6 +43,9 @@
             <a class="nav-link" href="/gestionCompeticiones">Competiciones</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/gestionDeportes">Deportes</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/gestionAdministradores">Administradores</a>
           </li>
         

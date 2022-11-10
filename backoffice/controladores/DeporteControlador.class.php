@@ -6,21 +6,21 @@
 
     class DeporteControlador{
         public static function Alta($context){
-            if(!empty($context['post']['idDeporte'])){
+            if(!empty($context['post']['nombreDeporte'])){
                 $u = new DeporteModelo();
                 $u -> idDeporte = $context['post']['idDeporte'];
                 $u -> nombreDeporte = $context['post']['nombreDeporte'];
                 $u -> tipoDeporte = $context['post']['tipoDeporte'];
                 $u -> Guardar();
-                render("gestionDeporte", ["ingresado" => true]);
+                render("gestionDeportes", ["ingresado" => true]);
             }else
-                render("gestionDeporte", ["error" => true]);
+                render("gestionDeportes", ["error" => true]);
         }
 
         public static function Eliminar($context){
             $u = new DeporteModelo($context['post']['idDeporte']);
             $u -> Eliminar();
-            render("gestionBanners", ["borrado" => true]);
+            render("gestionDeportes", ["borrado" => true]);
         }        
 
         public static function Modificar($context){
@@ -31,9 +31,9 @@
             $u -> tipoDeporte = $context['post']['tipoDeporte'];
             if(!empty($context['post']['idDeporte'])){
                 $u -> Guardar();
-                render("gestionDeporte", ["modificado" => true]);
+                render("gestionDeportes", ["modificado" => true]);
             }else
-                render("gestionDeporte", ["errorModificado" => true]);
+                render("gestionDeportes", ["errorModificado" => true]);
         }
 
 

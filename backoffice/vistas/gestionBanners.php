@@ -55,7 +55,7 @@
                             <?php endif ; ?>
                             </select>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <select name="publicado">
                             <option value=1>Publicar</option>
                             <option value=0>No publicar</option>
@@ -81,7 +81,7 @@
                         <th>Id</th>
                         <th>Ruta</th>
                         <th>Publicado</th>
-                        <th>Selección</th>
+                        <th></th>
                     </tr>
                   
                     <?php

@@ -9,6 +9,7 @@
     Routes::AddView("/gestionBanners", "gestionBanners");
     Routes::AddView("/gestionCompeticiones", "gestionCompeticiones");
     Routes::AddView("/gestionEventos", "gestionEventos");
+    Routes::AddView("/gestionDeportes", "gestionDeportes");
     
     Routes::Add("/login","post","SesionControlador::IniciarSesion");
     Routes::Add("/cerrarSesion","get","SesionControlador::CerrarSesion");
@@ -29,6 +30,10 @@
     Routes::Add("/altaEvento", "post", "EventoControlador::AltaEvento");
     Routes::Add("/modificarEvento", "post", "EventoControlador::Modificar");
     Routes::Add("/bajaEvento", "post", "EventoControlador::Eliminar");
+
+    Routes::Add("/altaDeporte", "post", "DeporteControlador::Alta");
+    Routes::Add("/modificarDeporte", "post", "DeporteControlador::Modificar");
+    Routes::Add("/bajaDeporte", "post", "DeporteControlador::Eliminar");
 
     Routes::Run();
 

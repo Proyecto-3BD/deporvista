@@ -24,10 +24,10 @@
 
         private function insertar(){
             
-            $sql1 = "INSERT INTO  (nombreDeporte, tipoDeporte) 
+            $sql = "INSERT INTO deportes (nombreDeporte, tipoDeporte) 
             VALUES ('" . $this -> nombreDeporte . "',
                     '" . $this -> tipoDeporte . "');";
-            $this -> conexion -> query($sql1);
+            $this -> conexion -> query($sql);
         }
 
         private function actualizar(){
