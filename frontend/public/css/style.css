@@ -491,8 +491,9 @@ form select {
     padding: 1rem;
     border-radius: 0.5rem;
     height: 400px;
-    overflow: hidden;
     overflow-y: scroll;
+    overflow: auto;
+    white-space: nowrap;
 }
 
 .info-solapas table {
@@ -555,7 +556,18 @@ form select {
 }
 
 #detalleboton p {
-    border: 1px solid rgb(121, 121, 121);
+    border: 2px solid rgb(37, 165, 76);
     cursor: pointer;
+    color: #202020;
     border-radius: 15px !important;
+    padding: 7px 2px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+#detalleboton p:hover {
+    border: 2px solid rgb(37, 165, 76);
+    background-color: #369741;
+    color: white;
 }
