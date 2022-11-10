@@ -109,9 +109,9 @@
 
 .iniciar-sesion a:hover {
     border: 2px rgb(255, 255, 255) solid;
-    color: white;
+    color: white !important;
     font-weight: bold;
-    background-color: var(--hover-color);
+    background-color: #205720;
 }
 
 
