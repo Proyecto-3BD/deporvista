@@ -3,6 +3,9 @@
     if(!isset($_SESSION['autenticado'])){ 
         header("Location: /login");
     }
+
+
+    ############ Seguir aca ##########
     require 'templates/head.php'; ?>
     <div class="container-fluid">
     <div class="row">
@@ -224,7 +227,7 @@
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Eventos Deportivos</h5>
+                <h5 class="card-title">Suscriptores</h5>
 
                 <table class="table table-striped">
                     <tr>

@@ -52,7 +52,7 @@
         }
 
         public function VisitanteEvento(){
-            $sql = "SELECT e.idEvento, eq.nombreEquipo AS visitante, eq.idEquipo    AS idVisitante
+            $sql = "SELECT e.idEvento, eq.nombreEquipo AS visitante, eq.idEquipo AS idVisitante
                     FROM equipoVisitanteEvento AS ve 
                     INNER JOIN eventos AS e  
                     ON e.idEvento=ve.idEvento 

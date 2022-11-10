@@ -34,7 +34,7 @@
             $sql = "UPDATE equipos SET
             nombreEquipo = '" . $this -> nombreEquipo . "',
             paisEquipo = '" . $this -> paisEquipo . "',
-            dt = '" . $this -> dt . "',
+            dt = '" . $this -> dt . "'
             WHERE idEquipo = " . $this -> idEquipo . ";";
             $this -> conexion -> query($sql);   
         }
@@ -58,14 +58,14 @@
 
         public function obtenerTodos(){
             $sql = "select * from equipos;";
-            var_dump($sql);
+            
             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
             $resultado = array();
             foreach($filas as $fila){
                 $a = new EquipoModelo();
                 $a -> idEquipo = $fila['idEquipo'];
                 $a -> nombreEquipo = $fila['nombreEquipo'];
-                $a -> pais = $fila['pais'];
+                $a -> paisEquipo = $fila['paisEquipo'];
                 $a -> dt = $fila['dt'];
                  
                 array_push($resultado,$a);

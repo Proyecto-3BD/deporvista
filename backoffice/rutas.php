@@ -10,6 +10,7 @@
     Routes::AddView("/gestionCompeticiones", "gestionCompeticiones");
     Routes::AddView("/gestionEventos", "gestionEventos");
     Routes::AddView("/gestionDeportes", "gestionDeportes");
+    Routes::AddView("/gestionEquipos", "gestionEquipos");
     
     Routes::Add("/login","post","SesionControlador::IniciarSesion");
     Routes::Add("/cerrarSesion","get","SesionControlador::CerrarSesion");
@@ -34,6 +35,10 @@
     Routes::Add("/altaDeporte", "post", "DeporteControlador::Alta");
     Routes::Add("/modificarDeporte", "post", "DeporteControlador::Modificar");
     Routes::Add("/bajaDeporte", "post", "DeporteControlador::Eliminar");
+
+    Routes::Add("/altaEquipo", "post", "EquipoControlador::Alta");
+    Routes::Add("/modificarEquipo", "post", "EquipoControlador::Modificar");
+    Routes::Add("/bajaEquipo", "post", "EquipoControlador::Eliminar");
 
     Routes::Run();
 

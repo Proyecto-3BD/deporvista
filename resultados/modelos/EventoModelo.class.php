@@ -1,4 +1,3 @@
-
 <?php 
 
     require "../utils/autoload.php";
@@ -8,11 +7,12 @@
         public $idEvento;
         public $fechaHora;
         public $resultado;
-        public $idDeporte;
+        public $idDeporte;     
         public $infracciones;
         public $ubicacion;
-        public $locatario;
-        public $visitante;
+        public $idLocatario;
+        public $idVisitante;
+        public $idCompeticion;
 
         public function __construct($idEvento=""){
             parent::__construct();
@@ -23,7 +23,8 @@
         }
 
         public function EventoCompeticion(){
-            $sql = "SELECT c.nombreCompeticion AS competicion
+            $sql = "SELECT e.idEvento, 
+                    c.nombreCompeticion AS competicion
                     FROM eventoCompeticion AS ec 
                     INNER JOIN competiciones AS c
                     ON c.idCompeticion=ec.idCompeticion 
@@ -37,7 +38,7 @@
         public function LocatarioEvento(){
 
             $sql = "SELECT e.idEvento, e.fechaHora, e.resultado, 
-                    e.idDeporte, e.infracciones, e.ubicacion, eq.idEquipo AS idLocatario, eq.nombreEquipo AS locatario 
+                    e.idDeporte, e.infracciones, e.ubicacion, eq.nombreEquipo AS locatario, eq.idEquipo AS idLocatario
                     FROM equipoLocatarioEvento AS le 
                     INNER JOIN eventos AS e  
                     ON e.idEvento=le.idEvento 
@@ -50,7 +51,7 @@
         }
 
         public function VisitanteEvento(){
-            $sql = "SELECT e.idEvento, eq.idEquipo AS idVisitante, eq.nombreEquipo AS visitante
+            $sql = "SELECT e.idEvento, eq.nombreEquipo AS visitante, eq.idEquipo AS idVisitante
                     FROM equipoVisitanteEvento AS ve 
                     INNER JOIN eventos AS e  
                     ON e.idEvento=ve.idEvento 
@@ -68,30 +69,82 @@
         }
 
         private function insertar(){
-            $sql = "INSERT INTO eventos (fechaHora, resultado,idDeporte ,infracciones, ubicacion) 
+            $sql = "start transaction";
+            $this -> conexion -> query($sql);
+
+            $sql = "INSERT INTO eventos (fechaHora, resultado, idDeporte, infracciones, ubicacion) 
             VALUES ('" . $this -> fechaHora . "',
                     '" . $this -> resultado . "',
                     '" . $this -> idDeporte . "',
                     '" . $this -> infracciones . "',
                     '" . $this -> ubicacion . "');";
             $this -> conexion -> query($sql);
+            
+            $sql = "INSERT INTO equipoLocatarioEvento(idEvento, idEquipo) 
+            VALUES ((SELECT max(idEvento) FROM eventos),
+                    '" . $this -> idLocatario . "');";
+            $this -> conexion -> query($sql);
+            
+            $sql = "INSERT INTO equipoVisitanteEvento(idEvento, idEquipo) 
+            VALUES ((SELECT max(idEvento) FROM eventos),
+                    '" . $this -> idVisitante . "');";
+            $this -> conexion -> query($sql);
+            
+            $sql = "INSERT INTO eventoCompeticion(idEvento, idCompeticion) 
+            VALUES ((SELECT max(idEvento) FROM eventos),
+                    '" . $this -> idCompeticion . "');";
+            $this -> conexion -> query($sql);
+            
+            $sql = "commit";
+            $this -> conexion -> query($sql);
+            
         }
 
         private function actualizar(){
+            $sql = "start transaction";
+            $this -> conexion -> query($sql);
             
             $sql = "UPDATE eventos SET
-            fechaHora = '" . $this -> fechaHora . "',
-            resultado = '" . $this -> resultado . "',
-            idDeporte = '" . $this -> idDeporte . "',
-            infracciones = '" . $this -> infracciones . "',
-            ubicacion = '" . $this -> ubicacion . "',
-            WHERE idEvento = " . $this -> idEvento . ";";
+                fechaHora = '" . $this -> fechaHora . "',
+                resultado = '" . $this -> resultado . "',
+                infracciones = '" . $this -> infracciones . "',
+                ubicacion = '" . $this -> ubicacion . "'
+                WHERE idEvento = " . $this -> idEvento . ";";
             $this -> conexion -> query($sql);
-
+            
+            $sql = "UPDATE equipoLocatarioEvento SET
+                idEquipo = '" . $this -> idLocatario. "'
+                WHERE idEvento = " . $this -> idEvento . ";";
+            $this -> conexion -> query($sql);
+            
+            $sql = "UPDATE equipoVisitanteEvento SET
+                idEquipo = '" . $this -> idVisitante. "'
+                WHERE idEvento = " . $this -> idEvento . ";";
+            $this -> conexion -> query($sql);
+            
+            $sql = "UPDATE eventoCompeticion SET
+                idCompeticion = '" . $this -> idCompeticion. "'
+                WHERE idEvento = " . $this -> idEvento . ";";
+            $this -> conexion -> query($sql);
+            
+            $sql = "commit";
+            $this -> conexion -> query($sql);
+            
         }
 
         public function obtener(){
-            $sql = "SELECT * FROM  eventos WHERE eventos = " . $this -> idEvento . ";";
+            $sql = "SELECT e.idEvento, e.fechaHora, 
+                e.resultado, e.idDeporte, e.infracciones, 
+                e.ubicacion, le.idEquipo as idLocatario, 
+                ve.idEquipo as idVisitante, ec.idCompeticion 
+                FROM eventos as e 
+                INNER JOIN equipoLocatarioEvento as le 
+                ON e.idEvento = le.idEvento  
+                INNER JOIN equipoVisitanteEvento as ve
+                ON e.idEvento = ve.idEvento
+                INNER JOIN eventoCompeticion as ec
+                ON e.idEvento = ec.idEvento
+                WHERE e.idEvento = " . $this -> idEvento . ";";
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
             $this -> idEvento = $fila['idEvento'];
@@ -100,33 +153,51 @@
             $this -> idDeporte = $fila['idDeporte'];
             $this -> infracciones = $fila['infracciones'];
             $this -> ubicacion = $fila['ubicacion'];
+            $this -> idLocatario = $fila['idLocatario'];
+            $this -> idVisitante = $fila['idVisitante'];
+            $this -> idCompeticion = $fila['idCompeticion'];
         }
 
-        public function eliminar(){
+        public function Eliminar(){
+            $sql = "start transaction";
+            $this -> conexion -> query($sql);
 
             $sql = "DELETE FROM eventos 
-                WHERE id = " . $this -> idEvento . ";";
+                WHERE idEvento = " . $this -> idEvento . ";";
             $this -> conexion -> query($sql);
-        
+            
+            $sql = "DELETE FROM equipoLocatarioEquipo 
+                WHERE idEvento = " . $this -> idEvento . ";";
+            $this -> conexion -> query($sql);
+
+            $sql = "DELETE FROM equipoVisitanteEquipo 
+                WHERE idEvento = " . $this -> idEvento . ";";
+            $this -> conexion -> query($sql);
+
+            $sql = "DELETE FROM eventoCompeticion 
+                WHERE idEvento = " . $this -> idEvento . ";";
+            $this -> conexion -> query($sql);
+
+            $sql = "commit";
+            $this -> conexion -> query($sql);
         }
 
         public function obtenerTodos(){
             $sql = "select * from eventos;";
  
-             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
-             $resultado = array();
-             foreach($filas as $fila){
-                 $a = new EventoModelo();
-                 $a -> idEvento = $fila['idEvento'];
-                 $a -> fechaHora = $fila['fechaHora'];
-                 $a -> resultado = $fila['resultado'];
-                 $a -> idDeporte = $fila['idDeporte'];
-                 $a -> infracciones = $fila['infracciones'];
-                 $a -> ubicacion = $fila['ubicacion'];
+            $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
+            $resultado = [];
+            foreach($filas as $fila){
+                $a = new EventoModelo();
+                $a -> idEvento = $fila['idEvento'];
+                $a -> fechaHora = $fila['fechaHora'];
+                $a -> resultado = $fila['resultado'];
+                $a -> infracciones = $fila['infracciones'];
+                $a -> ubicacion = $fila['ubicacion'];
                  
-                 array_push($resultado,$a);
-             }
-             return $resultado;
-         }
+                array_push($resultado,$a);
+            }
+            return $resultado;
+        }
 
     }

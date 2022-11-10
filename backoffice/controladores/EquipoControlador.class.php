@@ -3,22 +3,22 @@
 
     class EquipoControlador{
         public static function Alta($context){
-            if(!empty($context['post']['idEquipo'])){
+            if(!empty($context['post']['nombreEquipo'])){
                 $u = new EquipoModelo();
                 $u -> idEquipo = $context['post']['idEquipo'];
                 $u -> nombreEquipo = $context['post']['nombreEquipo'];
                 $u -> paisEquipo = $context['post']['paisEquipo'];
                 $u -> dt = $context['post']['dt'];
                 $u -> Guardar();
-                render("gestionEquipo", ["ingresado" => true]);
+                render("gestionEquipos", ["ingresado" => true]);
             }else
-                render("gestionEquipo", ["error" => true]);
+                render("gestionEquipos", ["error" => true]);
         }
 
         public static function Eliminar($context){
             $u = new EquipoModelo($context['post']['idEquipo']);
             $u -> Eliminar();
-            render("gestionEquipo", ["borrado" => true]);
+            render("gestionEquipos", ["borrado" => true]);
         }        
 
         public static function Modificar($context){
@@ -30,9 +30,9 @@
             $u -> dt = $context['post']['dt'];
             if(!empty($context['post']['idEquipo'])){
                 $u -> Guardar();
-                render("gestionEquipo", ["modificado" => true]);
+                render("gestionEquipos", ["modificado" => true]);
             }else
-                render("gestionEquipo", ["errorModificado" => true]);
+                render("gestionEquipos", ["errorModificado" => true]);
         }
 
 

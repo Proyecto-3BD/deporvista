@@ -14,7 +14,7 @@
             $resultados = [];
             $deportes = [];
             for ($i=0; $i <count($locatarios) ; $i++) {
-                if ($locatarios[$i]['idEvento'] === $visitantes[$i]['idEvento']) {
+                if (isset($competiciones[$i]['idEvento']) && $locatarios[$i]['idEvento'] === $visitantes[$i]['idEvento']) {
                     $deportes[$i]['deporte'] = 
                         self::ObtenerDeporte($locatarios[$i]['idDeporte']);
                     $locatarios[$i]['equipoLocatario'] = self::ObtenerEquipos($locatarios[$i]['idLocatario']);
