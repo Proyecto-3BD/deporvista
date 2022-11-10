@@ -1971,6 +1971,81 @@ function favoritos() {
     document.getElementById("finalizadosFAV").style.display = "none";
     document.getElementById("proximosFav").style.display = "none";
 
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
 
+
+    const mostrarData = (dataevento) => {
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].deporte == "basketball") {
+                if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton"  onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoFAV').innerHTML = body;
+    }
+}
+
+function fetchEventoFinalizadofav() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+    const mostrarData = (dataevento) => {
+
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        dataevento.reverse();
+
+
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].deporte == "basketball") {
+
+                if (dataevento[i].fechaHora <= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoFinFAV').innerHTML = body;
+    }
+}
+
+function fetchEventoProximofav() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        console.log(dataevento);
+
+
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].deporte == "basketball") {
+                if (dataevento[i].fechaHora >= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataproxfav').innerHTML = body;
+    }
 }
 
