@@ -156,15 +156,6 @@ CREATE TABLE eventoCompeticion(
 	foreign key (idEvento) references eventos(idEvento)
 );
 
-CREATE TABLE deportistaCompeticion(
-	idDeportista smallint unsigned not null,
-	idCompeticion smallint unsigned not null,
-	primary key(idDeportista, idCompeticion),
-	foreign key(idDeportista) references deportistas(idDeportista),
-	foreign key(idCompeticion) references competiciones(idCompeticion)
-);
-
-
 INSERT into administradores
 	(nombreAdmin, email, password)
 	VALUES
@@ -734,10 +725,3 @@ INSERT into deportistaEquipo
 	(idDeportista, idEquipo, rol)
 	VALUES 
 	('1', '1', 'volante');
-
-INSERT into deportistaCompeticion
-	(idDeportista, idCompeticion)
-	VALUES 
-	((SELECT max(idDeportista) AS idDeportista FROM deportistas), 
-	(SELECT max(idCompeticion) AS idCompeticion FROM competiciones)
-	);
