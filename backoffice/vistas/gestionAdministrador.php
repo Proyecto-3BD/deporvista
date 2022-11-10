@@ -11,7 +11,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Ingreso de Datos</h5>
-                <form action="/usuario/altaAdmin" method="post">
+                <form action="altaAdmin" method="post">
                     <div class="form-group">
                         <input type="text" placeholder="Nombre de Usuario" name="nombreAdmin">
                     </div>
@@ -37,14 +37,14 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Modificar</h5>
-                <form action="/usuario/modificarAdmin" method="post">
+                <form action="/modificarAdmin" method="post">
                     <div class="form-group">
-                        <span>ID: </span>
-                        <select name="idCompeticion">
+                        <span>Id: </span>
+                        <select name="idAdmin">
                             <?php
                                 $administradores = AdministradorControlador::Listar();
                                 if($administradores == "") :?>
-                                    <option value="">No hay Competiciones ingresadas</option>
+                                    <option value="">No hay Administrador ingresadas</option>
                             <?php 
                                     else :?>
                                 <? foreach($administradores as $fila) :?>
@@ -102,7 +102,7 @@
                                 <td> <?=$fila['nombreAdmin'] ?></td>
                                 <td> <?=$fila['email'] ?></td>
                                 <td> 
-                                    <form action="/usuario/bajaAdmin" method="post">
+                                    <form action="bajaAdmin" method="post">
                                         <button type="submit"  name="idAdmin" value="<?= $fila['idAdmin'] ?>" class="btn btn-primary">Eliminar</button>
                                     </form>
                                 </td>

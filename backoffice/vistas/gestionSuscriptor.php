@@ -4,15 +4,14 @@
     if(!isset($_SESSION['autenticado'])){ 
         header("Location: /login");
     }
-    require 'templates/head.php'; 
-    require 'templates/sidebar.php';?>
+    require 'templates/head.php'; ;?>
 
-<div class="content">
+<div class="container-fluid">
     <div class="row">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Alta de Suscriptor</h5>
-                <form action="/usuario/altaSuscriptor" method="post">
+                <form action="/altaSuscriptor" method="post">
                     <div class="form-group">
                         <input type="text" placeholder="Nombre de Usuario" name="nombreSuscriptor">
                     </div>
@@ -57,9 +56,23 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Modificar Suscriptor</h5>
-                <form action="/usuario/modificarSuscriptor" method="post">
+                <form action="/modificarSuscriptor" method="post">
                     <div class="form-group">
-                        <input type="text" placeholder="Id" name="idSuscriptor">
+                        <span>Id: </span>
+                        <select name="idSuscriptor">
+                            <?php
+                                $suscriptores = SuscriptorControlador::Listar();
+                                if($suscriptores == "") :?>
+                                    <option value="">No hay Suscriptores ingresados</option>
+                            <?php 
+                                    else :?>
+                                <? foreach($suscriptores as $fila) :?>
+                                    
+                                    <option value="<?= $fila['idSuscriptor'] ?>">
+                                        <?= $fila['idSuscriptor']; ?> </option>
+                                <? endforeach ;?>
+                            <?php endif ; ?>
+                            </select>
                     </div>
                     <div class="form-group">
                         <input type="text" placeholder="Nombre de Usuario" name="nombreSuscriptor">
@@ -140,9 +153,8 @@
                                 <td style=""> <?=$fila['metodoPago'] ?></td>
                                 <td style=""> <?=$fila['fechaAlta'] ?></td>
                                 <td style=""> 
-                                    <form action="/usuario/bajaSuscriptor" method="post">
-                                        <input type="radio" name="idSuscriptor" value="<?= $fila['idSuscriptor'] ?>">
-                                        <button type="submit" class="btn btn-primary">Eliminar</button>
+                                    <form action="/bajaSuscriptor" method="post">
+                                        <button type="submit" name="idSuscriptor" value="<?= $fila['idSuscriptor'] ?>" class="btn btn-primary">Eliminar</button>
                                     </form>
                                 </td>
                             </tr>

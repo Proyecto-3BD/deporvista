@@ -4,7 +4,6 @@
         header("Location: /login");
     }
     require 'templates/head.php';
-    require 'templates/sidebar.php';
 
     
 

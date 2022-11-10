@@ -39,8 +39,21 @@
                 <h5 class="card-title">Modificar</h5>
                 <form action="/modificarBanners" method="post">
                     <div class="form-group">
-                        <small class="form-text text-muted">Agregue Id para modificar</small>
-                        <input type="text" placeholder="Id" name="idBanner">
+                        <span>Id: </span>
+                        <select name="idBanner">
+                            <?php
+                                $banners = BannersControlador::Listar();
+                                if($banners == "") :?>
+                                    <option value="">No hay Anuncios ingresadas</option>
+                            <?php 
+                                    else :?>
+                                <? foreach($banners as $fila) :?>
+                                    
+                                    <option value="<?= $fila['idBanner'] ?>">
+                                        <?= $fila['idBanner']; ?> </option>
+                                <? endforeach ;?>
+                            <?php endif ; ?>
+                            </select>
                     </div>
                     <div>
                         <select name="publicado">
@@ -65,10 +78,10 @@
 
                 <table class="table table-striped">
                     <tr>
-                        <th style="">Id</th>
-                        <th style="">Ruta</th>
-                        <th style="">Publicado</th>
-                        <th style="">Selección</th>
+                        <th>Id</th>
+                        <th>Ruta</th>
+                        <th>Publicado</th>
+                        <th>Selección</th>
                     </tr>
                   
                     <?php
@@ -79,25 +92,16 @@
                         else :?>
                         <? foreach($banner as $fila) :?>
                             <tr>
-                                <td style="">
-                                    <?= $fila['idBanner'] ?>
-                                </td> 
-                                <td style="">
-                                    <?=$fila['src'] ?>
-                                </td>
-                                <td style="">
-                                    <?=$fila['publicado'] ?>
-                                </td>
-                                <td style=""> 
+                                <td><?= $fila['idBanner'] ?></td>                                 
+                                <td><?=$fila['src'] ?></td>
+                                <td><?=$fila['publicado'] ?></td>
+                                <td> 
                                     <form action="/bajaBanners" method="post">
-                                        <input type="radio" name="idBanner" value="<?= $fila['idBanner'] ?> ">
-                                    <button type="submit">Eliminar</button>
-                                    </form>    
-                                 
+                                    <button type="submit" name="idBanner" value="<?= $fila['idBanner'] ?> "  class="btn btn-primary">Eliminar</button>
+                                    </form>
                                 </td>
                             </tr>                                          
                         <? endforeach ;?>
-                                        
                     <?php endif ; ?>
                          
                     <?php if(isset($parametros['eliminado']) && $parametros['eliminado'] == 'true') :?>
@@ -105,7 +109,6 @@
                     <?php endif; ?>
                                     
                 </table>
-
             </div>  
         </div>
     </div>  

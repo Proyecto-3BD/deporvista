@@ -2,3 +2,4 @@ config.php
 db/mysql/*
 *.old
 *.png
+*.jpg
