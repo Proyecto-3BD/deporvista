@@ -29,8 +29,9 @@
                         <img src="img/logo.jpg" alt="Logo">
                     </div>
                     <div class="nav-uno-concetar">
-                        <div>
-                            <input type="text" placeholder="Buscar">
+                        
+                        <div id="paginapersonal" style="cursor: pointer;">
+                            <span style="color:white; font-weight: bold; list-style: none;" id="user"></span>
                         </div>
                         <div class="iniciar-sesion" id="divcerrar">
                             <a id="cerrar">Cerrar</a>
@@ -41,6 +42,7 @@
             <div class="nav-dos">
                 <div class="lista-nav">
                     <ul id="barraDeportes">
+                        
                         <li>
                             <a href="">Todos</a>
                         </li>
@@ -1680,6 +1682,95 @@
                 </div>
             </div>
             <!--FIN FAV-->
+
+            <!--personal-->
+            <div class="resultados-div-exterior" id="generalperonal">
+                <ul id="barraResultados">
+                    <li>
+                        <a onclick="datospersonales(); ">Datos personales</a>
+                    </li>
+                    <li>
+                        <a onclick="favoritossss(); ">Favoritos</a>
+                    </li>
+                    <li>
+                        <a onclick="selecfav(); ">Seleccinar favoritos</a>
+                    </li>
+                </ul>
+                <div class="resultados-div-interior">
+
+                    <div class="info-solapas" id="personales">
+                        <div>
+
+                            <table>
+                                <p>Datos usuario</p>
+
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Locatario</th>
+                                        <th>Resultado</th>
+                                        <th>Visitante</th>
+                                        <th>Ubicación</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="">
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                    <div class="finalizados" id="favperonal">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <p>Favoritos</p>
+
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Resultado</th>
+                                            <th>Visitante</th>
+                                            <th>Infracciones</th>
+                                            <th>Ubicación</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proximos" id="selecperosnal">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <p>Seleccionar equipos favoritos</p>
+
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Visitante</th>
+                                            <th>Ubicación</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--FIN personal-->
+
+
         </div>
         <div>
 
@@ -1739,6 +1830,7 @@
     </script>
     <script>
         $('#sesion #usuario').text(sessionStorage.nombrelog);
+        $('#user').text(sessionStorage.nombrelog);
 
         $('#cerrar').click(function () {
             sessionStorage.clear();

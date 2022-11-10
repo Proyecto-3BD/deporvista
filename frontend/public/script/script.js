@@ -401,7 +401,7 @@ function proximoAUSOPEN() {
 
 }
 
-/* australain */
+/* fav */
 
 function directoFAV() {
     document.getElementById("hoyfav").style.display = "block";
@@ -421,5 +421,28 @@ function proximoFAV() {
     document.getElementById("hoyfav").style.display = "none";
     document.getElementById("finalizadosFAV").style.display = "none";
     document.getElementById("proximosFav").style.display = "block";
+
+}
+
+/* datos personales */
+
+function datospersonales() {
+    document.getElementById("personales").style.display = "block";
+    document.getElementById("favperonal").style.display = "none";
+    document.getElementById("selecperosnal").style.display = "none";
+}
+
+
+function favoritossss() {
+    document.getElementById("personal").style.display = "none";
+    document.getElementById("favperonal").style.display = "block";
+    document.getElementById("selecperosnal").style.display = "none";
+}
+
+
+function selecfav() {
+    document.getElementById("personal").style.display = "none";
+    document.getElementById("favperonal").style.display = "none";
+    document.getElementById("selecperosnal").style.display = "block";
 
 }
