@@ -98,12 +98,13 @@
 }
 
 .iniciar-sesion a {
-    border: 1px black solid;
+    border: 1px rgb(255, 255, 255) solid;
     border-radius: 4px;
     text-decoration: none;
     padding: 0.8rem 1.5rem;
     color: black;
     background-color: aliceblue;
+    cursor: pointer;
 }
 
 .iniciar-sesion a:hover {
