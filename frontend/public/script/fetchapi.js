@@ -3,15 +3,36 @@ function fetchpost() {
     formularioenvio.onsubmit = async (e) => {
     e.preventDefault();
 
+    let form = new FormData(formularioenvio);
+
+
     let response = await fetch('http://localhost:8082/login', {
       method: 'POST',
-      body: new FormData(formularioenvio)
+      body: form
     });
     let result = await response.json();
-    if(result.Resultado === "true") {
-        alert("entro");
+    if (result.Resultado === "true") {
+
+        credencial.innerHTML = "ingreso con exito";
+
+        let nombre = form.get("nombreSuscriptor");
+        sessionStorage.setItem('nombrelog', nombre);
+
+        let sesionactual = sessionStorage.getItem('nombrelog');
+
+
+        if (nombre === sesionactual) {
+
+
+            window.location = "indexusuario.html";
+
+
+        }
+
     } else {
-        alert("rotisimo");
+        alert("credenciales invalidas");
+        let credencial = document.getElementById("credencial");
+        credencial.innerHTML = "credencial invalida";
     }
 };
 }
