@@ -37,6 +37,7 @@
         }
 
         public static function Eliminar($context){
+            
             $u = new EventoModelo($context['post']['idEvento']);
             $u -> Eliminar();
             render("gestionEventos", ["borrado" => true]);
@@ -44,7 +45,7 @@
 
         public static function Modificar($context){
             $u = new EventoModelo();
-            var_dump($u);
+            
             $u -> idEvento = $context['post']['idEvento'];
             $u -> fechaHora = $context['post']['fechaHora'];
             $u -> resultado = $context['post']['resultado'];

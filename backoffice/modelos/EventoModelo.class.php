@@ -104,49 +104,82 @@
         private function actualizar(){
             $sql = "start transaction";
             $this -> conexion -> query($sql);
-
+            
             $sql = "UPDATE eventos SET
                 fechaHora = '" . $this -> fechaHora . "',
                 resultado = '" . $this -> resultado . "',
                 infracciones = '" . $this -> infracciones . "',
-                ubicacion = '" . $this -> ubicacion . "',
+                ubicacion = '" . $this -> ubicacion . "'
                 WHERE idEvento = " . $this -> idEvento . ";";
             $this -> conexion -> query($sql);
-
+            
             $sql = "UPDATE equipoLocatarioEvento SET
-                idEquipo = '" . $this -> idLocatario. "',
+                idEquipo = '" . $this -> idLocatario. "'
                 WHERE idEvento = " . $this -> idEvento . ";";
             $this -> conexion -> query($sql);
-
+            
             $sql = "UPDATE equipoVisitanteEvento SET
-                idEquipo = '" . $this -> idVisitante. "',
+                idEquipo = '" . $this -> idVisitante. "'
                 WHERE idEvento = " . $this -> idEvento . ";";
             $this -> conexion -> query($sql);
             
             $sql = "UPDATE eventoCompeticion SET
-                idCompeticion = '" . $this -> idCompeticion. "',
+                idCompeticion = '" . $this -> idCompeticion. "'
                 WHERE idEvento = " . $this -> idEvento . ";";
             $this -> conexion -> query($sql);
-
+            
             $sql = "commit";
             $this -> conexion -> query($sql);
             
         }
 
         public function obtener(){
-            $sql = "SELECT * FROM  eventos WHERE eventos = " . $this -> idEvento . ";";
+            $sql = "SELECT e.idEvento, e.fechaHora, 
+                e.resultado, e.idDeporte, e.infracciones, 
+                e.ubicacion, le.idEquipo as idLocatario, 
+                ve.idEquipo as idVisitante, ec.idCompeticion 
+                FROM eventos as e 
+                INNER JOIN equipoLocatarioEvento as le 
+                ON e.idEvento = le.idEvento  
+                INNER JOIN equipoVisitanteEvento as ve
+                ON e.idEvento = ve.idEvento
+                INNER JOIN eventoCompeticion as ec
+                ON e.idEvento = ec.idEvento
+                WHERE e.idEvento = " . $this -> idEvento . ";";
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
             $this -> idEvento = $fila['idEvento'];
             $this -> fechaHora = $fila['fechaHora'];
             $this -> resultado = $fila['resultado'];
+            $this -> idDeporte = $fila['idDeporte'];
             $this -> infracciones = $fila['infracciones'];
             $this -> ubicacion = $fila['ubicacion'];
+            $this -> idLocatario = $fila['idLocatario'];
+            $this -> idVisitante = $fila['idVisitante'];
+            $this -> idCompeticion = $fila['idCompeticion'];
         }
 
-        public function eliminar(){
+        public function Eliminar(){
+            $sql = "start transaction";
+            $this -> conexion -> query($sql);
+
             $sql = "DELETE FROM eventos 
-                WHERE id = " . $this -> idEvento . ";";
+                WHERE idEvento = " . $this -> idEvento . ";";
+            $this -> conexion -> query($sql);
+            
+            $sql = "DELETE FROM equipoLocatarioEquipo 
+                WHERE idEvento = " . $this -> idEvento . ";";
+            $this -> conexion -> query($sql);
+
+            $sql = "DELETE FROM equipoVisitanteEquipo 
+                WHERE idEvento = " . $this -> idEvento . ";";
+            $this -> conexion -> query($sql);
+
+            $sql = "DELETE FROM eventoCompeticion 
+                WHERE idEvento = " . $this -> idEvento . ";";
+            $this -> conexion -> query($sql);
+
+            $sql = "commit";
             $this -> conexion -> query($sql);
         }
 

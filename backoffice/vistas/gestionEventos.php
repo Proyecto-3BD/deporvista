@@ -238,6 +238,7 @@
                         <th>Infracciones</th>
                         <th>Ubicación</th>
                         <th>Deporte</th>
+                        <th> </th>
                     </tr>
                   
                     <?php
@@ -259,8 +260,7 @@
                                 <td> <?=$fila['deporte'] ?></td>
                                 <td> 
                                     <form action="/bajaEvento" method="post">
-                                        <input type="radio" name="idSuscriptor" value="<?= $fila['idCompeticion'] ?>">
-                                        <button type="submit" class="btn btn-primary">Eliminar</button>
+                                       <button type="submit" name="idEvento" value="<?= $fila['idEvento'] ?>" class="btn btn-primary">Eliminar</button>
                                     </form>
                                 </td>
                             </tr>
