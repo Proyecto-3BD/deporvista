@@ -16,8 +16,8 @@
         crossorigin="anonymous"></script>
     <script src="script/script.js">
     </script>
-     <script src="jquery-3.6.0.min.js"></script>
-    <title>Entrega</title>
+    <script src="jquery-3.6.0.min.js"></script>
+    <title>Deporvista</title>
 </head>
 
 <body>
@@ -84,8 +84,6 @@
                 <div class="modal-body">
                     <div class="modal-contenido">
                         <div class="modal-estatico">
-                            <p>Descripcion de suscripción</p>
-                            <p>Descripcioón de precios</p>
                         </div>
                         <div class="modal-form">
                             <div class="cabecera-modal">
@@ -105,6 +103,7 @@
                                     <input type="password" placeholder="Password" name="password" required>
                                     <button onclick="fetchpost()" type="submit">Iniciar Sesión</button>
                                     <p id="credencial"></p>
+
                                 </form>
                             </div>
                             <div id="registro" class="registro">
@@ -113,6 +112,7 @@
                                     <input type="text" placeholder="Apellido" name="apellidos" required>
                                     <input type="number" placeholder="Documento" name="documento" required>
                                     <input type="text" placeholder="Nombre de usuario" name="nombreSuscriptor" required>
+                                    <input type="pass" placeholder="Password" name="password" required>
                                     <input type="mail" placeholder="Mail" name="email" required>
                                     <input type="tel" placeholder="Telefono" name="telefono" required>
                                     <select id="cars" name="metodoPago">
@@ -141,7 +141,7 @@
                 <div id="barraLigas">
                     <p>Principales Ligas</p>
                     <div class="sidetable">
-                        <p>Futbol</p>
+                        <p>Fútbol</p>
                         <ul>
                             <li><a id="laliga">LaLiga</a></li>
                             <li><a id="premier">Premier League</a></li>
@@ -195,7 +195,7 @@
                         <a onclick="finalizado(); fetchEventoFinalizado()">Finalizados</a>
                     </li>
                     <li>
-                        <a onclick="proximo(); fetchEventoProximo()">Proximos</a>
+                        <a onclick="proximo(); fetchEventoProximo()">Próximos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
@@ -212,7 +212,7 @@
                                         <th>Locatario</th>
                                         <th>Resultado</th>
                                         <th>Visitante</th>
-                                        <th>Ubicacion</th>
+                                        <th>Ubicación</th>
                                     </tr>
                                 </thead>
                                 <tbody id="dataevento">
@@ -237,7 +237,7 @@
                                             <th>Resultado</th>
                                             <th>Visitante</th>
                                             <th>Infracciones</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoFin">
@@ -258,7 +258,7 @@
                                             <th>Fecha</th>
                                             <th>Locatario</th>
                                             <th>Visitante</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoProx">
@@ -283,7 +283,7 @@
                         <a onclick="finalizadofutbol(); fetchEventoFinalizadoFutbol()">Finalizados</a>
                     </li>
                     <li>
-                        <a onclick="proximofutbol(); fetchEventoProximoFutbol()">Proximos</a>
+                        <a onclick="proximofutbol(); fetchEventoProximoFutbol()">Próximos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
@@ -300,7 +300,7 @@
                                         <th>Locatario</th>
                                         <th>Resultado</th>
                                         <th>Visitante</th>
-                                        <th>Ubicacion</th>
+                                        <th>Ubicación</th>
                                     </tr>
                                 </thead>
                                 <tbody id="dataeventofutbol">
@@ -325,7 +325,7 @@
                                             <th>Resultado</th>
                                             <th>Visitante</th>
                                             <th>Infracciones</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoFinfutbol">
@@ -339,14 +339,14 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
-                                    <p>Todos los eventos de fútbol proximos</p>
+                                    <p>Todos los eventos de fútbol próximos</p>
 
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
                                             <th>Locatario</th>
                                             <th>Visitante</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoProxfutbol">
@@ -370,7 +370,7 @@
                         <a onclick="finalizadobasket(); fetchEventoFinalizadobasket()">Finalizados</a>
                     </li>
                     <li>
-                        <a onclick="proximobasket(); fetchEventoProximobasket()">Proximos</a>
+                        <a onclick="proximobasket(); fetchEventoProximobasket()">Próximos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
@@ -387,7 +387,7 @@
                                         <th>Locatario</th>
                                         <th>Resultado</th>
                                         <th>Visitante</th>
-                                        <th>Ubicacion</th>
+                                        <th>Ubicación</th>
                                     </tr>
                                 </thead>
                                 <tbody id="dataeventobasket">
@@ -412,7 +412,7 @@
                                             <th>Resultado</th>
                                             <th>Visitante</th>
                                             <th>Infracciones</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoFinbasket">
@@ -426,14 +426,14 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
-                                    <p>Todos los eventos de basketball proximos</p>
+                                    <p>Todos los eventos de basketball próximos</p>
 
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
                                             <th>Locatario</th>
                                             <th>Visitante</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoProxbasket">
@@ -457,7 +457,7 @@
                         <a onclick="finalizadoTenis(); fetchEventoFinalizadotenis()">Finalizados</a>
                     </li>
                     <li>
-                        <a onclick="proximosTenis(); fetchEventoProximobasket() ">Proximos</a>
+                        <a onclick="proximosTenis(); fetchEventoProximobasket() ">Próximos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
@@ -466,13 +466,15 @@
                         <div>
 
                             <table>
+                                <p>Todos los eventos de tenis hoy</p>
+
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Locatario</th>
                                         <th>Resultado</th>
                                         <th>Visitante</th>
-                                        <th>Ubicacion</th>
+                                        <th>Ubicación</th>
                                     </tr>
                                 </thead>
                                 <tbody id="dataeventotenis">
@@ -488,6 +490,8 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de tenis finalizados</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
@@ -495,7 +499,7 @@
                                             <th>Resultado</th>
                                             <th>Visitante</th>
                                             <th>Infracciones</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoFintenis">
@@ -509,12 +513,14 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de tenis próximos</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
                                             <th>Locatario</th>
                                             <th>Visitante</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoProxtenis">
@@ -541,7 +547,7 @@
                         <a onclick="finalizadolaliga(); fetchEventoFinalizadolaliga()">Finalizados</a>
                     </li>
                     <li>
-                        <a onclick="proximolaliga(); fetchEventoProximolaliga()">Proximos</a>
+                        <a onclick="proximolaliga(); fetchEventoProximolaliga()">Próximos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
@@ -550,13 +556,15 @@
                         <div>
 
                             <table>
+                                <p>Todos los eventos de LaLiga hoy</p>
+
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Locatario</th>
                                         <th>Resultado</th>
                                         <th>Visitante</th>
-                                        <th>Ubicacion</th>
+                                        <th>Ubicación</th>
                                     </tr>
                                 </thead>
                                 <tbody id="dataeventolaliga">
@@ -572,6 +580,8 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de LaLiga finalizados</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
@@ -579,7 +589,7 @@
                                             <th>Resultado</th>
                                             <th>Visitante</th>
                                             <th>Infracciones</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoFinlaliga">
@@ -593,12 +603,14 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de LaLiga próximos</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
                                             <th>Locatario</th>
                                             <th>Visitante</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoProxlaliga">
@@ -625,7 +637,7 @@
                         <a onclick="finalizadopremier(); fetchEventoFinalizadopremier()">Finalizados</a>
                     </li>
                     <li>
-                        <a onclick="proximopremier(); fetchEventoProximopremier()">Proximos</a>
+                        <a onclick="proximopremier(); fetchEventoProximopremier()">Próximos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
@@ -634,13 +646,15 @@
                         <div>
 
                             <table>
+                                <p>Todos los eventos de la Premier League hoy</p>
+
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Locatario</th>
                                         <th>Resultado</th>
                                         <th>Visitante</th>
-                                        <th>Ubicacion</th>
+                                        <th>Ubicación</th>
                                     </tr>
                                 </thead>
                                 <tbody id="dataeventopremier">
@@ -656,6 +670,8 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de la Premier League finalizados</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
@@ -663,7 +679,7 @@
                                             <th>Resultado</th>
                                             <th>Visitante</th>
                                             <th>Infracciones</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoFinpremier">
@@ -677,12 +693,14 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de la Premier League próximos</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
                                             <th>Locatario</th>
                                             <th>Visitante</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoProxpremier">
@@ -708,7 +726,7 @@
                         <a onclick="finalizadoprimerauy(); fetchEventoFinalizadoprimerauy()">Finalizados</a>
                     </li>
                     <li>
-                        <a onclick="proximoprimerauy(); fetchEventoProximoprimerauy()">Proximos</a>
+                        <a onclick="proximoprimerauy(); fetchEventoProximoprimerauy()">Próximos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
@@ -717,13 +735,15 @@
                         <div>
 
                             <table>
+                                <p>Todos los eventos de la Primera de Uruguay hoy</p>
+
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Locatario</th>
                                         <th>Resultado</th>
                                         <th>Visitante</th>
-                                        <th>Ubicacion</th>
+                                        <th>Ubicación</th>
                                     </tr>
                                 </thead>
                                 <tbody id="dataeventoprimerauy">
@@ -739,6 +759,8 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de la Primera de Uruguay finalizados</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
@@ -746,7 +768,7 @@
                                             <th>Resultado</th>
                                             <th>Visitante</th>
                                             <th>Infracciones</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoFinprimerauy">
@@ -760,12 +782,14 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de la Primera de Uruguay próximos</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
                                             <th>Locatario</th>
                                             <th>Visitante</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoProxprimerauy">
@@ -790,7 +814,7 @@
                         <a onclick="finalizadoprimeraARG(); fetchEventoFinalizadoprimeraARG()">Finalizados</a>
                     </li>
                     <li>
-                        <a onclick="proximoprimeraARG(); fetchEventoProximoprimeraARG()">Proximos</a>
+                        <a onclick="proximoprimeraARG(); fetchEventoProximoprimeraARG()">Próximos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
@@ -799,13 +823,15 @@
                         <div>
 
                             <table>
+                                <p>Todos los eventos de la Primera de Argentina hoy</p>
+
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Locatario</th>
                                         <th>Resultado</th>
                                         <th>Visitante</th>
-                                        <th>Ubicacion</th>
+                                        <th>Ubicación</th>
                                     </tr>
                                 </thead>
                                 <tbody id="dataeventoprimeraARG">
@@ -821,6 +847,8 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de la Primera de Argentina finalizados</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
@@ -828,7 +856,7 @@
                                             <th>Resultado</th>
                                             <th>Visitante</th>
                                             <th>Infracciones</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoFinprimeraARG">
@@ -842,12 +870,14 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de la Primera de Argentina próximos</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
                                             <th>Locatario</th>
                                             <th>Visitante</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoProxprimeraARG">
@@ -872,7 +902,7 @@
                         <a onclick="finalizadoserieA(); fetchEventoFinalizadoserieA()">Finalizados</a>
                     </li>
                     <li>
-                        <a onclick="proximoserieA(); fetchEventoProximoserieA()">Proximos</a>
+                        <a onclick="proximoserieA(); fetchEventoProximoserieA()">Próximos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
@@ -881,13 +911,15 @@
                         <div>
 
                             <table>
+                                <p>Todos los eventos de la Serie A hoy</p>
+
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Locatario</th>
                                         <th>Resultado</th>
                                         <th>Visitante</th>
-                                        <th>Ubicacion</th>
+                                        <th>Ubicación</th>
                                     </tr>
                                 </thead>
                                 <tbody id="dataeventoserieA">
@@ -903,6 +935,8 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de la Serie A finalizados</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
@@ -910,7 +944,7 @@
                                             <th>Resultado</th>
                                             <th>Visitante</th>
                                             <th>Infracciones</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoFinserieA">
@@ -924,12 +958,14 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de la Serie A próximos</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
                                             <th>Locatario</th>
                                             <th>Visitante</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoProxserieA">
@@ -956,7 +992,7 @@
                         <a onclick="finalizadosNBAeste(); fetchEventoFinalizadoNBAESTE()">Finalizados</a>
                     </li>
                     <li>
-                        <a onclick="proximosNBAeste(); fetchEventoProximoNBAESTE()">Proximos</a>
+                        <a onclick="proximosNBAeste(); fetchEventoProximoNBAESTE()">Próximos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
@@ -965,13 +1001,15 @@
                         <div>
 
                             <table>
+                                <p>Todos los eventos de la NBA Este hoy</p>
+
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Locatario</th>
                                         <th>Resultado</th>
                                         <th>Visitante</th>
-                                        <th>Ubicacion</th>
+                                        <th>Ubicación</th>
                                     </tr>
                                 </thead>
                                 <tbody id="dataeventonbaeste">
@@ -987,6 +1025,8 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de la NBA Este finalizados</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
@@ -994,7 +1034,7 @@
                                             <th>Resultado</th>
                                             <th>Visitante</th>
                                             <th>Infracciones</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoFinnbaeste">
@@ -1008,12 +1048,14 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de la NBA Este próximos</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
                                             <th>Locatario</th>
                                             <th>Visitante</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoProxnbaeste">
@@ -1037,7 +1079,7 @@
                         <a onclick="finalizadoNBAoeste(); fetchEventoFinalizadoNBAoESTE()">Finalizados</a>
                     </li>
                     <li>
-                        <a onclick="proximoNBAoeste(); fetchEventoProximoNBAoESTE()">Proximos</a>
+                        <a onclick="proximoNBAoeste(); fetchEventoProximoNBAoESTE()">Próximos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
@@ -1046,13 +1088,15 @@
                         <div>
 
                             <table>
+                                <p>Todos los eventos de la NBA Oeste hoy</p>
+
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Locatario</th>
                                         <th>Resultado</th>
                                         <th>Visitante</th>
-                                        <th>Ubicacion</th>
+                                        <th>Ubicación</th>
                                     </tr>
                                 </thead>
                                 <tbody id="dataeventonbaoeste">
@@ -1068,6 +1112,8 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de la NBA Oeste finalizados</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
@@ -1075,7 +1121,7 @@
                                             <th>Resultado</th>
                                             <th>Visitante</th>
                                             <th>Infracciones</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoFinnbaoeste">
@@ -1089,12 +1135,14 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de la NBA Oeste próximos</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
                                             <th>Locatario</th>
                                             <th>Visitante</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoProxnbaoeste">
@@ -1118,7 +1166,7 @@
                         <a onclick="finalizadoLUB(); fetchEventoFinalizadoLUB()">Finalizados</a>
                     </li>
                     <li>
-                        <a onclick="proximoLUB(); fetchEventoProximoLUB()">Proximos</a>
+                        <a onclick="proximoLUB(); fetchEventoProximoLUB()">Próximos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
@@ -1127,13 +1175,15 @@
                         <div>
 
                             <table>
+                                <p>Todos los eventos de la LUB hoy</p>
+
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Locatario</th>
                                         <th>Resultado</th>
                                         <th>Visitante</th>
-                                        <th>Ubicacion</th>
+                                        <th>Ubicación</th>
                                     </tr>
                                 </thead>
                                 <tbody id="dataeventoLUB">
@@ -1149,6 +1199,8 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de la LUB finalizados</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
@@ -1156,7 +1208,7 @@
                                             <th>Resultado</th>
                                             <th>Visitante</th>
                                             <th>Infracciones</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoFinLUB">
@@ -1170,12 +1222,14 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de la LUB próximos</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
                                             <th>Locatario</th>
                                             <th>Visitante</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoProxLUB">
@@ -1205,7 +1259,7 @@
                         <a onclick="finalizadoUSOPEN(); fetchEventoFinalizadousopen();">Finalizados</a>
                     </li>
                     <li>
-                        <a onclick="proximoUSOPEN(); fetchEventoProximousopen();">Proximos</a>
+                        <a onclick="proximoUSOPEN(); fetchEventoProximousopen();">Próximos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
@@ -1214,13 +1268,15 @@
                         <div>
 
                             <table>
+                                <p>Todos los eventos del US Open hoy</p>
+
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Locatario</th>
                                         <th>Resultado</th>
                                         <th>Visitante</th>
-                                        <th>Ubicacion</th>
+                                        <th>Ubicación</th>
                                     </tr>
                                 </thead>
                                 <tbody id="dataeventousopen">
@@ -1236,6 +1292,8 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos del US Open finalizados</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
@@ -1243,7 +1301,7 @@
                                             <th>Resultado</th>
                                             <th>Visitante</th>
                                             <th>Infracciones</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoFinusopen">
@@ -1257,12 +1315,14 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos del US Open próximos</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
                                             <th>Locatario</th>
                                             <th>Visitante</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoProxUSOPEN">
@@ -1286,7 +1346,7 @@
                         <a onclick="finalizadoWimbledon(); fetchEventoFinalizadowimbledon()">Finalizados</a>
                     </li>
                     <li>
-                        <a onclick="proximoWimbledon(); fetchEventoProximowimbledon()">Proximos</a>
+                        <a onclick="proximoWimbledon(); fetchEventoProximowimbledon()">Próximos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
@@ -1295,13 +1355,15 @@
                         <div>
 
                             <table>
+                                <p>Todos los eventos de Wimbledon hoy</p>
+
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Locatario</th>
                                         <th>Resultado</th>
                                         <th>Visitante</th>
-                                        <th>Ubicacion</th>
+                                        <th>Ubicación</th>
                                     </tr>
                                 </thead>
                                 <tbody id="dataeventoWIMB">
@@ -1317,6 +1379,8 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de Wimbledon finalizados</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
@@ -1324,7 +1388,7 @@
                                             <th>Resultado</th>
                                             <th>Visitante</th>
                                             <th>Infracciones</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoFinWIMB">
@@ -1338,12 +1402,14 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de Wimbledon próximos</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
                                             <th>Locatario</th>
                                             <th>Visitante</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoProxWIMB">
@@ -1367,7 +1433,7 @@
                         <a onclick="finalizadoRoland(); fetchEventoFinalizadoRolandGarros()">Finalizados</a>
                     </li>
                     <li>
-                        <a onclick="proximoRoland(); fetchEventoProximoRolandGarros() ">Proximos</a>
+                        <a onclick="proximoRoland(); fetchEventoProximoRolandGarros() ">Próximos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
@@ -1376,13 +1442,15 @@
                         <div>
 
                             <table>
+                                <p>Todos los eventos de Roland-Garros hoy</p>
+
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Locatario</th>
                                         <th>Resultado</th>
                                         <th>Visitante</th>
-                                        <th>Ubicacion</th>
+                                        <th>Ubicación</th>
                                     </tr>
                                 </thead>
                                 <tbody id="dataeventoroland">
@@ -1398,6 +1466,8 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de Roland-Garros finalizados</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
@@ -1405,7 +1475,7 @@
                                             <th>Resultado</th>
                                             <th>Visitante</th>
                                             <th>Infracciones</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoFinroland">
@@ -1419,12 +1489,14 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos de Roland-Garros próximos</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
                                             <th>Locatario</th>
                                             <th>Visitante</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoProxroland">
@@ -1448,7 +1520,7 @@
                         <a onclick="finalizadoAUSOPEN(); fetchEventoFinalizadoaus()">Finalizados</a>
                     </li>
                     <li>
-                        <a onclick="proximoAUSOPEN(); fetchEventoProximoaus()">Proximos</a>
+                        <a onclick="proximoAUSOPEN(); fetchEventoProximoaus()">Próximos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
@@ -1457,13 +1529,15 @@
                         <div>
 
                             <table>
+                                <p>Todos los eventos del Australian Open hoy</p>
+
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Locatario</th>
                                         <th>Resultado</th>
                                         <th>Visitante</th>
-                                        <th>Ubicacion</th>
+                                        <th>Ubicación</th>
                                     </tr>
                                 </thead>
                                 <tbody id="dataeventoAUS">
@@ -1479,6 +1553,8 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos del Australian Open finalizados</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
@@ -1486,7 +1562,7 @@
                                             <th>Resultado</th>
                                             <th>Visitante</th>
                                             <th>Infracciones</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoFinAUS">
@@ -1500,12 +1576,14 @@
                         <div class="info-solapas">
                             <div>
                                 <table>
+                                    <p>Todos los eventos del Australian Open próximos</p>
+
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
                                             <th>Locatario</th>
                                             <th>Visitante</th>
-                                            <th>Ubicacion</th>
+                                            <th>Ubicación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dataeventoProxrAUS">
@@ -1520,7 +1598,7 @@
             <!--FIN Austarlian Open-->
 
         </div>
-        <div>
+        <div >
             
         </div>
 
