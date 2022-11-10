@@ -400,3 +400,26 @@ function proximoAUSOPEN() {
     document.getElementById("proximosAUSOPEN").style.display = "block";
 
 }
+
+/* australain */
+
+function directoFAV() {
+    document.getElementById("hoyfav").style.display = "block";
+    document.getElementById("finalizadosFAV").style.display = "none";
+    document.getElementById("proximosFav").style.display = "none";
+}
+
+
+function finalizadoFAV() {
+    document.getElementById("hoyfav").style.display = "none";
+    document.getElementById("finalizadosFAV").style.display = "block";
+    document.getElementById("proximosFav").style.display = "none";
+}
+
+
+function proximoFAV() {
+    document.getElementById("hoyfav").style.display = "none";
+    document.getElementById("finalizadosFAV").style.display = "none";
+    document.getElementById("proximosFav").style.display = "block";
+
+}

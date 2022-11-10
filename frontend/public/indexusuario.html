@@ -134,7 +134,7 @@
 
     <div class="main">
         <div>
-            
+
         </div>
         <aside class="sidebar">
             <div class="contenido-side">
@@ -167,12 +167,10 @@
                             <li><a id="Ausopen">Austarlian Open</a></li>
                         </ul>
                     </div>
-                </div>
-                <div>
                     <p>Favoritos</p>
                     <div class="sidetable">
                         <ul>
-                            <li><a onclick="">Favoritos</a></li>
+                            <li><a id="favoritosyo">Favoritos</a></li>
 
                         </ul>
                     </div>
@@ -183,7 +181,7 @@
 
         <div class="resultados">
             <div id="sesion">
-                <h3>Bienvenido <span id="usuario" ></span></h3>
+                <h3>Bienvenido <span id="usuario"></span></h3>
             </div>
             <!--TODOS-->
             <div class="resultados-div-exterior" id="general">
@@ -1596,10 +1594,95 @@
                 </div>
             </div>
             <!--FIN Austarlian Open-->
+            <!--FAV-->
+            <div class="resultados-div-exterior" id="generalfav">
+                <ul id="barraResultados">
+                    <li>
+                        <a onclick="directoFAV(); favoritos()">Hoy</a>
+                    </li>
+                    <li>
+                        <a onclick="finalizadoFAV(); ">Finalizados</a>
+                    </li>
+                    <li>
+                        <a onclick="proximoFAV(); ">Próximos</a>
+                    </li>
+                </ul>
+                <div class="resultados-div-interior">
 
+                    <div class="info-solapas" id="hoyfav">
+                        <div>
+
+                            <table>
+                                <p>Todos los favoritos hoy</p>
+
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Locatario</th>
+                                        <th>Resultado</th>
+                                        <th>Visitante</th>
+                                        <th>Ubicación</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dataeventoFAV">
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                    <div class="finalizados" id="finalizadosFAV">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <p>Todos los favoritos finalizados</p>
+
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Resultado</th>
+                                            <th>Visitante</th>
+                                            <th>Infracciones</th>
+                                            <th>Ubicación</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataeventoFinFAV">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proximos" id="proximosFav">
+                        <div class="info-solapas">
+                            <div>
+                                <table>
+                                    <p>Todos los favoritos próximos</p>
+
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Locatario</th>
+                                            <th>Visitante</th>
+                                            <th>Ubicación</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataproxfav">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--FIN FAV-->
         </div>
-        <div >
-            
+        <div>
+
         </div>
 
     </div>
@@ -1657,7 +1740,7 @@
     <script>
         $('#sesion #usuario').text(sessionStorage.nombrelog);
 
-        $('#cerrar').click(function(){
+        $('#cerrar').click(function () {
             sessionStorage.clear();
             window.location = "index.html";
         });
