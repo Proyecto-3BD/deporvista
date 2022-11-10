@@ -4,33 +4,27 @@
         header("Location: /login");
     }
 
-
-    ############ Seguir aca ##########
     require 'templates/head.php'; ?>
     <div class="container-fluid">
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Alta Eventos</h5>
-                <form action="/altaEvento" method="post">
+                <h5 class="card-title">Alta Deportistas</h5>
+                <form action="/altaDeportista" method="post">
                     <div class="form-group">
-                        <input type="datetime-local" placeholder="" name="fechaHora">
-                        <span>Fecha, Hora</span>
+                        <input type="text" placeholder="" name="nombreDeportista">
+                        <span>Nombres</span>
                     </div>
                     <div class="form-group">
-                        <input type="text"name="resultado">
-                        <span>Resultado</span>
+                        <input type="text"name="apellidos">
+                        <span>Apellidos</span>
                     </div>
                     <div class="form-group">
-                        <input type="text"name="infracciones">
-                        <span>Infracciones</span>
+                        <input type="text"name="paisDeportista">
+                        <span>País</span>
                     </div>
                     <div class="form-group">
-                        <input type="text"name="ubicacion">
-                        <span>Ubicacion</span>
-                    </div>
-                    <div class="form-group">
-                        <select name="idLocatario">
+                        <select name="idEquipo">
                             <?php
                                 $equipos = EquipoControlador::Listar();
                                 
@@ -41,62 +35,17 @@
                                 <? foreach($equipos as $fila) :?>
                                     
                                     <option value="<?= $fila['idEquipo'] ?>">
-                                        <?=$fila['nombreEquipo'] ?> </option>
+                                        <?=$fila['nombreEquipo'] . "  -  "  . $fila['paisEquipo']?> </option>
                                 <? endforeach ;?>
                             <?php endif ;?>
                         </select>
-                        <span>Locatario</span> 
+                        <span>Equipo</span> 
                     </div>
                     <div class="form-group">
-                    <select name="idVisitante">
-                            <?php
-                                $equipos = EquipoControlador::Listar();
-                                if($equipos == "") :?>
-                                    <option value="">No hay Equipos ingresadas</option>
-                            <?php 
-                                else :?>
-                                <? foreach($equipos as $fila) :?>
-
-                                    <option value="<?= $fila['idEquipo'] ?>">
-                                        <?=$fila['nombreEquipo'] ?> </option>
-                                <?php endforeach ;?>
-                            <?php endif ; ?>
-                        </select>
-                        <span>Visitante</span> 
+                        <input type="text"name="rol">
+                        <span>Rol</span>
                     </div>
-                    <div class="form-group">
-                            <select name="idCompeticion">
-                            <?php
-                                $competiciones = CompeticionesControlador::Listar();
-                                if($competiciones == "") :?>
-                                    <option value="">No hay Competiciones ingresadas</option>
-                            <?php 
-                                    else :?>
-                                <? foreach($competiciones as $fila) :?>
-                                    
-                                    <option value="<?= $fila['idCompeticion'] ?>">
-                                        <?=$fila['anio'] ." - " . $fila['nombreCompeticion'] ?> </option>
-                                <? endforeach ;?>
-                            <?php endif ; ?>
-                            </select>
-                    </div>
-                    <div class="form-group">
-                            <select name="idDeporte">
-                            <?php
-                                $deportes = DeporteControlador::Listar();
-                                if($deportes == "") :?>
-                                   <option value="">No hay Deportes ingresados</option> 
-                            <?php 
-                                    else :?>
-                                <? foreach($deportes as $fila) :?>
-                                    
-                                    <option value="<?= $fila['idDeporte'] ?>">
-                                        <?=$fila['nombreDeporte'] ?> </option>
-                                <? endforeach ;?>
-                            <?php endif ; ?>
-                            </select>
-                            <span>Deporte</span>
-                    </div>
+                    
                     <button type="submit" class="btn btn-primary">Alta</button>
                     <?php if(isset($parametros['ingresado']) && $parametros['ingresado'] == 'true') :?>
                                 <div style='color: green;'>Alta Exitosa</div>
@@ -109,43 +58,37 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Modificar Evento</h5>
-                <form action="/modificarEvento" method="post">
+                <h5 class="card-title">Modificar Deportistas</h5>
+                <form action="/modificarDeportista" method="post">
                     <div class="form-group">
-                            <select name="idEvento">
+                            <select name="idDeportista">
                             <?php
-                                $eventos = EventoControlador::Listar();
-                                if($eventos == "") :?>
-                                  <option value="">No hay Eventos ingresados</option>
+                                $deportistas = DeportistaControlador::ListarDepEquipo();
+                                if($deportistas == "") :?>
+                                  <option value="">No hay Deportistas ingresados</option>
                             <?php 
                                 else :?>
-                                <? foreach($eventos as $fila) :?>
-                                    <option value="<?= $fila['idEvento'] ?>">
-                                        <?=$fila['idEvento'] ?></option>
+                                <? foreach($deportistas as $fila) :?>
+                                    <option value="<?= $fila['idDeportista'] ?>">
+                                        <?= $fila['nombreDeportista'] .  " " .$fila['apellidos'] ?></option>
                                 <? endforeach ;?>
                             <?php endif ; ?>
                             </select>
-                            <span>Id</span>
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="datetime-local" placeholder="" name="fechaHora">
-                        <span>Fecha, Hora</span>
                     </div>
                     <div class="form-group">
-                        <input type="text"name="resultado">
-                        <span>Resultado</span>
+                        <input type="text" placeholder="" name="nombreDeportista">
+                        <span>Nombres</span>
                     </div>
                     <div class="form-group">
-                        <input type="text"name="infracciones">
-                        <span>Infracciones</span>
+                        <input type="text"name="apellidos">
+                        <span>Apellidos</span>
                     </div>
                     <div class="form-group">
-                        <input type="text"name="ubicacion">
-                        <span>Ubicacion</span>
+                        <input type="text"name="paisDeportista">
+                        <span>País</span>
                     </div>
                     <div class="form-group">
-                        <select name="idLocatario">
+                        <select name="idEquipo">
                             <?php
                                 $equipos = EquipoControlador::Listar();
                                 
@@ -156,62 +99,17 @@
                                 <? foreach($equipos as $fila) :?>
                                     
                                     <option value="<?= $fila['idEquipo'] ?>">
-                                        <?=$fila['nombreEquipo'] ?> </option>
+                                        <?=$fila['nombreEquipo'] . "  -  "  . $fila['paisEquipo']?> </option>
                                 <? endforeach ;?>
                             <?php endif ;?>
                         </select>
-                        <span>Locatario</span> 
+                        <span>Equipo</span> 
                     </div>
                     <div class="form-group">
-                    <select name="idVisitante">
-                            <?php
-                                $equipos = EquipoControlador::Listar();
-                                if($equipos == "") :?>
-                                    <option value="">No hay Equipos ingresadas</option>
-                            <?php 
-                                else :?>
-                                <? foreach($equipos as $fila) :?>
-
-                                    <option value="<?= $fila['idEquipo'] ?>">
-                                        <?=$fila['nombreEquipo'] ?> </option>
-                                <?php endforeach ;?>
-                            <?php endif ; ?>
-                        </select>
-                        <span>Visitante</span> 
+                        <input type="text"name="rol">
+                        <span>Rol</span>
                     </div>
                     <div class="form-group">
-                            <select name="idCompeticion">
-                            <?php
-                                $competiciones = CompeticionesControlador::Listar();
-                                if($competiciones == "") :?>
-                                    <option value="">No hay Competiciones ingresadas</option>
-                            <?php 
-                                    else :?>
-                                <? foreach($competiciones as $fila) :?>
-                                    
-                                    <option value="<?= $fila['idCompeticion'] ?>">
-                                        <?=$fila['anio'] ." - " . $fila['nombreCompeticion'] ?> </option>
-                                <? endforeach ;?>
-                            <?php endif ; ?>
-                            </select>
-                    </div>
-                    <div class="form-group">
-                            <select name="idDeporte">
-                            <?php
-                                $deportes = DeporteControlador::Listar();
-                                if($deportes == "") :?>
-                                   <option value="">No hay Deportes ingresados</option> 
-                            <?php 
-                                    else :?>
-                                <? foreach($deportes as $fila) :?>
-                                    
-                                    <option value="<?= $fila['idDeporte'] ?>">
-                                        <?=$fila['nombreDeporte'] ?> </option>
-                                <? endforeach ;?>
-                            <?php endif ; ?>
-                            </select>
-                            <span>Deporte</span>
-                    </div>
 
                     <button type="submit" class="btn btn-primary">Modificar</button>
                     <?php if(isset($parametros['modificado']) && $parametros['modificado'] == 'true') :?>
@@ -227,42 +125,36 @@
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Suscriptores</h5>
+                <h5 class="card-title">Deportistas</h5>
 
                 <table class="table table-striped">
                     <tr>
                         <th>Id</th>
-                        <th>Ficha/Hora</th>
-                        <th>Locatario</th>
-                        <th>Resultado</th>
-                        <th>Visitante</th>
-                        <th>Competición</th>
-                        <th>Infracciones</th>
-                        <th>Ubicación</th>
-                        <th>Deporte</th>
-                        <th> </th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Pais</th>
+                        <th>Equipo</th>
+                        <th>Rol</th>
+                        <th></th>
                     </tr>
                   
                     <?php
-                        $resultados = ResultadosControlador::ResultadoEquipo();
-                        if($resultados == "") :?>
-                            No hay Eventos ingresados
+                        $deportistas = DeportistaControlador::ListarDepEquipo();
+                        if($deportistas == "") :?>
+                            No hay Deportista ingresados
                     <?php 
                         else :?>
-                        <? foreach($resultados as $fila) :?>
+                        <? foreach($deportistas as $fila) :?>
                             <tr>
-                                <td> <?= $fila['idEvento'] ?></td> 
-                                <td> <?=$fila['fechaHora'] ?></td>
-                                <td> <?=$fila['locatario'] ?></td>
-                                <td> <?=$fila['resultado'] ?></td>
-                                <td> <?=$fila['visitante'] ?></td>
-                                <td> <?=$fila['competicion'] ?></td>
-                                <td> <?=$fila['infracciones'] ?></td>
-                                <td> <?=$fila['ubicacion'] ?></td>
-                                <td> <?=$fila['deporte'] ?></td>
+                                <td> <?= $fila['idDeportista'] ?></td> 
+                                <td> <?=$fila['nombreDeportista'] ?></td>
+                                <td> <?=$fila['apellidos'] ?></td>
+                                <td> <?=$fila['paisDeportista'] ?></td>
+                                <td><?=$fila['nombreEquipo'] ?></td>
+                                <td> <?=$fila['rol'] ?></td>
                                 <td> 
-                                    <form action="/bajaEvento" method="post">
-                                       <button type="submit" name="idEvento" value="<?= $fila['idEvento'] ?>" class="btn btn-primary">Eliminar</button>
+                                    <form action="/bajaDeportista" method="post">
+                                       <button type="submit" name="idDeportista" value="<?= $fila['idDeportista'] ?>" class="btn btn-primary">Eliminar</button>
                                     </form>
                                 </td>
                             </tr>
@@ -270,7 +162,7 @@
                     <?php endif ; ?>
                          
                     <?php if(isset($parametros['eliminado']) && $parametros['eliminado'] == 'true') :?>
-                            <div style='color: darkred;'>Evento eliminado</div>
+                            <div style='color: darkred;'>Deportista eliminado</div>
                     <?php endif; ?>
                                     
                 </table>

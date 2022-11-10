@@ -49,6 +49,9 @@
             <a class="nav-link" href="/gestionEquipos">Equipos</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/gestionDeportistas">Deportistas</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/gestionAdministradores">Administradores</a>
           </li>
         

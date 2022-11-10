@@ -23,15 +23,30 @@
             }
         }
 
-        public function deportistaEquipo(){
-            $sql = "SELECT d.idDeportista, d.nombreDeportista, d.apellidos, de.rol, e.nombreEquipo, e.idEquipo
+        public function listarDepEquipo(){
+            $sql = "SELECT d.idDeportista, 
+                d.nombreDeportista, d.apellidos, 
+                d.paisDeportista, de.rol, 
+                e.nombreEquipo, e.idEquipo
                 FROM deportistaEquipo AS de  
                 INNER JOIN deportistas AS d 
                 ON de.idDeportista=d.idDeportista 
                 INNER JOIN equipos AS e 
-                ON de.idEquipo=e.idEquipo WHERE d.idDeportista=" . $this -> idDeportista . ";";
-            $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
-            return $fila;
+                ON de.idEquipo=e.idEquipo;";
+            $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
+            $resultado = [];
+            foreach($filas as $fila){
+                $a = new DeportistaModelo();
+                $a -> idDeportista = $fila['idDeportista'];
+                $a -> nombreDeportista = $fila['nombreDeportista'];
+                $a -> apellidos = $fila['apellidos'];
+                $a -> paisDeportista = $fila['paisDeportista'];
+                $a -> rol = $fila['rol'];
+                $a -> nombreEquipo = $fila['nombreEquipo'];
+                 
+                array_push($resultado,$a);
+            }
+            return $resultado;
         }
 
         public function deportistaCompeticion(){
@@ -51,37 +66,92 @@
         }   
 
         private function insertar(){
+            $sql = "start transaction;";
+            $this -> conexion -> query($sql);
             
-            $sql1 = "INSERT INTO deportistas (nombreDeportista, apellidos, paisDeportista) 
+            $sql = "INSERT INTO deportistas (nombreDeportista, apellidos, paisDeportista) 
             VALUES ('" . $this -> nombreDeportista . "',
                     '" . $this -> apellidos . "',
                     '" . $this -> paisDeportista . "');";
-            $this -> conexion -> query($sql1);
+            $this -> conexion -> query($sql);
+
+            $sql = "INSERT INTO deportistaEquipo (idDeportista, idEquipo, rol) 
+            VALUES ((SELECT max(idDeportista) FROM deportistas),
+                    '" . $this -> idEquipo . "',
+                    '" . $this -> rol . "');";
+            $this -> conexion -> query($sql);
+
+            $sql = "commit;";
+            $this -> conexion -> query($sql);
+            
         }
 
         private function actualizar(){
+            $sql = "start transaction;";
+            $this -> conexion -> query($sql);
+
             $sql = "UPDATE deportistas SET
             nombreDeportista = '" . $this -> nombreDeportista . "',
             apellidos = '" . $this -> apellidos . "',
-            pais = '" . $this -> pais . "'
+            paisDeportista = '" . $this -> paisDeportista . "'
             WHERE idDeportista = " . $this -> idDeportista . ";";
-            $this -> conexion -> query($sql);   
+            $this -> conexion -> query($sql);
+            
+            $sql = "UPDATE deportistaEquipo SET
+            idDeportista = '" . $this -> idDeportista . "',
+            idEquipo = '" . $this -> idEquipo . "',
+            rol = '" . $this -> rol . "'
+            WHERE idDeportista = " . $this -> idDeportista . ";";
+            $this -> conexion -> query($sql);
+
+            $sql = "commit;";
+            $this -> conexion -> query($sql);
+        }
+
+        public function Eliminar(){
+            $sql = "start transaction;";
+            $this -> conexion -> query($sql);
+            
+            $sql = "DELETE FROM deportistas 
+                WHERE idDeportista = " . $this ->idDeportista . ";";
+            $this -> conexion -> query($sql);
+
+            $sql = "DELETE FROM deportistaEquipo 
+                WHERE idDeportista = " . $this ->idDeportista . ";";
+            $this -> conexion -> query($sql);
+
+            $sql = "DELETE FROM deportistaEvento 
+            WHERE idDeportista = " . $this ->idDeportista . ";";
+            $this -> conexion -> query($sql);
+
+            $sql = "DELETE FROM deportistaDeporte 
+            WHERE idDeportista = " . $this ->idDeportista . ";";
+            $this -> conexion -> query($sql);
+
+            $sql = "commit;";
+            $this -> conexion -> query($sql);
         }
 
         public function Obtener(){
-            $sql = "SELECT * FROM  deportistas WHERE idDeportista = " . $this -> idDeportista . ";";
+            $sql = "SELECT d.idDeportista, 
+            d.nombreDeportista, d.apellidos, 
+            d.paisDeportista, de.rol, 
+            e.nombreEquipo, e.idEquipo
+            FROM deportistaEquipo AS de  
+            INNER JOIN deportistas AS d 
+            ON de.idDeportista=d.idDeportista 
+            INNER JOIN equipos AS e 
+            ON de.idEquipo=e.idEquipo
+            WHERE d.idDeportista =" . $this -> idDeportista . ";";
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
             $this -> idDeportista = $fila['idDeportista'];
             $this -> nombreDeportista = $fila['nombreDeportista'];
             $this -> apellidos = $fila['apellidos'];
             $this -> paisDeportista = $fila['paisDeportista'];
-        }
-
-        public function Eliminar(){
-            $sql = "DELETE FROM deportistas 
-                WHERE idDeportista = " . $this ->idDeportista . ";";
-            $this -> conexion -> query($sql);
+            $this -> rol = $fila['rol'];
+            $this -> idEquipo = $fila['idEquipo'];
+            $this -> nombreEquipo = $fila['nombreEquipo'];
         }
 
         public function ObtenerTodos(){

@@ -3,36 +3,42 @@
 
     class DeportistaControlador{
         public static function Alta($context){
-            if(!empty($context['post']['idDeportista'])){
+            if(!empty($context['post']['nombreDeportista'])){
                 $u = new DeportistaModelo();
                 $u -> idDeportista = $context['post']['idDeportista'];
                 $u -> nombreDeportista = $context['post']['nombreDeportista'];
                 $u -> apellidos = $context['post']['apellidos'];
                 $u -> paisDeportista = $context['post']['paisDeportista'];
+                $u -> idEquipo = $context['post']['idEquipo'];
+                $u -> rol = $context['post']['rol'];
+
                 $u -> Guardar();
-                render("gestionDeportista", ["ingresado" => true]);
+                render("gestionDeportistas", ["ingresado" => true]);
             }else
-                render("gestionDeportista", ["error" => true]);
+                render("gestionDeportistas", ["error" => true]);
         }
 
         public static function Eliminar($context){
             $u = new DeportistaModelo($context['post']['idDeportista']);
             $u -> Eliminar();
-            render("gestionDeportista", ["borrado" => true]);
+            render("gestionDeportistas", ["borrado" => true]);
         }
 
         public static function Modificar($context){
 
-            $u = new DeportistaModelo($context['post']['idCompeticion']);
-            $u -> idCompeticion = $context['post']['idCompeticion'];
-            $u -> nombreCompeticion = $context['post']['nombreCompeticion'];
-            $u -> paisCompeticion = $context['post']['paisCompeticion'];
-            $u -> anio = $context['post']['anio'];
-            if(!empty($context['post']['idCompeticion'])){
+            $u = new DeportistaModelo($context['post']['idDeportista']);
+            $u -> idDeportista = $context['post']['idCompeticion'];
+            $u -> nombreDeportista = $context['post']['nombreDeportista'];
+            $u -> apellidos = $context['post']['apellidos'];
+            $u -> paisDeportista = $context['post']['paisDeportista'];
+            $u -> rol = $context['post']['rol'];
+            $u -> idEquipo = $context['post']['idEquipo'];
+            $u -> nombreEquipo = $context['post']['nombreEquipo'];
+            if(!empty($context['post']['idDeportista'])){
                 $u -> Guardar();
-                render("gestionDeportista", ["modificado" => true]);
+                render("gestionDeportistas", ["modificado" => true]);
             }else
-                render("gestionDeportista", ["errorModificado" => true]);
+                render("gestionDeportistas", ["errorModificado" => true]);
         }
 
 
@@ -50,7 +56,26 @@
                 ];   
                 array_push($resultado,$t);
             }
-            echo json_encode($resultado);          
+            return $resultado;          
+        }
+
+        public static function ListarDepEquipo(){
+            $a = new DeportistaModelo();
+            $deportistas = $a -> listarDepEquipo();
+
+            $resultado = [];
+            foreach($deportistas as $deportista){
+                $t = [
+                    'idDeportista' => $deportista -> idDeportista,
+                    'nombreDeportista' => $deportista -> nombreDeportista,
+                    'apellidos' => $deportista -> apellidos,
+                    'paisDeportista' => $deportista -> paisDeportista,
+                    'rol' => $deportista -> rol,
+                    'nombreEquipo' => $deportista -> nombreEquipo
+                ];   
+                array_push($resultado,$t);
+            }
+            return $resultado;          
         }
     }
 	
