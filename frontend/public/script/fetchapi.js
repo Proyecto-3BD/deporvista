@@ -1,40 +1,44 @@
 /* LOGIN */
 function fetchpost() {
     formularioenvio.onsubmit = async (e) => {
-    e.preventDefault();
+        e.preventDefault();
 
-    let form = new FormData(formularioenvio);
+        let form = new FormData(formularioenvio);
 
-
-    let response = await fetch('http://localhost:8082/login', {
-      method: 'POST',
-      body: form
-    });
-    let result = await response.json();
-    if (result.Resultado === "true") {
-
-        credencial.innerHTML = "ingreso con exito";
-
-        let nombre = form.get("nombreSuscriptor");
-        sessionStorage.setItem('nombrelog', nombre);
-
-        let sesionactual = sessionStorage.getItem('nombrelog');
-
-
-        if (nombre === sesionactual) {
-
-
-            window.location = "indexusuario.html";
-
-
+        let response = await fetch('http://localhost:8082/login', {
+            method: 'POST',
+            body: form,
         }
+        );
 
-    } else {
-        alert("credenciales invalidas");
-        let credencial = document.getElementById("credencial");
-        credencial.innerHTML = "credencial invalida";
-    }
-};
+        let result = await response.json();
+        if (result.Resultado === "true") {
+
+
+            credencial.innerHTML = "ingreso con exito";
+
+            /*agarro los nombres del form y se lo paso al session store */
+            let nombre = form.get("nombreSuscriptor");
+            sessionStorage.setItem('nombrelog', nombre);
+
+            /* obtengo el nombre del sesionstore*/
+            let sesionactual = sessionStorage.getItem('nombrelog');
+
+
+            if (nombre === sesionactual) {
+
+
+                window.location = "indexusuario.html";
+
+
+            }
+
+        } else {
+            alert("credenciales invalidas");
+            let credencial = document.getElementById("credencial");
+            credencial.innerHTML = "credencial invalida";
+        }
+    };
 }
 
 /* FIN LOGIN */
@@ -43,19 +47,19 @@ function fetchpost() {
 
 function fetchpostregistro() {
     formularioregistro.onsubmit = async (e) => {
-    e.preventDefault();
+        e.preventDefault();
 
-    let response = await fetch('http://localhost:8082/usuario', {
-      method: 'POST',
-      body: new FormData(formularioregistro)
-    });
-   /* let result = await response.json();
-    if(result.Resultado === "true") {
-        alert("entro el registro");
-    } else {
-        alert("rotisimo");
-    }*/
-};
+        let response = await fetch('http://localhost:8082/usuario', {
+            method: 'POST',
+            body: new FormData(formularioregistro)
+        });
+        /* let result = await response.json();
+         if(result.Resultado === "true") {
+             alert("entro el registro");
+         } else {
+             alert("rotisimo");
+         }*/
+    };
 }
 
 
@@ -107,7 +111,7 @@ const mostrarData = (dataevento) => {
     for (let i = 0; i < dataevento.length; i++) {
         if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-            body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+            body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
         }
     }
     document.getElementById('dataevento').innerHTML = body;
@@ -117,38 +121,38 @@ const mostrarData = (dataevento) => {
 let publi1 = "http://localhost:8081/dameAnuncio";
 
 fetch(publi1)
-.then(function(res){
-	return res.json();
-})
-.then(function(data){
-    
-	let body = '';
-	data.forEach(function(d){
-        body += `<tr><td><img src="http://localhost:8083/${d.src}"></tr></td>`;	
-	});
-			
-    document.getElementById('publi1').innerHTML = body;
+    .then(function (res) {
+        return res.json();
+    })
+    .then(function (data) {
 
-})
+        let body = '';
+        data.forEach(function (d) {
+            body += `<tr><td><img src="http://localhost:8083/${d.src}"></tr></td>`;
+        });
+
+        document.getElementById('publi1').innerHTML = body;
+
+    })
 
 
 /* PUBLI 2 */
 let publi2 = "http://localhost:8081/dameAnuncio";
 
 fetch(publi2)
-.then(function(res){
-	return res.json();
-})
-.then(function(data){
-    
-	let body = '';
-	data.forEach(function(d){
-        body += `<tr><td><img src="http://localhost:8083/${d.src}"></tr></td>`;	
-	});
-			
-    document.getElementById('publi2').innerHTML = body;
+    .then(function (res) {
+        return res.json();
+    })
+    .then(function (data) {
 
-})
+        let body = '';
+        data.forEach(function (d) {
+            body += `<tr><td><img src="http://localhost:8083/${d.src}"></tr></td>`;
+        });
+
+        document.getElementById('publi2').innerHTML = body;
+
+    })
 
 
 function fetchEventoFinalizado() {
@@ -172,7 +176,7 @@ function fetchEventoFinalizado() {
 
             if (dataevento[i].fechaHora <= fecha) {
 
-                body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
             }
         }
         document.getElementById('dataeventoFin').innerHTML = body;
@@ -200,7 +204,7 @@ function fetchEventoProximo() {
         for (let i = 0; i < dataevento.length; i++) {
             if (dataevento[i].fechaHora >= fecha) {
 
-                body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
             }
         }
         document.getElementById('dataeventoProx').innerHTML = body;
@@ -275,7 +279,7 @@ function futbol() {
             if (dataevento[i].deporte == "futbol") {
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -304,7 +308,7 @@ function fetchEventoFinalizadoFutbol() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -331,7 +335,7 @@ function fetchEventoProximoFutbol() {
             if (dataevento[i].deporte == "futbol") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton"  onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -385,7 +389,7 @@ function basket() {
             if (dataevento[i].deporte == "basketball") {
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton"  onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -414,7 +418,7 @@ function fetchEventoFinalizadobasket() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -441,7 +445,7 @@ function fetchEventoProximobasket() {
             if (dataevento[i].deporte == "basketball") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -501,7 +505,7 @@ function laliga() {
             if (dataevento[i].competicion == "LaLiga") {
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -532,7 +536,7 @@ function fetchEventoFinalizadolaliga() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -559,7 +563,7 @@ function fetchEventoProximolaliga() {
             if (dataevento[i].competicion == "LaLiga") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -613,7 +617,7 @@ function premier() {
             if (dataevento[i].competicion == "Premier League") {
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -644,7 +648,7 @@ function fetchEventoFinalizadopremier() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -671,7 +675,7 @@ function fetchEventoProximopremier() {
             if (dataevento[i].competicion == "Premier League") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -728,7 +732,7 @@ function primerauy() {
             if (dataevento[i].competicion == "Primera division de Uruguay") {
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -759,7 +763,7 @@ function fetchEventoFinalizadoprimerauy() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -786,7 +790,7 @@ function fetchEventoProximoprimerauy() {
             if (dataevento[i].competicion == "Primera division de Uruguay") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -840,7 +844,7 @@ function primeraARG() {
             if (dataevento[i].competicion == "Primera division de Argentina") {
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -871,7 +875,7 @@ function fetchEventoFinalizadoprimeraARG() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton"  onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -898,7 +902,7 @@ function fetchEventoProximoprimeraARG() {
             if (dataevento[i].competicion == "Primera division de Argentina") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -953,7 +957,7 @@ function serieA() {
             if (dataevento[i].competicion == "Serie A") {
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -984,7 +988,7 @@ function fetchEventoFinalizadoprimeraARG() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1011,7 +1015,7 @@ function fetchEventoProximoprimeraARG() {
             if (dataevento[i].competicion == "Serie A") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1064,7 +1068,7 @@ function tenis() {
             if (dataevento[i].deporte == "tenis") {
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton"  onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1093,7 +1097,7 @@ function fetchEventoFinalizadotenis() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1120,7 +1124,7 @@ function fetchEventoProximobasket() {
             if (dataevento[i].deporte == "tenis") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1178,7 +1182,7 @@ function nbaeste() {
             if (dataevento[i].competicion == "NBA Este") {
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1209,7 +1213,7 @@ function fetchEventoFinalizadoNBAESTE() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1236,7 +1240,7 @@ function fetchEventoProximoNBAESTE() {
             if (dataevento[i].competicion == "NBA Este") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1294,7 +1298,7 @@ function nbaoeste() {
             if (dataevento[i].competicion == "NBA Oeste") {
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton"  onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1325,7 +1329,7 @@ function fetchEventoFinalizadoNBAoESTE() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1352,7 +1356,7 @@ function fetchEventoProximoNBAoESTE() {
             if (dataevento[i].competicion == "NBA Oeste") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1407,7 +1411,7 @@ function LUB() {
             if (dataevento[i].competicion == "LUB") {
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1438,7 +1442,7 @@ function fetchEventoFinalizadoLUB() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1465,7 +1469,7 @@ function fetchEventoProximoLUB() {
             if (dataevento[i].competicion == "LUB") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1479,7 +1483,7 @@ function fetchEventoProximoLUB() {
 
 
 
- 
+
 /*us opem*/
 document.getElementById('generalusopen').style.display = "none";
 let actualusopen = document.getElementById("usopen");
@@ -1522,7 +1526,7 @@ function usopen() {
             if (dataevento[i].competicion == "US Open") {
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1553,7 +1557,7 @@ function fetchEventoFinalizadousopen() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1580,7 +1584,7 @@ function fetchEventoProximousopen() {
             if (dataevento[i].competicion == "US Open") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1633,7 +1637,7 @@ function wimbledon() {
             if (dataevento[i].competicion == "Wimbledon") {
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1664,7 +1668,7 @@ function fetchEventoFinalizadowimbledon() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1691,7 +1695,7 @@ function fetchEventoProximowimbledon() {
             if (dataevento[i].competicion == "Wimbledon") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1743,7 +1747,7 @@ function roland() {
             if (dataevento[i].competicion == "Roland-Garros") {
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1774,7 +1778,7 @@ function fetchEventoFinalizadoRolandGarros() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1801,7 +1805,7 @@ function fetchEventoProximoRolandGarros() {
             if (dataevento[i].competicion == "Roland-Garros") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1854,7 +1858,7 @@ function aus() {
             if (dataevento[i].competicion == "Austarlian Open") {
                 if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1885,7 +1889,7 @@ function fetchEventoFinalizadoaus() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }
@@ -1912,7 +1916,7 @@ function fetchEventoProximoaus() {
             if (dataevento[i].competicion == "Austarlian Open") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" onclick="detalleEvento(${dataevento[i].idEvento})">Detalles</td></tr>`
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
                 }
             }
         }

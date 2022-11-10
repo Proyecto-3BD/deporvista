@@ -553,3 +553,9 @@ form select {
     padding-top: 2rem;
     display: none;
 }
+
+#detalleboton p {
+    border: 1px solid rgb(121, 121, 121);
+    cursor: pointer;
+    border-radius: 15px !important;
+}
