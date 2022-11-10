@@ -195,7 +195,7 @@
 
 /*Resultados */
 .resultados-div-exterior {
-    background-color: #369741;
+    background-color: var(--main-color);
     padding: 0 2rem 2rem 2rem;
 }
 
@@ -228,7 +228,7 @@
 
 
 .resultados-div-interior {
-    background-color: #0c5815;
+    background-color: var(--segundo-color);
     padding: 2rem;
     height: 80vh;
 
@@ -295,20 +295,23 @@ footer {
 }
 
 /* Login */
-.modal-estatico {
-    background-color: #0c5815;
-    color: white;
-}
 
 .modal-contenido {
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 20% 80%;
     
 }
 
+.modal-estatico {
+    background-color: var(--segundo-color);
+    color: white;
+}
+
+
+
 .modal-form {
-    height: 35rem;
-    width: 30rem;
+    height: 39rem;
+    width: 25rem;
     background-color: white;
 }
 
@@ -321,7 +324,7 @@ form select {
 }
 
 .cabecera-modal {
-    background-color: #369741;
+    background-color: var(--main-color);
 }
 
 .cabecera-form {
