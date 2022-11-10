@@ -23,7 +23,7 @@
         }        
 
         public static function Modificar($context){
-
+            
             $u = new CompeticionesModelo($context['post']['idCompeticion']);
             $u -> idCompeticion = $context['post']['idCompeticion'];
             $u -> nombreCompeticion = $context['post']['nombreCompeticion'];

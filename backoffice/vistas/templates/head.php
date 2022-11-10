@@ -21,7 +21,7 @@
   </head>
 
   <body>
-    <div class="container">
+    <div >
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <a class="navbar-brand" href="/">Deporvista</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,9 +30,6 @@
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <!--<li class="nav-item">
-            <a class="nav-link" href="/">Inicio</a>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="/suscriptores">Suscriptores</a>
           </li>
@@ -40,11 +37,14 @@
             <a class="nav-link" href="/gestionBanners">Anuncios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/">Eventos</a>
+            <a class="nav-link" href="/gestionEventos">Eventos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/gestionCompeticiones">Competiciones</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/gestionAdministradores">Administradores</a>
-          </li>-->
+          </li>
         
           <?php if(isset($_SESSION['autenticado'])): ?>
 

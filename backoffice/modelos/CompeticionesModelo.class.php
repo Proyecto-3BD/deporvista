@@ -36,7 +36,7 @@
             $sql = "UPDATE competiciones SET
             nombreCompeticion = '" . $this -> nombreCompeticion . "',
             paisCompeticion = '" . $this -> paisCompeticion . "',
-            anio = '" . $this -> anio . "',
+            anio = '" . $this -> anio . "'
             WHERE idCompeticion = " . $this -> idCompeticion . ";";
             $this -> conexion -> query($sql);   
         }
@@ -65,6 +65,7 @@
         public function eliminar(){
             $sql = "DELETE FROM competiciones 
                 WHERE idCompeticion = " . $this -> idCompeticion . ";";
+            
             $this -> conexion -> query($sql);
         }
 

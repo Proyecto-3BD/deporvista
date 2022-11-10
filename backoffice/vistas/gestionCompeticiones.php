@@ -3,9 +3,8 @@
     if(!isset($_SESSION['autenticado'])){ 
         header("Location: /login");
     }
-    require 'templates/head.php';
-    require 'templates/sidebar.php'; ?>
-    <div class="content">
+    require 'templates/head.php'; ?>
+    <div class='container-fluid'>
     <div class="row">
         <div class="card">
             <div class="card-body">
@@ -33,9 +32,22 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Modificar Competición</h5>
-                <form action="/usuario/modificarSuscriptor" method="post">
+                <form action="/modificarCompeticion" method="post">
                     <div class="form-group">
-                        <input type="text" placeholder="Id" name="idCompeticion">
+                        <span>Id: </span>
+                        <select name="idCompeticion">
+                            <?php
+                                $competiciones = CompeticionesControlador::Listar();
+                                if($competiciones == "") :?>
+                                    <option value="">No hay Competiciones ingresadas</option>
+                            <?php 
+                                    else :?>
+                                <? foreach($competiciones as $fila) :?>
+                                    <option value="<?= $fila['idCompeticion'] ?>">
+                                        <?= $fila['idCompeticion']; ?> </option>
+                                <? endforeach ;?>
+                            <?php endif ; ?>
+                            </select>
                     </div>
                     <div class="form-group">
                         <input type="text" placeholder="Competicion" name="nombreCompeticion">
@@ -61,14 +73,15 @@
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Suscriptores</h5>
+                <h5 class="card-title">Competiciones</h5>
 
                 <table class="table table-striped">
                     <tr>
-                        <th style="">Id</th>
-                        <th style="">Nombre</th>
-                        <th style="">País</th>
-                        <th style="">Año</th>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>País</th>
+                        <th>Año</th>
+                        <th></th>
                     </tr>
                   
                     <?php
@@ -79,14 +92,13 @@
                         else :?>
                         <? foreach($competiciones as $fila) :?>
                             <tr>
-                                <td style=""> <?= $fila['idCompeticion'] ?></td> 
-                                <td style=""> <?=$fila['nombreCompeticion'] ?></td>
-                                <td style=""> <?=$fila['paisCompeticion'] ?></td>
-                                <td style=""> <?=$fila['anio'] ?></td>
-                                <td style=""> 
+                                <td> <?= $fila['idCompeticion'] ?></td> 
+                                <td> <?=$fila['nombreCompeticion'] ?></td>
+                                <td> <?=$fila['paisCompeticion'] ?></td>
+                                <td> <?=$fila['anio'] ?></td>
+                                <td> 
                                     <form action="/bajaCompeticion" method="post">
-                                        <input type="radio" name="idSuscriptor" value="<?= $fila['idCompeticion'] ?>">
-                                        <button type="submit" class="btn btn-primary">Eliminar</button>
+                                        <button type="submit" name="idCompeticion" value="<?= $fila['idCompeticion'] ?>" class="btn btn-primary">Eliminar</button>
                                     </form>
                                 </td>
                             </tr>

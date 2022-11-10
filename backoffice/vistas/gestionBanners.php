@@ -4,12 +4,10 @@
         header("Location: /login");
     }
     require 'templates/head.php'; 
-    require 'templates/sidebar.php';
     ?>
     
-<div class="content">
+<div class='container-fluid'>
     <div class="row">
-
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Alta de Banner</h5>

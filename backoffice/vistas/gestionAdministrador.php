@@ -3,11 +3,9 @@
     if(!isset($_SESSION['autenticado'])){ 
         header("Location: /login");
     }
-    require 'templates/head.php'; 
-    require 'templates/sidebar.php';
-    ?>
+    require 'templates/head.php';     ?>
 
-<div class="content">
+<div class="container-fluid">
     <div class="row">
 
         <div class="card">
@@ -41,8 +39,21 @@
                 <h5 class="card-title">Modificar</h5>
                 <form action="/usuario/modificarAdmin" method="post">
                     <div class="form-group">
-                        <small class="form-text text-muted">Agregue Id para modificar</small>
-                        <input type="text" placeholder="Id" name="idAdmin">
+                        <span>ID: </span>
+                        <select name="idCompeticion">
+                            <?php
+                                $administradores = AdministradorControlador::Listar();
+                                if($administradores == "") :?>
+                                    <option value="">No hay Competiciones ingresadas</option>
+                            <?php 
+                                    else :?>
+                                <? foreach($administradores as $fila) :?>
+                                    
+                                    <option value="<?= $fila['idAdmin'] ?>">
+                                        <?= $fila['idAdmin']; ?> </option>
+                                <? endforeach ;?>
+                            <?php endif ; ?>
+                            </select>
                     </div>
                     
                     <div class="form-group">
@@ -69,7 +80,7 @@
     </div>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Aministradores</h5>
+                <h5 class="card-title">Administradores</h5>
 
                 <table class="table table-striped">
                     <tr>
@@ -92,8 +103,7 @@
                                 <td> <?=$fila['email'] ?></td>
                                 <td> 
                                     <form action="/usuario/bajaAdmin" method="post">
-                                        <input type="radio" name="idAdmin" value="<?= $fila['idAdmin'] ?>">
-                                        <button type="submit" class="btn btn-primary">Eliminar</button>
+                                        <button type="submit"  name="idAdmin" value="<?= $fila['idAdmin'] ?>" class="btn btn-primary">Eliminar</button>
                                     </form>
                                 </td>
                             </tr>
@@ -109,4 +119,3 @@
             </div>  
         </div>
     </div>
-</div>  
