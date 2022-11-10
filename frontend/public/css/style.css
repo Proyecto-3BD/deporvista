@@ -98,8 +98,8 @@
 }
 
 .iniciar-sesion a {
-    border: 1px rgb(255, 255, 255) solid;
-    border-radius: 4px;
+    border: 2px rgb(20, 92, 158) solid;
+    border-radius: 20px;
     text-decoration: none;
     padding: 0.8rem 1.5rem;
     color: black;
