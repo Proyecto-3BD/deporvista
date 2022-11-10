@@ -98,7 +98,7 @@
 }
 
 .iniciar-sesion a {
-    border: 2px rgb(20, 92, 158) solid;
+    border: 2px rgb(202, 202, 202) solid;
     border-radius: 20px;
     text-decoration: none;
     padding: 0.8rem 1.5rem;
@@ -108,7 +108,10 @@
 }
 
 .iniciar-sesion a:hover {
-    color: black;
+    border: 2px rgb(255, 255, 255) solid;
+    color: white;
+    font-weight: bold;
+    background-color: var(--hover-color);
 }
 
 
