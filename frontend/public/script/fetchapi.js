@@ -181,6 +181,7 @@ function fetchEventoFinalizado() {
         }
         document.getElementById('dataeventoFin').innerHTML = body;
     }
+
 }
 
 function fetchEventoProximo() {
@@ -259,8 +260,6 @@ function futbol() {
     document.getElementById('generallaliga').style.display = "none";
     document.getElementById('generalbasket').style.display = "none";
     document.getElementById('general').style.display = "none";
-    document.getElementById('generalfav').style.display = "none";
-    document.getElementById('generalperonal').style.display = "none";
 
     document.getElementById('hoyfutbol').style.display = "block";
     document.getElementById('finalizadosfutbol').style.display = "none";
@@ -370,9 +369,7 @@ function basket() {
     document.getElementById('generallaliga').style.display = "none";
     document.getElementById('general').style.display = "none";
     document.getElementById('generalfutbol').style.display = "none";
-    document.getElementById('generalfav').style.display = "none";
 
-    document.getElementById('generalperonal').style.display = "none";
 
     document.getElementById("hoybasket").style.display = "block";
     document.getElementById("finalizadosbasket").style.display = "none";
@@ -488,8 +485,6 @@ function laliga() {
     document.getElementById('generalbasket').style.display = "none";
     document.getElementById('general').style.display = "none";
     document.getElementById('generalfutbol').style.display = "none";
-    document.getElementById('generalfav').style.display = "none";
-    document.getElementById('generalperonal').style.display = "none";
 
 
     document.getElementById("hoylaliga").style.display = "block";
@@ -602,8 +597,6 @@ function premier() {
     document.getElementById('generalbasket').style.display = "none";
     document.getElementById('general').style.display = "none";
     document.getElementById('generalfutbol').style.display = "none";
-    document.getElementById('generalfav').style.display = "none";
-    document.getElementById('generalperonal').style.display = "none";
 
 
     document.getElementById("hoypremier").style.display = "block";
@@ -718,9 +711,7 @@ function primerauy() {
     document.getElementById('generalbasket').style.display = "none";
     document.getElementById('general').style.display = "none";
     document.getElementById('generalfutbol').style.display = "none";
-    document.getElementById('generalperonal').style.display = "none";
 
-    document.getElementById('generalfav').style.display = "none";
 
 
     document.getElementById("hoyprimerauy").style.display = "block";
@@ -833,9 +824,7 @@ function primeraARG() {
     document.getElementById('generalbasket').style.display = "none";
     document.getElementById('general').style.display = "none";
     document.getElementById('generalfutbol').style.display = "none";
-    document.getElementById('generalperonal').style.display = "none";
 
-    document.getElementById('generalfav').style.display = "none";
 
     document.getElementById("hoyprimeraARG").style.display = "block";
     document.getElementById("finalizadosprimeraARG").style.display = "none";
@@ -949,8 +938,6 @@ function serieA() {
     document.getElementById('generalbasket').style.display = "none";
     document.getElementById('general').style.display = "none";
     document.getElementById('generalfutbol').style.display = "none";
-    document.getElementById('generalfav').style.display = "none";
-    document.getElementById('generalperonal').style.display = "none";
 
     document.getElementById("hoyserieA").style.display = "block";
     document.getElementById("finalizadosserieA").style.display = "none";
@@ -1062,8 +1049,6 @@ function tenis() {
     document.getElementById('generalbasket').style.display = "none";
     document.getElementById('general').style.display = "none";
     document.getElementById('generalfutbol').style.display = "none";
-    document.getElementById('generalfav').style.display = "none";
-    document.getElementById('generalperonal').style.display = "none";
 
     document.getElementById("hoyTenis").style.display = "block";
     document.getElementById("finalizadosTenis").style.display = "none";
@@ -1170,8 +1155,6 @@ function nbaeste() {
     document.getElementById('generalserieA').style.display = "none";
     document.getElementById('generalprimeraarg').style.display = "none";
     document.getElementById('generaltenis').style.display = "none";
-    document.getElementById('generalfav').style.display = "none";
-    document.getElementById('generalperonal').style.display = "none";
 
     document.getElementById('generalprimerauy').style.display = "none";
     document.getElementById('generalpremier').style.display = "none";
@@ -1289,8 +1272,6 @@ function nbaoeste() {
     document.getElementById('generalprimerauy').style.display = "none";
     document.getElementById('generalpremier').style.display = "none";
     document.getElementById('generaltenis').style.display = "none";
-    document.getElementById('generalfav').style.display = "none";
-    document.getElementById('generalperonal').style.display = "none";
 
     document.getElementById('generallaliga').style.display = "none";
     document.getElementById('generalbasket').style.display = "none";
@@ -1401,8 +1382,6 @@ function LUB() {
     document.getElementById('generallub').style.display = "block";
     document.getElementById('generalnbaoeste').style.display = "none";
     document.getElementById('generaltenis').style.display = "none";
-    document.getElementById('generalfav').style.display = "none";
-    document.getElementById('generalperonal').style.display = "none";
 
     document.getElementById('generalnbaeste').style.display = "none";
     document.getElementById('generalserieA').style.display = "none";
@@ -1522,8 +1501,6 @@ function usopen() {
     document.getElementById('generalserieA').style.display = "none";
     document.getElementById('generalprimeraarg').style.display = "none";
     document.getElementById('generaltenis').style.display = "none";
-    document.getElementById('generalfav').style.display = "none";
-    document.getElementById('generalperonal').style.display = "none";
 
     document.getElementById('generalprimerauy').style.display = "none";
     document.getElementById('generalpremier').style.display = "none";
@@ -1632,8 +1609,6 @@ function wimbledon() {
     document.getElementById('generalnbaoeste').style.display = "none";
     document.getElementById('generalnbaeste').style.display = "none";
     document.getElementById('generaltenis').style.display = "none";
-    document.getElementById('generalfav').style.display = "none";
-    document.getElementById('generalperonal').style.display = "none";
 
     document.getElementById('generalserieA').style.display = "none";
     document.getElementById('generalprimeraarg').style.display = "none";
@@ -1736,8 +1711,6 @@ let actualroland = document.getElementById("roland");
 let activarroland = actualroland.addEventListener('click', roland);
 
 function roland() {
-    document.getElementById('generalperonal').style.display = "none";
-
     document.getElementById('generalroland').style.display = "block";
     document.getElementById('generalAUS').style.display = "none";
     document.getElementById('generalusopen').style.display = "none";
@@ -1751,8 +1724,6 @@ function roland() {
     document.getElementById('generalpremier').style.display = "none";
     document.getElementById('generallaliga').style.display = "none";
     document.getElementById('generaltenis').style.display = "none";
-    document.getElementById('generalfav').style.display = "none";
-
 
     document.getElementById('generalbasket').style.display = "none";
     document.getElementById('general').style.display = "none";
@@ -1850,8 +1821,6 @@ let actualaus = document.getElementById("Ausopen");
 let activaraus = actualaus.addEventListener('click', aus);
 
 function aus() {
-    document.getElementById('generalperonal').style.display = "none";
-
     document.getElementById('generalAUS').style.display = "block";
     document.getElementById('generalroland').style.display = "none";
     document.getElementById('generalusopen').style.display = "none";
@@ -1862,8 +1831,6 @@ function aus() {
     document.getElementById('generalserieA').style.display = "none";
     document.getElementById('generalprimeraarg').style.display = "none";
     document.getElementById('generaltenis').style.display = "none";
-    document.getElementById('generalfav').style.display = "none";
-
 
     document.getElementById('generalprimerauy').style.display = "none";
     document.getElementById('generalpremier').style.display = "none";
@@ -1958,219 +1925,3 @@ function fetchEventoProximoaus() {
     }
 }
 /*FIN Austarlian Open*/
-
-/* Favoritos */
-
-document.getElementById('generalfav').style.display = "none";
-let actualfav = document.getElementById("favoritosyo");
-let activarfav = actualfav.addEventListener('click', favoritos);
-
-function favoritos() {
-    document.getElementById('generalperonal').style.display = "none";
-
-    document.getElementById('generalfav').style.display = "block";
-    document.getElementById('generalAUS').style.display = "none";
-    document.getElementById('generalroland').style.display = "none";
-    document.getElementById('generalusopen').style.display = "none";
-    document.getElementById('generalwimbledon').style.display = "none";
-    document.getElementById('generallub').style.display = "none";
-    document.getElementById('generalnbaoeste').style.display = "none";
-    document.getElementById('generalnbaeste').style.display = "none";
-    document.getElementById('generalserieA').style.display = "none";
-    document.getElementById('generalprimeraarg').style.display = "none";
-    document.getElementById('generaltenis').style.display = "none";
-    document.getElementById('generalprimerauy').style.display = "none";
-    document.getElementById('generalpremier').style.display = "none";
-    document.getElementById('generallaliga').style.display = "none";
-    document.getElementById('generalbasket').style.display = "none";
-    document.getElementById('general').style.display = "none";
-    document.getElementById('generalfutbol').style.display = "none";
-
-    document.getElementById("hoyfav").style.display = "block";
-    document.getElementById("finalizadosFAV").style.display = "none";
-    document.getElementById("proximosFav").style.display = "none";
-
-    let url = "http://localhost:8084/resultados";
-    fetch(url)
-        .then(response => response.json())
-        .then(dataevento => mostrarData(dataevento))
-        .catch(error => console.log(error))
-
-
-    const mostrarData = (dataevento) => {
-        console.log(dataevento)
-        let body = ''
-        for (let i = 0; i < dataevento.length; i++) {
-            if (dataevento[i].deporte == "basketball") {
-                if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
-
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton"  onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
-                }
-            }
-        }
-        document.getElementById('dataeventoFAV').innerHTML = body;
-    }
-}
-
-function fetchEventoFinalizadofav() {
-
-    let url = "http://localhost:8084/resultados";
-    fetch(url)
-        .then(response => response.json())
-        .then(dataevento => mostrarData(dataevento))
-        .catch(error => console.log(error))
-
-    const mostrarData = (dataevento) => {
-
-        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
-        dataevento.reverse();
-
-
-        console.log(dataevento)
-        let body = ''
-        for (let i = 0; i < dataevento.length; i++) {
-            if (dataevento[i].deporte == "basketball") {
-
-                if (dataevento[i].fechaHora <= fecha) {
-
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
-                }
-            }
-        }
-        document.getElementById('dataeventoFinFAV').innerHTML = body;
-    }
-}
-
-function fetchEventoProximofav() {
-
-    let url = "http://localhost:8084/resultados";
-    fetch(url)
-        .then(response => response.json())
-        .then(dataevento => mostrarData(dataevento))
-        .catch(error => console.log(error))
-
-
-    const mostrarData = (dataevento) => {
-        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
-        console.log(dataevento);
-
-
-        let body = ''
-        for (let i = 0; i < dataevento.length; i++) {
-            if (dataevento[i].deporte == "basketball") {
-                if (dataevento[i].fechaHora >= fecha) {
-
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
-                }
-            }
-        }
-        document.getElementById('dataproxfav').innerHTML = body;
-    }
-}
-
-/* personal */
-document.getElementById('generalperonal').style.display = "none";
-let actualperonal = document.getElementById("user");
-let activarperonal = actualperonal.addEventListener('click', peronal);
-
-function peronal() {
-    document.getElementById('generalperonal').style.display = "block";
-    document.getElementById('generalfav').style.display = "none";
-    document.getElementById('generalAUS').style.display = "none";
-    document.getElementById('generalroland').style.display = "none";
-    document.getElementById('generalusopen').style.display = "none";
-    document.getElementById('generalwimbledon').style.display = "none";
-    document.getElementById('generallub').style.display = "none";
-    document.getElementById('generalnbaoeste').style.display = "none";
-    document.getElementById('generalnbaeste').style.display = "none";
-    document.getElementById('generalserieA').style.display = "none";
-    document.getElementById('generalprimeraarg').style.display = "none";
-    document.getElementById('generaltenis').style.display = "none";
-    document.getElementById('generalprimerauy').style.display = "none";
-    document.getElementById('generalpremier').style.display = "none";
-    document.getElementById('generallaliga').style.display = "none";
-    document.getElementById('generalbasket').style.display = "none";
-    document.getElementById('general').style.display = "none";
-    document.getElementById('generalfutbol').style.display = "none";
-
-    document.getElementById("personales").style.display = "block";
-    document.getElementById("favperonal").style.display = "none";
-    document.getElementById("selecperosnal").style.display = "none";
-
-    let url = "http://localhost:8083/suscriptores";
-    fetch(url)
-        .then(response => response.json())
-        .then(dataevento => mostrarData(dataevento))
-        .catch(error => console.log(error))
-
-
-    const mostrarData = (dataevento) => {
-        console.log(dataevento)
-        let body = ''
-        for (let i = 0; i < dataevento.length; i++) {
-            if (dataevento[i].deporte == "basketball") {
-                if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
-
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton"  onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
-                }
-            }
-        }
-        document.getElementById('datospersona').innerHTML = body;
-    }
-}
-
-function fetchFavoritos() {
-
-    let url = "http://localhost:8084/resultados";
-    fetch(url)
-        .then(response => response.json())
-        .then(dataevento => mostrarData(dataevento))
-        .catch(error => console.log(error))
-
-    const mostrarData = (dataevento) => {
-
-        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
-        dataevento.reverse();
-
-
-        console.log(dataevento)
-        let body = ''
-        for (let i = 0; i < dataevento.length; i++) {
-            if (dataevento[i].deporte == "basketball") {
-
-                if (dataevento[i].fechaHora <= fecha) {
-
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
-                }
-            }
-        }
-        document.getElementById('muestrafavoritos').innerHTML = body;
-    }
-}
-
-function fetchSeleccionFavoritos() {
-
-    let url = "http://localhost:8084/resultados";
-    fetch(url)
-        .then(response => response.json())
-        .then(dataevento => mostrarData(dataevento))
-        .catch(error => console.log(error))
-
-
-    const mostrarData = (dataevento) => {
-        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
-        console.log(dataevento);
-
-
-        let body = ''
-        for (let i = 0; i < dataevento.length; i++) {
-            if (dataevento[i].deporte == "basketball") {
-                if (dataevento[i].fechaHora >= fecha) {
-
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
-                }
-            }
-        }
-        document.getElementById('SeleccionFavoritos').innerHTML = body;
-    }
-}
