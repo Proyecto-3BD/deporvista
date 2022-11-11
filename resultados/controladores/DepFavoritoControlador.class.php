@@ -6,7 +6,7 @@
     class DepFavoritoControlador{
         public static function Alta($context){
             if(!empty($context['post']['idSuscriptor'])){
-                $u = new DeporteModelo();
+                $u = new DepFavoritoModelo();
                 $u -> idSuscriptor = $context['post']['idSuscriptor'];
                 $u -> idDeporte = $context['post']['idDeporte'];
                 if ($u -> Guardar()){
@@ -23,12 +23,10 @@
                 ];
                 echo json_encode($respuesta);
                 return;
-                
-                
-                
             }
         }
 
+        
 
 
         public static function Listar(){
