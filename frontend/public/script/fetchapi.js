@@ -2099,24 +2099,22 @@ function peronal() {
     document.getElementById("selecperosnal").style.display = "none";
 
 
-
-
-
-
-    let url = "http://localhost:8084/resultados";
+    let url = "http://localhost:8082/usuario";
     fetch(url)
         .then(response => response.json())
         .then(dataevento => mostrarData(dataevento))
         .catch(error => console.log(error))
 
 
+    let sesionactual = sessionStorage.getItem('nombrelog');
+
     const mostrarData = (dataevento) => {
         console.log(dataevento)
         let body = ''
         for (let i = 0; i < dataevento.length; i++) {
-            if (dataevento[i].deporte == "basketball") {
+            if (dataevento[i].nombreSuscriptor  == sesionactual) {
                 
-                    body += `<tr><th>id: </th><td>${dataevento[i - 1].fechaHora}</td></tr><tr><th>Nombre usuario: </th><td>${dataevento[i - 1].ubicacion}</td></tr><tr><th>Email: </th><td>${dataevento[i - 1].locatario}</td></tr><tr><th>Documento: </th><td>${dataevento[i - 1].locatario}</td></tr><tr><th>Nombre: </th><td>${dataevento[i - 1].visitante}</td></tr><tr><th>Apellido: </th><td>${dataevento[i - 1].visitante}</td></tr><tr><th>Telefono: </th><td>${dataevento[i - 1].visitante}</td></tr><tr><th>Metodo pago: </th><td>${dataevento[i - 1].visitante}</td></tr><tr><th>Fecha de alta: </th><td>${dataevento[i - 1].visitante}</td></tr>`
+                    body += `<tr><th>id: </th><td>${dataevento[i].idSuscriptor}</td></tr><tr><th>Nombre usuario: </th><td>${dataevento[i].nombreSuscriptor}</td></tr><tr><th>Email: </th><td>${dataevento[i].email}</td></tr><tr><th>Documento: </th><td>${dataevento[i].documento}</td></tr><tr><th>Nombre: </th><td>${dataevento[i].nombre}</td></tr><tr><th>Apellido: </th><td>${dataevento[i].apellidos}</td></tr><tr><th>Telefono: </th><td>${dataevento[i].telefono}</td></tr><tr><th>Metodo pago: </th><td>${dataevento[i].metodoPago}</td></tr><tr><th>Fecha de alta: </th><td>${dataevento[i].fechaAlta}</td></tr>`
             }
         }
         document.getElementById('datospersona').innerHTML = body;
