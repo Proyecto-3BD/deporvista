@@ -11,7 +11,6 @@
             $eventos = $e -> Evento();
             $resultado = [];
             foreach($eventos as $evento) {
-                //$evento['equipolocatario'] = self::ObtenerEquipos($evento['idLocatario']);
                 $t = [
                     'idEvento' => $evento -> idEvento,
                     'fechaHora' => $evento -> fechaHora,

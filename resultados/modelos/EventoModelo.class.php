@@ -220,6 +220,7 @@
         }
 
         public function Evento(){
+            $this -> conexion -> query('SET CHARACTER SET utf8');
             $sql = "SELECT e.idEvento, e.fechaHora, e.resultado, e.idDeporte, 
                     d.nombreDeporte, e.infracciones, e.ubicacion, 
                     ve.idEquipo AS idVisitante,
