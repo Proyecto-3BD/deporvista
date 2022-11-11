@@ -68,6 +68,7 @@ CREATE TABLE eventos(
 CREATE TABLE deporteFavorito(
 	idSuscriptor smallint unsigned not null,
 	idDeporte smallint unsigned not null,
+	primary key(idSuscriptor, idDeporte),
 	foreign key(idSuscriptor) references suscriptores(idSuscriptor),
 	foreign key(idDeporte) references deportes(idDeporte)
 );
@@ -491,9 +492,9 @@ INSERT INTO deportes
 );
 
 
-insert into deporteFavorito(idDeporte, idSuscriptor) values(1,1);
-insert into deporteFavorito(idDeporte, idSuscriptor) values(2,1);
-insert into deporteFavorito(idDeporte, idSuscriptor) values(3,1);
+insert into deporteFavorito(idSuscriptor, idDeporte) values(1,1);
+insert into deporteFavorito(idSuscriptor, idDeporte) values(1,2);
+insert into deporteFavorito(idSuscriptor, idDeporte) values(1,3);
 
 INSERT INTO eventos
     (fechaHora, resultado, idDeporte, infracciones, ubicacion)

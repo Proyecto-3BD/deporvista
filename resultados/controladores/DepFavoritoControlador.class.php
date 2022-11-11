@@ -9,7 +9,10 @@
                 $u = new DepFavoritoModelo();
                 $u -> idSuscriptor = $context['post']['idSuscriptor'];
                 $u -> idDeporte = $context['post']['idDeporte'];
-                if ($u -> Guardar()){
+                $alta = $u -> Alta();
+                var_dump($alta);
+                die;
+                if($alta){
                     $respuesta = [
                         "Resultado" => "true",
                         "Mensaje" => "Deporte Favorito Ingresado"

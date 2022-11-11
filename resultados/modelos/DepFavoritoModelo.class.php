@@ -23,13 +23,15 @@
 
         private function insertar(){
             
-            $sql1 = "INSERT INTO deporteFavorito (idSuscriptor, idDeporte) 
+            $sql = "INSERT INTO deporteFavorito (idSuscriptor, idDeporte) 
             VALUES ('" . $this -> idSuscriptor . "',
                     '" . $this -> idDeporte . "');";
-            $this -> conexion -> query($sql1);
+            var_dump($sql);
+            $this -> conexion -> query($sql);
         }
 
         private function actualizar(){
+            echo 'paso por actualizar';
             $sql = "UPDATE deporteFavorito SET
             idSuscriptor = '" . $this -> idSuscriptor . "',
             idDeporte = '" . $this -> idDeporte . "'
@@ -37,6 +39,14 @@
             $this -> conexion -> query($sql);   
         }
 
+        public function Alta(){
+            
+            $sql = "INSERT INTO deporteFavorito (idSuscriptor, idDeporte) 
+            VALUES ('" . $this -> idSuscriptor . "',
+                    '" . $this -> idDeporte . "');";
+            
+            $this -> conexion -> query($sql);
+        }
 
         public function obtener(){
             $sql = "SELECT * FROM  deporteFavorito WHERE idSuscriptor = " . $this -> idSuscriptor . ";";
