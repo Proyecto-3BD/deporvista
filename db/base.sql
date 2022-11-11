@@ -68,7 +68,6 @@ CREATE TABLE eventos(
 CREATE TABLE deporteFavorito(
 	idSuscriptor smallint unsigned not null,
 	idDeporte smallint unsigned not null,
-	primary key(idSuscriptor),
 	foreign key(idSuscriptor) references suscriptores(idSuscriptor),
 	foreign key(idDeporte) references deportes(idDeporte)
 );
