@@ -2138,13 +2138,8 @@ function fetchFavoritos() {
         console.log(dataevento)
         let body = ''
         for (let i = 0; i < dataevento.length; i++) {
-            if (dataevento[i].deporte == "basketball") {
 
-                if (dataevento[i].fechaHora <= fecha) {
-
-                    body += `<tr><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td></tr>`
-                }
-            }
+                    body += `<tr><td>${dataevento[i].idDeporte}</td></tr>`
         }
         document.getElementById('muestrafavoritos').innerHTML = body;
     }
