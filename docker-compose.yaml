@@ -20,12 +20,12 @@ services:
       - "3306:3306"
     restart: unless-stopped 
     environment:
-      - MYSQL_ROOT_PASSWORD=1234
-      - MYSQL_USER=usuario
-      - MYSQL_PASSWORD=1234
-      - MYSQL_DATABASE=base
+      - MYSQL_ROOT_PASSWORD=43018141
+      - MYSQL_USER=gustavo.guerrero
+      - MYSQL_PASSWORD=43018141
+      - MYSQL_DATABASE=teikucodewar
     volumes:
-      - $PWD/db/mysql:/var/lib/mysql
+      - ./db/mysql:/var/lib/mysql
 
   anuncios:
     build:
