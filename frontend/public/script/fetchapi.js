@@ -2176,13 +2176,13 @@ function fetchSeleccionFavoritos() {
             let response = await fetch('http://localhost:8082/usuario', {
                 method: 'POST',
                 body: new FormData(seagregadeporte)
-            });
+            });/*
             let result = await response.json();
              if(result.Resultado === "true") {
                  alert("entro deporte");
              } else {
                  alert("no entro");
-             }
+             }*/
         };
     }
 
