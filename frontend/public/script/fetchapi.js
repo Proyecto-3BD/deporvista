@@ -260,6 +260,8 @@ function futbol() {
     document.getElementById('generallaliga').style.display = "none";
     document.getElementById('generalbasket').style.display = "none";
     document.getElementById('general').style.display = "none";
+    document.getElementById('generalperonal').style.display = "none";
+    document.getElementById('generalfav').style.display = "none";
 
     document.getElementById('hoyfutbol').style.display = "block";
     document.getElementById('finalizadosfutbol').style.display = "none";
@@ -370,6 +372,8 @@ function basket() {
     document.getElementById('general').style.display = "none";
     document.getElementById('generalfutbol').style.display = "none";
 
+    document.getElementById('generalperonal').style.display = "none";
+    document.getElementById('generalfav').style.display = "none";
 
     document.getElementById("hoybasket").style.display = "block";
     document.getElementById("finalizadosbasket").style.display = "none";
@@ -485,6 +489,8 @@ function laliga() {
     document.getElementById('generalbasket').style.display = "none";
     document.getElementById('general').style.display = "none";
     document.getElementById('generalfutbol').style.display = "none";
+    document.getElementById('generalperonal').style.display = "none";
+    document.getElementById('generalfav').style.display = "none";
 
 
     document.getElementById("hoylaliga").style.display = "block";
@@ -597,6 +603,8 @@ function premier() {
     document.getElementById('generalbasket').style.display = "none";
     document.getElementById('general').style.display = "none";
     document.getElementById('generalfutbol').style.display = "none";
+    document.getElementById('generalperonal').style.display = "none";
+    document.getElementById('generalfav').style.display = "none";
 
 
     document.getElementById("hoypremier").style.display = "block";
@@ -711,7 +719,8 @@ function primerauy() {
     document.getElementById('generalbasket').style.display = "none";
     document.getElementById('general').style.display = "none";
     document.getElementById('generalfutbol').style.display = "none";
-
+    document.getElementById('generalperonal').style.display = "none";
+    document.getElementById('generalfav').style.display = "none";
 
 
     document.getElementById("hoyprimerauy").style.display = "block";
@@ -824,6 +833,8 @@ function primeraARG() {
     document.getElementById('generalbasket').style.display = "none";
     document.getElementById('general').style.display = "none";
     document.getElementById('generalfutbol').style.display = "none";
+    document.getElementById('generalperonal').style.display = "none";
+    document.getElementById('generalfav').style.display = "none";
 
 
     document.getElementById("hoyprimeraARG").style.display = "block";
@@ -938,6 +949,8 @@ function serieA() {
     document.getElementById('generalbasket').style.display = "none";
     document.getElementById('general').style.display = "none";
     document.getElementById('generalfutbol').style.display = "none";
+    document.getElementById('generalperonal').style.display = "none";
+    document.getElementById('generalfav').style.display = "none";
 
     document.getElementById("hoyserieA").style.display = "block";
     document.getElementById("finalizadosserieA").style.display = "none";
@@ -1049,6 +1062,8 @@ function tenis() {
     document.getElementById('generalbasket').style.display = "none";
     document.getElementById('general').style.display = "none";
     document.getElementById('generalfutbol').style.display = "none";
+    document.getElementById('generalperonal').style.display = "none";
+    document.getElementById('generalfav').style.display = "none";
 
     document.getElementById("hoyTenis").style.display = "block";
     document.getElementById("finalizadosTenis").style.display = "none";
@@ -1155,6 +1170,8 @@ function nbaeste() {
     document.getElementById('generalserieA').style.display = "none";
     document.getElementById('generalprimeraarg').style.display = "none";
     document.getElementById('generaltenis').style.display = "none";
+    document.getElementById('generalperonal').style.display = "none";
+    document.getElementById('generalfav').style.display = "none";
 
     document.getElementById('generalprimerauy').style.display = "none";
     document.getElementById('generalpremier').style.display = "none";
@@ -1272,6 +1289,8 @@ function nbaoeste() {
     document.getElementById('generalprimerauy').style.display = "none";
     document.getElementById('generalpremier').style.display = "none";
     document.getElementById('generaltenis').style.display = "none";
+    document.getElementById('generalperonal').style.display = "none";
+    document.getElementById('generalfav').style.display = "none";
 
     document.getElementById('generallaliga').style.display = "none";
     document.getElementById('generalbasket').style.display = "none";
@@ -1382,6 +1401,8 @@ function LUB() {
     document.getElementById('generallub').style.display = "block";
     document.getElementById('generalnbaoeste').style.display = "none";
     document.getElementById('generaltenis').style.display = "none";
+    document.getElementById('generalperonal').style.display = "none";
+    document.getElementById('generalfav').style.display = "none";
 
     document.getElementById('generalnbaeste').style.display = "none";
     document.getElementById('generalserieA').style.display = "none";
@@ -1501,6 +1522,8 @@ function usopen() {
     document.getElementById('generalserieA').style.display = "none";
     document.getElementById('generalprimeraarg').style.display = "none";
     document.getElementById('generaltenis').style.display = "none";
+    document.getElementById('generalperonal').style.display = "none";
+    document.getElementById('generalfav').style.display = "none";
 
     document.getElementById('generalprimerauy').style.display = "none";
     document.getElementById('generalpremier').style.display = "none";
@@ -1609,6 +1632,8 @@ function wimbledon() {
     document.getElementById('generalnbaoeste').style.display = "none";
     document.getElementById('generalnbaeste').style.display = "none";
     document.getElementById('generaltenis').style.display = "none";
+    document.getElementById('generalperonal').style.display = "none";
+    document.getElementById('generalfav').style.display = "none";
 
     document.getElementById('generalserieA').style.display = "none";
     document.getElementById('generalprimeraarg').style.display = "none";
@@ -1724,6 +1749,8 @@ function roland() {
     document.getElementById('generalpremier').style.display = "none";
     document.getElementById('generallaliga').style.display = "none";
     document.getElementById('generaltenis').style.display = "none";
+    document.getElementById('generalperonal').style.display = "none";
+    document.getElementById('generalfav').style.display = "none";
 
     document.getElementById('generalbasket').style.display = "none";
     document.getElementById('general').style.display = "none";
@@ -1831,6 +1858,8 @@ function aus() {
     document.getElementById('generalserieA').style.display = "none";
     document.getElementById('generalprimeraarg').style.display = "none";
     document.getElementById('generaltenis').style.display = "none";
+    document.getElementById('generalperonal').style.display = "none";
+    document.getElementById('generalfav').style.display = "none";
 
     document.getElementById('generalprimerauy').style.display = "none";
     document.getElementById('generalpremier').style.display = "none";
@@ -1935,7 +1964,6 @@ let activarfav = actualfav.addEventListener('click', favoritos);
 
 function favoritos() {
     document.getElementById('generalperonal').style.display = "none";
-
     document.getElementById('generalfav').style.display = "block";
     document.getElementById('generalAUS').style.display = "none";
     document.getElementById('generalroland').style.display = "none";
@@ -2042,5 +2070,27 @@ let actualperonal = document.getElementById("user");
 let activarperonal = actualperonal.addEventListener('click', peronal);
 
 function peronal() {
-    
+    document.getElementById('generalperonal').style.display = "block";
+    document.getElementById('generalfav').style.display = "none";
+    document.getElementById('generalAUS').style.display = "none";
+    document.getElementById('generalroland').style.display = "none";
+    document.getElementById('generalusopen').style.display = "none";
+    document.getElementById('generalwimbledon').style.display = "none";
+    document.getElementById('generallub').style.display = "none";
+    document.getElementById('generalnbaoeste').style.display = "none";
+    document.getElementById('generalnbaeste').style.display = "none";
+    document.getElementById('generalserieA').style.display = "none";
+    document.getElementById('generalprimeraarg').style.display = "none";
+    document.getElementById('generaltenis').style.display = "none";
+    document.getElementById('generalprimerauy').style.display = "none";
+    document.getElementById('generalpremier').style.display = "none";
+    document.getElementById('generallaliga').style.display = "none";
+    document.getElementById('generalbasket').style.display = "none";
+    document.getElementById('general').style.display = "none";
+    document.getElementById('generalfutbol').style.display = "none";
+
+    document.getElementById("personales").style.display = "block";
+    document.getElementById("favperonal").style.display = "none";
+    document.getElementById("selecperosnal").style.display = "none";
+
 }
