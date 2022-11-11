@@ -2170,12 +2170,12 @@ function fetchSeleccionFavoritos() {
     let seagrega = document.getElementById('seagregadeporte');
     seagrega.addEventListener('click', fetchenviodeporte);
     function fetchenviodeporte() {
-        formularioregistro.onsubmit = async (e) => {
+        seagregadeporte.onsubmit = async (e) => {
             e.preventDefault();
     
             let response = await fetch('http://localhost:8082/usuario', {
                 method: 'POST',
-                body: new FormData(formularioregistro)
+                body: new FormData(seagregadeporte)
             });
             let result = await response.json();
              if(result.Resultado === "true") {
