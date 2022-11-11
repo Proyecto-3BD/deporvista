@@ -2098,4 +2098,85 @@ function peronal() {
     document.getElementById("favperonal").style.display = "none";
     document.getElementById("selecperosnal").style.display = "none";
 
+
+
+
+
+
+    let url = "http://localhost:8083/suscriptores";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].deporte == "basketball") {
+                if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton"  onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
+                }
+            }
+        }
+        document.getElementById('datospersona').innerHTML = body;
+    }
+}
+
+function fetchFavoritos() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+    const mostrarData = (dataevento) => {
+
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        dataevento.reverse();
+
+
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].deporte == "basketball") {
+
+                if (dataevento[i].fechaHora <= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
+                }
+            }
+        }
+        document.getElementById('muestrafavoritos').innerHTML = body;
+    }
+}
+
+function fetchSeleccionFavoritos() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        console.log(dataevento);
+
+
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].deporte == "basketball") {
+                if (dataevento[i].fechaHora >= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
+                }
+            }
+        }
+        document.getElementById('SeleccionFavoritos').innerHTML = body;
+    }
 }
