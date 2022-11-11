@@ -100,20 +100,23 @@
 }
 
 .iniciar-sesion a {
-    border: 2px  rgb(39, 39, 39) solid;
-    border-radius: 20px;
+    border-radius: 15px;
     text-decoration: none;
     padding: 0.8rem 1.5rem;
-    color: rgb(39, 39, 39);
-    background-color: aliceblue;
+    color: white !important;
+    background-color: var(--segundo-color);
     font-weight: bold;
     cursor: pointer;
+    transition: 2.5;
+    background-color: var(--hover-color);
+    box-shadow: 0px 6px 10px 1px rgba(0,0,0,0.38);
+-webkit-box-shadow: 0px 6px 10px 1px rgba(0,0,0,0.38);
+-moz-box-shadow: 0px 6px 10px 1px rgba(0,0,0,0.38);
+
 }
 
 .iniciar-sesion a:hover {
-    border: 2px rgb(255, 255, 255) solid;
-    color: white !important;
-    background-color: #205720;
+
 }
 
 
@@ -586,12 +589,15 @@ form select {
 }
 
 #paginapersonal span {
-    background-color: var(--hover-color);
-    padding: 0.5rem;
+    background-color: var(--segundo-color);
+
+    padding: 0.8rem 1.5rem;
     border-radius: 15px;
+    background-color: var(--hover-color);
+    box-shadow: 0px 6px 10px 1px rgba(0,0,0,0.38);
+-webkit-box-shadow: 0px 6px 10px 1px rgba(0,0,0,0.38);
+-moz-box-shadow: 0px 6px 10px 1px rgba(0,0,0,0.38);
 }
 
 #paginapersonal span:hover {
-    border: 2px solid white;
-    border-radius: 15px;
 }
