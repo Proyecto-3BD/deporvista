@@ -2,10 +2,10 @@ DROP DATABASE IF EXISTS base;
 
 CREATE DATABASE base;
 
-CREATE USER 'superadmin'@'localhost' IDENTIFIED BY '5678';
-GRANT ALL PRIVILEGES  ON base.*  TO 'superadmin'@'localhost';
-CREATE USER 'admindata'@'localhost' IDENTIFIED BY '8910';
-GRANT SELECT, INSERT, UPDATE, DELETE ON base.*  TO 'admindata'@'localhost';
+CREATE USER 'amdin'@'localhost' IDENTIFIED BY '5678';
+GRANT ALL PRIVILEGES  ON base.*  TO 'admin'@'localhost';
+CREATE USER 'user'@'localhost' IDENTIFIED BY '8910';
+GRANT SELECT, INSERT, UPDATE, DELETE ON base.*  TO 'user'@'localhost';
 FLUSH PRIVILEGES;
 
 USE base;
@@ -191,32 +191,7 @@ INSERT into deportistas
 	'Uruguay'
 );
 
-INSERT into deportistaEvento
-	(idDeportista, idEvento)
-	VALUES
-	('1',
-	'2'
-	),
-	('2',
-	'2'
-	),
-	('3',
-	'2'
-);
 
-INSERT into deportistaEquipo
-	(idDeportista, idEquipo, rol)
-	VALUES
-	('1',
-	'2',
-	'-'
-), ('2',
-	'2',
-	'-'
-), ('3',
-	'3',
-	'-'
-);
 
 INSERT into equipos
 	(nombreEquipo, paisEquipo, dt)
@@ -472,6 +447,48 @@ INSERT into equipos
 ;
 
 
+INSERT into competiciones
+	(nombreCompeticion, paisCompeticion, anio)
+	VALUES
+	('Primera division de Uruguay',
+	'Uruguay',
+	'2020'
+	), ('Premier League',
+	'Inglaterra',
+	'2020'
+	), ('LaLiga',
+	'España',
+	'2020'
+	), ('Primera division de Argentina',
+	'Argentina',
+	'2020'
+	), ('LUB',
+	'Uruguay',
+	'2020'
+	), ('NBA Este',
+	'Estados Unidos',
+	'2020'
+	), ('NBA Oeste',
+	'Estados Unidos',
+	'2020'
+	), ('Serie A',
+	'Italia',
+	'2020'
+	), ('US Open',
+	'Estados Unidos',
+	'2020'
+	), ('Wimbledon',
+	'Inglaterra',
+	'2020'
+	), ('Roland-Garros',
+	'Francia',
+	'2020'
+	), ('Austarlian Open',
+	'Australia',
+	'2020'
+	);
+
+
 INSERT INTO deportes
     (nombreDeporte, tipoDeporte)
     VALUES
@@ -662,47 +679,32 @@ insert into equipoVisitanteEvento(idEvento, idEquipo) values (17, 76);
 insert into equipoLocatarioEvento(idEvento, idEquipo) values (18, 77);
 insert into equipoVisitanteEvento(idEvento, idEquipo) values (18, 78);
 
-
-INSERT into competiciones
-	(nombreCompeticion, paisCompeticion, anio)
+INSERT into deportistaEvento
+	(idDeportista, idEvento)
 	VALUES
-	('Primera division de Uruguay',
-	'Uruguay',
-	'2020'
-	), ('Premier League',
-	'Inglaterra',
-	'2020'
-	), ('LaLiga',
-	'España',
-	'2020'
-	), ('Primera division de Argentina',
-	'Argentina',
-	'2020'
-	), ('LUB',
-	'Uruguay',
-	'2020'
-	), ('NBA Este',
-	'Estados Unidos',
-	'2020'
-	), ('NBA Oeste',
-	'Estados Unidos',
-	'2020'
-	), ('Serie A',
-	'Italia',
-	'2020'
-	), ('US Open',
-	'Estados Unidos',
-	'2020'
-	), ('Wimbledon',
-	'Inglaterra',
-	'2020'
-	), ('Roland-Garros',
-	'Francia',
-	'2020'
-	), ('Austarlian Open',
-	'Australia',
-	'2020'
-	);
+	('1',
+	'2'
+	),
+	('2',
+	'2'
+	),
+	('3',
+	'2'
+);
+
+INSERT into deportistaEquipo
+	(idDeportista, idEquipo, rol)
+	VALUES
+	('1',
+	'2',
+	'-'
+), ('2',
+	'2',
+	'-'
+), ('3',
+	'3',
+	'-'
+);
 
 insert into eventoCompeticion
 	(idCompeticion, idEvento)
