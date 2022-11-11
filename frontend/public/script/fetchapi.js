@@ -228,7 +228,7 @@ function detalleEvento(i) {
 
 
         let body = ''
-        body += `<tr><th>Fecha y hora: </th><td>${dataevento[i - 1].fechaHora}</td></tr><tr><th>Ubicacion: </th><td>${dataevento[i - 1].ubicacion}</td></tr><tr><th>Equipo Local: </th><td>${dataevento[i-1].equipoLocatario}</td></tr><tr><th>Jugadores locales: </th><td>${dataevento[i - 1].locatario}</td></tr><tr><th>Equipo Visitante: </th><td>${dataevento[i - 1].equipoVisitante}</td></tr><tr><th>Jugadores Visitantes: </th><td>${dataevento[i - 1].visitante}</td></tr>`
+        body += `<tr><th>Fecha y hora: </th><td>${dataevento[i - 1].fechaHora}</td></tr><tr><th>Ubicacion: </th><td>${dataevento[i - 1].ubicacion}</td></tr><tr><th>Equipo Local: </th><td>${dataevento[i-1].locatario}</td></tr><tr><th>Jugadores locales: </th><td>${dataevento[i - 1].equipoLocatario}</td></tr><tr><th>Equipo Visitante: </th><td>${dataevento[i - 1].visitante}</td></tr><tr><th>Jugadores Visitantes: </th><td>${dataevento[i - 1].equipoVisitante}</td></tr>`
 
         document.getElementById('detallesdeevento').innerHTML = body;
     }
