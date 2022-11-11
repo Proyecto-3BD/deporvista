@@ -21,6 +21,7 @@
 
 .nav-color {
     background-color: var(--main-color);
+    
 }
 
 .nav-uno {
@@ -28,6 +29,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    
 }
 
 .nav-uno-concetar {
@@ -581,4 +583,15 @@ form select {
     border: 2px solid rgb(37, 165, 76);
     background-color: #369741;
     color: white;
+}
+
+#paginapersonal span {
+    background-color: var(--hover-color);
+    padding: 0.5rem;
+    border-radius: 15px;
+}
+
+#paginapersonal span:hover {
+    border: 2px solid white;
+    border-radius: 15px;
 }
