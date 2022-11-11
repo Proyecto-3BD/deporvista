@@ -26,7 +26,30 @@
             }
         }
 
-        
+        public static function Eliminar($context){
+            $u = new DepFavoritoModelo($context['post']['idSuscriptor']);
+            $u -> Eliminar();
+            $respuesta = [
+                "Resultado" => "true",
+                "Mensaje" => "Deporte Eliminado"
+            ];
+            echo json_encode($respuesta);
+        }        
+
+        public static function Modificar($context){
+
+            $u = new DepFavoritoModelo($context['post']['idSuscriptor']);
+            $u -> idDeporte = $context['post']['idSuscriptor'];
+            $u -> nombreDeporte = $context['post']['Deporte'];
+            if(!empty($context['post']['idDeporte'])){
+                $u -> Guardar();
+                $respuesta = [
+                    "Resultado" => "true",
+                    "Mensaje"  => "Favoritos Modificado"
+                ];
+                echo json_encode($respuesta);
+            }
+        }
 
 
         public static function Listar(){
