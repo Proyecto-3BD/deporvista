@@ -65,6 +65,6 @@
                 ];
                 array_push($resultado,$t);
             }
-            return $resultado;            
+            echo json_encode($resultado) ;            
         }
     }

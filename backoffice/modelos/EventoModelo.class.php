@@ -98,6 +98,7 @@
             
             $sql = "commit";
             $this -> conexion -> query($sql);
+            var_dump($this -> conexion -> query($sql));
             
         }
 
