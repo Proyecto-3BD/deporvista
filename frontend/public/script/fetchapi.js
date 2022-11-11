@@ -2173,7 +2173,7 @@ function fetchSeleccionFavoritos() {
         seagregadeporte.onsubmit = async (e) => {
             e.preventDefault();
     
-            let response = await fetch('http://localhost:8082/usuario', {
+            let respuesta = await fetch('http://localhost:8084/favoritosAlta', {
                 method: 'POST',
                 body: new FormData(seagregadeporte)
             });/*
