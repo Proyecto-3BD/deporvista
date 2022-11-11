@@ -8,13 +8,17 @@
         public $idEvento;
         public $fechaHora;
         public $resultado;
-        public $idDeporte;     
+        public $idDeporte;
+        public $nombreDeporte;
         public $infracciones;
         public $ubicacion;
         public $idLocatario;
+        public $locatario;
         public $idVisitante;
+        public $visitante;
         public $idCompeticion;
-
+        public $nombreCompeticion;
+  
         public function __construct($idEvento=""){
             parent::__construct();
             if($idEvento != ""){
@@ -23,47 +27,56 @@
             }
         }
 
-        public function EventoCompeticion(){
-            $sql = "SELECT e.idEvento, 
-                    c.nombreCompeticion AS competicion
-                    FROM eventoCompeticion AS ec 
-                    INNER JOIN competiciones AS c
-                    ON c.idCompeticion=ec.idCompeticion 
-                    INNER JOIN eventos AS e 
-                    ON ec.idEvento=e.idEvento
-                    ORDER BY e.idEvento ASC;";
-            $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
-            return $filas;
-        }
 
-        public function LocatarioEvento(){
-
-            $sql = "SELECT e.idEvento, e.fechaHora, e.resultado, 
-                    e.idDeporte, e.infracciones, e.ubicacion, eq.nombreEquipo AS locatario, eq.idEquipo AS idLocatario
-                    FROM equipoLocatarioEvento AS le 
-                    INNER JOIN eventos AS e  
-                    ON e.idEvento=le.idEvento 
-                    INNER JOIN equipos AS eq  
-                    ON le.idEquipo=eq.idEquipo
-                    ORDER BY e.idEvento ASC;";
-            $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
-            
-            return $filas;
-        }
-
-        public function VisitanteEvento(){
-            $sql = "SELECT e.idEvento, eq.nombreEquipo AS visitante, eq.idEquipo AS idVisitante
+        public function Evento(){
+            $sql = "SELECT e.idEvento, e.fechaHora, e.resultado, e.idDeporte, 
+                    d.nombreDeporte, e.infracciones, e.ubicacion, 
+                    ve.idEquipo AS idVisitante,
+                    eq.nombreEquipo AS visitante,  
+                    le.idEquipo AS idLocatario, 
+                    eq.nombreEquipo AS locatario,
+                    ec.idCompeticion, c.nombreCompeticion
                     FROM equipoVisitanteEvento AS ve 
                     INNER JOIN eventos AS e  
-                    ON e.idEvento=ve.idEvento 
+                    ON e.idEvento=ve.idEvento
+                    INNER JOIN equipoLocatarioEvento AS le 
+                    ON e.idEvento=le.idEvento 
                     INNER JOIN equipos AS eq 
-                    ON ve.idEquipo=eq.idEquipo
+                    ON le.idEquipo=eq.idEquipo
+                    INNER JOIN eventoCompeticion AS ec
+                    ON e.idEvento=ec.idEvento
+                    INNER JOIN competiciones as c
+                    ON ec.idCompeticion=c.idCompeticion
+                    INNER JOIN deportes as d
+                    ON e.idDeporte=d.idDeporte
                     ORDER BY e.idEvento ASC;";
             $filas = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC);
             return $filas;
+
+            $resultado = [];
+            foreach($filas as $fila){
+                $a = new EventoModelo();
+                $a -> idEvento = $fila['idEvento'];
+                $a -> fechaHora = $fila['fechaHora'];
+                $a -> resultado = $fila['resultado'];
+                $a -> idDeporte = $fila['idDeporte'];
+                $a -> nombreDeporte = $fila['nombreDeporte'];
+                $a -> infracciones = $fila['infracciones'];
+                $a -> ubicacion = $fila['ubicacion'];
+
+                $a -> idLocatario = $fila['idLocatario'];
+                $a -> locatario = $fila['locatario'];
+
+                $a -> idVisitante = $fila['idVisitante'];
+                $a -> visitante = $fila['visitante'];
+                $a -> idCompeticion = $fila['idCompeticion'];
+                $a -> nombreCompeticion = $fila['nombreCompeticion'];
+
+                array_push($resultado,$a);
+            }
+            return $resultado;
         }
-
-
+        
         public function guardar(){
             if($this -> idEvento == NULL) $this -> insertar();
             else $this -> actualizar();
@@ -98,7 +111,6 @@
             
             $sql = "commit";
             $this -> conexion -> query($sql);
-            var_dump($this -> conexion -> query($sql));
             
         }
 
@@ -131,24 +143,33 @@
             
             $sql = "commit";
             $this -> conexion -> query($sql);
-            
         }
 
         public function obtener(){
-            $sql = "SELECT e.idEvento, e.fechaHora, 
-                e.resultado, e.idDeporte, e.infracciones, 
-                e.ubicacion, le.idEquipo as idLocatario, 
-                ve.idEquipo as idVisitante, ec.idCompeticion 
-                FROM eventos as e 
-                INNER JOIN equipoLocatarioEvento as le 
-                ON e.idEvento = le.idEvento  
-                INNER JOIN equipoVisitanteEvento as ve
-                ON e.idEvento = ve.idEvento
-                INNER JOIN eventoCompeticion as ec
-                ON e.idEvento = ec.idEvento
+            $sql = "SELECT e.idEvento, e.fechaHora, e.resultado, e.idDeporte, 
+                d.nombreDeporte, e.infracciones, e.ubicacion, 
+                ve.idEquipo AS idVisitante,
+                eq.nombreEquipo AS visitante,  
+                le.idEquipo AS idLocatario, 
+                eq.nombreEquipo AS locatario,
+                ec.idCompeticion, c.nombreCompeticion
+                FROM equipoVisitanteEvento AS ve 
+                INNER JOIN eventos AS e  
+                ON e.idEvento=ve.idEvento
+                INNER JOIN equipoLocatarioEvento AS le 
+                ON e.idEvento=le.idEvento 
+                INNER JOIN equipos AS eq 
+                ON le.idEquipo=eq.idEquipo
+                INNER JOIN eventoCompeticion AS ec
+                ON e.idEvento=ec.idEvento
+                INNER JOIN competiciones as c
+                ON ec.idCompeticion=c.idCompeticion
+                INNER JOIN deportes as d
+                ON e.idDeporte=d.idDeporte
                 WHERE e.idEvento = " . $this -> idEvento . ";";
+            
             $fila = $this -> conexion -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
-
+            
             $this -> idEvento = $fila['idEvento'];
             $this -> fechaHora = $fila['fechaHora'];
             $this -> resultado = $fila['resultado'];
@@ -156,8 +177,11 @@
             $this -> infracciones = $fila['infracciones'];
             $this -> ubicacion = $fila['ubicacion'];
             $this -> idLocatario = $fila['idLocatario'];
+            $this -> locatario = $fila['locatario'];
             $this -> idVisitante = $fila['idVisitante'];
+            $this -> visitante = $fila['visitante'];
             $this -> idCompeticion = $fila['idCompeticion'];
+            $this -> nombreCompeticion = $fila['nombreCompeticion'];
         }
 
         public function Eliminar(){
@@ -194,6 +218,7 @@
                 $a -> idEvento = $fila['idEvento'];
                 $a -> fechaHora = $fila['fechaHora'];
                 $a -> resultado = $fila['resultado'];
+                $a -> idDeporte = $fila['idDeporte'];
                 $a -> infracciones = $fila['infracciones'];
                 $a -> ubicacion = $fila['ubicacion'];
                  

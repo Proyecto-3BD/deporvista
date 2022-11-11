@@ -8,24 +8,29 @@
 
         public static function ResultadoEquipo($context){
             $e = new  EventoModelo();
-            $locatarios = $e -> LocatarioEvento();
-            $visitantes = $e -> VisitanteEvento();
-            $competiciones= $e -> EventoCompeticion();
-            $resultados = [];
-            $deportes = [];
-            for ($i=0; $i <count($locatarios) ; $i++) {
-                if (isset($competiciones[$i]['idEvento']) && $locatarios[$i]['idEvento'] === $visitantes[$i]['idEvento']) {
-                    $deportes[$i]['deporte'] = 
-                        self::ObtenerDeporte($locatarios[$i]['idDeporte']);
-                    $locatarios[$i]['equipoLocatario'] = self::ObtenerEquipos($locatarios[$i]['idLocatario']);
-                    $visitantes[$i]['equipoVisitante'] = self::ObtenerEquipos($visitantes[$i]['idVisitante']);
+            $eventos = $e -> Evento();
+            $resultado = [];
+            foreach($eventos as $evento) {
+                //$evento['equipolocatario'] = self::ObtenerEquipos($evento['idLocatario']);
+                $t = [
+                    'idEvento' => $evento -> idEvento,
+                    'fechaHora' => $evento -> fechaHora,
+                    'resultado' => $evento -> resultado,
+                    'idDeporte' => $evento -> nombreDeporte,
+                    'infracciones' => $evento -> infracciones,
+                    'ubicacion' => $evento -> ubicacion,
+                    'idLocatario' => $evento -> idLocatario,
+                    'locatario' => $evento ->locatario,
+                    'idVisitante' => $evento -> idVisitante,
+                    'visitante' => $evento -> visitante,
+                    'idCompeticion' => $evento -> idCompeticion,
+                    'nombreCompeticion' => $evento -> nombreCompeticion
                     
-                    $resultados[$i]= array_merge($locatarios[$i], 
-                        $visitantes[$i], $competiciones[$i], $deportes[$i]);
-                }
+                ]; 
+                array_push($resultado,$t);
             }
             
-            echo json_encode($resultados); 
+            echo json_encode($resultado); 
 
         }
 
@@ -36,7 +41,6 @@
         }
 
         public static function ObtenerEquipos($idEquipo){
-            
             $e = new  EquipoModelo($idEquipo);
             return $e -> desportistaEquipo();
 

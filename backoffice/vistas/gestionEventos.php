@@ -241,22 +241,25 @@
                     </tr>
                   
                     <?php
-                        $resultados = ResultadosControlador::ResultadoEquipo();
+                        $resultados = EventoControlador::Listar();
+                        
                         if($resultados == "") :?>
-                            No hay Eventos ingresados
+                            <tr>
+                                <td><bold>No hay Eventos ingresados</bold></td>
+                            </tr>
                     <?php 
                         else :?>
                         <? foreach($resultados as $fila) :?>
                             <tr>
-                                <td> <?= $fila['idEvento'] ?></td> 
+                                <td> <?=$fila['idEvento'] ?></td> 
                                 <td> <?=$fila['fechaHora'] ?></td>
                                 <td> <?=$fila['locatario'] ?></td>
                                 <td> <?=$fila['resultado'] ?></td>
                                 <td> <?=$fila['visitante'] ?></td>
-                                <td> <?=$fila['competicion'] ?></td>
+                                <td> <?=$fila['nombreCompeticion'] ?></td>
                                 <td> <?=$fila['infracciones'] ?></td>
                                 <td> <?=$fila['ubicacion'] ?></td>
-                                <td> <?=$fila['deporte'] ?></td>
+                                <td> <?=$fila['nombreDeporte'] ?></td>
                                 <td> 
                                     <form action="/bajaEvento" method="post">
                                        <button type="submit" name="idEvento" value="<?= $fila['idEvento'] ?>" class="btn btn-primary">Eliminar</button>

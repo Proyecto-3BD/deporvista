@@ -44,8 +44,7 @@
         }        
 
         public static function Modificar($context){
-            $u = new EventoModelo();
-            
+            $u = new EventoModelo($context['post']['idEvento']);
             $u -> idEvento = $context['post']['idEvento'];
             $u -> fechaHora = $context['post']['fechaHora'];
             $u -> resultado = $context['post']['resultado'];
@@ -66,21 +65,7 @@
 
         public static function Listar(){
             $a = new EventoModelo();
-            $eventos = $a -> ObtenerTodos();
-
-            $resultado = [];
-            foreach($eventos as $evento){
-                $t = [
-                    'idEvento' => $evento -> idEvento,
-                    'fechaHora' => $evento -> fechaHora,
-                    'resultado' => $evento -> resultado,
-                    'infracciones' => $evento -> infracciones,
-                    'ubicacion' => $evento -> ubicacion
-                ];   
-                array_push($resultado,$t);
-            }
-            return $resultado;          
+            $eventos = $a -> Evento();
+            return $eventos;
         }
-
-
     }
