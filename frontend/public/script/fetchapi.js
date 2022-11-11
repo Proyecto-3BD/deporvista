@@ -2103,7 +2103,7 @@ function peronal() {
 
 
 
-    let url = "http://localhost:8083/suscriptores";
+    let url = "http://localhost:8084/resultados";
     fetch(url)
         .then(response => response.json())
         .then(dataevento => mostrarData(dataevento))
@@ -2115,10 +2115,8 @@ function peronal() {
         let body = ''
         for (let i = 0; i < dataevento.length; i++) {
             if (dataevento[i].deporte == "basketball") {
-                if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
-
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton"  onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
-                }
+                
+                    body += `<tr><th>id: </th><td>${dataevento[i - 1].fechaHora}</td></tr><tr><th>Nombre usuario: </th><td>${dataevento[i - 1].ubicacion}</td></tr><tr><th>Email: </th><td>${dataevento[i - 1].locatario}</td></tr><tr><th>Documento: </th><td>${dataevento[i - 1].locatario}</td></tr><tr><th>Nombre: </th><td>${dataevento[i - 1].visitante}</td></tr><tr><th>Apellido: </th><td>${dataevento[i - 1].visitante}</td></tr><tr><th>Telefono: </th><td>${dataevento[i - 1].visitante}</td></tr><tr><th>Metodo pago: </th><td>${dataevento[i - 1].visitante}</td></tr><tr><th>Fecha de alta: </th><td>${dataevento[i - 1].visitante}</td></tr>`
             }
         }
         document.getElementById('datospersona').innerHTML = body;
@@ -2146,7 +2144,7 @@ function fetchFavoritos() {
 
                 if (dataevento[i].fechaHora <= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
+                    body += `<tr><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td></tr>`
                 }
             }
         }
@@ -2173,10 +2171,16 @@ function fetchSeleccionFavoritos() {
             if (dataevento[i].deporte == "basketball") {
                 if (dataevento[i].fechaHora >= fecha) {
 
-                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
+                    body += `<tr><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td></tr>`
                 }
             }
         }
         document.getElementById('SeleccionFavoritos').innerHTML = body;
     }
+
+
+
+
+
+
 }
