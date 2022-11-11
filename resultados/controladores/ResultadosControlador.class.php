@@ -21,8 +21,11 @@
                     'ubicacion' => $evento -> ubicacion,
                     'idLocatario' => $evento -> idLocatario,
                     'locatario' => $evento ->locatario,
+                    'equipoLocatario' => $evento -> equipoLocatario,
+                    
                     'idVisitante' => $evento -> idVisitante,
                     'visitante' => $evento -> visitante,
+                    'equipoVisitante' => $evento -> equipoVisitante,
                     'idCompeticion' => $evento -> idCompeticion,
                     'nombreCompeticion' => $evento -> nombreCompeticion
                     

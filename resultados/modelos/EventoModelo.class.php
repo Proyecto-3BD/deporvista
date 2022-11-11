@@ -13,8 +13,10 @@
         public $ubicacion;
         public $idLocatario;
         public $locatario;
+        public $EquipoLocatario;
         public $idVisitante;
         public $visitante;
+        public $EquipoVisitante;
         public $idCompeticion;
         public $nombreCompeticion;
 
@@ -253,10 +255,12 @@
                 $a -> ubicacion = $fila['ubicacion'];
 
                 $a -> idLocatario = $fila['idLocatario'];
-                $a -> locatario = ResultadosControlador::ObtenerEquipos($fila['idLocatario']);
+                $a -> locatario = $fila['locatario'];
+                $a -> equipoLocatario = ResultadosControlador::ObtenerEquipos($fila['idLocatario']);
 
                 $a -> idVisitante = $fila['idVisitante'];
-                $a -> visitante = ResultadosControlador::ObtenerEquipos($fila['idVisitante']);
+                $a -> visitante = $fila['visitante'];
+                $a -> equipoVisitante = ResultadosControlador::ObtenerEquipos($fila['idVisitante']);
                 $a -> idCompeticion = $fila['idCompeticion'];
                 $a -> nombreCompeticion = $fila['nombreCompeticion'];
 
