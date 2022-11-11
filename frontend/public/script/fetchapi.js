@@ -1925,3 +1925,122 @@ function fetchEventoProximoaus() {
     }
 }
 /*FIN Austarlian Open*/
+
+
+/* Favoritos */
+
+document.getElementById('generalfav').style.display = "none";
+let actualfav = document.getElementById("favoritosyo");
+let activarfav = actualfav.addEventListener('click', favoritos);
+
+function favoritos() {
+    document.getElementById('generalperonal').style.display = "none";
+
+    document.getElementById('generalfav').style.display = "block";
+    document.getElementById('generalAUS').style.display = "none";
+    document.getElementById('generalroland').style.display = "none";
+    document.getElementById('generalusopen').style.display = "none";
+    document.getElementById('generalwimbledon').style.display = "none";
+    document.getElementById('generallub').style.display = "none";
+    document.getElementById('generalnbaoeste').style.display = "none";
+    document.getElementById('generalnbaeste').style.display = "none";
+    document.getElementById('generalserieA').style.display = "none";
+    document.getElementById('generalprimeraarg').style.display = "none";
+    document.getElementById('generaltenis').style.display = "none";
+    document.getElementById('generalprimerauy').style.display = "none";
+    document.getElementById('generalpremier').style.display = "none";
+    document.getElementById('generallaliga').style.display = "none";
+    document.getElementById('generalbasket').style.display = "none";
+    document.getElementById('general').style.display = "none";
+    document.getElementById('generalfutbol').style.display = "none";
+
+    document.getElementById("hoyfav").style.display = "block";
+    document.getElementById("finalizadosFAV").style.display = "none";
+    document.getElementById("proximosFav").style.display = "none";
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].deporte == "basketball") {
+                if (dataevento[i].fechaHora > principioDia && dataevento[i].fechaHora < finDia) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos" id="detalleboton"  onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoFAV').innerHTML = body;
+    }
+}
+
+function fetchEventoFinalizadofav() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+    const mostrarData = (dataevento) => {
+
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        dataevento.reverse();
+
+
+        console.log(dataevento)
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].deporte == "basketball") {
+
+                if (dataevento[i].fechaHora <= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].resultado}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].infracciones}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataeventoFinFAV').innerHTML = body;
+    }
+}
+
+function fetchEventoProximofav() {
+
+    let url = "http://localhost:8084/resultados";
+    fetch(url)
+        .then(response => response.json())
+        .then(dataevento => mostrarData(dataevento))
+        .catch(error => console.log(error))
+
+
+    const mostrarData = (dataevento) => {
+        dataevento.sort((a, b) => parseFloat(a.fechaHora) - parseFloat(b.fechaHora));
+        console.log(dataevento);
+
+
+        let body = ''
+        for (let i = 0; i < dataevento.length; i++) {
+            if (dataevento[i].deporte == "basketball") {
+                if (dataevento[i].fechaHora >= fecha) {
+
+                    body += `<tr><td>${dataevento[i].fechaHora}</td><td>${dataevento[i].locatario}</td><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td><td data-bs-toggle="modal" data-bs-target="#exampleModalCenterDos"  id="detalleboton" onclick="detalleEvento(${dataevento[i].idEvento})"><p>Detalles</p></td></tr>`
+                }
+            }
+        }
+        document.getElementById('dataproxfav').innerHTML = body;
+    }
+}
+
+/* Ppersonal */
+document.getElementById('generalperonal').style.display = "none";
+let actualperonal = document.getElementById("user");
+let activarperonal = actualperonal.addEventListener('click', peronal);
+
+function peronal() {
+    
+}
