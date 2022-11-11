@@ -10,8 +10,6 @@
                 $u -> idSuscriptor = $context['post']['idSuscriptor'];
                 $u -> idDeporte = $context['post']['idDeporte'];
                 $alta = $u -> Alta();
-                var_dump($alta);
-                die;
                 if($alta){
                     $respuesta = [
                         "Resultado" => "true",

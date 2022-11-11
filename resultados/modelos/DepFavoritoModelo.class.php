@@ -26,12 +26,10 @@
             $sql = "INSERT INTO deporteFavorito (idSuscriptor, idDeporte) 
             VALUES ('" . $this -> idSuscriptor . "',
                     '" . $this -> idDeporte . "');";
-            var_dump($sql);
             $this -> conexion -> query($sql);
         }
 
         private function actualizar(){
-            echo 'paso por actualizar';
             $sql = "UPDATE deporteFavorito SET
             idSuscriptor = '" . $this -> idSuscriptor . "',
             idDeporte = '" . $this -> idDeporte . "'
