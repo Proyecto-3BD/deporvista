@@ -490,6 +490,11 @@ INSERT INTO deportes
     'porPuntos'
 );
 
+
+insert into deporteFavorito(idDeporte, idSuscriptor) values(1,1);
+insert into deporteFavorito(idDeporte, idSuscriptor) values(2,1);
+insert into deporteFavorito(idDeporte, idSuscriptor) values(3,1);
+
 INSERT INTO eventos
     (fechaHora, resultado, idDeporte, infracciones, ubicacion)
     VALUES
