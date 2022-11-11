@@ -2152,7 +2152,7 @@ function fetchFavoritos() {
 
 function fetchSeleccionFavoritos() {
 
-    let url = "http://localhost:8084/resultados";
+    let url = "http://localhost:8084/deporte";
     fetch(url)
         .then(response => response.json())
         .then(dataevento => mostrarData(dataevento))
@@ -2166,12 +2166,7 @@ function fetchSeleccionFavoritos() {
 
         let body = ''
         for (let i = 0; i < dataevento.length; i++) {
-            if (dataevento[i].deporte == "basketball") {
-                if (dataevento[i].fechaHora >= fecha) {
-
-                    body += `<tr><td>${dataevento[i].visitante}</td><td>${dataevento[i].ubicacion}</td></tr>`
-                }
-            }
+                    body += `<tr><td>${dataevento[i].idDeporte}</td><td>${dataevento[i].nombreDeporte}</td></tr>`
         }
         document.getElementById('SeleccionFavoritos').innerHTML = body;
     }
