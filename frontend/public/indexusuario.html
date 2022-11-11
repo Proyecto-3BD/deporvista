@@ -1690,10 +1690,10 @@
                         <a onclick="datospersonales(); ">Datos personales</a>
                     </li>
                     <li>
-                        <a onclick="favoritossss(); ">Favoritos</a>
+                        <a onclick="favoritossss(); fetchFavoritos()">Favoritos</a>
                     </li>
                     <li>
-                        <a onclick="selecfav(); ">Seleccinar favoritos</a>
+                        <a onclick="selecfav(); fetchSeleccionFavoritos()">Seleccinar favoritos</a>
                     </li>
                 </ul>
                 <div class="resultados-div-interior">
@@ -1713,7 +1713,7 @@
                                         <th>Ubicación</th>
                                     </tr>
                                 </thead>
-                                <tbody id="">
+                                <tbody id="datospersona">
 
                                 </tbody>
                             </table>
@@ -1727,7 +1727,6 @@
                             <div>
                                 <table>
                                     <p>Favoritos</p>
-
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
@@ -1738,7 +1737,7 @@
                                             <th>Ubicación</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="">
+                                    <tbody id="muestrafavoritos">
 
                                     </tbody>
                                 </table>
@@ -1759,7 +1758,7 @@
                                             <th>Ubicación</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="">
+                                    <tbody id="SeleccionFavoritos">
 
                                     </tbody>
                                 </table>

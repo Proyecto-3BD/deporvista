@@ -434,14 +434,14 @@ function datospersonales() {
 
 
 function favoritossss() {
-    document.getElementById("personal").style.display = "none";
+    document.getElementById("personales").style.display = "none";
     document.getElementById("favperonal").style.display = "block";
     document.getElementById("selecperosnal").style.display = "none";
 }
 
 
 function selecfav() {
-    document.getElementById("personal").style.display = "none";
+    document.getElementById("personales").style.display = "none";
     document.getElementById("favperonal").style.display = "none";
     document.getElementById("selecperosnal").style.display = "block";
 

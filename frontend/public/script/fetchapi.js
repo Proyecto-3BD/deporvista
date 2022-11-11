@@ -2075,7 +2075,7 @@ let activarperonal = actualperonal.addEventListener('click', peronal);
 
 function peronal() {
     document.getElementById('generalperonal').style.display = "block";
-    document.getElementById('generalfav').style.display = "block";
+    document.getElementById('generalfav').style.display = "none";
     document.getElementById('generalAUS').style.display = "none";
     document.getElementById('generalroland').style.display = "none";
     document.getElementById('generalusopen').style.display = "none";
@@ -2097,7 +2097,7 @@ function peronal() {
     document.getElementById("favperonal").style.display = "none";
     document.getElementById("selecperosnal").style.display = "none";
 
-    let url = "http://localhost:8084/resultados";
+    let url = "http://localhost:8083/suscriptores";
     fetch(url)
         .then(response => response.json())
         .then(dataevento => mostrarData(dataevento))
@@ -2115,11 +2115,11 @@ function peronal() {
                 }
             }
         }
-        document.getElementById('dataeventoFAV').innerHTML = body;
+        document.getElementById('datospersona').innerHTML = body;
     }
 }
 
-function fetchEventoFinalizadofav() {
+function fetchFavoritos() {
 
     let url = "http://localhost:8084/resultados";
     fetch(url)
@@ -2144,11 +2144,11 @@ function fetchEventoFinalizadofav() {
                 }
             }
         }
-        document.getElementById('dataeventoFinFAV').innerHTML = body;
+        document.getElementById('muestrafavoritos').innerHTML = body;
     }
 }
 
-function fetchEventoProximofav() {
+function fetchSeleccionFavoritos() {
 
     let url = "http://localhost:8084/resultados";
     fetch(url)
@@ -2171,6 +2171,6 @@ function fetchEventoProximofav() {
                 }
             }
         }
-        document.getElementById('dataproxfav').innerHTML = body;
+        document.getElementById('SeleccionFavoritos').innerHTML = body;
     }
 }
