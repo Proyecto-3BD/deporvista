@@ -36,11 +36,6 @@
 
         }
 
-        public static function ObtenerDeporte($idDeporte){
-            $e = new  DeporteModelo($idDeporte);
-            return $e -> nombreDeporte;
-
-        }
 
         public static function ObtenerEquipos($idEquipo){
             $e = new  EquipoModelo($idEquipo);
